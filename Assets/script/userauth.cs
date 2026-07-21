@@ -9,7 +9,7 @@ public class userauth : MonoBehaviour
     public TMP_InputField username;
     public TMP_InputField password;
     public TMP_Text message;
-    public GameObject messagePanel; 
+    public GameObject messagePanel;
     private string filepath;
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class userauth : MonoBehaviour
         // string mail = email.text.Trim();
         if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
         {
-           notification("vui long nhap du thong tin", Color.red)    ;
+            notification("vui long nhap du thong tin", Color.red);
             return;
         }
         //kiem tra tai khoan da dang ky chua
@@ -42,7 +42,7 @@ public class userauth : MonoBehaviour
             PlayerPrefs.SetString("user" + user, pass);
             notification("dang ky thanh cong", Color.green);
         }
-        
+
     }
     public void login()
     {
@@ -76,7 +76,6 @@ public class userauth : MonoBehaviour
             message.color = color;
             messagePanel.SetActive(true);
         }
-            
-        }
-    }
 
+    }
+}
