@@ -10,18 +10,32 @@ using System;
 
 public class userdata : MonoBehaviour
 {
-    [Serializable]
-    public class account
+    private const string FilePath = "user.txt";
+    //doc file text 
+    public static Dictionary<string, string> ReadUserData()
     {
-        public string username;
-        public string password;
-        public string email;
+        var users = new Dictionary<string, string>();
+        if (!File.Exists(FilePath))
+        {
+            return users;
+        }
+        foreach (string line in File.ReadAllLines(FilePath))
+        {
+            if (string.IsNullOrWhiteSpace(line)) continue;
+            string[] parts = line.Split('|');
+            if (parts.Length >= 2)
+            {
+                string user = parts[0].Trim();
+                string pass = parts[1].Trim();
+                if (!users.ContainsKey(user)) users[user] = pass;
+            }
+        }
+        return users;
     }
-    [Serializable]
-    public class accountdata
+    public static void saveuserdata(string name, string password)
     {
-        public List<account > accounts = new List<account>();
+        File.AppendAllText(FilePath, $"{name}|{password}\n");
     }
-}
+}   
 
 
