@@ -70,7 +70,7 @@ public partial class login : MonoBehaviour
             message("tài khoản hoặc mật khẩu không đúng", Color.red);
             return;
         }
-        
+        SceneLoader.Instance.LoadScene("Map");
     }
     public void message(string msg, Color color)
     {
