@@ -10,14 +10,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private DeckManager deckManager;
     [SerializeField] private EnergyManager energyManager;
 
-    private void Start()
-    {
-        List<CardData> cards = deckManager.DrawStartingHand();
-        foreach(CardData card in cards)
-        {
-            handManager.AddCard(card);
-        }
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))

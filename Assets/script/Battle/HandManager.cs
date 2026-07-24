@@ -38,4 +38,9 @@ public class HandManager : MonoBehaviour
         cardsInHand.Clear();
         handLayout.UpdateLayout();
     }
+
+    public List<CardDisplay> GetCardsInHand()
+    {
+        return new List<CardDisplay>(cardsInHand);
+    }
 }
