@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 111352543}
   - component: {fileID: 111352542}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: GameManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8368f2a5f3af4d4bb1c8f2fa3927499, type: 2}
   - {fileID: 11400000, guid: 000ea5202030a444b91e392a9bbd005a, type: 2}
   - {fileID: 11400000, guid: 0e8098380712fa94f81672e9d19432d7, type: 2}
+  - {fileID: 11400000, guid: 57dc92b134ad2204f8adb974a1e7939a, type: 2}
 --- !u!114 &111352542
 MonoBehaviour:
   m_ObjectHideFlags: 0
