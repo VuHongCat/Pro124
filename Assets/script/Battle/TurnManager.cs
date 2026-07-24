@@ -46,12 +46,24 @@ public class TurnManager : MonoBehaviour
     public void EndPlayerTurn()
     {
         Debug.Log("PLAYER END TURN");
-
+        foreach (CardDisplay card in handManager.GetCardsInHand())
+        {
+            deckManager.AddToDiscard(card.CardData);
+            handManager.RemoveCard(card);
+        }
         StartEnemyTurn();
     }
     private void FinishEnemyTurn()
     {
         Debug.Log("Enemy END TURN");
         StartPlayerTurn();
+    }
+
+    public void EndTurn()
+    {
+        if (currentTurn != TurnState.PlayerTurn)
+            return;
+
+        EndPlayerTurn();
     }
 }
