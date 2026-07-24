@@ -7,7 +7,6 @@ public class HandLayout : MonoBehaviour
     public void UpdateLayout()
     {
         int cardCount = transform.childCount;
-        Debug.Log("Card Count = " + transform.childCount);
 
         if (cardCount == 0) return;
 
