@@ -50,7 +50,11 @@ public class DeckManager : MonoBehaviour
 
     public CardData DrawCard()
     {
-        if (drawPile.Count == 0) return null;
+        if (drawPile.Count == 0)
+        {
+            Reshuffle();
+            if (drawPile.Count == 0) return null;
+        }
 
         CardData card = drawPile[0];
         drawPile.RemoveAt(0);
@@ -76,8 +80,17 @@ public class DeckManager : MonoBehaviour
         return DrawCards(4);
     }
 
-    public void AddToDisCard(CardData card)
+    public void AddToDiscard(CardData card)
     {
         discardPile.Add(card);
+    }
+
+    private void Reshuffle()
+    {
+        if (discardPile.Count == 0) return;
+
+        drawPile.AddRange(discardPile);
+        discardPile.Clear();
+        Shuffle(drawPile);
     }
 }

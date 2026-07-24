@@ -7,9 +7,9 @@ public class CardFactory : MonoBehaviour
 
     public GameObject CreateCard(CardData data, Transform parent)
     {
-        GameObject cardObject = Instantiate(cardPrefab, parent);
+        GameObject cardObject = Instantiate(cardPrefab, parent, false);
         CardDisplay display = cardObject.GetComponent<CardDisplay>();
-        display.SetCard(data);
+        display.Setup(data);
         return cardObject;
     }
 }

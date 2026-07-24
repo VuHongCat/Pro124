@@ -24,11 +24,9 @@ public class HandManager : MonoBehaviour
 
     public void RemoveCard(CardDisplay card)
     {
-        if (cardsInHand.Remove(card))
-        {
-            Destroy(card.gameObject);
-            handLayout.UpdateLayout();
-        }
+        cardsInHand.Remove(card);
+        Destroy(card.gameObject);
+        handLayout.UpdateLayout();
     }
 
     public void ClearHand()
