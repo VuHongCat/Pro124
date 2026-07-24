@@ -1,11 +1,6 @@
-using UnityEngine;
-
-public class CardType : MonoBehaviour
+public enum CardType
 {
-    public enum Type
-    {
-        Attack,
-        Block,
-        Heal
-    }
+    Attack,
+    Block,
+    Heal
 }

@@ -52,5 +52,6 @@ public class CardDrag : MonoBehaviour,
         canvasGroup.blocksRaycasts = true;
 
         rect.anchoredPosition = originalPosition;
+
     }
 }
