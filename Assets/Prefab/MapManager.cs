@@ -6,6 +6,9 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
 
+    [Header("Current Map Level")]
+    public int levelNumber = 1;
+
     [Header("All Nodes")]
     public List<MapNode> nodes = new List<MapNode>();
 
@@ -15,17 +18,19 @@ public class MapManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
         FindNodes();
-
         FindStartNode();
-
         UpdateNodes();
     }
 
@@ -38,7 +43,7 @@ public class MapManager : MonoBehaviour
 
         nodes.AddRange(allNodes);
 
-        Debug.Log("Find " + nodes.Count + " nodes");
+        Debug.Log("Found " + nodes.Count + " nodes");
     }
 
     void FindStartNode()
@@ -94,23 +99,34 @@ public class MapManager : MonoBehaviour
                 break;
 
             case NodeType.Battle:
-                SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene("BattleLevel" + levelNumber);
                 break;
 
             case NodeType.Shop:
-                SceneManager.LoadScene("Shop");
+                Debug.Log("Open Shop UI");
+                // ShopUI.SetActive(true);
                 break;
 
             case NodeType.Chest:
-                Debug.Log("Chest");
+                Debug.Log("Open Chest");
+                // Reward
                 break;
 
             case NodeType.Rest:
                 Debug.Log("Rest");
+                // Heal Player
+                break;
+
+            case NodeType.MiniBoss:
+                SceneManager.LoadScene("MiniBoss");
                 break;
 
             case NodeType.Boss:
-                SceneManager.LoadScene("Level3");
+                SceneManager.LoadScene("BossLevel" + levelNumber);
+                break;
+
+            default:
+                Debug.LogWarning("Unknown Node Type");
                 break;
         }
     }
