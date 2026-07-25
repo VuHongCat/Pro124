@@ -11,12 +11,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: dbb19ac820ef9f449ad6cd1074f79947
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map.unity
     guid: ad6c7602aa215da408d5efc58a090cfa
   - enabled: 1
     path: Assets/Scenes/Battle.unity
     guid: 27b24628c44e9fc4d9bc8e4d485179c6
+  - enabled: 1
+    path: Assets/Scenes/WorldMap.unity
+    guid: 1d32e99a18f6932469b82842adbc77fb
+  - enabled: 1
+    path: Assets/Scenes/MapLevel1.unity
+    guid: b3df3d06cd310524db274eab7bc9301f
+  - enabled: 1
+    path: Assets/Scenes/MapLevel2.unity
+    guid: 43fad1720340cf14d9e658edb4a68abf
+  - enabled: 1
+    path: Assets/Scenes/MapLevel3.unity
+    guid: 2f0293cacc4a22a438a2951b3c7bd9bb
+  - enabled: 1
+    path: Assets/Scenes/MapLevel4.unity
+    guid: 6953422c97333724bbf2769d77fc1a31
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
