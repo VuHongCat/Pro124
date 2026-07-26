@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Sacrifice
   description: 'deal 20 damage, deal 10 damage to yourself '
-  artwork: {fileID: 0}
+  artwork: {fileID: -6206642496353310498, guid: 8463dbaf24482f5489bdd439ca033803, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

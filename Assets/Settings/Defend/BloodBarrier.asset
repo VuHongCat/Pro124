@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Blood Barrier '
   description: 'gain 10 block, gain more block equal by 10% of your lost health '
-  artwork: {fileID: 0}
+  artwork: {fileID: 8746628481545341507, guid: 17d866bd8b583f14890d5ca12beba2d6, type: 3}
   energyCost: 0
   cardType: {fileID: 0}
   target: {fileID: 0}

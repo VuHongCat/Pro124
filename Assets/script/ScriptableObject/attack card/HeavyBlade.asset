@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: HeavyBlade
   description: Deal 10 damage
-  artwork: {fileID: 0}
+  artwork: {fileID: -8840126637933752978, guid: a259adc51215c6e46b1349155a50bb93, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

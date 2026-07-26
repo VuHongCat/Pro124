@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Bash
   description: Deal 8 damage all enemies
-  artwork: {fileID: 0}
+  artwork: {fileID: 3528618654146299645, guid: c1f85e6f64dd59e478aadccb64daacd2, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

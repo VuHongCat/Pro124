@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Chain Hit
   description: deal 5 damage, lower card cost by 1
-  artwork: {fileID: 0}
+  artwork: {fileID: 8732045261446503529, guid: 7053a56314f2480479406ed5c3ce90cb, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

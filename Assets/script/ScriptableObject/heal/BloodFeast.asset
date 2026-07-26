@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Blood Feast '
   description: heal 8hp, your next attack will heal equal of 50% of your damage
-  artwork: {fileID: 0}
+  artwork: {fileID: 2523121584387216532, guid: 026f9e437143b8e4cb3ab7cea11db3d6, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

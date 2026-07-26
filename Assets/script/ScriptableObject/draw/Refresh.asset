@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Refresh
   description: discard 1 card on your hand and then draw a new one on your deck
-  artwork: {fileID: 0}
+  artwork: {fileID: -1048516908890594729, guid: 11c2a05602b1b074ea6420f9776b2be8, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

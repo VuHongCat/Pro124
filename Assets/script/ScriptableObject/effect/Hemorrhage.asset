@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Hemorrhage
   description: give bleeding effect, lose 6hp each turn, if player use attack card,
     bleeding effect will deal 2 more damage
-  artwork: {fileID: 0}
+  artwork: {fileID: -8933486132051483807, guid: d188b5534eebfae4998e592a7e502667, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

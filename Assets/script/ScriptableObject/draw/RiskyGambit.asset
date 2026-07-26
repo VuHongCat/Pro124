@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Risky Gambit
   description: deal 5 damage to yourself, draw 2 card
-  artwork: {fileID: 0}
+  artwork: {fileID: 6466667463196679996, guid: 90b731a3f81160a47ad868e977c67954, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Intimidate '
   description: stun enemy, if enemy is boss, decrease damage by 50%
-  artwork: {fileID: 0}
+  artwork: {fileID: 5433914808962161675, guid: 4d00af0e33114e34cb48365fc9166159, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

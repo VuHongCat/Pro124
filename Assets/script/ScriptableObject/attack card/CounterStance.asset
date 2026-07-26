@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: 'Counter Stance '
   description: deal 6 damage, gain counter effect, deal 60% of your damage to enemy,
     player only receive 40% enemy damage
-  artwork: {fileID: 0}
+  artwork: {fileID: 6321027721493021511, guid: 69e2b3cf781cc5a4996d39918d7ac64b, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}
