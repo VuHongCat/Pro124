@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
-  m_Name: HeavyBlade
+  m_Name: Guardian
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: HeavyBlade
-  description: Deal 10 damage
-  artwork: {fileID: 0}
-  energyCost: 1
+  cardName: Guardian
+  description: Block 12 damage
+  artwork: {fileID: 7372506090233280903, guid: 914a60e8f4872224c8d334493087fc16, type: 3}
+  energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}
   rarity: {fileID: 0}
-  damage: 10
-  block: 0
+  damage: 0
+  block: 12
