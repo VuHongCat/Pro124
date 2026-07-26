@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class CardDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
+
+public class CardDrag : MonoBehaviour,
+    IBeginDragHandler,
+    IDragHandler,
+    IEndDragHandler
 {
+    [SerializeField] private BattleManager battleManager;
+
     private RectTransform rect;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private CardVisual visual;
 
-    private Transform originalParent;
     private Vector2 originalPosition;
 
     private void Awake()
@@ -21,15 +26,12 @@ public class CardDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
         visual = GetComponent<CardVisual>();
 
         if (canvasGroup == null)
-        {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         visual.IsDragging = true;
-        originalParent = transform.parent;
 
         originalPosition = rect.anchoredPosition;
 
@@ -46,8 +48,10 @@ public class CardDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         visual.IsDragging = false;
-        rect.anchoredPosition = originalPosition;
 
         canvasGroup.blocksRaycasts = true;
+
+        rect.anchoredPosition = originalPosition;
+
     }
 }
