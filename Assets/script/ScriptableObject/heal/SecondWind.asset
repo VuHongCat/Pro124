@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Second Wind '
   description: 'heal 10hp, if player health below 30%, heal 30% more hp '
-  artwork: {fileID: 0}
+  artwork: {fileID: -6550477489118353522, guid: f7fe43220245ccd488af85c534219b74, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

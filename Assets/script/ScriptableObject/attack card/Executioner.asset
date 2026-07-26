@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Executioner
   description: execute enemy if below 20% health (not apply to boss), if enemy get
     executed, apply same effect to other enemy
-  artwork: {fileID: 0}
+  artwork: {fileID: -9154398126690637870, guid: 200d3ab64f23f2146a0767ed9bb67bca, type: 3}
   energyCost: 2
   cardType: {fileID: 0}
   target: {fileID: 0}

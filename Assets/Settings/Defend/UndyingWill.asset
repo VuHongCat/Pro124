@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Undying Will '
   description: immortal for 1 turn
-  artwork: {fileID: 0}
+  artwork: {fileID: -8987241525687981861, guid: 8f5b11710c13f2642a5f8201645ed7db, type: 3}
   energyCost: 3
   cardType: {fileID: 0}
   target: {fileID: 0}

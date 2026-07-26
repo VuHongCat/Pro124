@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Shatter Armor '
   description: 'apply vulnerable effect, enemy get damaged by 50% '
-  artwork: {fileID: 0}
+  artwork: {fileID: -1443434927998838172, guid: cc02985f00bd4c5419044f8e59ff0635, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

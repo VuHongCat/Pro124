@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Blade Storm
   description: 'deal 20 damage to all enemy, if kill atleast 2 enemy, get 1 random
     card '
-  artwork: {fileID: 0}
+  artwork: {fileID: -913937202559922776, guid: e94a035c745da604abda9bcc49ba2aa6, type: 3}
   energyCost: 3
   cardType: {fileID: 0}
   target: {fileID: 0}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Rejuvenating Aura '
   description: "heal 30hp, heal 8 more hp in 2 turn\t"
-  artwork: {fileID: 0}
+  artwork: {fileID: 5717180278471281875, guid: 9909d0ffa5bdd11418bd55152c54e9bc, type: 3}
   energyCost: 3
   cardType: {fileID: 0}
   target: {fileID: 0}

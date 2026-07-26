@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Shockwave
   description: apply weak effect to enemy, decrease their damage by 25%
-  artwork: {fileID: 0}
+  artwork: {fileID: 304384799102440702, guid: 60658ae5b2a86c247b3bdd54e2d17a9f, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}

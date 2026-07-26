@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Enrage '
   description: gain strength effect, each effect give you 5 more damage (stackable)
-  artwork: {fileID: 0}
+  artwork: {fileID: 1395688777433387772, guid: 6df0a1b76da7920478095d3bfa38dab7, type: 3}
   energyCost: 1
   cardType: {fileID: 0}
   target: {fileID: 0}
