@@ -1,11 +1,6 @@
-using UnityEngine;
-
-public class CardTarget : MonoBehaviour
+public enum CardTarget
 {
-    public enum Target
-    {
-        Self,
-        Enemy,
-        AllEnemies
-    }
+    Self,
+    Enemy,
+    AllEnemies
 }
