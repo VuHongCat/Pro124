@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SteelSkin
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 'Steel Skin '
-  description: 'gain 6 block, decrease 50% of enemy deal to player '
+  description: 'gain 6 block, decrease 50% of enemy damage to player '
   artwork: {fileID: 4607022519918015621, guid: 943993a1dca553d4e9c249ac1baa4e79, type: 3}
   energyCost: 0
   cardType: 1
