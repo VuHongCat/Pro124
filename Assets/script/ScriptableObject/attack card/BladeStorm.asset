@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
-  m_Name: Bash
+  m_Name: BladeStorm
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Bash
-  description: Deal 8 damage all enemies
-  artwork: {fileID: 0}
-  energyCost: 2
+  cardName: Blade Storm
+  description: 'deal 20 damage to all enemy, if kill atleast 2 enemy, get 1 random
+    card '
+  artwork: {fileID: -913937202559922776, guid: e94a035c745da604abda9bcc49ba2aa6, type: 3}
+  energyCost: 3
   cardType: {fileID: 0}
   target: {fileID: 0}
   rarity: {fileID: 0}
-  damage: 8
+  damage: 20
   block: 0
