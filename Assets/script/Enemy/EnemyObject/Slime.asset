@@ -16,3 +16,4 @@ MonoBehaviour:
   artwork: {fileID: 0}
   maxHealth: 40
   attackDamage: 8
+  block: 6

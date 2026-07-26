@@ -15,11 +15,14 @@ public class EnemyDisplay : MonoBehaviour
 
     private EnemyHealth enemyHealth;
     private EnemyIntent enemyIntent;
+    private EnemyBlock enemyBlock;
+    private int currentBlock;
     public EnemyData EnemyData { get; private set; }
     private void Awake()
     {
         enemyHealth = GetComponent<EnemyHealth>();
         enemyIntent = GetComponent<EnemyIntent>();
+        enemyBlock = GetComponent<EnemyBlock>();
     }
     public void Setup(EnemyData data)
     {
@@ -28,22 +31,24 @@ public class EnemyDisplay : MonoBehaviour
         artworkImage.sprite = data.artwork;
 
         enemyNameText.text = data.enemyName;
-
+        RefreshUI();
     }
 
     private void OnEnable()
     {
         enemyHealth.OnHealthChanged += UpdateHealthUI;
         enemyIntent.OnIntentChanged += UpdateIntentUI;
+        enemyBlock.OnBlockChanged += UpdateBlockUI;
     }
     private void OnDisable()
     {
         enemyHealth.OnHealthChanged -= UpdateHealthUI;
         enemyIntent.OnIntentChanged -= UpdateIntentUI;
+        enemyBlock.OnBlockChanged -= UpdateBlockUI;
     }
     private void UpdateHealthUI(int current, int max)
     {
-        hpText.text = $"{current}/{max}";
+        RefreshUI();
     }
     private void UpdateIntentUI(EnemyIntentType type, int value)
     {
@@ -69,5 +74,25 @@ public class EnemyDisplay : MonoBehaviour
                 intentText.text = "";
                 break;
         }
+    }
+    private void RefreshUI()
+    {
+        Debug.Log(enemyHealth.CurrentHealth);
+        Debug.Log(enemyHealth.MaxHealth);
+        if (currentBlock > 0)
+        {
+            hpText.text =
+                $"{enemyHealth.CurrentHealth}/{enemyHealth.MaxHealth} ({currentBlock})";
+        }
+        else
+        {
+            hpText.text =
+                $"{enemyHealth.CurrentHealth}/{enemyHealth.MaxHealth}";
+        }
+    }
+    private void UpdateBlockUI(int block)
+    {
+        currentBlock = block;
+        RefreshUI();
     }
 }

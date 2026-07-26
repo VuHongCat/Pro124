@@ -4,6 +4,7 @@ using System;
 public class EnemyCombat : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
+    [SerializeField] private EnemyBlock enemyBlock;
     public event Action OnAttackFinished;
     private EnemyIntent enemyIntent;
     private int turnCount;
@@ -11,6 +12,7 @@ public class EnemyCombat : MonoBehaviour
     {
         enemyData = data;
         enemyIntent = GetComponent<EnemyIntent>();
+        enemyBlock = GetComponent<EnemyBlock>();
     }
 
     public void Attack(PlayerHealth player)
@@ -34,7 +36,7 @@ public class EnemyCombat : MonoBehaviour
         {
             enemyIntent.SetIntent(
                 EnemyIntentType.Block,
-                6
+                enemyData.block
             );
         }
     }
@@ -48,7 +50,7 @@ public class EnemyCombat : MonoBehaviour
                 break;
 
             case EnemyIntentType.Block:
-                Debug.Log("Enemy Block");
+                enemyBlock.AddBlock(enemyIntent.IntentValue);
                 break;
 
             case EnemyIntentType.Buff:
