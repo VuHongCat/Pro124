@@ -15,6 +15,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private CardEffectResolver effectResolver;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private PlayerBlock playerBlock;
     private EnemyCombat enemyCombat;
 
     private void Start()
@@ -43,6 +45,11 @@ public class BattleManager : MonoBehaviour
     public void EnemyAttack()
     {
         if (enemyCombat == null) return;
-        enemyCombat.Attack(playerHealth);
+        enemyCombat.ExecuteIntent(playerHealth);
+    }
+
+    public void StartPlayerTurn()
+    {
+        playerBlock.ResetBlock();
     }
 }

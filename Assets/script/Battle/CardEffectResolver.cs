@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CardEffectResolver : MonoBehaviour
 {
+    [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private PlayerBlock playerBlock;
     public void Resolve(CardData card, EnemyHealth target)
     {
         switch (card.cardType)
@@ -21,11 +23,11 @@ public class CardEffectResolver : MonoBehaviour
 
     private void ResolveAttack(CardData card, EnemyHealth target)
     {
-        target.TakeDamage(card.damage);
+        playerCombat.Attack(target, card.damage);
     }
     private void ResolveBlock(CardData card, EnemyHealth target)
     {
-        Debug.Log("Block Card");
+        playerBlock.AddBlock(card.block);
     }
     private void ResolveHeal(CardData card, EnemyHealth target)
     {

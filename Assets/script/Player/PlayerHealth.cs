@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private PlayerBlock playerBlock;
 
     private int currentHealth;
     private int maxHealth;
@@ -17,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         Initialize();
+        playerBlock = GetComponent<PlayerBlock>();
     }
 
     public void Initialize()
@@ -29,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (playerBlock != null)
+        {
+            damage = playerBlock.AbsorbDamage(damage);
+        }
+        if (damage <= 0) return;
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
 

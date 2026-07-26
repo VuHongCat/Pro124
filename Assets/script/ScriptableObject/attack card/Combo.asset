@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Combo
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Combo
-  description: Deal 4x2 damage
+  description: Deal 4 damage twice
   artwork: {fileID: 0}
   energyCost: 1
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 4
   block: 0

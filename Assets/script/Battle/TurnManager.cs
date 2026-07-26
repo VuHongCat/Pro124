@@ -27,6 +27,7 @@ public class TurnManager : MonoBehaviour
     public void StartPlayerTurn()
     {
         ChangeTurn(TurnState.PlayerTurn);
+        battleManager.StartPlayerTurn();
         energyManager.ResetEnergy();
         List<CardData> cards = deckManager.DrawCards(drawPerTurn);
 
