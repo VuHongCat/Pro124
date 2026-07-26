@@ -12,9 +12,11 @@ public class EnemyFactory : MonoBehaviour
 
         EnemyDisplay display = enemy.GetComponent<EnemyDisplay>();
         EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+        EnemyCombat combat = enemy.GetComponent<EnemyCombat>();
 
         display.Setup(data);
         health.Initialize(data);
+        combat.Initialize(data);
         return enemy;
     }
 }

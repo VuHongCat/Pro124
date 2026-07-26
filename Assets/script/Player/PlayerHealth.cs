@@ -1,22 +1,27 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private EnemyData enemyData;
+    [SerializeField] private PlayerData playerData;
 
-    public int currentHealth;
-    public int maxHealth;
-    
+    private int currentHealth;
+    private int maxHealth;
+
     public int CurrentHealth => currentHealth;
-    public int MaxHealth => enemyData.maxHealth;
+    public int MaxHealth => maxHealth;
 
     public event Action<int, int> OnHealthChanged;
-    public event Action<EnemyHealth> OnEnemyDeath;
+    public event Action OnPlayerDeath;
 
-    public void Initialize(EnemyData data)
+    private void Awake()
     {
-        maxHealth = data.maxHealth;
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        maxHealth = playerData.maxHealth;
         currentHealth = maxHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -28,7 +33,6 @@ public class EnemyHealth : MonoBehaviour
         if(currentHealth < 0) currentHealth = 0;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-
         if (currentHealth == 0)
         {
             Die();
@@ -38,14 +42,14 @@ public class EnemyHealth : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-        if (currentHealth > enemyData.maxHealth) currentHealth = enemyData.maxHealth;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void Die()
+    private void Die()
     {
-        OnEnemyDeath?.Invoke(this);
-        Destroy(gameObject);
+        Debug.Log("Player Die");
+        OnPlayerDeath?.Invoke();
     }
 }

@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour
         PlayerTurn,
         EnemyTurn
     }
+    [SerializeField] private int drawPerTurn = 5;
 
     [SerializeField] private TurnState currentTurn;
     [SerializeField] private DeckManager deckManager;
@@ -15,6 +16,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private HandManager handManager;
 
     [SerializeField] private EnergyManager energyManager;
+    [SerializeField] private BattleManager battleManager;
     public TurnState CurrenTurn => currentTurn;
 
     private void Start()
@@ -24,29 +26,28 @@ public class TurnManager : MonoBehaviour
 
     public void StartPlayerTurn()
     {
-        currentTurn = TurnState.PlayerTurn;
+        ChangeTurn(TurnState.PlayerTurn);
         energyManager.ResetEnergy();
-        List<CardData> cards = deckManager.DrawCards(4);
+        List<CardData> cards = deckManager.DrawCards(drawPerTurn);
 
         foreach (CardData card in cards)
         {
             handManager.AddCard(card);
         }
-        Debug.Log("PLAYER TURN");
     }
 
     public void StartEnemyTurn()
     {
-        currentTurn = TurnState.EnemyTurn;
+        ChangeTurn(TurnState.EnemyTurn);
 
-        Debug.Log("ENEMY TURN");
         Invoke(nameof(FinishEnemyTurn), 1f);
     }
 
     public void EndPlayerTurn()
     {
-        Debug.Log("PLAYER END TURN");
-        foreach (CardDisplay card in handManager.GetCardsInHand())
+        List<CardDisplay> cards =
+        new List<CardDisplay>(handManager.GetCardsInHand());
+        foreach (CardDisplay card in cards)
         {
             deckManager.AddToDiscard(card.CardData);
             handManager.RemoveCard(card);
@@ -55,15 +56,23 @@ public class TurnManager : MonoBehaviour
     }
     private void FinishEnemyTurn()
     {
-        Debug.Log("Enemy END TURN");
+        battleManager.EnemyAttack();
+        Invoke(nameof(StartNextPlayerTurn), 0.5f);
+    }
+    private void StartNextPlayerTurn()
+    {
         StartPlayerTurn();
     }
-
     public void EndTurn()
     {
         if (currentTurn != TurnState.PlayerTurn)
             return;
 
         EndPlayerTurn();
+    }
+    private void ChangeTurn(TurnState state)
+    {
+        currentTurn = state;
+        Debug.Log(currentTurn);
     }
 }
