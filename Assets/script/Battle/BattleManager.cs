@@ -14,27 +14,16 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Transform enemyArea;
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private CardEffectResolver effectResolver;
+    [SerializeField] private PlayerHealth playerHealth;
+    private EnemyCombat enemyCombat;
 
     private void Start()
     {
         GameObject enemy = enemyFactory.CreateEnemy(slime, enemyArea);
+        enemyCombat = enemy.GetComponent<EnemyCombat>();
         enemyHealth = enemy.GetComponent<EnemyHealth>();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            energyManager.SpendEnergy(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            energyManager.ResetEnergy();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            enemyHealth.TakeDamage(8);
-        }
+        enemyHealth.OnEnemyDeath += OnEnemyDeath;
+        enemyCombat.DecideNextIntent();
     }
 
     public void PlayCard(CardDisplay card)
@@ -44,5 +33,16 @@ public class BattleManager : MonoBehaviour
         effectResolver.Resolve(card.CardData, enemyHealth);
         deckManager.AddToDiscard(card.CardData);
         handManager.RemoveCard(card);
+    }
+
+    private void OnEnemyDeath(EnemyHealth enemy)
+    {
+        Debug.Log("Battle Won!");
+    }
+
+    public void EnemyAttack()
+    {
+        if (enemyCombat == null) return;
+        enemyCombat.Attack(playerHealth);
     }
 }

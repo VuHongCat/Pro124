@@ -11,8 +11,16 @@ public class EnemyDisplay : MonoBehaviour
 
     [SerializeField] private TMP_Text hpText;
 
-    public EnemyData EnemyData { get; private set; }
+    [SerializeField] private TMP_Text intentText;
 
+    private EnemyHealth enemyHealth;
+    private EnemyIntent enemyIntent;
+    public EnemyData EnemyData { get; private set; }
+    private void Awake()
+    {
+        enemyHealth = GetComponent<EnemyHealth>();
+        enemyIntent = GetComponent<EnemyIntent>();
+    }
     public void Setup(EnemyData data)
     {
         EnemyData = data;
@@ -21,6 +29,45 @@ public class EnemyDisplay : MonoBehaviour
 
         enemyNameText.text = data.enemyName;
 
-        hpText.text = $"{data.maxHealth}/{data.maxHealth}";
+    }
+
+    private void OnEnable()
+    {
+        enemyHealth.OnHealthChanged += UpdateHealthUI;
+        enemyIntent.OnIntentChanged += UpdateIntentUI;
+    }
+    private void OnDisable()
+    {
+        enemyHealth.OnHealthChanged -= UpdateHealthUI;
+        enemyIntent.OnIntentChanged -= UpdateIntentUI;
+    }
+    private void UpdateHealthUI(int current, int max)
+    {
+        hpText.text = $"{current}/{max}";
+    }
+    private void UpdateIntentUI(EnemyIntentType type, int value)
+    {
+        switch (type)
+        {
+            case EnemyIntentType.Attack:
+                intentText.text = $"ATK {value}";
+                break;
+
+            case EnemyIntentType.Block:
+                intentText.text = $"BLK {value}";
+                break;
+
+            case EnemyIntentType.Buff:
+                intentText.text = "BUF";
+                break;
+
+            case EnemyIntentType.Debuff:
+                intentText.text = "DEB";
+                break;
+
+            default:
+                intentText.text = "";
+                break;
+        }
     }
 }
