@@ -6,6 +6,9 @@ public class MapNode : MonoBehaviour
     [Header("Node Type")]
     public NodeType nodeType;
 
+    [Header("Scene Name")]
+    public string sceneName;
+
     [Header("Next Nodes")]
     public List<MapNode> nextNodes = new List<MapNode>();
 
@@ -35,16 +38,11 @@ public class MapNode : MonoBehaviour
     {
         if (sr == null) return;
 
-        if (isLocked)
-            sr.color = Color.gray;
-        else
-            sr.color = Color.white;
+        sr.color = isLocked ? Color.gray : Color.white;
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Click: " + gameObject.name);
-
         if (isLocked)
         {
             Debug.Log("Node đang khóa");
