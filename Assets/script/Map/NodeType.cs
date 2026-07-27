@@ -7,5 +7,6 @@ public enum NodeType
     Shop,
     Chest,
     Rest,
-    Boss
+    Boss,
+    MiniBoss
 }
