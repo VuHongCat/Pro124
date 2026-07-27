@@ -4,34 +4,23 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [Header("Card Data")]
-    [SerializeField] private CardData cardData;
     [Header("UI")]
     [SerializeField] private TMP_Text cardNameText;
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text descriptionText;
-
     [SerializeField] private Image artworkImage;
 
-    private void Start()
-    {
-        if (cardData != null)
-        {
-            UpdateCardUI();
-        }
-    }
+    public CardData CardData { get; private set; }
 
-    public void SetCard(CardData data)
+    public void Setup(CardData data)
     {
-        cardData = data;
-        UpdateCardUI();
-    }
+        CardData = data;
 
-    private void UpdateCardUI()
-    {
-        cardNameText.text = cardData.name;
-        costText.text = cardData.energyCost.ToString();
-        descriptionText.text = cardData.description;
-        artworkImage.sprite = cardData.artwork;
+        cardNameText.text = data.cardName;
+        costText.text = data.energyCost.ToString();
+        descriptionText.text = data.description;
+
+        if (artworkImage != null)
+            artworkImage.sprite = data.artwork;
     }
 }
