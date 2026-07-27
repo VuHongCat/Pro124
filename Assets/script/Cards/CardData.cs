@@ -16,4 +16,5 @@ public class CardData : ScriptableObject
     [Header("Value")]
     public int damage;
     public int block;
+    public int strength;
 }

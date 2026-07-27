@@ -1,11 +1,6 @@
-using UnityEngine;
-
-public class CardRarity : MonoBehaviour
+public enum CardRarity
 {
-    public enum Rariry
-    {
-        Common,
-        Rare,
-        Epic
-    }
+    Common,
+    Rare,
+    Epic
 }
