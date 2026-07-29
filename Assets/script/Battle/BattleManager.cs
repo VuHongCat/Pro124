@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -21,36 +22,70 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private PlayerBlock playerBlock;
 
+    [Header("Map")]
+    [SerializeField] private string returnMapScene = "MapLevel1";
+
     private readonly List<EnemyHealth> enemies = new();
     private readonly List<EnemyCombat> enemyCombats = new();
+
+    private const string BattleNodeKey = "BattleNode";
+    private const string CompletedNodeKey = "CompletedMapNode";
+
+    // =========================================================
+    // START
+    // =========================================================
 
     private void Start()
     {
         SpawnEnemies();
     }
 
+    // =========================================================
+    // SPAWN ENEMIES
+    // =========================================================
+
     private void SpawnEnemies()
     {
         enemies.Clear();
         enemyCombats.Clear();
 
-        // Random 1 - 3 enemy
-        int enemyCount = Random.Range(1, 4);
+        // Random 1 - 3
+        int enemyCount =
+            Random.Range(1, 4);
 
-        Debug.Log("Spawn enemy count: " + enemyCount);
+        Debug.Log(
+            "Spawn enemy count: "
+            + enemyCount
+        );
+
+        // Đảm bảo không vượt quá số spawn point
+        enemyCount =
+            Mathf.Min(
+                enemyCount,
+                enemySpawnPoints.Length
+            );
 
         for (int i = 0; i < enemyCount; i++)
         {
             GameObject enemy =
-                enemyFactory.CreateEnemy(slime, enemyArea);
+                enemyFactory.CreateEnemy(
+                    slime,
+                    enemyArea
+                );
+
+            // -----------------------------------------
+            // Đặt vị trí enemy
+            // -----------------------------------------
 
             RectTransform enemyRect =
                 enemy.GetComponent<RectTransform>();
 
             RectTransform spawnRect =
-                enemySpawnPoints[i].GetComponent<RectTransform>();
+                enemySpawnPoints[i]
+                    .GetComponent<RectTransform>();
 
-            if (enemyRect != null && spawnRect != null)
+            if (enemyRect != null &&
+                spawnRect != null)
             {
                 enemyRect.anchoredPosition =
                     spawnRect.anchoredPosition;
@@ -61,95 +96,168 @@ public class BattleManager : MonoBehaviour
                     enemySpawnPoints[i].position;
             }
 
+            // -----------------------------------------
+            // Get components
+            // -----------------------------------------
+
             EnemyHealth health =
                 enemy.GetComponent<EnemyHealth>();
 
             EnemyCombat combat =
                 enemy.GetComponent<EnemyCombat>();
 
+            // -----------------------------------------
+            // Add list
+            // -----------------------------------------
+
             enemies.Add(health);
             enemyCombats.Add(combat);
 
+            // -----------------------------------------
+            // Death event
+            // -----------------------------------------
+
             health.OnEnemyDeath += OnEnemyDeath;
 
-            // Mỗi enemy tự quyết định Intent
+            // -----------------------------------------
+            // Intent
+            // -----------------------------------------
+
             combat.DecideNextIntent();
         }
     }
+
+    // =========================================================
+    // PLAY CARD
+    // =========================================================
 
     public void PlayCard(CardDisplay card)
     {
         if (card == null)
             return;
 
-        // Kiểm tra Energy
+        if (card.CardData == null)
+            return;
+
+        // -----------------------------------------
+        // Check Energy
+        // -----------------------------------------
+
         if (!energyManager.HasEnoughEnergy(
                 card.CardData.energyCost))
         {
-            Debug.Log("Not enough energy!");
+            Debug.Log(
+                "Not enough energy!"
+            );
+
             return;
         }
 
-        // Nếu là Attack thì phải chọn enemy
-        if (card.CardData.cardType == CardType.Attack)
+        // -----------------------------------------
+        // Attack phải target enemy
+        // -----------------------------------------
+
+        if (card.CardData.cardType ==
+            CardType.Attack)
         {
             if (EnemyTargetManager.Instance == null)
             {
-                Debug.LogError("EnemyTargetManager chưa tồn tại!");
+                Debug.LogError(
+                    "EnemyTargetManager chưa tồn tại!"
+                );
+
                 return;
             }
 
             if (!EnemyTargetManager.Instance.HasTarget())
             {
-                Debug.Log("Hãy chọn enemy trước!");
+                Debug.Log(
+                    "Hãy chọn enemy trước!"
+                );
+
                 return;
             }
         }
 
-        // Trừ Energy
-        energyManager.SpendEnergy(
-            card.CardData.energyCost);
+        // -----------------------------------------
+        // Target
+        // -----------------------------------------
 
-        // Lấy target đã click
         EnemyHealth target = null;
 
-        if (card.CardData.cardType == CardType.Attack)
+        if (card.CardData.cardType ==
+            CardType.Attack)
         {
             target =
-                EnemyTargetManager.Instance.CurrentTarget;
+                EnemyTargetManager.Instance
+                    .CurrentTarget;
 
-            // Kiểm tra target còn sống
             if (target == null ||
                 target.CurrentHealth <= 0)
             {
-                Debug.Log("Enemy target không còn tồn tại!");
+                Debug.Log(
+                    "Enemy target không còn tồn tại!"
+                );
 
-                EnemyTargetManager.Instance.ClearTarget();
+                EnemyTargetManager.Instance
+                    .ClearTarget();
+
                 return;
             }
         }
 
-        // Thực hiện hiệu ứng card
+        // -----------------------------------------
+        // Spend energy
+        // -----------------------------------------
+
+        energyManager.SpendEnergy(
+            card.CardData.energyCost
+        );
+
+        // -----------------------------------------
+        // Resolve card
+        // -----------------------------------------
+
         effectResolver.Resolve(
             card.CardData,
-            target);
+            target
+        );
 
-        // Đưa card vào discard
+        // -----------------------------------------
+        // Discard
+        // -----------------------------------------
+
         deckManager.AddToDiscard(
-            card.CardData);
+            card.CardData
+        );
 
-        // Xóa card khỏi hand
+        // -----------------------------------------
+        // Remove hand
+        // -----------------------------------------
+
         handManager.RemoveCard(card);
 
-        // Nếu target đã chết
+        // -----------------------------------------
+        // Clear target if dead
+        // -----------------------------------------
+
         if (target != null &&
             target.CurrentHealth <= 0)
         {
-            EnemyTargetManager.Instance.ClearTarget();
+            if (EnemyTargetManager.Instance != null)
+            {
+                EnemyTargetManager.Instance
+                    .ClearTarget();
+            }
         }
     }
 
-    private void OnEnemyDeath(EnemyHealth enemy)
+    // =========================================================
+    // ENEMY DEATH
+    // =========================================================
+
+    private void OnEnemyDeath(
+        EnemyHealth enemy)
     {
         enemies.Remove(enemy);
 
@@ -157,47 +265,127 @@ public class BattleManager : MonoBehaviour
             enemy.GetComponent<EnemyCombat>();
 
         if (combat != null)
-            enemyCombats.Remove(combat);
-
-        // Nếu enemy chết đang được chọn
-        if (EnemyTargetManager.Instance != null &&
-            EnemyTargetManager.Instance.CurrentTarget == enemy)
         {
-            EnemyTargetManager.Instance.ClearTarget();
+            enemyCombats.Remove(combat);
+        }
+
+        // Clear target
+        if (EnemyTargetManager.Instance != null)
+        {
+            if (EnemyTargetManager.Instance
+                    .CurrentTarget == enemy)
+            {
+                EnemyTargetManager.Instance
+                    .ClearTarget();
+            }
         }
 
         Debug.Log(
             "Enemy died. Remaining enemies: "
-            + enemies.Count);
+            + enemies.Count
+        );
 
-        // Không còn enemy
+        // -----------------------------------------
+        // All enemies dead
+        // -----------------------------------------
+
         if (enemies.Count == 0)
         {
             BattleWon();
         }
     }
 
+    // =========================================================
+    // BATTLE WON
+    // =========================================================
+
     private void BattleWon()
     {
-        Debug.Log("BATTLE WON!");
+        Debug.Log(
+            "================================"
+        );
 
-        // Sau này chuyển sang Map
-        // SceneLoader.Instance.LoadScene("MapLevel1");
+        Debug.Log(
+            "BATTLE WON!"
+        );
+
+        Debug.Log(
+            "================================"
+        );
+
+        // -----------------------------------------
+        // Lấy node Battle đã vào
+        // -----------------------------------------
+
+        string battleNode =
+            PlayerPrefs.GetString(
+                BattleNodeKey,
+                ""
+            );
+
+        if (!string.IsNullOrEmpty(battleNode))
+        {
+            // Lưu node đã hoàn thành
+            PlayerPrefs.SetString(
+                CompletedNodeKey,
+                battleNode
+            );
+
+            PlayerPrefs.Save();
+
+            Debug.Log(
+                "Completed Map Node: "
+                + battleNode
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                "Không tìm thấy BattleNode!"
+            );
+        }
+
+        // -----------------------------------------
+        // Quay lại map
+        // -----------------------------------------
+
+        Debug.Log(
+            "Return to: "
+            + returnMapScene
+        );
+
+        SceneManager.LoadScene(
+            returnMapScene
+        );
     }
+
+    // =========================================================
+    // ENEMY TURN
+    // =========================================================
 
     public void EnemyAttack()
     {
-        // Cho tất cả enemy thực hiện Intent
-        for (int i = enemyCombats.Count - 1; i >= 0; i--)
+        for (
+            int i = enemyCombats.Count - 1;
+            i >= 0;
+            i--
+        )
         {
-            EnemyCombat combat = enemyCombats[i];
+            EnemyCombat combat =
+                enemyCombats[i];
 
             if (combat == null)
                 continue;
 
-            combat.ExecuteIntent(playerHealth);
+            combat.ExecuteIntent(
+                playerHealth
+            );
         }
     }
+
+    // =========================================================
+    // PLAYER TURN
+    // =========================================================
 
     public void StartPlayerTurn()
     {

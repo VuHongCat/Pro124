@@ -187,8 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb7844e3b674e542952e94a8bdff618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  playerData: {fileID: 11400000, guid: cf1259177c9856a4ba20062176b69654, type: 2}
-  playerBlock: {fileID: 0}
+  maxHealth: 100
 --- !u!114 &31481838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +281,7 @@ GameObject:
   - component: {fileID: 111352546}
   - component: {fileID: 111352547}
   - component: {fileID: 111352548}
+  - component: {fileID: 111352549}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -399,6 +399,7 @@ MonoBehaviour:
   playerHealth: {fileID: 31481837}
   playerCombat: {fileID: 31481841}
   playerBlock: {fileID: 31481840}
+  returnMapScene: MapLevel1
 --- !u!114 &111352544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +478,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardEffectResolver
   playerCombat: {fileID: 31481841}
   playerBlock: {fileID: 31481840}
+  playerHealth: {fileID: 0}
+--- !u!114 &111352549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111352538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a3df50dfe3d344685cdfabd711c8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTargetManager
 --- !u!1 &211378261
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +992,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandLayout
   spacing: 220
+--- !u!1 &1142176899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142176901}
+  - component: {fileID: 1142176900}
+  m_Layer: 0
+  m_Name: GameOverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1142176900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142176899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc5a9d32c2cae348a1c278c26772ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
+  playerHealth: {fileID: 31481837}
+--- !u!4 &1142176901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142176899}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.94649, y: -2.47021, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334757358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,3 +1635,4 @@ SceneRoots:
   - {fileID: 211378264}
   - {fileID: 677033835}
   - {fileID: 111352540}
+  - {fileID: 1142176901}
