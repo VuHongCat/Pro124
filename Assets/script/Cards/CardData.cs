@@ -6,15 +6,23 @@ public class CardData : ScriptableObject
 {
     [Header("Basic")]
     public string cardName;
+
     [TextArea]
     public string description;
+
     public Sprite artwork;
+
     public int energyCost;
+
     public CardType cardType;
+
     public CardTarget target;
+
     public CardRarity rarity;
+
     [Header("Value")]
     public int damage;
     public int block;
+    public int heal;
     public int strength;
 }
