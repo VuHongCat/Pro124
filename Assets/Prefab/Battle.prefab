@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapNode
   nodeType: 1
+  sceneName: BattleLevel1
   nextNodes: []
   isLocked: 1
   isCompleted: 0
