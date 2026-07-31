@@ -14,4 +14,10 @@ public enum StatusType
     Strength,
     Weak,
     Vulnerable,
+    Stun,
+    Counter,
+    Immortal,
+    Bleed,
+    Regen,
+    Lifesteal,
 }

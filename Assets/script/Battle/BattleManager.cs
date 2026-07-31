@@ -27,6 +27,17 @@ public class BattleManager : MonoBehaviour
         enemyStatus = enemy.GetComponent<EnemyStatus>();
         enemyHealth.OnEnemyDeath += OnEnemyDeath;
         enemyCombat.DecideNextIntent();
+        playerHealth.OnDamageTaken += OnPlayerDamageTaken;
+    }
+
+    private void OnPlayerDamageTaken(int damage)
+    {
+        if (enemyHealth == null) return;
+        PlayerStatus ps = playerStatus;
+        if (ps == null)
+            ps = playerStatus = FindAnyObjectByType<PlayerStatus>();
+        if (ps == null || ps.GetStatus(StatusType.Counter) <= 0) return;
+        enemyHealth.TakeDamage(Mathf.RoundToInt(damage * 0.6f));
     }
 
     public void PlayCard(CardDisplay card)

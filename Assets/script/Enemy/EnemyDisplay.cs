@@ -76,6 +76,10 @@ public class EnemyDisplay : MonoBehaviour
                 intentText.text = "DEB";
                 break;
 
+            case EnemyIntentType.Stun:
+                intentText.text = "STUN";
+                break;
+
             default:
                 intentText.text = "";
                 break;

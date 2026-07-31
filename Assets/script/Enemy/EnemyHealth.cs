@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
+    public bool IsBoss => enemyData != null && enemyData.isBoss;
 
     public event Action<int, int> OnHealthChanged;
     public event Action<EnemyHealth> OnEnemyDeath;
