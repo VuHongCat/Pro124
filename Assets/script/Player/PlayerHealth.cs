@@ -3,84 +3,51 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Health")]
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private PlayerBlock playerBlock;
+    [SerializeField] private PlayerStatus playerStatus;
 
     private int currentHealth;
-    private bool isDead = false;
-
-    public event Action OnPlayerDeath;
-    public event Action<int, int> OnHealthChanged;
+    private int maxHealth;
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
-    private const string CurrentHealthKey = "Run_CurrentHealth";
-    private const string MaxHealthKey = "Run_MaxHealth";
+    public event Action<int, int> OnHealthChanged;
+    public event Action<int> OnDamageTaken;
+    public event Action OnPlayerDeath;
 
-    private void Start()
+    private void Awake()
     {
-        LoadHealth();
-
-        OnHealthChanged?.Invoke(
-            currentHealth,
-            maxHealth
-        );
-
-        Debug.Log(
-            "[PlayerHealth] LOAD HP = " +
-            currentHealth + "/" + maxHealth
-        );
+        Initialize();
+        playerBlock = GetComponent<PlayerBlock>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
 
-    private void LoadHealth()
+    public void Initialize()
     {
-        if (PlayerPrefs.HasKey(CurrentHealthKey))
-        {
-            currentHealth = PlayerPrefs.GetInt(
-                CurrentHealthKey
-            );
+        maxHealth = playerData.maxHealth;
+        currentHealth = maxHealth;
 
-            maxHealth = PlayerPrefs.GetInt(
-                MaxHealthKey,
-                maxHealth
-            );
-        }
-        else
-        {
-            currentHealth = maxHealth;
-            SaveHealth();
-        }
-
-        isDead = false;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool reflectable = true)
     {
-        if (isDead)
+        if (playerStatus != null && playerStatus.GetStatus(StatusType.Immortal) > 0)
             return;
-
-        if (damage <= 0)
-            return;
-
+        if (playerBlock != null)
+        {
+            damage = playerBlock.AbsorbDamage(damage);
+        }
+        if (damage <= 0) return;
         currentHealth -= damage;
+        if(currentHealth < 0) currentHealth = 0;
 
-        if (currentHealth < 0)
-            currentHealth = 0;
-
-        SaveHealth();
-
-        OnHealthChanged?.Invoke(
-            currentHealth,
-            maxHealth
-        );
-
-        Debug.Log(
-            "[PlayerHealth] HP = " +
-            currentHealth + "/" + maxHealth
-        );
-
-        if (currentHealth <= 0)
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        if (reflectable)
+            OnDamageTaken?.Invoke(damage);
+        if (currentHealth == 0)
         {
             Die();
         }
@@ -88,79 +55,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (isDead)
-            return;
-
-        if (amount <= 0)
-            return;
-
         currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
-
-        SaveHealth();
-
-        OnHealthChanged?.Invoke(
-            currentHealth,
-            maxHealth
-        );
-    }
-
-    private void SaveHealth()
-    {
-        PlayerPrefs.SetInt(
-            CurrentHealthKey,
-            currentHealth
-        );
-
-        PlayerPrefs.SetInt(
-            MaxHealthKey,
-            maxHealth
-        );
-
-        PlayerPrefs.Save();
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     private void Die()
     {
-        if (isDead)
-            return;
-
-        isDead = true;
-
-        Debug.Log(
-            "================================"
-        );
-
-        Debug.Log(
-            "[PlayerHealth] PLAYER DEAD"
-        );
-
-        Debug.Log(
-            "================================"
-        );
-
-        // Gọi GameOverManager
+        Debug.Log("Player Die");
         OnPlayerDeath?.Invoke();
-    }
-
-    public static void ResetRunHealth()
-    {
-        PlayerPrefs.SetInt(
-            CurrentHealthKey,
-            100
-        );
-
-        PlayerPrefs.SetInt(
-            MaxHealthKey,
-            100
-        );
-
-        PlayerPrefs.Save();
-
-        Debug.Log(
-            "[PlayerHealth] RESET HP = 100/100"
-        );
     }
 }
