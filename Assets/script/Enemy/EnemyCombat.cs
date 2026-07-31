@@ -47,6 +47,14 @@ public class EnemyCombat : MonoBehaviour
 
     public void ExecuteIntent(PlayerHealth player)
     {
+        if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Stun) > 0)
+        {
+            if (enemyIntent != null)
+                enemyIntent.SetIntent(EnemyIntentType.Stun, 0);
+            DecideNextIntent();
+            return;
+        }
+
         switch (enemyIntent.IntentType)
         {
             case EnemyIntentType.Attack:

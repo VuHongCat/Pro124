@@ -716,3 +716,9 @@ MonoBehaviour:
   strengthData: {fileID: 11400000, guid: bf9b4b2a92e51e84da3d9617b48c5f5d, type: 2}
   weakData: {fileID: 11400000, guid: fe55d75f95c721c40abb3a584ae870a4, type: 2}
   vulnerableData: {fileID: 11400000, guid: 794691d238a649647aefdb4d749336a7, type: 2}
+  stunData: {fileID: 11400000, guid: 686cd5519ed4da843882f2e379d2fe3c, type: 2}
+  counterData: {fileID: 11400000, guid: 4e85b7279db94ed4da8c4e8889d2ccaa, type: 2}
+  immortalData: {fileID: 11400000, guid: 6d90a089c07108149a082a536498c219, type: 2}
+  bleedData: {fileID: 11400000, guid: f02605e6eb0748f47921ada773e7649a, type: 2}
+  regenData: {fileID: 11400000, guid: 48d039ee6e560a84d93bd2c8dd6df201, type: 2}
+  lifestealData: {fileID: 11400000, guid: bdea964a43601a54da5f562ca2d386c7, type: 2}

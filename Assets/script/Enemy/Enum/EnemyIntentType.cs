@@ -3,5 +3,6 @@ public enum EnemyIntentType
     Attack,
     Block,
     Buff,
-    Debuff
+    Debuff,
+    Stun
 }
