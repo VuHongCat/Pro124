@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: CounterStance
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 'Counter Stance '
+  cardName: Counter Stance 
   description: deal 6 damage, gain counter effect, deal 60% of your damage to enemy,
     player only receive 40% enemy damage
   artwork: {fileID: 6321027721493021511, guid: 69e2b3cf781cc5a4996d39918d7ac64b, type: 3}
