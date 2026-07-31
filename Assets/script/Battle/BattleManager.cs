@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,12 +16,15 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private PlayerBlock playerBlock;
     private EnemyCombat enemyCombat;
+    private EnemyStatus enemyStatus;
+    private PlayerStatus playerStatus;
 
     private void Start()
     {
         GameObject enemy = enemyFactory.CreateEnemy(slime, enemyArea);
         enemyCombat = enemy.GetComponent<EnemyCombat>();
         enemyHealth = enemy.GetComponent<EnemyHealth>();
+        enemyStatus = enemy.GetComponent<EnemyStatus>();
         enemyHealth.OnEnemyDeath += OnEnemyDeath;
         enemyCombat.DecideNextIntent();
     }
@@ -39,17 +40,20 @@ public class BattleManager : MonoBehaviour
 
     private void OnEnemyDeath(EnemyHealth enemy)
     {
-        Debug.Log("Battle Won!");
+        Debug.Log("=== Battle Won! ===");
     }
 
     public void EnemyAttack()
     {
         if (enemyCombat == null) return;
         enemyCombat.ExecuteIntent(playerHealth);
+        enemyStatus?.OnTurnEnd();
     }
 
     public void StartPlayerTurn()
     {
         playerBlock.ResetBlock();
+        playerStatus = FindAnyObjectByType<PlayerStatus>();
+        playerStatus?.OnTurnEnd();
     }
 }

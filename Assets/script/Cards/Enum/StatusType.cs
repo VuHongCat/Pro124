@@ -10,6 +10,7 @@ public class StatusEffect
 
 public enum StatusType
 {
+    None,
     Strength,
     Weak,
     Vulnerable,
