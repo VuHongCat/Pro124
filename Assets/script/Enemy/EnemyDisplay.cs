@@ -13,9 +13,12 @@ public class EnemyDisplay : MonoBehaviour
 
     [SerializeField] private TMP_Text intentText;
 
+    [SerializeField] private TMP_Text statusText;
+
     private EnemyHealth enemyHealth;
     private EnemyIntent enemyIntent;
     private EnemyBlock enemyBlock;
+    private EnemyStatus enemyStatus;
     private int currentBlock;
     public EnemyData EnemyData { get; private set; }
     private void Awake()
@@ -23,6 +26,7 @@ public class EnemyDisplay : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         enemyIntent = GetComponent<EnemyIntent>();
         enemyBlock = GetComponent<EnemyBlock>();
+        enemyStatus = GetComponent<EnemyStatus>();
     }
     public void Setup(EnemyData data)
     {
@@ -39,12 +43,14 @@ public class EnemyDisplay : MonoBehaviour
         enemyHealth.OnHealthChanged += UpdateHealthUI;
         enemyIntent.OnIntentChanged += UpdateIntentUI;
         enemyBlock.OnBlockChanged += UpdateBlockUI;
+        if (enemyStatus != null) enemyStatus.OnStatusChanged += UpdateStatusUI;
     }
     private void OnDisable()
     {
         enemyHealth.OnHealthChanged -= UpdateHealthUI;
         enemyIntent.OnIntentChanged -= UpdateIntentUI;
         enemyBlock.OnBlockChanged -= UpdateBlockUI;
+        if (enemyStatus != null) enemyStatus.OnStatusChanged -= UpdateStatusUI;
     }
     private void UpdateHealthUI(int current, int max)
     {
@@ -94,5 +100,18 @@ public class EnemyDisplay : MonoBehaviour
     {
         currentBlock = block;
         RefreshUI();
+    }
+
+    private void UpdateStatusUI()
+    {
+        if (statusText == null || enemyStatus == null) return;
+        System.Text.StringBuilder sb = new();
+        int s = enemyStatus.GetStatus(StatusType.Strength);
+        int w = enemyStatus.GetStatus(StatusType.Weak);
+        int v = enemyStatus.GetStatus(StatusType.Vulnerable);
+        if (s > 0) sb.Append($"STR+{s} ");
+        if (w > 0) sb.Append($"Weak({w}) ");
+        if (v > 0) sb.Append($"Vuln({v}) ");
+        statusText.text = sb.ToString();
     }
 }

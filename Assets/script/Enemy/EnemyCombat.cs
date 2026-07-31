@@ -7,18 +7,22 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private EnemyBlock enemyBlock;
     public event Action OnAttackFinished;
     private EnemyIntent enemyIntent;
+    private EnemyStatus enemyStatus;
     private int turnCount;
     public void Initialize(EnemyData data)
     {
         enemyData = data;
         enemyIntent = GetComponent<EnemyIntent>();
         enemyBlock = GetComponent<EnemyBlock>();
+        enemyStatus = GetComponent<EnemyStatus>();
     }
 
     public void Attack(PlayerHealth player)
     {
-        player.TakeDamage(enemyData.attackDamage);
-
+        int damage = enemyData.attackDamage;
+        if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Weak) > 0)
+            damage = Mathf.RoundToInt(damage * 0.75f);
+        player.TakeDamage(damage);
         OnAttackFinished?.Invoke();
     }
 
