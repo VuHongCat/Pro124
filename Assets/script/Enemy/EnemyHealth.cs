@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private EnemyBlock enemyBlock;
+    [SerializeField] private EnemyStatus enemyStatus;
 
     public int currentHealth;
     public int maxHealth;
@@ -14,6 +15,12 @@ public class EnemyHealth : MonoBehaviour
 
     public event Action<int, int> OnHealthChanged;
     public event Action<EnemyHealth> OnEnemyDeath;
+
+    private void Awake()
+    {
+        if (enemyBlock == null) enemyBlock = GetComponent<EnemyBlock>();
+        if (enemyStatus == null) enemyStatus = GetComponent<EnemyStatus>();
+    }
 
     public void Initialize(EnemyData data)
     {
@@ -25,10 +32,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Vulnerable) > 0)
+            damage = Mathf.RoundToInt(damage * 1.5f);
         if (enemyBlock != null)
-        {
             damage = enemyBlock.AbsorbDamage(damage);
-        }
         if (damage <= 0)
             return;
         currentHealth -= damage;

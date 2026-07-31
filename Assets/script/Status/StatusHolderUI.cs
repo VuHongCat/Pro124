@@ -1,0 +1,47 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StatusHolderUI : MonoBehaviour
+{
+    [SerializeField] private GameObject statusItemPrefab;
+    [SerializeField] private Transform container;
+
+    private readonly Dictionary<string, StatusItemUI> items = new();
+
+    public void SetStatus(string id, string name, Sprite icon, int stacks)
+    {
+        if (statusItemPrefab == null)
+        {
+            Debug.LogError($"StatusHolderUI trên {name}: chưa gán StatusItemPrefab!", this);
+            return;
+        }
+        if (container == null)
+        {
+            Debug.LogError($"StatusHolderUI trên {name}: chưa gán Container!", this);
+            return;
+        }
+
+        if (!items.TryGetValue(id, out StatusItemUI item))
+        {
+            GameObject go = Instantiate(statusItemPrefab, container);
+            item = go.GetComponent<StatusItemUI>();
+            if (item == null)
+            {
+                Debug.LogError($"Prefab '{statusItemPrefab.name}' không có script StatusItemUI!", this);
+                Destroy(go);
+                return;
+            }
+            items[id] = item;
+        }
+        item.Setup(name, icon, stacks);
+    }
+
+    public void RemoveStatus(string id)
+    {
+        if (items.TryGetValue(id, out StatusItemUI item))
+        {
+            Destroy(item.gameObject);
+            items.Remove(id);
+        }
+    }
+}

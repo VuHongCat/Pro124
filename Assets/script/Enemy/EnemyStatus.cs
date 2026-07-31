@@ -1,10 +1,10 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using static Buff_Data;
 
-public class PlayerStatus : MonoBehaviour
+public class EnemyStatus : MonoBehaviour
 {
-    private readonly Dictionary<StatusType, int> statuses = new();
+    private Dictionary<StatusType, int> statuses = new();
     public event System.Action OnStatusChanged;
 
     [Header("UI Sync")]
@@ -42,7 +42,7 @@ public class PlayerStatus : MonoBehaviour
             if (!warnedMissingUI)
             {
                 warnedMissingUI = true;
-                Debug.LogWarning($"{name}: PlayerStatus không tìm thấy StatusHolderUI (StatusArea)!", this);
+                Debug.LogWarning($"{name}: EnemyStatus không tìm thấy StatusHolderUI (StatusArea)!", this);
             }
             return;
         }
@@ -58,7 +58,7 @@ public class PlayerStatus : MonoBehaviour
             if (!missingDataTypes.Contains(type))
             {
                 missingDataTypes.Add(type);
-                Debug.LogWarning($"{name}: chưa gán BuffData cho {type} trong PlayerStatus!", this);
+                Debug.LogWarning($"{name}: chưa gán BuffData cho {type} trong EnemyStatus!", this);
             }
             return;
         }
@@ -71,18 +71,15 @@ public class PlayerStatus : MonoBehaviour
 
     public void AddStatus(StatusType type, int amount, int duration = 1)
     {
-        if (!statuses.ContainsKey(type)) statuses[type] = 0;
+        if (!statuses.ContainsKey(type))
+            statuses[type] = 0;
         statuses[type] += amount;
         OnStatusChanged?.Invoke();
     }
 
     public int GetStatus(StatusType type)
     {
-        if(statuses.TryGetValue(type, out int value))
-        {
-            return value;
-        }
-        return 0;
+        return statuses.GetValueOrDefault(type, 0);
     }
 
     public void RemoveStatus(StatusType type)
