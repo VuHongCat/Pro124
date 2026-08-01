@@ -12,6 +12,12 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private BuffData strengthData;
     [SerializeField] private BuffData weakData;
     [SerializeField] private BuffData vulnerableData;
+    [SerializeField] private BuffData stunData;
+    [SerializeField] private BuffData counterData;
+    [SerializeField] private BuffData immortalData;
+    [SerializeField] private BuffData bleedData;
+    [SerializeField] private BuffData regenData;
+    [SerializeField] private BuffData lifestealData;
 
     private bool warnedMissingUI;
     private readonly List<StatusType> missingDataTypes = new();
@@ -49,6 +55,12 @@ public class EnemyStatus : MonoBehaviour
         SyncOne(StatusType.Strength, strengthData);
         SyncOne(StatusType.Weak, weakData);
         SyncOne(StatusType.Vulnerable, vulnerableData);
+        SyncOne(StatusType.Stun, stunData);
+        SyncOne(StatusType.Counter, counterData);
+        SyncOne(StatusType.Immortal, immortalData);
+        SyncOne(StatusType.Bleed, bleedData);
+        SyncOne(StatusType.Regen, regenData);
+        SyncOne(StatusType.Lifesteal, lifestealData);
     }
 
     private void SyncOne(StatusType type, BuffData data)
@@ -64,7 +76,7 @@ public class EnemyStatus : MonoBehaviour
         }
         int stack = GetStatus(type);
         if (stack > 0)
-            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack);
+            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack, data.Description);
         else
             statusUI.RemoveStatus(data.BuffID);
     }
@@ -90,6 +102,20 @@ public class EnemyStatus : MonoBehaviour
 
     public void OnTurnEnd()
     {
+        int regen = GetStatus(StatusType.Regen);
+        if (regen > 0)
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.Heal(regen);
+        }
+
+        int bleed = GetStatus(StatusType.Bleed);
+        if (bleed > 0)
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.TakeDamage(bleed, false);
+        }
+
         List<StatusType> expired = new();
         List<StatusType> keys = new(statuses.Keys);
         foreach (var key in keys)

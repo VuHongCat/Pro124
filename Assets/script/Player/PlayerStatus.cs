@@ -12,6 +12,13 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private BuffData strengthData;
     [SerializeField] private BuffData weakData;
     [SerializeField] private BuffData vulnerableData;
+    [SerializeField] private BuffData stunData;
+    [SerializeField] private BuffData counterData;
+    [SerializeField] private BuffData immortalData;
+    [SerializeField] private BuffData bleedData;
+    [SerializeField] private BuffData regenData;
+    [SerializeField] private BuffData lifestealData;
+    [SerializeField] private BuffData poisonData;
 
     private bool warnedMissingUI;
     private readonly List<StatusType> missingDataTypes = new();
@@ -49,6 +56,13 @@ public class PlayerStatus : MonoBehaviour
         SyncOne(StatusType.Strength, strengthData);
         SyncOne(StatusType.Weak, weakData);
         SyncOne(StatusType.Vulnerable, vulnerableData);
+        SyncOne(StatusType.Stun, stunData);
+        SyncOne(StatusType.Counter, counterData);
+        SyncOne(StatusType.Immortal, immortalData);
+        SyncOne(StatusType.Bleed, bleedData);
+        SyncOne(StatusType.Regen, regenData);
+        SyncOne(StatusType.Lifesteal, lifestealData);
+        SyncOne(StatusType.Poison, poisonData);
     }
 
     private void SyncOne(StatusType type, BuffData data)
@@ -64,7 +78,7 @@ public class PlayerStatus : MonoBehaviour
         }
         int stack = GetStatus(type);
         if (stack > 0)
-            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack);
+            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack, data.Description);
         else
             statusUI.RemoveStatus(data.BuffID);
     }
@@ -93,6 +107,22 @@ public class PlayerStatus : MonoBehaviour
 
     public void OnTurnEnd()
     {
+        int regen = GetStatus(StatusType.Regen);
+        if (regen > 0)
+        {
+            PlayerHealth hp = GetComponent<PlayerHealth>();
+            if (hp == null) hp = FindAnyObjectByType<PlayerHealth>();
+            hp?.Heal(regen);
+        }
+
+        int poison = GetStatus(StatusType.Poison);
+        if (poison > 0)
+        {
+            PlayerHealth hp = GetComponent<PlayerHealth>();
+            if (hp == null) hp = FindAnyObjectByType<PlayerHealth>();
+            hp?.TakeDamage(poison, false);
+        }
+
         List<StatusType> expired = new();
         List<StatusType> keys = new(statuses.Keys);
         foreach (var key in keys)
