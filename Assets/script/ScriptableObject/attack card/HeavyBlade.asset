@@ -16,8 +16,15 @@ MonoBehaviour:
   description: Deal 10 damage
   artwork: {fileID: -8840126637933752978, guid: a259adc51215c6e46b1349155a50bb93, type: 3}
   energyCost: 1
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 10
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 50
