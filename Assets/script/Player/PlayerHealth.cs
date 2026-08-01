@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerBlock playerBlock;
+    [SerializeField] private PlayerStatus playerStatus;
 
     private int currentHealth;
     private int maxHealth;
@@ -14,11 +15,13 @@ public class PlayerHealth : MonoBehaviour
 
     public event Action<int, int> OnHealthChanged;
     public event Action OnPlayerDeath;
+    public event Action<int> OnDamageTaken;
 
     private void Awake()
     {
         Initialize();
-        playerBlock = GetComponent<PlayerBlock>();
+        if (playerBlock == null) playerBlock = GetComponent<PlayerBlock>();
+        if (playerStatus == null) playerStatus = GetComponent<PlayerStatus>();
     }
 
     public void Initialize()
@@ -29,8 +32,11 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool reflectable = true)
     {
+        if (playerStatus != null && playerStatus.GetStatus(StatusType.Immortal) > 0)
+            return;
+
         if (playerBlock != null)
         {
             damage = playerBlock.AbsorbDamage(damage);
@@ -39,6 +45,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
 
+        if (reflectable)
+            OnDamageTaken?.Invoke(damage);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
         if (currentHealth == 0)
         {

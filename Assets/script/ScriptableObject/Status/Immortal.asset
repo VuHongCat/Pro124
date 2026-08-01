@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Immortal
+  m_EditorClassIdentifier: Assembly-CSharp::Buff_Data/BuffData
+  BuffID: Immortal
+  BuffName: Immortal
+  BuffIcon: {fileID: -2175802193729752757, guid: e5c1f9dd0c41f974fb935ad109839001, type: 3}
+  Type: 0
+  Description: Immune to all damage.

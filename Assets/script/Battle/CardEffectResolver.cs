@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CardEffectResolver : MonoBehaviour
@@ -63,7 +64,7 @@ public class CardEffectResolver : MonoBehaviour
 
     private void Bash(EnemyHealth target, CardData card)
     {
-        GetCombat().Attack(target, card.damage);
+        AttackAllEnemies(card.damage);
     }
 
     private void HeavyBlade(EnemyHealth target, CardData card)
@@ -89,7 +90,7 @@ public class CardEffectResolver : MonoBehaviour
 
     private void CounterStance(EnemyHealth target, CardData card)
     {
-        GetCombat().Attack(target, card.damage);
+        GetStatus()?.AddStatus(StatusType.Counter, 2, 1);
     }
 
     private void LastStand(EnemyHealth target, CardData card)
@@ -104,7 +105,7 @@ public class CardEffectResolver : MonoBehaviour
     private void Sacrifice(EnemyHealth target, CardData card)
     {
         GetCombat().Attack(target, 20);
-        GetHealth()?.TakeDamage(10);
+        GetHealth()?.TakeDamage(10, false);
     }
 
     private void Bloodthirst(EnemyHealth target, CardData card)
@@ -119,15 +120,22 @@ public class CardEffectResolver : MonoBehaviour
     private void Executioner(EnemyHealth target)
     {
         if (target == null || target.MaxHealth <= 0) return;
+        if (target.IsBoss) return;
         if (target.CurrentHealth <= target.MaxHealth * 0.2f)
-            target.TakeDamage(9999);
+            target.TakeDamage(9999, false);
     }
 
     private void BladeStorm(EnemyHealth target, CardData card)
     {
-        int prev = target.CurrentHealth;
-        GetCombat().Attack(target, card.damage);
-        if (prev > 0 && target.CurrentHealth <= 0)
+        int kills = 0;
+        foreach (EnemyHealth e in GetAliveEnemies())
+        {
+            int prev = e.CurrentHealth;
+            GetCombat().Attack(e, card.damage);
+            if (prev > 0 && e.CurrentHealth <= 0)
+                kills++;
+        }
+        if (kills >= 2)
         {
             CardDatabase db = FindAnyObjectByType<CardDatabase>();
             CardData c = db?.GetRandomCard();
@@ -139,6 +147,23 @@ public class CardEffectResolver : MonoBehaviour
                     h.AddCard(c);
             }
         }
+    }
+
+    private void AttackAllEnemies(int damage)
+    {
+        foreach (EnemyHealth e in GetAliveEnemies())
+            GetCombat().Attack(e, damage);
+    }
+
+    private System.Collections.Generic.List<EnemyHealth> GetAliveEnemies()
+    {
+        System.Collections.Generic.List<EnemyHealth> result = new();
+        foreach (EnemyHealth e in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
+        {
+            if (e != null && e.CurrentHealth > 0)
+                result.Add(e);
+        }
+        return result;
     }
 
     private void Guardian(CardData card)
@@ -164,6 +189,7 @@ public class CardEffectResolver : MonoBehaviour
     private void UndyingWill(CardData card)
     {
         GetBlock().AddBlock(card.block);
+        GetStatus()?.AddStatus(StatusType.Immortal, 1, 1);
     }
 
     private void SecondWind(CardData card)
@@ -178,11 +204,13 @@ public class CardEffectResolver : MonoBehaviour
     private void BloodFeast(CardData card)
     {
         GetHealth()?.Heal(8);
+        GetStatus()?.AddStatus(StatusType.Lifesteal, 1, 1);
     }
 
     private void RejuvenatingAura(CardData card)
     {
         GetHealth()?.Heal(30);
+        GetStatus()?.AddStatus(StatusType.Regen, 8, 1);
     }
 
     private void Enrage()
@@ -202,12 +230,18 @@ public class CardEffectResolver : MonoBehaviour
 
     private void Intimidate(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 5, 1);
+        if (target == null) return;
+        EnemyStatus es = target.GetComponent<EnemyStatus>();
+        if (es == null) return;
+        if (target.IsBoss)
+            es.AddStatus(StatusType.Weak, 5, 1);
+        else
+            es.AddStatus(StatusType.Stun, 1, 1);
     }
 
     private void Hemorrhage(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Vulnerable, 2, 2);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Bleed, 6, 1);
     }
 
     private void Refresh()
@@ -215,20 +249,20 @@ public class CardEffectResolver : MonoBehaviour
         HandManager h = GetHand();
         DeckManager d = GetDeck();
         if (h == null || d == null) return;
-        foreach (CardDisplay c in h.GetCardsInHand())
-        {
-            d.AddToDiscard(c.CardData);
-            h.RemoveCard(c);
-            break;
-        }
+        List<CardDisplay> hand = h.GetCardsInHand();
+        if (hand.Count == 0) return;
+        CardDisplay toDiscard = hand[0];
+        int index = h.GetIndex(toDiscard);
+        d.AddToDiscard(toDiscard.CardData);
+        h.RemoveCard(toDiscard);
         CardData drawn = d.DrawCard();
         if (drawn != null && !h.IsFull)
-            h.AddCard(drawn);
+            h.AddCard(drawn, index);
     }
 
     private void RiskyGambit()
     {
-        GetHealth()?.TakeDamage(5);
+        GetHealth()?.TakeDamage(5, false);
         HandManager h = GetHand();
         DeckManager d = GetDeck();
         if (h == null || d == null) return;

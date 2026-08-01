@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private DeckManager deckManager;
     [SerializeField] private EnergyManager energyManager;
     [SerializeField] private EnemyFactory enemyFactory;
-    [SerializeField] private EnemyData slime;
+    [SerializeField] private List<EnemyData> enemySequence = new();
     [SerializeField] private Transform enemyArea;
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private CardEffectResolver effectResolver;
@@ -18,15 +19,62 @@ public class BattleManager : MonoBehaviour
     private EnemyCombat enemyCombat;
     private EnemyStatus enemyStatus;
     private PlayerStatus playerStatus;
+    private int enemyIndex = -1;
 
     private void Start()
     {
-        GameObject enemy = enemyFactory.CreateEnemy(slime, enemyArea);
+        playerStatus = FindAnyObjectByType<PlayerStatus>();
+        playerHealth.OnDamageTaken += OnPlayerDamageTaken;
+        SpawnNextEnemy();
+    }
+
+    private void SpawnNextEnemy()
+    {
+        enemyIndex++;
+        if (enemyIndex >= enemySequence.Count)
+        {
+            Debug.Log("=== Battle Won! ===");
+            return;
+        }
+        SpawnEnemy(enemySequence[enemyIndex]);
+    }
+
+    private void SpawnEnemy(EnemyData data)
+    {
+        for (int i = enemyArea.childCount - 1; i >= 0; i--)
+            Destroy(enemyArea.GetChild(i).gameObject);
+
+        GameObject enemy = enemyFactory.CreateEnemy(data, enemyArea);
         enemyCombat = enemy.GetComponent<EnemyCombat>();
         enemyHealth = enemy.GetComponent<EnemyHealth>();
         enemyStatus = enemy.GetComponent<EnemyStatus>();
         enemyHealth.OnEnemyDeath += OnEnemyDeath;
+        enemyHealth.OnDamaged += OnEnemyDamaged;
         enemyCombat.DecideNextIntent();
+    }
+
+    private void OnPlayerDamageTaken(int damage)
+    {
+        if (playerStatus == null || enemyHealth == null) return;
+        int counter = playerStatus.GetStatus(StatusType.Counter);
+        if (counter <= 0) return;
+
+        int reflect = Mathf.RoundToInt(damage * 0.6f);
+        if (reflect > 0)
+            enemyHealth.TakeDamage(reflect, false);
+        playerStatus.AddStatus(StatusType.Counter, -1);
+    }
+
+    private void OnEnemyDamaged(int damage)
+    {
+        if (enemyStatus == null || playerHealth == null) return;
+        int counter = enemyStatus.GetStatus(StatusType.Counter);
+        if (counter <= 0) return;
+
+        int reflect = Mathf.RoundToInt(damage * 0.5f);
+        if (reflect > 0)
+            playerHealth.TakeDamage(reflect, false);
+        enemyStatus.AddStatus(StatusType.Counter, -1);
     }
 
     public void PlayCard(CardDisplay card)
@@ -40,7 +88,14 @@ public class BattleManager : MonoBehaviour
 
     private void OnEnemyDeath(EnemyHealth enemy)
     {
-        Debug.Log("=== Battle Won! ===");
+        Debug.Log($"=== {enemySequence.Count - enemyIndex - 1} quái còn lại ===");
+        StartCoroutine(SpawnNextEnemyNextFrame());
+    }
+
+    private IEnumerator SpawnNextEnemyNextFrame()
+    {
+        yield return null;
+        SpawnNextEnemy();
     }
 
     public void EnemyAttack()

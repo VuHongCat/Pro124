@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Buff_Data/BuffData
   BuffID: Strength
   BuffName: Strength
-  BuffIcon: {fileID: -8046989284357740766, guid: 35e3bb2cdbfb80743839569fc709b620, type: 3}
+  BuffIcon: {fileID: -8046989284357740766, guid: e0d9b80687b78834e8a317f5ba021f95, type: 3}
   Type: 0
-  Description: 
+  Description: +1 damage per hit, decreases by 1 each turn.

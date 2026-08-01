@@ -271,6 +271,13 @@ MonoBehaviour:
   strengthData: {fileID: 11400000, guid: bf9b4b2a92e51e84da3d9617b48c5f5d, type: 2}
   weakData: {fileID: 11400000, guid: fe55d75f95c721c40abb3a584ae870a4, type: 2}
   vulnerableData: {fileID: 11400000, guid: 794691d238a649647aefdb4d749336a7, type: 2}
+  stunData: {fileID: 11400000, guid: 686cd5519ed4da843882f2e379d2fe3c, type: 2}
+  counterData: {fileID: 11400000, guid: 4e85b7279db94ed4da8c4e8889d2ccaa, type: 2}
+  immortalData: {fileID: 11400000, guid: 6d90a089c07108149a082a536498c219, type: 2}
+  bleedData: {fileID: 11400000, guid: f02605e6eb0748f47921ada773e7649a, type: 2}
+  regenData: {fileID: 11400000, guid: 48d039ee6e560a84d93bd2c8dd6df201, type: 2}
+  lifestealData: {fileID: 11400000, guid: bdea964a43601a54da5f562ca2d386c7, type: 2}
+  poisonData: {fileID: 11400000, guid: d055eeeb84fd4f4ab3d444c1a9649aa6, type: 2}
 --- !u!114 &31481843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +416,14 @@ MonoBehaviour:
   deckManager: {fileID: 111352544}
   energyManager: {fileID: 111352545}
   enemyFactory: {fileID: 111352547}
-  slime: {fileID: 11400000, guid: 75cca33739a931c4f93be16414073ad2, type: 2}
+  enemySequence:
+  - {fileID: 11400000, guid: 75cca33739a931c4f93be16414073ad2, type: 2}
+  - {fileID: 11400000, guid: 89602719520e479db85cedf5621a9276, type: 2}
+  - {fileID: 11400000, guid: 366b63c6db1c48b99c1db3a19c9fd229, type: 2}
+  - {fileID: 11400000, guid: c90636851824462f884d2f5f3b0d3c74, type: 2}
+  - {fileID: 11400000, guid: 1e333d779a3b4a6fb28196cd8ceba245, type: 2}
+  - {fileID: 11400000, guid: 31d6142dc9e44d2c92a80a2d130d9dc0, type: 2}
+  - {fileID: 11400000, guid: dc592622010247cdae7c9f3eaee65d85, type: 2}
   enemyArea: {fileID: 1669255345}
   enemyHealth: {fileID: 0}
   effectResolver: {fileID: 111352548}

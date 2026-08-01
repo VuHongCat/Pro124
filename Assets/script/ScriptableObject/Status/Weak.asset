@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Buff_Data/BuffData
   BuffID: Weak
   BuffName: Weak
-  BuffIcon: {fileID: -1788750107502978294, guid: fefbb103fc5d9bc46933964f18886143, type: 3}
+  BuffIcon: {fileID: -1788750107502978294, guid: 8bdd723aff4ad724088bb80d32302ac7, type: 3}
   Type: 1
-  Description: 
+  Description: "Enemy Attack \xD70.75, decreases by 1 each turn."

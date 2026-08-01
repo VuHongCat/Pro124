@@ -12,9 +12,11 @@ public class EnemyHealth : MonoBehaviour
     
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
+    public bool IsBoss => enemyData != null && enemyData.isBoss;
 
     public event Action<int, int> OnHealthChanged;
     public event Action<EnemyHealth> OnEnemyDeath;
+    public event Action<int> OnDamaged;
 
     private void Awake()
     {
@@ -30,14 +32,18 @@ public class EnemyHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool counterable = true)
     {
+        if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Immortal) > 0)
+            return;
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Vulnerable) > 0)
             damage = Mathf.RoundToInt(damage * 1.5f);
         if (enemyBlock != null)
             damage = enemyBlock.AbsorbDamage(damage);
         if (damage <= 0)
             return;
+        if (counterable)
+            OnDamaged?.Invoke(damage);
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
 
@@ -59,7 +65,13 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
-        OnEnemyDeath?.Invoke(this);
-        Destroy(gameObject);
+        try
+        {
+            OnEnemyDeath?.Invoke(this);
+        }
+        finally
+        {
+            Destroy(gameObject);
+        }
     }
 }
