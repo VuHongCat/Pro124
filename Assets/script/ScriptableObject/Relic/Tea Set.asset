@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Tea Set
   description: After resting, gain 1 additional Energy next battle.
-  icon: {fileID: 0}
+  icon: {fileID: -2967240821051179491, guid: ed129bedd6f180f40a4bab1831606c32, type: 3}
   rarity: 1
   relicType: 4
   value: 1
   secondValue: 0
   stackable: 0
+  shopPrice: 185

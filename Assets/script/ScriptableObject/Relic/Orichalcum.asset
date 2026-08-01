@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Orichalcum
   description: If you end your turn with no Block, gain 6 Block.
-  icon: {fileID: 0}
-  rarity: 1
+  icon: {fileID: 74728906608962116, guid: ee600e49c9eb80041968d742e2dc2d06, type: 3}
+  rarity: 0
   relicType: 2
   value: 6
   secondValue: 0
   stackable: 0
+  shopPrice: 225

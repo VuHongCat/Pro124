@@ -22,4 +22,7 @@ public class RelicData : ScriptableObject
     public int secondValue;
 
     public bool stackable = false;
+
+    [Header("Shop")]
+    public int shopPrice = 150;
 }

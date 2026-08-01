@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Girya
   description: At Rest Sites, gain 1 Strength. Can be used up to 3 times.
-  icon: {fileID: 0}
+  icon: {fileID: -3022414989650952849, guid: 5d5668e9ebf6b6e4883d23d890672037, type: 3}
   rarity: 2
   relicType: 1
   value: 1
   secondValue: 3
   stackable: 0
+  shopPrice: 210

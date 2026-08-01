@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Ice Cream
   description: Unspent Energy is retained between turns.
-  icon: {fileID: 0}
+  icon: {fileID: 7231120919008320649, guid: da1aee4a86e721f4b91f3136eee8ec00, type: 3}
   rarity: 2
   relicType: 7
   value: 0
   secondValue: 0
   stackable: 0
+  shopPrice: 198
