@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: SteelSkin
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Steel Skin 
+  cardName: Steel Skin
   description: 'gain 6 block, decrease 50% of enemy damage to player '
   artwork: {fileID: 4607022519918015621, guid: 943993a1dca553d4e9c249ac1baa4e79, type: 3}
   energyCost: 0
@@ -21,3 +21,10 @@ MonoBehaviour:
   rarity: 0
   damage: 0
   block: 6
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 60

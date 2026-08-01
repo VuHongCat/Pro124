@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Dragon Soul
   description: Gain 3 Strengh
-  icon: {fileID: 0}
+  icon: {fileID: 2936134475641011783, guid: b275d940f1ede8e46af3b595a4d01779, type: 3}
   rarity: 2
   relicType: 1
   value: 3
   secondValue: 0
   stackable: 0
+  shopPrice: 180

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Vajra
   description: Gain 1 strength
-  icon: {fileID: 0}
+  icon: {fileID: -4241533481545267857, guid: de35665d7d2e8cc40a25cf5bd99e0bad, type: 3}
   rarity: 0
   relicType: 1
   value: 1
   secondValue: 0
   stackable: 0
+  shopPrice: 192

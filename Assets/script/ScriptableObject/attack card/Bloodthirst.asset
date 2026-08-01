@@ -21,9 +21,10 @@ MonoBehaviour:
   rarity: 1
   damage: 8
   block: 0
-  heal: 0
   strength: 0
+  heal: 0
   applyStatus: 0
   statusAmount: 0
   statusDuration: 1
   pool: 0
+  shopPrice: 100

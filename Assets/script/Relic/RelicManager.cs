@@ -5,13 +5,8 @@ public class RelicManager : MonoBehaviour
 {
     public static RelicManager Instance;
 
-    [Header("Starting Relics")]
-    [SerializeField] private List<RelicData> startingRelics = new();
-
-    [Header("Current Relics")]
+    [Header("Owned Relics")]
     [SerializeField] private List<RelicData> ownedRelics = new();
-
-    public IReadOnlyList<RelicData> OwnedRelics => ownedRelics;
 
     private void Awake()
     {
@@ -26,46 +21,26 @@ public class RelicManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        foreach (RelicData relic in startingRelics)
-        {
-            AddRelic(relic);
-        }
-    }
-
-    //=========================================
-    // Add Relic
-    //=========================================
+    #region Relic
 
     public void AddRelic(RelicData relic)
     {
         if (relic == null)
             return;
 
-        if (!relic.stackable && ownedRelics.Contains(relic))
+        if (!relic.stackable && HasRelic(relic.relicName))
             return;
 
         ownedRelics.Add(relic);
 
-        Debug.Log("Obtained Relic : " + relic.relicName);
+        ApplyInstantEffect(relic);
     }
-
-    //=========================================
-    // Remove Relic
-    //=========================================
 
     public void RemoveRelic(RelicData relic)
     {
-        if (relic == null)
-            return;
-
-        ownedRelics.Remove(relic);
+        if (ownedRelics.Contains(relic))
+            ownedRelics.Remove(relic);
     }
-
-    //=========================================
-    // Check Relic
-    //=========================================
 
     public bool HasRelic(string relicName)
     {
@@ -78,89 +53,117 @@ public class RelicManager : MonoBehaviour
         return false;
     }
 
-    public RelicData GetRelic(string relicName)
+    public List<RelicData> GetOwnedRelics()
     {
-        foreach (RelicData relic in ownedRelics)
+        return ownedRelics;
+    }
+
+    #endregion
+
+    #region Instant Effect
+
+    private void ApplyInstantEffect(RelicData relic)
+    {
+        switch (relic.relicName)
         {
-            if (relic.relicName == relicName)
-                return relic;
-        }
+            case "Ancient Core":
+                // TODO
+                break;
 
-        return null;
-    }
+            case "Dragon Soul":
+                // TODO
+                break;
 
-    //=========================================
-    // Battle
-    //=========================================
+            case "Mango":
+                // TODO
+                break;
 
-    public void OnBattleStart()
-    {
-        Debug.Log("Relic Battle Start");
+            case "Strawberry":
+                // TODO
+                break;
 
-        foreach (RelicData relic in ownedRelics)
-        {
-            Debug.Log(relic.relicName);
-        }
-    }
-
-    public void OnBattleWon()
-    {
-        Debug.Log("Relic Battle Won");
-    }
-
-    //=========================================
-    // Turn
-    //=========================================
-
-    public void OnTurnStart()
-    {
-
-    }
-
-    public void OnTurnEnd()
-    {
-
-    }
-
-    //=========================================
-    // Rest
-    //=========================================
-
-    public void OnRest()
-    {
-
-    }
-
-    //=========================================
-    // Card
-    //=========================================
-
-    public void OnGainCard()
-    {
-
-    }
-
-    //=========================================
-    // Gold
-    //=========================================
-
-    public bool CanGainGold()
-    {
-        return !HasRelic("Ectoplasm");
-    }
-
-    //=========================================
-    // Debug
-    //=========================================
-
-    [ContextMenu("Print Relics")]
-    public void PrintRelics()
-    {
-        Debug.Log("===== CURRENT RELICS =====");
-
-        foreach (RelicData relic in ownedRelics)
-        {
-            Debug.Log(relic.relicName);
+            case "Vajra":
+                // TODO
+                break;
         }
     }
+
+    #endregion
+
+    #region Battle
+
+    public void OnBattleStart(List<EnemyHealth> enemies)
+    {
+        // Anchor
+
+        // Bag of Marbles
+
+        // Tea Set
+    }
+
+    public void OnBattleEnd()
+    {
+        // Blood Vial
+
+        // Burning Blood
+    }
+
+    #endregion
+
+    #region Turn
+
+    public void OnPlayerTurnStart()
+    {
+        // Coffee Dripper
+
+        // Happy Flower
+
+        // Orichalcum
+
+        // Red Skull
+    }
+
+    public void OnPlayerTurnEnd()
+    {
+        // Ice Cream
+    }
+
+    #endregion
+
+    #region Events
+
+    public void OnGainGold(int amount)
+    {
+        // Ectoplasm
+    }
+
+    public void OnObtainCard(CardData card)
+    {
+        // Ceramic Fish
+    }
+
+    public void OnRestSite()
+    {
+        // Girya
+
+        // Tea Set
+
+        // Coffee Dripper
+    }
+
+    #endregion
+
+    #region Save
+
+    public void SaveRelics()
+    {
+        // TODO
+    }
+
+    public void LoadRelics()
+    {
+        // TODO
+    }
+
+    #endregion
 }

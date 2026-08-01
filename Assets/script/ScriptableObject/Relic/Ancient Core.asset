@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
   relicName: Ancient Core
   description: Gain 20 Max HP and 1 Strenght
-  icon: {fileID: 0}
+  icon: {fileID: -4368963933758429527, guid: bc3589f967ee973438c2df3a005d93b7, type: 3}
   rarity: 3
   relicType: 0
   value: 20
   secondValue: 1
   stackable: 0
+  shopPrice: 200
