@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   playerData: {fileID: 11400000, guid: cf1259177c9856a4ba20062176b69654, type: 2}
   playerBlock: {fileID: 0}
+  playerStatus: {fileID: 0}
 --- !u!114 &31481838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +272,12 @@ MonoBehaviour:
   strengthData: {fileID: 11400000, guid: bf9b4b2a92e51e84da3d9617b48c5f5d, type: 2}
   weakData: {fileID: 11400000, guid: fe55d75f95c721c40abb3a584ae870a4, type: 2}
   vulnerableData: {fileID: 11400000, guid: 794691d238a649647aefdb4d749336a7, type: 2}
+  stunData: {fileID: 0}
+  counterData: {fileID: 0}
+  immortalData: {fileID: 0}
+  bleedData: {fileID: 0}
+  regenData: {fileID: 0}
+  lifestealData: {fileID: 0}
 --- !u!114 &31481843
 MonoBehaviour:
   m_ObjectHideFlags: 0

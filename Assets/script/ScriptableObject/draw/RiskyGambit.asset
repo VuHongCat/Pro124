@@ -16,8 +16,15 @@ MonoBehaviour:
   description: deal 5 damage to yourself, draw 2 card
   artwork: {fileID: 6466667463196679996, guid: 90b731a3f81160a47ad868e977c67954, type: 3}
   energyCost: 1
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 0
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 30

@@ -16,8 +16,15 @@ MonoBehaviour:
   description: deal 8 damage, recover your heath equal 50% your damage hit the enemy
   artwork: {fileID: -8405789750969526343, guid: 5fa4926362720f6438866b8744d20bb5, type: 3}
   energyCost: 3
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 1
   damage: 8
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 100

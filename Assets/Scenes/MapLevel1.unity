@@ -2741,6 +2741,7 @@ MonoBehaviour:
   levelNumber: 1
   nodes: []
   currentNode: {fileID: 0}
+  mapSceneName: MapLevel1
 --- !u!4 &2102155577
 Transform:
   m_ObjectHideFlags: 0
