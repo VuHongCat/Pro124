@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: ShatterArmor
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: Shatter Armor 
+  cardName: Shatter Armor
   description: 'apply vulnerable effect, enemy get damaged by 50% '
   artwork: {fileID: -1443434927998838172, guid: cc02985f00bd4c5419044f8e59ff0635, type: 3}
   energyCost: 1
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 0
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 46

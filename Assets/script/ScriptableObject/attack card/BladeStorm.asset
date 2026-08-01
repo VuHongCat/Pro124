@@ -17,8 +17,15 @@ MonoBehaviour:
     card '
   artwork: {fileID: -913937202559922776, guid: e94a035c745da604abda9bcc49ba2aa6, type: 3}
   energyCost: 3
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 20
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 80

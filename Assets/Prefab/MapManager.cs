@@ -6,14 +6,25 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager instance;
 
-    [Header("Current Map Level")]
-    public int levelNumber = 1;
-
-    [Header("All Nodes")]
+    [Header("All Map Nodes")]
     public List<MapNode> nodes = new List<MapNode>();
 
     [Header("Current Node")]
     public MapNode currentNode;
+
+    [Header("Map Scene")]
+    [SerializeField] private string mapSceneName = "MapLevel1";
+
+    // =========================================================
+    // PLAYER PREFS KEYS
+    // =========================================================
+
+    private const string BattleNodeKey = "BattleNode";
+    private const string CompletedNodeKey = "CompletedMapNode";
+
+    // =========================================================
+    // AWAKE
+    // =========================================================
 
     private void Awake()
     {
@@ -24,120 +35,549 @@ public class MapManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
+
+    // =========================================================
+    // START
+    // =========================================================
 
     private void Start()
     {
-        FindNodes();
-        FindStartNode();
-        UpdateNodes();
+        GetAllNodes();
+
+        UpdateMapFromProgress();
     }
 
-    void FindNodes()
+    // =========================================================
+    // GET ALL NODES
+    // =========================================================
+
+    public void GetAllNodes()
     {
         nodes.Clear();
 
-        MapNode[] allNodes =
-            FindObjectsByType<MapNode>(FindObjectsSortMode.None);
+        MapNode[] foundNodes =
+            FindObjectsByType<MapNode>(
+                FindObjectsSortMode.None
+            );
 
-        nodes.AddRange(allNodes);
-
-        Debug.Log("Found " + nodes.Count + " nodes");
-    }
-
-    void FindStartNode()
-    {
-        if (currentNode != null)
-            return;
-
-        foreach (MapNode node in nodes)
+        foreach (MapNode node in foundNodes)
         {
-            if (node.nodeType == NodeType.Start)
+            if (node != null)
             {
-                currentNode = node;
-                Debug.Log("Start Node: " + node.name);
-                break;
+                nodes.Add(node);
             }
         }
+
+        Debug.Log(
+            "[MapManager] Total Nodes = " +
+            nodes.Count
+        );
     }
 
-    public void UpdateNodes()
+    // =========================================================
+    // UPDATE MAP
+    // =========================================================
+
+    private void UpdateMapFromProgress()
     {
-        foreach (MapNode node in nodes)
+        // -----------------------------------------
+        // Nếu vừa chết / chưa có progress
+        // -----------------------------------------
+
+        string completedNode =
+            PlayerPrefs.GetString(
+                CompletedNodeKey,
+                ""
+            );
+
+        if (string.IsNullOrEmpty(completedNode))
         {
-            node.SetLock(true);
+            ResetMapToStart();
+            return;
         }
 
-        if (currentNode == null)
+        // -----------------------------------------
+        // Reset toàn bộ trước
+        // -----------------------------------------
+
+        foreach (MapNode node in nodes)
+        {
+            if (node != null)
+            {
+                node.ResetNode();
+            }
+        }
+
+        // -----------------------------------------
+        // Tìm node đã hoàn thành
+        // -----------------------------------------
+
+        MapNode completed =
+            FindNodeByName(completedNode);
+
+        if (completed == null)
+        {
+            Debug.LogWarning(
+                "[MapManager] Không tìm thấy Completed Node: " +
+                completedNode
+            );
+
+            ResetMapToStart();
             return;
+        }
+
+        // -----------------------------------------
+        // Đánh dấu hoàn thành
+        // -----------------------------------------
+
+        completed.SetLock(false);
+        completed.CompleteNode();
+
+        currentNode = completed;
+
+        Debug.Log(
+            "[MapManager] Completed Node = " +
+            completed.gameObject.name
+        );
+
+        // -----------------------------------------
+        // Mở node tiếp theo
+        // -----------------------------------------
+
+        UnlockNextNodes(completed);
+
+        // -----------------------------------------
+        // Mở line
+        // -----------------------------------------
+
+        UnlockLines(completed);
+
+        // -----------------------------------------
+        // Xóa progress tạm
+        // -----------------------------------------
+
+        PlayerPrefs.DeleteKey(
+            CompletedNodeKey
+        );
+
+        PlayerPrefs.DeleteKey(
+            BattleNodeKey
+        );
+
+        PlayerPrefs.Save();
+    }
+
+    // =========================================================
+    // RESET MAP
+    // =========================================================
+
+    public void ResetMapToStart()
+    {
+        Debug.Log(
+            "================================"
+        );
+
+        Debug.Log(
+            "[MapManager] RESET MAP TO START"
+        );
+
+        Debug.Log(
+            "================================"
+        );
+
+        // -----------------------------------------
+        // Reset toàn bộ node
+        // -----------------------------------------
+
+        foreach (MapNode node in nodes)
+        {
+            if (node != null)
+            {
+                node.ResetNode();
+            }
+        }
+
+        // -----------------------------------------
+        // Tìm Start
+        // -----------------------------------------
+
+        currentNode = FindStartNode();
+
+        if (currentNode == null)
+        {
+            Debug.LogError(
+                "[MapManager] Không tìm thấy Start Node!"
+            );
+
+            return;
+        }
+
+        // -----------------------------------------
+        // Mở Start
+        // -----------------------------------------
 
         currentNode.SetLock(false);
 
-        foreach (MapNode next in currentNode.nextNodes)
+        Debug.Log(
+            "[MapManager] Start unlocked"
+        );
+
+        // -----------------------------------------
+        // Khóa toàn bộ line
+        // -----------------------------------------
+
+        LockAllLines();
+    }
+
+    // =========================================================
+    // FIND START
+    // =========================================================
+
+    private MapNode FindStartNode()
+    {
+        foreach (MapNode node in nodes)
         {
-            if (next != null)
+            if (node != null &&
+                node.nodeType == NodeType.Start)
             {
-                next.SetLock(false);
+                return node;
+            }
+        }
+
+        return null;
+    }
+
+    // =========================================================
+    // CLICK NODE
+    // =========================================================
+
+    public void SelectNode(MapNode selectedNode)
+    {
+        if (selectedNode == null)
+        {
+            Debug.LogError(
+                "[MapManager] Selected Node = NULL"
+            );
+
+            return;
+        }
+
+        Debug.Log(
+            "================================"
+        );
+
+        Debug.Log(
+            "[MapManager] CLICK NODE: " +
+            selectedNode.gameObject.name
+        );
+
+        Debug.Log(
+            "[MapManager] Type: " +
+            selectedNode.nodeType
+        );
+
+        Debug.Log(
+            "[MapManager] Locked: " +
+            selectedNode.isLocked
+        );
+
+        Debug.Log(
+            "[MapManager] Scene: " +
+            selectedNode.sceneName
+        );
+
+        Debug.Log(
+            "================================"
+        );
+
+        // -----------------------------------------
+        // Check lock
+        // -----------------------------------------
+
+        if (selectedNode.isLocked)
+        {
+            Debug.Log(
+                "[MapManager] Node đang khóa!"
+            );
+
+            return;
+        }
+
+        // -----------------------------------------
+        // START
+        // -----------------------------------------
+
+        if (selectedNode.nodeType == NodeType.Start)
+        {
+            Debug.Log(
+                "[MapManager] Đây là Start Node."
+            );
+
+            UnlockNextNodes(selectedNode);
+            UnlockLines(selectedNode);
+
+            currentNode = selectedNode;
+
+            return;
+        }
+
+        // -----------------------------------------
+        // BATTLE
+        // -----------------------------------------
+
+        if (selectedNode.nodeType == NodeType.Battle)
+        {
+            EnterBattle(selectedNode);
+            return;
+        }
+
+        // -----------------------------------------
+        // Các node khác
+        // -----------------------------------------
+
+        selectedNode.CompleteNode();
+
+        currentNode = selectedNode;
+
+        UnlockNextNodes(selectedNode);
+        UnlockLines(selectedNode);
+
+        if (!string.IsNullOrEmpty(
+            selectedNode.sceneName))
+        {
+            LoadNodeScene(selectedNode);
+        }
+    }
+
+    // =========================================================
+    // ENTER BATTLE
+    // =========================================================
+
+    private void EnterBattle(MapNode battleNode)
+    {
+        if (battleNode == null)
+            return;
+
+        if (string.IsNullOrWhiteSpace(
+            battleNode.sceneName))
+        {
+            Debug.LogError(
+                "[MapManager] Battle Node không có Scene Name!"
+            );
+
+            return;
+        }
+
+        // -----------------------------------------
+        // Lưu Battle Node
+        // -----------------------------------------
+
+        PlayerPrefs.SetString(
+            BattleNodeKey,
+            battleNode.gameObject.name
+        );
+
+        PlayerPrefs.Save();
+
+        Debug.Log(
+            "[MapManager] BattleNode saved = " +
+            battleNode.gameObject.name
+        );
+
+        // -----------------------------------------
+        // Load Battle Scene
+        // -----------------------------------------
+
+        Debug.Log(
+            "[MapManager] Load Battle Scene = " +
+            battleNode.sceneName
+        );
+
+        SceneManager.LoadScene(
+            battleNode.sceneName
+        );
+    }
+
+    // =========================================================
+    // FIND NODE
+    // =========================================================
+
+    private MapNode FindNodeByName(
+        string nodeName)
+    {
+        foreach (MapNode node in nodes)
+        {
+            if (node != null &&
+                node.gameObject.name == nodeName)
+            {
+                return node;
+            }
+        }
+
+        return null;
+    }
+
+    // =========================================================
+    // UNLOCK NEXT NODES
+    // =========================================================
+
+    private void UnlockNextNodes(
+        MapNode selectedNode)
+    {
+        if (selectedNode == null)
+            return;
+
+        if (selectedNode.nextNodes == null)
+            return;
+
+        foreach (MapNode nextNode
+            in selectedNode.nextNodes)
+        {
+            if (nextNode == null)
+                continue;
+
+            nextNode.SetLock(false);
+
+            Debug.Log(
+                "[MapManager] Unlock Node = " +
+                nextNode.gameObject.name
+            );
+        }
+    }
+
+    // =========================================================
+    // UNLOCK LINES
+    // =========================================================
+
+    private void UnlockLines(
+        MapNode selectedNode)
+    {
+        MapLine[] lines =
+            FindObjectsByType<MapLine>(
+                FindObjectsSortMode.None
+            );
+
+        foreach (MapLine line in lines)
+        {
+            if (line == null)
+                continue;
+
+            if (line.fromNode == selectedNode)
+            {
+                line.Unlock();
+
+                Debug.Log(
+                    "[MapManager] Unlock Line = " +
+                    line.gameObject.name
+                );
             }
         }
     }
 
-    public void SelectNode(MapNode node)
+    // =========================================================
+    // LOCK ALL LINES
+    // =========================================================
+
+    private void LockAllLines()
     {
-        if (node.isLocked)
-            return;
+        MapLine[] lines =
+            FindObjectsByType<MapLine>(
+                FindObjectsSortMode.None
+            );
 
-        currentNode = node;
-
-        UpdateNodes();
-
-        switch (node.nodeType)
+        foreach (MapLine line in lines)
         {
-            case NodeType.Start:
-                Debug.Log("Start");
-                break;
-
-            case NodeType.Battle:
-                SceneManager.LoadScene("BattleLevel" + levelNumber);
-                break;
-
-            case NodeType.Shop:
-                Debug.Log("Open Shop UI");
-                // ShopUI.SetActive(true);
-                break;
-
-            case NodeType.Chest:
-                Debug.Log("Open Chest");
-                // Reward
-                break;
-
-            case NodeType.Rest:
-                Debug.Log("Rest");
-                // Heal Player
-                break;
-
-            case NodeType.MiniBoss:
-                SceneManager.LoadScene("MiniBoss");
-                break;
-
-            case NodeType.Boss:
-                SceneManager.LoadScene("BossLevel" + levelNumber);
-                break;
-
-            default:
-                Debug.LogWarning("Unknown Node Type");
-                break;
+            if (line != null)
+            {
+                line.Lock();
+            }
         }
     }
 
-    public void CompleteNode()
+    // =========================================================
+    // LOAD NORMAL NODE SCENE
+    // =========================================================
+
+    private void LoadNodeScene(
+        MapNode node)
     {
-        if (currentNode == null)
+        if (node == null)
             return;
 
-        currentNode.isCompleted = true;
+        if (string.IsNullOrWhiteSpace(
+            node.sceneName))
+        {
+            Debug.LogWarning(
+                "[MapManager] Node không có Scene!"
+            );
 
-        UpdateNodes();
+            return;
+        }
+
+        Debug.Log(
+            "[MapManager] Load Scene = " +
+            node.sceneName
+        );
+
+        SceneManager.LoadScene(
+            node.sceneName
+        );
+    }
+
+    // =========================================================
+    // PLAYER DIED
+    // =========================================================
+
+    public void PlayerDied()
+    {
+        Debug.Log(
+            "================================"
+        );
+
+        Debug.Log(
+            "[MapManager] PLAYER DIED"
+        );
+
+        Debug.Log(
+            "[MapManager] RESET RUN"
+        );
+
+        Debug.Log(
+            "================================"
+        );
+
+        // -----------------------------------------
+        // Xóa Battle progress
+        // -----------------------------------------
+
+        PlayerPrefs.DeleteKey(
+            BattleNodeKey
+        );
+
+        PlayerPrefs.DeleteKey(
+            CompletedNodeKey
+        );
+
+        PlayerPrefs.Save();
+
+        // -----------------------------------------
+        // Reset GameProgress
+        // -----------------------------------------
+
+        if (GameProgress.Instance != null)
+        {
+            GameProgress.Instance.ResetRun();
+        }
+
+        // -----------------------------------------
+        // Về Map Level 1
+        // -----------------------------------------
+
+        SceneManager.LoadScene(
+            mapSceneName
+        );
     }
 }
