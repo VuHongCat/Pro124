@@ -19,6 +19,8 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private BattleManager battleManager;
     public TurnState CurrenTurn => currentTurn;
 
+    private bool firstRoundDone = false;
+
     private void Start()
     {
         StartPlayerTurn();
@@ -29,10 +31,14 @@ public class TurnManager : MonoBehaviour
         ChangeTurn(TurnState.PlayerTurn);
         battleManager.StartPlayerTurn();
         energyManager.ResetEnergy();
+
+        Debug.Log($"--- Player Turn --- Draw:{deckManager.DrawPileCount} Discard:{deckManager.DiscardPileCount}");
+
         List<CardData> cards = deckManager.DrawCards(drawPerTurn);
 
         foreach (CardData card in cards)
         {
+            Debug.Log($"Rút: {card.cardName}");
             handManager.AddCard(card);
         }
     }
@@ -53,8 +59,37 @@ public class TurnManager : MonoBehaviour
             deckManager.AddToDiscard(card.CardData);
             handManager.RemoveCard(card);
         }
+
+        if (!firstRoundDone)
+        {
+            firstRoundDone = true;
+            InjectComplexCards();
+        }
+
         StartEnemyTurn();
     }
+
+    private void InjectComplexCards()
+    {
+        CardDatabase db = FindAnyObjectByType<CardDatabase>();
+        if (db == null) return;
+
+        List<CardData> toAdd = db.GetComplexCards();
+        if (toAdd.Count == 0)
+        {
+            CardData c = db.GetRandomCard();
+            if (c == null) return;
+            toAdd.Add(c);
+        }
+
+        foreach (CardData card in toAdd)
+        {
+            deckManager.AddCardToDeck(card);
+            Debug.Log($"Thêm vào deck: {card.cardName}");
+        }
+        deckManager.ShuffleDrawPile();
+    }
+
     private void FinishEnemyTurn()
     {
         battleManager.EnemyAttack();
