@@ -20,7 +20,7 @@ public class CardDisplay : MonoBehaviour
         costText.text = data.energyCost.ToString();
         descriptionText.text = data.description;
 
-        if (artworkImage != null)
+        if (artworkImage != null && data.artwork != null)
             artworkImage.sprite = data.artwork;
     }
 }

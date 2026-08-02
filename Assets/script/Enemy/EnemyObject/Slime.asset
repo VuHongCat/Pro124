@@ -17,3 +17,4 @@ MonoBehaviour:
   maxHealth: 40
   attackDamage: 8
   block: 6
+  isBoss: 0

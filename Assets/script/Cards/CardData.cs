@@ -17,4 +17,17 @@ public class CardData : ScriptableObject
     public int damage;
     public int block;
     public int strength;
+
+    [Header("Heal")]
+    public int heal;
+
+    [Header("Status")]
+    public StatusType applyStatus;
+    public int statusAmount;
+    public int statusDuration = 1;
+
+    [Header("Pool")]
+    public CardPool pool = CardPool.Basic;
 }
+
+public enum CardPool { Basic, Complex }
