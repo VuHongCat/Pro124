@@ -24,8 +24,26 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         playerStatus = FindAnyObjectByType<PlayerStatus>();
-        playerHealth.OnDamageTaken += OnPlayerDamageTaken;
+        if (playerHealth != null)
+            playerHealth.OnDamageTaken += OnPlayerDamageTaken;
+        else
+            Debug.LogWarning("BattleManager.Start: playerHealth is null — OnDamageTaken not subscribed.");
+
         SpawnNextEnemy();
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from player events
+        if (playerHealth != null)
+            playerHealth.OnDamageTaken -= OnPlayerDamageTaken;
+
+        // Unsubscribe from current enemy events (if any)
+        if (enemyHealth != null)
+        {
+            enemyHealth.OnEnemyDeath -= OnEnemyDeath;
+            enemyHealth.OnDamaged -= OnEnemyDamaged;
+        }
     }
 
     private void SpawnNextEnemy()
@@ -41,16 +59,39 @@ public class BattleManager : MonoBehaviour
 
     private void SpawnEnemy(EnemyData data)
     {
+        // Clean up any previous enemy subscriptions before destroying/creating
+        if (enemyHealth != null)
+        {
+            enemyHealth.OnEnemyDeath -= OnEnemyDeath;
+            enemyHealth.OnDamaged -= OnEnemyDamaged;
+        }
+
         for (int i = enemyArea.childCount - 1; i >= 0; i--)
             Destroy(enemyArea.GetChild(i).gameObject);
 
         GameObject enemy = enemyFactory.CreateEnemy(data, enemyArea);
+        if (enemy == null)
+        {
+            Debug.LogError("SpawnEnemy: enemyFactory returned null");
+            return;
+        }
+
         enemyCombat = enemy.GetComponent<EnemyCombat>();
         enemyHealth = enemy.GetComponent<EnemyHealth>();
         enemyStatus = enemy.GetComponent<EnemyStatus>();
-        enemyHealth.OnEnemyDeath += OnEnemyDeath;
-        enemyHealth.OnDamaged += OnEnemyDamaged;
-        enemyCombat.DecideNextIntent();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.OnEnemyDeath += OnEnemyDeath;
+            enemyHealth.OnDamaged += OnEnemyDamaged;
+        }
+        else
+        {
+            Debug.LogWarning("SpawnEnemy: spawned enemy has no EnemyHealth component");
+        }
+
+        if (enemyCombat != null)
+            enemyCombat.DecideNextIntent();
     }
 
     private void OnPlayerDamageTaken(int damage)
@@ -88,6 +129,13 @@ public class BattleManager : MonoBehaviour
 
     private void OnEnemyDeath(EnemyHealth enemy)
     {
+        // Unsubscribe this enemy before it gets destroyed
+        if (enemy != null)
+        {
+            enemy.OnEnemyDeath -= OnEnemyDeath;
+            enemy.OnDamaged -= OnEnemyDamaged;
+        }
+
         Debug.Log($"=== {enemySequence.Count - enemyIndex - 1} quái còn lại ===");
         StartCoroutine(SpawnNextEnemyNextFrame());
     }
