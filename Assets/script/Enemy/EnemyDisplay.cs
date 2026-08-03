@@ -80,6 +80,18 @@ public class EnemyDisplay : MonoBehaviour
                 intentText.text = "STUN";
                 break;
 
+            case EnemyIntentType.Poison:
+                intentText.text = $"PSN {value}";
+                break;
+
+            case EnemyIntentType.Heal:
+                intentText.text = $"HEAL {value}";
+                break;
+
+            case EnemyIntentType.LifestealAttack:
+                intentText.text = $"ATK {value}";
+                break;
+
             default:
                 intentText.text = "";
                 break;

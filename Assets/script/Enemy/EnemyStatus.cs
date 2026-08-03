@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static Buff_Data;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -76,7 +75,7 @@ public class EnemyStatus : MonoBehaviour
         }
         int stack = GetStatus(type);
         if (stack > 0)
-            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack);
+            statusUI.SetStatus(data.BuffID, data.BuffName, data.BuffIcon, stack, data.Description);
         else
             statusUI.RemoveStatus(data.BuffID);
     }
@@ -102,9 +101,26 @@ public class EnemyStatus : MonoBehaviour
 
     public void OnTurnEnd()
     {
+        int regen = GetStatus(StatusType.Regen);
+        if (regen > 0)
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.Heal(regen);
+        }
+
         int bleed = GetStatus(StatusType.Bleed);
         if (bleed > 0)
-            GetComponent<EnemyHealth>()?.TakeDamage(bleed);
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.TakeDamage(bleed, false);
+        }
+
+        int poison = GetStatus(StatusType.Poison);
+        if (poison > 0)
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.TakeDamage(poison, false);
+        }
 
         List<StatusType> expired = new();
         List<StatusType> keys = new(statuses.Keys);

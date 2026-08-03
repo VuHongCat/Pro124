@@ -26,34 +26,147 @@ public class MapNode : MonoBehaviour
     private void Start()
     {
         UpdateColor();
+
+        Debug.Log(
+            "[MapNode] " +
+            gameObject.name +
+            " | Type = " +
+            nodeType +
+            " | Scene = " +
+            sceneName +
+            " | Locked = " +
+            isLocked
+        );
     }
+
+    // ==========================================
+    // LOCK / UNLOCK
+    // ==========================================
 
     public void SetLock(bool value)
     {
         isLocked = value;
+
+        UpdateColor();
+
+        Debug.Log(
+            "[MapNode] " +
+            gameObject.name +
+            " -> Locked = " +
+            isLocked
+        );
+    }
+
+    // ==========================================
+    // COMPLETE
+    // ==========================================
+
+    public void CompleteNode()
+    {
+        isCompleted = true;
+
+        Debug.Log(
+            "[MapNode] Completed: " +
+            gameObject.name
+        );
+    }
+
+    // ==========================================
+    // RESET
+    // ==========================================
+
+    public void ResetNode()
+    {
+        isCompleted = false;
+
+        if (nodeType == NodeType.Start)
+        {
+            isLocked = false;
+        }
+        else
+        {
+            isLocked = true;
+        }
+
         UpdateColor();
     }
 
-    void UpdateColor()
-    {
-        if (sr == null) return;
+    // ==========================================
+    // COLOR
+    // ==========================================
 
-        sr.color = isLocked ? Color.gray : Color.white;
+    private void UpdateColor()
+    {
+        if (sr == null)
+            return;
+
+        if (isLocked)
+        {
+            sr.color = Color.gray;
+        }
+        else
+        {
+            sr.color = Color.white;
+        }
     }
+
+    // ==========================================
+    // CLICK
+    // ==========================================
 
     private void OnMouseDown()
     {
+        Debug.Log(
+            "================================"
+        );
+
+        Debug.Log(
+            "[MapNode] CLICKED: " +
+            gameObject.name
+        );
+
+        Debug.Log(
+            "[MapNode] Type: " +
+            nodeType
+        );
+
+        Debug.Log(
+            "[MapNode] Locked: " +
+            isLocked
+        );
+
+        Debug.Log(
+            "[MapNode] Scene: " +
+            sceneName
+        );
+
+        Debug.Log(
+            "================================"
+        );
+
+        // Node đang khóa
         if (isLocked)
         {
-            Debug.Log("Node đang khóa");
+            Debug.LogWarning(
+                "[MapNode] NODE ĐANG BỊ KHÓA!"
+            );
+
             return;
         }
 
+        // Kiểm tra MapManager
         if (MapManager.instance == null)
         {
-            Debug.LogError("Không tìm thấy MapManager");
+            Debug.LogError(
+                "[MapNode] KHÔNG TÌM THẤY MAP MANAGER!"
+            );
+
             return;
         }
+
+        Debug.Log(
+            "[MapNode] Gọi MapManager.SelectNode()"
+        );
 
         MapManager.instance.SelectNode(this);
     }

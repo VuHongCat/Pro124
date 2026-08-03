@@ -16,8 +16,15 @@ MonoBehaviour:
   description: Deal 8 damage all enemies
   artwork: {fileID: 3528618654146299645, guid: c1f85e6f64dd59e478aadccb64daacd2, type: 3}
   energyCost: 2
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 8
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 60

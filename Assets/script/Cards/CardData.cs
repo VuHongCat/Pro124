@@ -13,6 +13,7 @@ public class CardData : ScriptableObject
     public CardType cardType;
     public CardTarget target;
     public CardRarity rarity;
+
     [Header("Value")]
     public int damage;
     public int block;
@@ -28,6 +29,27 @@ public class CardData : ScriptableObject
 
     [Header("Pool")]
     public CardPool pool = CardPool.Basic;
+
+    [Header("Upgrade")]
+    public bool isUpgraded;
+
+    public void Upgrade()
+    {
+        if (isUpgraded) return;
+        if (damage > 0) damage = Mathf.CeilToInt(damage * 1.25f);
+        if (block > 0) block = Mathf.CeilToInt(block * 1.25f);
+        if (strength > 0) strength += 1;
+        if (heal > 0) heal = Mathf.CeilToInt(heal * 1.3f);
+        if (statusAmount > 0) statusAmount += 1;
+        isUpgraded = true;
+    }
+
+    [Header("Shop")]
+    public int shopPrice = 50;
 }
 
-public enum CardPool { Basic, Complex }
+public enum CardPool
+{
+    Basic,
+    Complex
+}
