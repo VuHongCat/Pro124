@@ -613,6 +613,37 @@ public class MapManager : MonoBehaviour
         );
     }
 
+    public void UpdateNodes()
+    {
+        foreach (MapNode node in nodes)
+        {
+            node.SetLock(true);
+        }
+
+        if (currentNode == null)
+            return;
+
+        currentNode.SetLock(false);
+
+        foreach (MapNode next in currentNode.nextNodes)
+        {
+            if (next != null)
+            {
+                next.SetLock(false);
+            }
+        }
+    }
+
+    public void CompleteNode()
+    {
+        if (currentNode == null)
+            return;
+
+        currentNode.isCompleted = true;
+
+        UpdateNodes();
+    }
+
     private void OpenRestPopup()
     {
         if (popupOpen) return;
