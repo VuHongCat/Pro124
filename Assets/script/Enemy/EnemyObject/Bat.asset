@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Bat
-  artwork: {fileID: 7084613338866982825, guid: 4df5046452475e6419c8c7b9ac9ae13c, type: 3}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  artwork: {fileID: 0}
+  archetype: 2
+  maxHealth: 22
+  attackDamage: 5
+  block: 3
+  poisonDamage: 0
+  lifesteal: 2
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 0
   isBoss: 0

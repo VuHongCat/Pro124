@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a17f9d42b6e84c9a9f3d5c2e7b8a1d46, type: 3}
   m_Name: Counter
-  m_EditorClassIdentifier: Assembly-CSharp::Buff_Data/BuffData
-  BuffID: 
-  BuffName: 
-  BuffIcon: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::BuffData
+  BuffID: Counter
+  BuffName: Counter
+  BuffIcon: {fileID: 4952043566522609014, guid: 837fd900ceddea642aef425092f5c31e, type: 3}
   Type: 0
-  Description: 
+  Description: Reflects 60% of incoming damage back to the attacker.

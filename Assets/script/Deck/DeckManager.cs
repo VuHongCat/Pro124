@@ -23,10 +23,19 @@ public class DeckManager : MonoBehaviour
         discardPile.Clear();
         exhaustPile.Clear();
 
+        if (RunSession.RunActive && RunSession.Deck != null && RunSession.Deck.Count > 0)
+        {
+            startingDeck = RunSession.Deck;
+            drawPile.AddRange(startingDeck);
+            Shuffle(drawPile);
+            return;
+        }
+
         CardDatabase db = FindAnyObjectByType<CardDatabase>();
         if (db != null)
         {
             startingDeck = db.GetStarterDeck();
+            RunSession.Deck = startingDeck;
             drawPile.AddRange(startingDeck);
             Shuffle(drawPile);
         }

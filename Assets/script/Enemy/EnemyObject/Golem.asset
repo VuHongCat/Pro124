@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Golem
   artwork: {fileID: 0}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  archetype: 3
+  maxHealth: 70
+  attackDamage: 10
+  block: 8
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 20
+  regenValue: 6
+  buffStrength: 3
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 0
   isBoss: 0

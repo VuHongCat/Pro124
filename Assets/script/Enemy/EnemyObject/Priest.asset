@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Priest
   artwork: {fileID: 0}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  archetype: 6
+  maxHealth: 45
+  attackDamage: 5
+  block: 6
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 15
+  regenValue: 4
+  buffStrength: 2
+  weakDamage: 3
+  vulnerableDamage: 0
+  counterStacks: 0
   isBoss: 0
