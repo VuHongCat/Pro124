@@ -8,7 +8,7 @@ public class StatusHolderUI : MonoBehaviour
 
     private readonly Dictionary<string, StatusItemUI> items = new();
 
-    public void SetStatus(string id, string name, Sprite icon, int stacks)
+    public void SetStatus(string id, string name, Sprite icon, int stacks, string description = null)
     {
         if (statusItemPrefab == null)
         {
@@ -33,7 +33,7 @@ public class StatusHolderUI : MonoBehaviour
             }
             items[id] = item;
         }
-        item.Setup(name, icon, stacks);
+        item.Setup(name, icon, stacks, description);
     }
 
     public void RemoveStatus(string id)

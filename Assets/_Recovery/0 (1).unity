@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   playerStatus: {fileID: 31481842}
+  playerHealth: {fileID: 0}
 --- !u!114 &31481842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
   bleedData: {fileID: 0}
   regenData: {fileID: 0}
   lifestealData: {fileID: 0}
+  poisonData: {fileID: 0}
 --- !u!1 &111352538
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +405,7 @@ MonoBehaviour:
   deckManager: {fileID: 111352544}
   energyManager: {fileID: 111352545}
   enemyFactory: {fileID: 111352547}
-  slime: {fileID: 11400000, guid: 75cca33739a931c4f93be16414073ad2, type: 2}
+  enemySequence: []
   enemyArea: {fileID: 1669255345}
   enemyHealth: {fileID: 0}
   effectResolver: {fileID: 111352548}
