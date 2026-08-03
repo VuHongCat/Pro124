@@ -1,19 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-
 
 public class ShopManager : MonoBehaviour
 {
     [Header("Cards")]
     public CardData[] allCards;
 
-    public Image[] cardSlots;
+    public CardTooltipTrigger[] cardSlots;
 
     public TMP_Text[] cardPriceTexts;
-
-
 
     [Header("Relics")]
     public RelicData[] allRelics;
@@ -22,25 +18,15 @@ public class ShopManager : MonoBehaviour
 
     public TMP_Text[] relicPriceTexts;
 
-
-
     private CardData[] currentCards;
 
     private RelicData[] currentRelics;
-
-
-
-
 
     private void Start()
     {
         GenerateCards();
         GenerateRelics();
     }
-
-
-
-
 
     //==========================
     // CARD
@@ -51,59 +37,33 @@ public class ShopManager : MonoBehaviour
         List<CardData> availableCards =
             new List<CardData>(allCards);
 
-
-
         currentCards =
             new CardData[cardSlots.Length];
-
-
 
         for (int i = 0; i < cardSlots.Length; i++)
         {
             if (availableCards.Count == 0)
                 break;
 
-
-
             int randomIndex =
-                Random.Range(
-                    0,
-                    availableCards.Count
-                );
-
-
+                Random.Range(0, availableCards.Count);
 
             CardData card =
                 availableCards[randomIndex];
 
-
-
             currentCards[i] = card;
 
+            // Gán card vào slot
+            cardSlots[i].SetCard(card);
 
-
-            // Hiện hình card
-            cardSlots[i].sprite =
-                card.artwork;
-
-
-
-            // Hiện giá card
+            // Hiện giá
             cardPriceTexts[i].text =
                 card.shopPrice + " Gold";
 
-
-
-            // Tránh trùng card
+            // Tránh trùng
             availableCards.RemoveAt(randomIndex);
         }
     }
-
-
-
-
-
-
 
     //==========================
     // RELIC
@@ -114,9 +74,6 @@ public class ShopManager : MonoBehaviour
         List<RelicData> availableRelics =
             new List<RelicData>();
 
-
-
-        // Không cho Boss Relic xuất hiện trong shop
         foreach (RelicData relic in allRelics)
         {
             if (relic.rarity != RelicRarity.Boss)
@@ -125,62 +82,33 @@ public class ShopManager : MonoBehaviour
             }
         }
 
-
-
-
-
         currentRelics =
             new RelicData[relicSlots.Length];
-
-
-
-
 
         for (int i = 0; i < relicSlots.Length; i++)
         {
             if (availableRelics.Count == 0)
                 break;
 
-
-
             int randomIndex =
-                Random.Range(
-                    0,
-                    availableRelics.Count
-                );
-
-
+                Random.Range(0, availableRelics.Count);
 
             RelicData relic =
                 availableRelics[randomIndex];
 
-
-
             currentRelics[i] = relic;
 
-
-
-            // Gán relic vào slot
+            // Gán relic
             relicSlots[i].SetRelic(relic);
 
-
-
-            // Hiện giá relic
+            // Giá
             relicPriceTexts[i].text =
                 relic.shopPrice + " Gold";
 
-
-
-            // Tránh trùng relic
+            // Tránh trùng
             availableRelics.RemoveAt(randomIndex);
         }
     }
-
-
-
-
-
-
 
     //==========================
     // GET DATA
@@ -191,20 +119,10 @@ public class ShopManager : MonoBehaviour
         return currentCards[index];
     }
 
-
-
-
-
     public RelicData GetRelic(int index)
     {
         return currentRelics[index];
     }
-
-
-
-
-
-
 
     //==========================
     // REFRESH SHOP
@@ -213,7 +131,6 @@ public class ShopManager : MonoBehaviour
     public void RefreshShop()
     {
         GenerateCards();
-
         GenerateRelics();
     }
 }
