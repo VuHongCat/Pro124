@@ -20,4 +20,5 @@ public enum StatusType
     Bleed,
     Regen,
     Lifesteal,
+    Poison,
 }

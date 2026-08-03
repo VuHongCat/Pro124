@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CardEffectResolver : MonoBehaviour
@@ -66,12 +67,6 @@ public class CardEffectResolver : MonoBehaviour
         AttackAllEnemies(card.damage);
     }
 
-    private void AttackAllEnemies(int damage)
-    {
-        foreach (EnemyHealth e in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
-            GetCombat().Attack(e, damage);
-    }
-
     private void HeavyBlade(EnemyHealth target, CardData card)
     {
         GetCombat().Attack(target, card.damage);
@@ -95,8 +90,7 @@ public class CardEffectResolver : MonoBehaviour
 
     private void CounterStance(EnemyHealth target, CardData card)
     {
-        GetCombat().Attack(target, card.damage);
-        GetStatus()?.AddStatus(StatusType.Counter, 2);
+        GetStatus()?.AddStatus(StatusType.Counter, 2, 1);
     }
 
     private void LastStand(EnemyHealth target, CardData card)
@@ -128,13 +122,13 @@ public class CardEffectResolver : MonoBehaviour
         if (target == null || target.MaxHealth <= 0) return;
         if (target.IsBoss) return;
         if (target.CurrentHealth <= target.MaxHealth * 0.2f)
-            target.TakeDamage(9999);
+            target.TakeDamage(9999, false);
     }
 
     private void BladeStorm(EnemyHealth target, CardData card)
     {
         int kills = 0;
-        foreach (EnemyHealth e in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
+        foreach (EnemyHealth e in GetAliveEnemies())
         {
             int prev = e.CurrentHealth;
             GetCombat().Attack(e, card.damage);
@@ -153,6 +147,23 @@ public class CardEffectResolver : MonoBehaviour
                     h.AddCard(c);
             }
         }
+    }
+
+    private void AttackAllEnemies(int damage)
+    {
+        foreach (EnemyHealth e in GetAliveEnemies())
+            GetCombat().Attack(e, damage);
+    }
+
+    private System.Collections.Generic.List<EnemyHealth> GetAliveEnemies()
+    {
+        System.Collections.Generic.List<EnemyHealth> result = new();
+        foreach (EnemyHealth e in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None))
+        {
+            if (e != null && e.CurrentHealth > 0)
+                result.Add(e);
+        }
+        return result;
     }
 
     private void Guardian(CardData card)
@@ -178,7 +189,7 @@ public class CardEffectResolver : MonoBehaviour
     private void UndyingWill(CardData card)
     {
         GetBlock().AddBlock(card.block);
-        GetStatus()?.AddStatus(StatusType.Immortal, 1);
+        GetStatus()?.AddStatus(StatusType.Immortal, 1, 1);
     }
 
     private void SecondWind(CardData card)
@@ -193,13 +204,13 @@ public class CardEffectResolver : MonoBehaviour
     private void BloodFeast(CardData card)
     {
         GetHealth()?.Heal(8);
-        GetStatus()?.AddStatus(StatusType.Lifesteal, 1);
+        GetStatus()?.AddStatus(StatusType.Lifesteal, 1, 1);
     }
 
     private void RejuvenatingAura(CardData card)
     {
         GetHealth()?.Heal(30);
-        GetStatus()?.AddStatus(StatusType.Regen, 8);
+        GetStatus()?.AddStatus(StatusType.Regen, 8, 1);
     }
 
     private void Enrage()
@@ -220,15 +231,17 @@ public class CardEffectResolver : MonoBehaviour
     private void Intimidate(EnemyHealth target)
     {
         if (target == null) return;
+        EnemyStatus es = target.GetComponent<EnemyStatus>();
+        if (es == null) return;
         if (target.IsBoss)
-            target.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 5, 1);
+            es.AddStatus(StatusType.Weak, 5, 1);
         else
-            target.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Stun, 1);
+            es.AddStatus(StatusType.Stun, 1, 1);
     }
 
     private void Hemorrhage(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Bleed, 6);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Bleed, 6, 1);
     }
 
     private void Refresh()
@@ -236,15 +249,15 @@ public class CardEffectResolver : MonoBehaviour
         HandManager h = GetHand();
         DeckManager d = GetDeck();
         if (h == null || d == null) return;
-        foreach (CardDisplay c in h.GetCardsInHand())
-        {
-            d.AddToDiscard(c.CardData);
-            h.RemoveCard(c);
-            break;
-        }
+        List<CardDisplay> hand = h.GetCardsInHand();
+        if (hand.Count == 0) return;
+        CardDisplay toDiscard = hand[0];
+        int index = h.GetIndex(toDiscard);
+        d.AddToDiscard(toDiscard.CardData);
+        h.RemoveCard(toDiscard);
         CardData drawn = d.DrawCard();
         if (drawn != null && !h.IsFull)
-            h.AddCard(drawn);
+            h.AddCard(drawn, index);
     }
 
     private void RiskyGambit()
