@@ -2738,7 +2738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae491ca611781044e8be03aa1a1defde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
-  levelNumber: 1
   nodes: []
   currentNode: {fileID: 0}
   mapSceneName: MapLevel1
