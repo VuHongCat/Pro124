@@ -26,6 +26,8 @@ public class EnemyCombat : MonoBehaviour
     public void Attack(PlayerHealth player)
     {
         int damage = enemyData.attackDamage;
+        if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Strength) > 0)
+            damage += enemyStatus.GetStatus(StatusType.Strength);
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Weak) > 0)
             damage = Mathf.RoundToInt(damage * 0.75f);
         player.TakeDamage(damage);
