@@ -5,6 +5,12 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private PlayerHealth playerHealth;
 
+    private void Awake()
+    {
+        if (playerStatus == null) playerStatus = GetComponent<PlayerStatus>();
+        playerHealth = GetComponent<PlayerHealth>();
+    }
+
     public void Attack(EnemyHealth target, int damage)
     {
         if (target == null) return;

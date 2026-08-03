@@ -13,6 +13,7 @@ public class CardData : ScriptableObject
     public CardType cardType;
     public CardTarget target;
     public CardRarity rarity;
+
     [Header("Value")]
     public int damage;
     public int block;
@@ -42,6 +43,13 @@ public class CardData : ScriptableObject
         if (statusAmount > 0) statusAmount += 1;
         isUpgraded = true;
     }
+
+    [Header("Shop")]
+    public int shopPrice = 50;
 }
 
-public enum CardPool { Basic, Complex }
+public enum CardPool
+{
+    Basic,
+    Complex
+}
