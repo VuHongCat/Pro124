@@ -32,22 +32,18 @@ public class EnemyHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    // counterable: whether damage should trigger counter/reflection mechanics
     public void TakeDamage(int damage, bool counterable = true)
     {
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Immortal) > 0)
             return;
-
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Vulnerable) > 0)
             damage = Mathf.RoundToInt(damage * 1.5f);
         if (enemyBlock != null)
             damage = enemyBlock.AbsorbDamage(damage);
         if (damage <= 0)
             return;
-
         if (counterable)
             OnDamaged?.Invoke(damage);
-
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
 
@@ -62,7 +58,7 @@ public class EnemyHealth : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-        if (enemyData != null && currentHealth > enemyData.maxHealth) currentHealth = enemyData.maxHealth;
+        if (currentHealth > enemyData.maxHealth) currentHealth = enemyData.maxHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }

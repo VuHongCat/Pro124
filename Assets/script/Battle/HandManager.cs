@@ -18,14 +18,27 @@ public class HandManager : MonoBehaviour
         GameObject cardObject = cardFactory.CreateCard(data, handPanel);
         CardDisplay display = cardObject.GetComponent<CardDisplay>();
         cardsInHand.Add(display);
-        handLayout.UpdateLayout();
+        handLayout.UpdateLayout(cardsInHand);
     }
+
+    public void AddCard(CardData data, int index)
+    {
+        if (IsFull) return;
+        GameObject cardObject = cardFactory.CreateCard(data, handPanel);
+        CardDisplay display = cardObject.GetComponent<CardDisplay>();
+        int insertIndex = Mathf.Clamp(index, 0, cardsInHand.Count);
+        cardsInHand.Insert(insertIndex, display);
+        display.transform.SetSiblingIndex(insertIndex);
+        handLayout.UpdateLayout(cardsInHand);
+    }
+
+    public int GetIndex(CardDisplay card) => cardsInHand.IndexOf(card);
 
     public void RemoveCard(CardDisplay card)
     {
         cardsInHand.Remove(card);
         Destroy(card.gameObject);
-        handLayout.UpdateLayout();
+        handLayout.UpdateLayout(cardsInHand);
     }
 
     public void ClearHand()
@@ -35,7 +48,7 @@ public class HandManager : MonoBehaviour
             Destroy(card.gameObject);
         }
         cardsInHand.Clear();
-        handLayout.UpdateLayout();
+        handLayout.UpdateLayout(cardsInHand);
     }
 
     public List<CardDisplay> GetCardsInHand()

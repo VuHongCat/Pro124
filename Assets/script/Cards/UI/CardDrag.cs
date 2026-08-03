@@ -47,6 +47,9 @@ public class CardDrag : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (visual == null || canvasGroup == null || rect == null)
+            return;
+
         visual.IsDragging = false;
 
         canvasGroup.blocksRaycasts = true;
