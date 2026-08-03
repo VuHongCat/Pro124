@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: LastStand
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 'Last Stand '
+  cardName: Last Stand
   description: deal 10 damage, if player health below 50%, deal 20 damage instead
   artwork: {fileID: 6117809539770080478, guid: 874f1c8b0aa845b408fa312261c3e2dc, type: 3}
   energyCost: 2
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 10
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 80

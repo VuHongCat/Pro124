@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: RejuvenatingAura
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 'Rejuvenating Aura '
+  cardName: Rejuvenating Aura
   description: "heal 30hp, heal 8 more hp in 2 turn\t"
   artwork: {fileID: 5717180278471281875, guid: 9909d0ffa5bdd11418bd55152c54e9bc, type: 3}
   energyCost: 3
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 2
+  target: 0
+  rarity: 0
   damage: 0
   block: 0
+  strength: 0
+  heal: 30
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 100

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: UndyingWill
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  cardName: 'Undying Will '
+  cardName: Undying Will
   description: immortal for 1 turn
   artwork: {fileID: -8987241525687981861, guid: 8f5b11710c13f2642a5f8201645ed7db, type: 3}
   energyCost: 3
@@ -21,3 +21,10 @@ MonoBehaviour:
   rarity: 0
   damage: 0
   block: 25
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 100

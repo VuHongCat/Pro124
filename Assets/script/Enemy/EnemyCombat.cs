@@ -199,6 +199,8 @@ public class EnemyCombat : MonoBehaviour
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Stun) > 0)
         {
             Debug.Log($"{enemyData.enemyName} bị choáng, bỏ lượt.");
+            if (enemyIntent != null)
+                enemyIntent.SetIntent(EnemyIntentType.Stun, 0);
             DecideNextIntent();
             return;
         }

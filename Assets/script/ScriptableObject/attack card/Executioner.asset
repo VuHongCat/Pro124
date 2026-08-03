@@ -17,8 +17,15 @@ MonoBehaviour:
     executed, apply same effect to other enemy
   artwork: {fileID: -9154398126690637870, guid: 200d3ab64f23f2146a0767ed9bb67bca, type: 3}
   energyCost: 2
-  cardType: {fileID: 0}
-  target: {fileID: 0}
-  rarity: {fileID: 0}
+  cardType: 0
+  target: 0
+  rarity: 0
   damage: 0
   block: 0
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 40
