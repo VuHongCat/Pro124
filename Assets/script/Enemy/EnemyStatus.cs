@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static Buff_Data;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -114,6 +113,13 @@ public class EnemyStatus : MonoBehaviour
         {
             EnemyHealth hp = GetComponent<EnemyHealth>();
             hp?.TakeDamage(bleed, false);
+        }
+
+        int poison = GetStatus(StatusType.Poison);
+        if (poison > 0)
+        {
+            EnemyHealth hp = GetComponent<EnemyHealth>();
+            hp?.TakeDamage(poison, false);
         }
 
         List<StatusType> expired = new();

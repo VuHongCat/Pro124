@@ -26,8 +26,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void Initialize()
     {
-        maxHealth = playerData.maxHealth;
-        currentHealth = maxHealth;
+        if (RunSession.RunActive && RunSession.PlayerMaxHealth > 0)
+        {
+            maxHealth = RunSession.PlayerMaxHealth;
+            currentHealth = RunSession.PlayerCurrentHealth;
+        }
+        else
+        {
+            maxHealth = playerData.maxHealth;
+            currentHealth = maxHealth;
+            RunSession.StartNewRun();
+            RunSession.PlayerMaxHealth = maxHealth;
+            RunSession.PlayerCurrentHealth = currentHealth;
+        }
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
@@ -36,6 +47,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerStatus != null && playerStatus.GetStatus(StatusType.Immortal) > 0)
             return;
+        if (playerStatus != null && playerStatus.GetStatus(StatusType.Vulnerable) > 0)
+            damage = Mathf.RoundToInt(damage * 1.5f);
 
         if (playerBlock != null)
         {
@@ -44,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
         if (damage <= 0) return;
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
+        RunSession.PlayerCurrentHealth = currentHealth;
 
         if (reflectable)
             OnDamageTaken?.Invoke(damage);
@@ -58,6 +72,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += amount;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
+        RunSession.PlayerCurrentHealth = currentHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }

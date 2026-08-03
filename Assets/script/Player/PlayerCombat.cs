@@ -12,6 +12,8 @@ public class PlayerCombat : MonoBehaviour
         if (playerHealth == null) playerHealth = GetComponent<PlayerHealth>();
 
         damage += playerStatus.GetStatus(StatusType.Strength);
+        if (playerStatus.GetStatus(StatusType.Weak) > 0)
+            damage = Mathf.RoundToInt(damage * 0.75f);
         int prev = target.CurrentHealth;
         target.TakeDamage(damage);
         int dealt = prev - target.CurrentHealth;
