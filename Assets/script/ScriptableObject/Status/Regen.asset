@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a17f9d42b6e84c9a9f3d5c2e7b8a1d46, type: 3}
   m_Name: Regen
-  m_EditorClassIdentifier: Assembly-CSharp::Buff_Data/BuffData
-  BuffID: 
-  BuffName: 
-  BuffIcon: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::BuffData
+  BuffID: Regen
+  BuffName: Regen
+  BuffIcon: {fileID: 811347052310813615, guid: 2b08494e2cc14c24c8187dda7c7fea81, type: 3}
   Type: 0
-  Description: 
+  Description: Restores HP equal to stacks at the start of your turn.
