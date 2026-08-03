@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Goblin
   artwork: {fileID: 0}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  archetype: 1
+  maxHealth: 30
+  attackDamage: 6
+  block: 4
+  poisonDamage: 3
   isBoss: 0

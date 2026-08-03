@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Knight
   artwork: {fileID: 0}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  archetype: 4
+  maxHealth: 55
+  attackDamage: 8
+  block: 12
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 3
   isBoss: 0

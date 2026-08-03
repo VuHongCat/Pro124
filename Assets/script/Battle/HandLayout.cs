@@ -1,37 +1,38 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HandLayout : MonoBehaviour
 {
     [SerializeField] private float spacing = 220f;
 
-    public void UpdateLayout()
+    public void UpdateLayout(List<CardDisplay> cards)
     {
-        int cardCount = transform.childCount;
+        int cardCount = cards.Count;
 
         if (cardCount == 0) return;
 
         float startX = -(cardCount - 1) * spacing * 0.5f;
+        float center = (cardCount - 1) / 2f;
 
-        for(int i = 0; i < cardCount; i++)
+        for (int i = 0; i < cardCount; i++)
         {
-            RectTransform card = transform.GetChild(i).GetComponent<RectTransform>();
+            CardDisplay display = cards[i];
+            if (display == null) continue;
+
+            RectTransform card = display.transform as RectTransform;
 
             float curveHeight = 25f;
 
             float x = startX + i * spacing;
 
-            float center = (cardCount - 1) / 2f;
-
             float distance = Mathf.Abs(i - center);
 
             float y = -(distance * curveHeight);
 
-            Vector2 targetPos = new Vector2(x, y);
-
             float angle = (i - center) * -5f;
-            CardVisual visual = card.GetComponent<CardVisual>();
+            CardVisual visual = display.GetComponent<CardVisual>();
 
-            visual.SetTarget(targetPos, Quaternion.Euler(0, 0, angle));
+            visual.SetTarget(new Vector2(x, y), Quaternion.Euler(0, 0, angle));
         }
     }
 }
