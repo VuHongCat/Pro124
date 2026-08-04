@@ -21,14 +21,14 @@ public static class RuntimeCardLibrary
     private static void BuildPool()
     {
         _pool = new List<CardData>();
-        _pool.Add(Build("HeavyBlade", "Đòn nặng gây sát thương lớn.", 2, 14, 0, 0));
-        _pool.Add(Build("Guardian", "Chặn đòn hiệu quả.", 1, 0, 12, 0));
-        _pool.Add(Build("Bloodthirst", "Gây sát thương và hồi máu 50% sát thương gây ra.", 2, 10, 0, 0));
-        _pool.Add(Build("Counter Stance", "Phản đòn 60% sát thương trong 2 lượt.", 1, 0, 0, 0));
-        _pool.Add(Build("Intimidate", "Giảm sát thương kẻ địch.", 1, 0, 0, 0));
-        _pool.Add(Build("Hemorrhage", "Gây chảy máu kẻ địch.", 1, 0, 0, 0));
-        _pool.Add(Build("Enrage", "Tăng sức mạnh +3.", 2, 0, 0, 3));
-        _pool.Add(Build("Risky Gambit", "Mất 5 HP, rút thêm 2 lá.", 0, 0, 0, 0));
+        _pool.Add(Build("HeavyBlade", "Deal heavy damage.", 2, 14, 0, 0));
+        _pool.Add(Build("Guardian", "Gain block.", 1, 0, 12, 0));
+        _pool.Add(Build("Bloodthirst", "Deal damage and heal 50% of damage dealt.", 2, 10, 0, 0));
+        _pool.Add(Build("Counter Stance", "Reflect 60% of damage for 2 turns.", 1, 0, 0, 0));
+        _pool.Add(Build("Intimidate", "Reduce enemy damage.", 1, 0, 0, 0));
+        _pool.Add(Build("Hemorrhage", "Make the enemy bleed.", 1, 0, 0, 0));
+        _pool.Add(Build("Enrage", "Gain +3 Strength.", 2, 0, 0, 3));
+        _pool.Add(Build("Risky Gambit", "Lose 5 HP, draw 2 extra cards.", 0, 0, 0, 0));
     }
 
     private static CardData Build(string name, string desc, int cost, int dmg, int blk, int str)

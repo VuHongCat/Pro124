@@ -25,7 +25,7 @@ public class RelicTooltipTrigger : MonoBehaviour,
 
 
         Debug.Log(
-            "Đã gán relic: " + relic.relicName
+            "Assigned relic: " + relic.relicName
         );
     }
 

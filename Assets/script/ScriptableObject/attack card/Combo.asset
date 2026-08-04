@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Combo
   description: Deal 4 damage twice
-  artwork: {fileID: 0}
+  artwork: {fileID: 3572851284651089129, guid: 250d39523bc0ff34d8dd3c8edd1e91ba, type: 3}
   energyCost: 1
   cardType: 0
   target: 0
@@ -27,4 +27,5 @@ MonoBehaviour:
   statusAmount: 0
   statusDuration: 1
   pool: 0
+  isUpgraded: 0
   shopPrice: 40
