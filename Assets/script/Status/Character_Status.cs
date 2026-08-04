@@ -106,7 +106,7 @@ public class CharacterStatus : MonoBehaviour
         if (activeStatusStacks.ContainsKey("Poison"))
         {
             int poisonDamage = activeStatusStacks["Poison"];
-            Debug.Log($"{gameObject.name} bị trúng độc nhận {poisonDamage} sát thương!");
+            Debug.Log($"{gameObject.name} is poisoned and takes {poisonDamage} damage!");
 
             // Giảm 1 stack độc sau mỗi lượt
             ApplyStatus(buffDataMap["Poison"], -1);
@@ -116,7 +116,7 @@ public class CharacterStatus : MonoBehaviour
         if (activeStatusStacks.ContainsKey("Burn"))
         {
             int burnDamage = activeStatusStacks["Burn"];
-            Debug.Log($"{gameObject.name} bị cháy nhận {burnDamage} sát thương!");
+            Debug.Log($"{gameObject.name} is burning and takes {burnDamage} damage!");
 
             // Giảm 1 stack cháy
             ApplyStatus(buffDataMap["Burn"], -1);

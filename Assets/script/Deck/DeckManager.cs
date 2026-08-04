@@ -83,6 +83,8 @@ public class DeckManager : MonoBehaviour
     {
         startingDeck.Add(card);
         drawPile.Insert(Random.Range(0, drawPile.Count + 1), card);
+
+        RelicManager.EmitObtainCard(card);
     }
 
     public void ShuffleDrawPile()

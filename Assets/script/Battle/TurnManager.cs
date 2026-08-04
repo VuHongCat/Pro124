@@ -21,6 +21,8 @@ public class TurnManager : MonoBehaviour
 
     private bool firstRoundDone = false;
 
+    private bool turnStarted = false;
+
     private void Start()
     {
         StartPlayerTurn();
@@ -30,7 +32,24 @@ public class TurnManager : MonoBehaviour
     {
         ChangeTurn(TurnState.PlayerTurn);
         battleManager.StartPlayerTurn();
-        energyManager.ResetEnergy();
+
+        // Ice Cream: giữ năng lượng chưa dùng giữa các lượt
+        if (turnStarted && RelicManager.Owns("Ice Cream"))
+            energyManager.GainEnergy(energyManager.MaxEnergy);
+        else
+            energyManager.ResetEnergy();
+
+        // Energy đầu trận (Coffee Dripper, Ectoplasm, Tea Set)
+        if (!turnStarted)
+        {
+            int bonus = RelicManager.GetBattleStartEnergyBonus();
+            if (bonus > 0)
+                energyManager.GainEnergy(bonus);
+        }
+
+        turnStarted = true;
+
+        RelicManager.EmitPlayerTurnStart();
 
         Debug.Log($"--- Player Turn --- Draw:{deckManager.DrawPileCount} Discard:{deckManager.DiscardPileCount}");
 
@@ -38,7 +57,7 @@ public class TurnManager : MonoBehaviour
 
         foreach (CardData card in cards)
         {
-            Debug.Log($"Rút: {card.cardName}");
+            Debug.Log($"Drew: {card.cardName}");
             handManager.AddCard(card);
         }
     }
@@ -52,6 +71,8 @@ public class TurnManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
+        RelicManager.EmitPlayerTurnEnd();
+
         List<CardDisplay> cards =
         new List<CardDisplay>(handManager.GetCardsInHand());
         foreach (CardDisplay card in cards)
@@ -85,7 +106,7 @@ public class TurnManager : MonoBehaviour
         foreach (CardData card in toAdd)
         {
             deckManager.AddCardToDeck(card);
-            Debug.Log($"Thêm vào deck: {card.cardName}");
+            Debug.Log($"Added to deck: {card.cardName}");
         }
         deckManager.ShuffleDrawPile();
     }

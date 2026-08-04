@@ -90,7 +90,7 @@ public class CardEffectResolver : MonoBehaviour
 
     private void CounterStance(EnemyHealth target, CardData card)
     {
-        GetStatus()?.AddStatus(StatusType.Counter, 2, 1);
+        GetStatus()?.AddStatus(StatusType.Counter, 2, 2);
     }
 
     private void LastStand(EnemyHealth target, CardData card)
@@ -183,7 +183,7 @@ public class CardEffectResolver : MonoBehaviour
     private void SteelSkin(EnemyHealth target, CardData card)
     {
         GetBlock().AddBlock(card.block);
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 3, 1);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 3, 2);
     }
 
     private void UndyingWill(CardData card)
@@ -210,7 +210,7 @@ public class CardEffectResolver : MonoBehaviour
     private void RejuvenatingAura(CardData card)
     {
         GetHealth()?.Heal(30);
-        GetStatus()?.AddStatus(StatusType.Regen, 8, 1);
+        GetStatus()?.AddStatus(StatusType.Regen, 8, 3);
     }
 
     private void Enrage()
@@ -220,12 +220,12 @@ public class CardEffectResolver : MonoBehaviour
 
     private void Shockwave(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 3, 1);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Weak, 3, 2);
     }
 
     private void ShatterArmor(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Vulnerable, 2, 1);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Vulnerable, 2, 2);
     }
 
     private void Intimidate(EnemyHealth target)
@@ -234,14 +234,14 @@ public class CardEffectResolver : MonoBehaviour
         EnemyStatus es = target.GetComponent<EnemyStatus>();
         if (es == null) return;
         if (target.IsBoss)
-            es.AddStatus(StatusType.Weak, 5, 1);
+            es.AddStatus(StatusType.Weak, 5, 2);
         else
             es.AddStatus(StatusType.Stun, 1, 1);
     }
 
     private void Hemorrhage(EnemyHealth target)
     {
-        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Bleed, 6, 1);
+        target?.GetComponent<EnemyStatus>()?.AddStatus(StatusType.Bleed, 6, 3);
     }
 
     private void Refresh()
