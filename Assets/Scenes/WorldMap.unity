@@ -172,6 +172,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldIslandUI
   islandID: 4
   sceneName: MapLevel4
+  button: {fileID: 246307532}
+  islandImage: {fileID: 246307533}
+  unlockColor: {r: 1, g: 1, b: 1, a: 1}
+  lockColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
 --- !u!114 &246307532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +323,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldIslandUI
   islandID: 1
   sceneName: MapLevel1
+  button: {fileID: 277472701}
+  islandImage: {fileID: 277472702}
+  unlockColor: {r: 1, g: 1, b: 1, a: 1}
+  lockColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &277472701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,6 +799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldIslandUI
   islandID: 2
   sceneName: MapLevel2
+  button: {fileID: 1451568843}
+  islandImage: {fileID: 1451568844}
+  unlockColor: {r: 1, g: 1, b: 1, a: 1}
+  lockColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1451568843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,6 +950,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldIslandUI
   islandID: 3
   sceneName: MapLevel3
+  button: {fileID: 1701085872}
+  islandImage: {fileID: 1701085873}
+  unlockColor: {r: 1, g: 1, b: 1, a: 1}
+  lockColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1701085872
 MonoBehaviour:
   m_ObjectHideFlags: 0
