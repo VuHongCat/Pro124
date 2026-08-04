@@ -1,9 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
     public static RelicManager Instance;
+
+    [Header("All Relics")]
+    public List<RelicData> allRelics = new();
 
     [Header("Owned Relics")]
     [SerializeField] private List<RelicData> ownedRelics = new();
@@ -56,6 +59,36 @@ public class RelicManager : MonoBehaviour
     public List<RelicData> GetOwnedRelics()
     {
         return ownedRelics;
+    }
+
+    // ==========================
+    // Random Relic cho Chest
+    // ==========================
+    public RelicData GetRandomChestRelic()
+    {
+        List<RelicData> availableRelics = new List<RelicData>();
+
+        foreach (RelicData relic in allRelics)
+        {
+            // Không xuất hiện Boss Relic trong Chest
+            if (relic.rarity == RelicRarity.Boss)
+                continue;
+
+            // Đã sở hữu thì bỏ qua
+            if (HasRelic(relic.relicName))
+                continue;
+
+            availableRelics.Add(relic);
+        }
+
+        if (availableRelics.Count == 0)
+        {
+            Debug.LogWarning("Không còn Relic để nhận.");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, availableRelics.Count);
+        return availableRelics[randomIndex];
     }
 
     #endregion

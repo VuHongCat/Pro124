@@ -2723,7 +2723,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5145,9 +5145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae491ca611781044e8be03aa1a1defde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
-  levelNumber: 4
   nodes: []
   currentNode: {fileID: 0}
+  miniBossEnemy: {fileID: 0}
+  bossEnemy: {fileID: 0}
+  mapSceneName: MapLevel1
 --- !u!4 &2100520957
 Transform:
   m_ObjectHideFlags: 0
