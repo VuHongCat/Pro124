@@ -1,15 +1,18 @@
 using UnityEngine;
 
+
 public class WorldMapManager : MonoBehaviour
 {
     public static WorldMapManager Instance;
 
-    public WorldIsland island1;
-    public WorldIsland island2;
-    public WorldIsland island3;
-    public WorldIsland island4;
 
-    public int unlockedLevel;
+    [Header("Island")]
+    public WorldIslandUI island1;
+    public WorldIslandUI island2;
+    public WorldIslandUI island3;
+    public WorldIslandUI island4;
+
+
 
     private void Awake()
     {
@@ -17,30 +20,49 @@ public class WorldMapManager : MonoBehaviour
         {
             Instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-        unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        // Mặc định mở đảo 1
+        if (!PlayerPrefs.HasKey("UnlockedIsland"))
+        {
+            PlayerPrefs.SetInt("UnlockedIsland", 1);
+            PlayerPrefs.Save();
+        }
     }
+
+
 
     private void Start()
     {
         UpdateMap();
     }
 
+
+
     public void UpdateMap()
     {
-        island1.SetUnlocked(unlockedLevel >= 1);
-        island2.SetUnlocked(unlockedLevel >= 2);
-        island3.SetUnlocked(unlockedLevel >= 3);
-        island4.SetUnlocked(unlockedLevel >= 4);
+        island1.UpdateIsland();
+        island2.UpdateIsland();
+        island3.UpdateIsland();
+        island4.UpdateIsland();
     }
 
-    public void UnlockLevel(int level)
-    {
-        if (level > unlockedLevel)
-        {
-            unlockedLevel = level;
 
-            PlayerPrefs.SetInt("UnlockedLevel", unlockedLevel);
+
+    // Gọi khi thắng boss
+    public void UnlockIsland(int id)
+    {
+        int current =
+            PlayerPrefs.GetInt("UnlockedIsland", 1);
+
+
+        if (id > current)
+        {
+            PlayerPrefs.SetInt("UnlockedIsland", id);
             PlayerPrefs.Save();
         }
     }
