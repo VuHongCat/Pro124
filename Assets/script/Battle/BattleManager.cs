@@ -111,8 +111,18 @@ public class BattleManager : MonoBehaviour
 
     private void OnEnemyDeath(EnemyHealth enemy)
     {
-        Debug.Log($"=== {battleSequence.Count - enemyIndex - 1} enemies left ===");
-        StartCoroutine(SpawnNextEnemyNextFrame());
+        enemy.OnEnemyDeath -= OnEnemyDeath;
+
+        Animator animator = enemy.GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+        }
+        else
+        {
+            StartCoroutine(FinishEnemyDeath(enemy.gameObject));
+        }
     }
 
     private IEnumerator SpawnNextEnemyNextFrame()
@@ -126,6 +136,12 @@ public class BattleManager : MonoBehaviour
         if (enemyCombat == null) return;
         enemyCombat.ExecuteIntent(playerHealth);
         enemyStatus?.OnTurnEnd();
+    }
+    public void OnEnemyAnimationFinished(GameObject enemy)
+    {
+        Destroy(enemy);
+
+        SpawnNextEnemy();
     }
 
     public void StartPlayerTurn()
@@ -233,5 +249,13 @@ public class BattleManager : MonoBehaviour
             RunSession.StartNewRun();
             RunSession.ReturnToMap();
         });
+    }
+    private IEnumerator FinishEnemyDeath(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(enemy);
+
+        SpawnNextEnemy();
     }
 }

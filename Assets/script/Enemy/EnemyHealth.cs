@@ -65,13 +65,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
-        try
-        {
-            OnEnemyDeath?.Invoke(this);
-        }
-        finally
-        {
-            Destroy(gameObject);
-        }
+        OnEnemyDeath?.Invoke(this);
     }
 }
+

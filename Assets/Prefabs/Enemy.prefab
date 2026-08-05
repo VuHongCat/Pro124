@@ -553,6 +553,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4390744434949875243}
   - component: {fileID: 6190420038768974533}
+  - component: {fileID: -520078813338415765}
+  - component: {fileID: -2035792561130520011}
   - component: {fileID: 6419088308849479545}
   - component: {fileID: 1007890987432399371}
   - component: {fileID: 7039012267252295390}
@@ -598,6 +600,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668189075093414432}
   m_CullTransparentMesh: 1
+--- !u!95 &-520078813338415765
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668189075093414432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2035792561130520011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668189075093414432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16bd7aafe10cb7d4ba45a1af2008efdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
 --- !u!114 &6419088308849479545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplay
   artworkImage: {fileID: 6419088308849479545}
+  animator: {fileID: -520078813338415765}
   enemyNameText: {fileID: 6750730535555743444}
   hpText: {fileID: 2960557569921174752}
   intentText: {fileID: 4876866616542516514}
