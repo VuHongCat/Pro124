@@ -19,13 +19,6 @@ MonoBehaviour:
   maxHealth: 40
   attackDamage: 8
   block: 6
-  poisonDamage: 0
-  lifesteal: 0
-  selfHeal: 0
-  regenValue: 0
-  buffStrength: 0
-  weakDamage: 0
-  vulnerableDamage: 0
-  counterStacks: 0
+  goldReward: 15
   isBoss: 0
   flipX: 1

@@ -25,11 +25,14 @@ public class ShopManager : MonoBehaviour
 
     private bool[] relicSold;
 
+    private bool[] cardSold;
+
     private void Start()
     {
         GenerateCards();
         GenerateRelics();
         WireLeaveButton();
+        WireCardBuyButtons();
         WireRelicBuyButtons();
         UpdateGoldText();
     }
@@ -167,6 +170,57 @@ public class ShopManager : MonoBehaviour
             // Tránh trùng
             availableCards.RemoveAt(randomIndex);
         }
+    }
+
+    private void WireCardBuyButtons()
+    {
+        cardSold = new bool[cardSlots.Length];
+
+        for (int i = 0; i < cardSlots.Length; i++)
+        {
+            if (cardSlots[i] == null)
+                continue;
+
+            Button btn = cardSlots[i].GetComponent<Button>();
+            if (btn == null)
+                btn = cardSlots[i].gameObject.AddComponent<Button>();
+
+            int index = i;
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => BuyCard(index));
+        }
+    }
+
+    public void BuyCard(int index)
+    {
+        if (index < 0 || index >= cardSlots.Length)
+            return;
+
+        if (cardSold[index])
+            return;
+
+        CardData card = currentCards[index];
+        if (card == null)
+            return;
+
+        if (RunSession.Gold < card.shopPrice)
+        {
+            Debug.Log("[ShopManager] Not enough gold to buy card: " + card.cardName);
+            return;
+        }
+
+        RunSession.Gold -= card.shopPrice;
+        RunSession.Deck.Add(card);
+        cardSold[index] = true;
+
+        Button btn = cardSlots[index].GetComponent<Button>();
+        if (btn != null)
+            btn.interactable = false;
+
+        if (cardPriceTexts[index] != null)
+            cardPriceTexts[index].text = "SOLD";
+
+        UpdateGoldText();
     }
 
     //==========================

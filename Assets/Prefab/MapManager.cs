@@ -110,9 +110,28 @@ public class MapManager : MonoBehaviour
             ClearProgress();
         }
 
+        RunSession.MapLevel = GetMapLevelFromSceneName();
+
         GetAllNodes();
 
         UpdateMapFromProgress();
+
+        if (DeckViewerUI.Instance == null)
+        {
+            GameObject uiGo = new GameObject("DeckViewerUI");
+            uiGo.AddComponent<DeckViewerUI>();
+        }
+    }
+
+    private int GetMapLevelFromSceneName()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        if (scene.StartsWith("MapLevel"))
+        {
+            if (int.TryParse(scene.Substring("MapLevel".Length), out int level))
+                return Mathf.Clamp(level, 1, 4);
+        }
+        return RunSession.MapLevel;
     }
 
     // =========================================================
@@ -447,6 +466,7 @@ public class MapManager : MonoBehaviour
 
             RunSession.RunActive = true;
             RunSession.IsBossBattle = true;
+            RunSession.IsFinalBoss = false;
             RunSession.BossSequence = new List<EnemyData> { GetMiniBoss() };
             RunSession.MapSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("BattleLevel1");
@@ -460,6 +480,7 @@ public class MapManager : MonoBehaviour
 
             RunSession.RunActive = true;
             RunSession.IsBossBattle = true;
+            RunSession.IsFinalBoss = true;
             RunSession.BossSequence = new List<EnemyData> { GetBoss() };
             RunSession.MapSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene("BattleLevel1");
@@ -530,6 +551,7 @@ public class MapManager : MonoBehaviour
 
         RunSession.RunActive = true;
         RunSession.IsBossBattle = false;
+        RunSession.IsFinalBoss = false;
         RunSession.MapSceneName = SceneManager.GetActiveScene().name;
 
         if (string.IsNullOrWhiteSpace(
@@ -736,12 +758,11 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Về Map Level 1
+        // Start new run at Map Level 1
         // -----------------------------------------
 
-        SceneManager.LoadScene(
-            mapSceneName
-        );
+        RunSession.StartNewRun();
+        SceneManager.LoadScene("MapLevel1");
     }
 
     public void UpdateNodes()
@@ -887,8 +908,9 @@ public class MapManager : MonoBehaviour
         d.attackDamage = 12;
         d.block = 10;
         d.selfHeal = 10;
+        d.goldReward = 60;
         d.isBoss = true;
-        return d;
+        return RuntimeEnemyLibrary.BuildScaled(d, RunSession.MapLevel);
     }
 
     private EnemyData GetBoss()
@@ -902,7 +924,8 @@ public class MapManager : MonoBehaviour
         d.block = 8;
         d.selfHeal = 20;
         d.regenValue = 6;
+        d.goldReward = 100;
         d.isBoss = true;
-        return d;
+        return RuntimeEnemyLibrary.BuildScaled(d, RunSession.MapLevel);
     }
 }
