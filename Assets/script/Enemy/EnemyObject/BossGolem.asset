@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BossGolem
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Boss Golem
-  artwork: {fileID: 0}
+  artwork: {fileID: -8650765351860947655, guid: 5666f73bfd381a74282c41fee8faab23, type: 3}
   archetype: 3
+  animatorController: {fileID: 9100000, guid: cb2444a938af57445ba40018a56d1783, type: 2}
   maxHealth: 150
   attackDamage: 14
   block: 8
@@ -28,3 +29,4 @@ MonoBehaviour:
   counterStacks: 0
   goldReward: 100
   isBoss: 1
+  flipX: 0

@@ -219,6 +219,12 @@ public class BattleManager : MonoBehaviour
 
         lastAttacker = null;
     }
+    public void OnEnemyAnimationFinished(GameObject enemy)
+    {
+        Destroy(enemy);
+
+        SpawnNextEnemy();
+    }
 
     public void StartPlayerTurn()
     {
@@ -359,5 +365,13 @@ public class BattleManager : MonoBehaviour
             RunSession.StartNewRun();
             RunSession.ReturnToMap();
         });
+    }
+    private IEnumerator FinishEnemyDeath(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(enemy);
+
+        SpawnNextEnemy();
     }
 }
