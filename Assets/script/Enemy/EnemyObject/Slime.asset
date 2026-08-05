@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Slime
-  artwork: {fileID: 0}
+  artwork: {fileID: 8793639957104055765, guid: 6cc32db7a219e424b9780ddd3f9bfcee, type: 3}
   archetype: 0
+  animatorController: {fileID: 9100000, guid: 3302beb51d2d8394894881696e1fab88, type: 2}
   maxHealth: 40
   attackDamage: 8
   block: 6
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 0
   isBoss: 0
+  flipX: 1
