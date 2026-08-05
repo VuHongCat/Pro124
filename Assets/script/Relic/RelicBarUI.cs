@@ -71,7 +71,7 @@ public class RelicBarUI : MonoBehaviour
         tooltipRt.SetParent(canvasGo.transform, false);
         tooltipRt.anchorMin = new Vector2(0.5f, 1f);
         tooltipRt.anchorMax = new Vector2(0.5f, 1f);
-        tooltipRt.pivot = new Vector2(0.5f, 0f);
+        tooltipRt.pivot = new Vector2(0.5f, 1f);
         tooltipRt.sizeDelta = new Vector2(340, 100);
         tt.SetActive(false);
 
@@ -83,8 +83,8 @@ public class RelicBarUI : MonoBehaviour
 
         tooltipDesc = RuntimeUi.CreateText(tt.transform, "", 16, TextAnchor.UpperLeft, Vector2.zero, Vector2.one);
         tooltipDesc.color = Color.white;
-        tooltipDesc.rectTransform.offsetMin = new Vector2(12, 8);
-        tooltipDesc.rectTransform.offsetMax = new Vector2(-12, 54);
+        tooltipDesc.rectTransform.offsetMin = new Vector2(12, 4);
+        tooltipDesc.rectTransform.offsetMax = new Vector2(-12, 46);
     }
 
     public void Refresh()
@@ -142,7 +142,7 @@ public class RelicBarUI : MonoBehaviour
         tooltipName.text = relic.relicName;
         tooltipDesc.text = relic.description;
         tooltipPanel.SetActive(true);
-        tooltipRt.position = icon.position + new Vector3(0, 26, 0);
+        tooltipRt.position = icon.position + new Vector3(0, -24, 0);
     }
 
     public void HideTooltip()

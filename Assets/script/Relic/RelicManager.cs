@@ -232,21 +232,20 @@ public class RelicManager : MonoBehaviour
         if (bloodVial != null)
             playerHealth?.Heal(bloodVial.value);
 
-        // Bag of Mables: Vulnerable lên toàn bộ kẻ địch
-        RelicData mables = GetRelic("Bag of Mables");
-        if (mables != null)
-        {
-            foreach (EnemyHealth enemy
-                in FindObjectsByType<EnemyHealth>(
-                    FindObjectsSortMode.None))
-            {
-                enemy?.GetComponent<EnemyStatus>()?
-                    .AddStatus(StatusType.Vulnerable, mables.value, 99);
-            }
-        }
+        // Bag of Mables: Vulnerable cho enemy khi spawn (áp dụng trong BattleManager.SpawnEnemy)
 
         // Red Skull: check HP < 50%
         UpdateRedSkull(playerStatus, playerHealth);
+    }
+
+    public void ApplyBagOfMables(EnemyStatus enemyStatus)
+    {
+        if (enemyStatus == null)
+            return;
+
+        RelicData mables = GetRelic("Bag of Mables");
+        if (mables != null)
+            enemyStatus.AddStatus(StatusType.Vulnerable, mables.value, 99);
     }
 
     // Energy đầu trận (Coffee Dripper, Ectoplasm, Tea Set).
@@ -387,12 +386,17 @@ public class RelicManager : MonoBehaviour
 
     #region Events
 
-    public void OnGainGold(int amount)
+    public int OnGainGold(int amount)
     {
         if (amount <= 0)
-            return;
+            return 0;
+
+        // Ectoplasm: cannot gain Gold
+        if (HasRelic("Ectoplasm"))
+            return 0;
 
         RunSession.Gold += amount;
+        return amount;
     }
 
     public void OnObtainCard(CardData card)
