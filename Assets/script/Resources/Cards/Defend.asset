@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
+  m_Name: Defend
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Defend
+  description: Block 5 damage
+  artwork: {fileID: 6068523354536302315, guid: 214a5e8ebf6052c408b32fd981d2e6c6, type: 3}
+  energyCost: 1
+  cardType: 1
+  target: 0
+  rarity: 0
+  damage: 0
+  block: 8
+  strength: 0
+  heal: 0
+  applyStatus: 0
+  statusAmount: 0
+  statusDuration: 1
+  pool: 0
+  shopPrice: 10
