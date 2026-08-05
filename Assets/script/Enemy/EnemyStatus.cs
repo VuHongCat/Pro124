@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    private Dictionary<StatusType, int> statuses = new();
+    private class StatusEntry
+    {
+        public int Stacks;
+        public int Turns;
+    }
+
+    private readonly Dictionary<StatusType, StatusEntry> statuses = new();
     public event System.Action OnStatusChanged;
 
     [Header("UI Sync")]
@@ -47,7 +53,7 @@ public class EnemyStatus : MonoBehaviour
             if (!warnedMissingUI)
             {
                 warnedMissingUI = true;
-                Debug.LogWarning($"{name}: EnemyStatus không tìm thấy StatusHolderUI (StatusArea)!", this);
+                Debug.LogWarning($"{name}: EnemyStatus could not find StatusHolderUI (StatusArea)!", this);
             }
             return;
         }
@@ -69,7 +75,7 @@ public class EnemyStatus : MonoBehaviour
             if (!missingDataTypes.Contains(type))
             {
                 missingDataTypes.Add(type);
-                Debug.LogWarning($"{name}: chưa gán BuffData cho {type} trong EnemyStatus!", this);
+                Debug.LogWarning($"{name}: no BuffData assigned for {type} in EnemyStatus!", this);
             }
             return;
         }
@@ -82,15 +88,40 @@ public class EnemyStatus : MonoBehaviour
 
     public void AddStatus(StatusType type, int amount, int duration = 1)
     {
-        if (!statuses.ContainsKey(type))
-            statuses[type] = 0;
-        statuses[type] += amount;
+        if (amount < 0)
+        {
+            if (statuses.TryGetValue(type, out StatusEntry consume))
+            {
+                consume.Stacks += amount;
+                if (consume.Stacks <= 0)
+                    statuses.Remove(type);
+            }
+            OnStatusChanged?.Invoke();
+            return;
+        }
+
+        if (!statuses.TryGetValue(type, out StatusEntry entry))
+        {
+            statuses[type] = new StatusEntry
+            {
+                Stacks = amount,
+                Turns = duration
+            };
+        }
+        else
+        {
+            entry.Stacks += amount;
+            entry.Turns = Mathf.Max(entry.Turns, duration);
+        }
+
         OnStatusChanged?.Invoke();
     }
 
     public int GetStatus(StatusType type)
     {
-        return statuses.GetValueOrDefault(type, 0);
+        if (statuses.TryGetValue(type, out StatusEntry entry))
+            return entry.Stacks;
+        return 0;
     }
 
     public void RemoveStatus(StatusType type)
@@ -126,8 +157,8 @@ public class EnemyStatus : MonoBehaviour
         List<StatusType> keys = new(statuses.Keys);
         foreach (var key in keys)
         {
-            statuses[key]--;
-            if (statuses[key] <= 0)
+            statuses[key].Turns--;
+            if (statuses[key].Turns <= 0)
                 expired.Add(key);
         }
         foreach (var key in expired)
