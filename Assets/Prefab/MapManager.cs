@@ -27,8 +27,58 @@ public class MapManager : MonoBehaviour
     // PLAYER PREFS KEYS
     // =========================================================
 
-    private const string BattleNodeKey = "BattleNode";
+    public const string BattleNodeKey = "BattleNode";
     private const string CompletedNodeKey = "CompletedMapNode";
+    private const char NodeSeparator = ';';
+
+    // =========================================================
+    // PROGRESS PERSISTENCE
+    // =========================================================
+
+    public static void SaveCompletedNode(string nodeName)
+    {
+        if (string.IsNullOrEmpty(nodeName)) return;
+
+        List<string> names = GetCompletedNodeNames();
+        if (!names.Contains(nodeName))
+            names.Add(nodeName);
+
+        PlayerPrefs.SetString(
+            CompletedNodeKey,
+            string.Join(NodeSeparator.ToString(), names)
+        );
+
+        PlayerPrefs.Save();
+    }
+
+    private static List<string> GetCompletedNodeNames()
+    {
+        List<string> result = new();
+
+        string raw = PlayerPrefs.GetString(
+            CompletedNodeKey,
+            ""
+        );
+
+        if (string.IsNullOrEmpty(raw))
+            return result;
+
+        foreach (string name in raw.Split(NodeSeparator))
+        {
+            string trimmed = name.Trim();
+            if (!string.IsNullOrEmpty(trimmed))
+                result.Add(trimmed);
+        }
+
+        return result;
+    }
+
+    public static void ClearProgress()
+    {
+        PlayerPrefs.DeleteKey(CompletedNodeKey);
+        PlayerPrefs.DeleteKey(BattleNodeKey);
+        PlayerPrefs.Save();
+    }
 
     // =========================================================
     // AWAKE
@@ -53,6 +103,13 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
+        // Chưa có run đang chạy -> xóa progress cũ
+        // để map luôn bắt đầu từ Start
+        if (!RunSession.RunActive)
+        {
+            ClearProgress();
+        }
+
         GetAllNodes();
 
         UpdateMapFromProgress();
@@ -91,24 +148,10 @@ public class MapManager : MonoBehaviour
 
     private void UpdateMapFromProgress()
     {
-        // -----------------------------------------
-        // Nếu vừa chết / chưa có progress
-        // -----------------------------------------
-
-        string completedNode =
-            PlayerPrefs.GetString(
-                CompletedNodeKey,
-                ""
-            );
-
-        if (string.IsNullOrEmpty(completedNode))
-        {
-            ResetMapToStart();
-            return;
-        }
+        List<string> completedNames = GetCompletedNodeNames();
 
         // -----------------------------------------
-        // Reset toàn bộ trước
+        // Reset toàn bộ node (chỉ Start được mở)
         // -----------------------------------------
 
         foreach (MapNode node in nodes)
@@ -120,62 +163,99 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Tìm node đã hoàn thành
+        // Khóa toàn bộ line trước
         // -----------------------------------------
 
-        MapNode completed =
-            FindNodeByName(completedNode);
+        LockAllLines();
 
-        if (completed == null)
+        // -----------------------------------------
+        // Thắng trận quay lại map: BattleNodeKey vẫn giữ
+        // tên node vừa đánh -> đánh dấu node đó hoàn thành
+        // -----------------------------------------
+
+        string pendingBattle = PlayerPrefs.GetString(BattleNodeKey, "");
+
+        if (!string.IsNullOrEmpty(pendingBattle) &&
+            !completedNames.Contains(pendingBattle))
+        {
+            MapNode battleNode = FindNodeByName(pendingBattle);
+
+            if (battleNode != null)
+            {
+                battleNode.isCompleted = true;
+                SaveCompletedNode(pendingBattle);
+                completedNames = GetCompletedNodeNames();
+            }
+        }
+
+        // -----------------------------------------
+        // Chưa có progress: chỉ Start sáng
+        // -----------------------------------------
+
+        if (completedNames.Count == 0)
+        {
+            currentNode = FindStartNode();
+
+            if (currentNode != null)
+            {
+                currentNode.SetLock(false);
+            }
+
+            return;
+        }
+
+        // -----------------------------------------
+        // Node cuối cùng đã hoàn thành = vị trí hiện tại
+        // -----------------------------------------
+
+        MapNode lastCompleted = FindNodeByName(
+            completedNames[completedNames.Count - 1]
+        );
+
+        if (lastCompleted == null)
         {
             Debug.LogWarning(
-                "[MapManager] Không tìm thấy Completed Node: " +
-                completedNode
+                "[MapManager] Completed Node not found: " +
+                completedNames[completedNames.Count - 1]
             );
 
             ResetMapToStart();
             return;
         }
 
-        // -----------------------------------------
-        // Đánh dấu hoàn thành
-        // -----------------------------------------
-
-        completed.SetLock(false);
-        completed.CompleteNode();
-
-        currentNode = completed;
+        currentNode = lastCompleted;
 
         Debug.Log(
-            "[MapManager] Completed Node = " +
-            completed.gameObject.name
+            "[MapManager] Restore progress, currentNode = " +
+            currentNode.gameObject.name
         );
 
         // -----------------------------------------
-        // Mở node tiếp theo
+        // Start chỉ sáng khi nó là node hiện tại
+        // (ResetNode luôn mở Start, nên khóa lại
+        // nếu người chơi đang ở node khác)
         // -----------------------------------------
 
-        UnlockNextNodes(completed);
+        MapNode startNode = FindStartNode();
+
+        if (startNode != null && startNode != currentNode)
+        {
+            startNode.SetLock(true);
+        }
 
         // -----------------------------------------
-        // Mở line
+        // Sáng node hiện tại (vị trí người chơi)
         // -----------------------------------------
 
-        UnlockLines(completed);
+        currentNode.SetLock(false);
 
         // -----------------------------------------
-        // Xóa progress tạm
+        // Tự mở khóa nhánh kế tiếp để người chơi
+        // chọn ngay sau khi hoàn thành node hiện tại
         // -----------------------------------------
 
-        PlayerPrefs.DeleteKey(
-            CompletedNodeKey
-        );
-
-        PlayerPrefs.DeleteKey(
-            BattleNodeKey
-        );
-
-        PlayerPrefs.Save();
+        UnlockNextNodes(currentNode);
+        UnlockLines(currentNode);
     }
 
     // =========================================================
@@ -217,7 +297,7 @@ public class MapManager : MonoBehaviour
         if (currentNode == null)
         {
             Debug.LogError(
-                "[MapManager] Không tìm thấy Start Node!"
+                "[MapManager] Start Node not found!"
             );
 
             return;
@@ -308,8 +388,26 @@ public class MapManager : MonoBehaviour
         if (selectedNode.isLocked)
         {
             Debug.Log(
-                "[MapManager] Node đang khóa!"
+                "[MapManager] Node is locked!"
             );
+
+            return;
+        }
+
+        // -----------------------------------------
+        // Bấm vào node hiện tại (vị trí người chơi)
+        // -> mở khóa các nhánh kế tiếp
+        // -----------------------------------------
+
+        if (selectedNode == currentNode)
+        {
+            Debug.Log(
+                "[MapManager] Unlocked next nodes for: " +
+                selectedNode.gameObject.name
+            );
+
+            UnlockNextNodes(selectedNode);
+            UnlockLines(selectedNode);
 
             return;
         }
@@ -321,7 +419,7 @@ public class MapManager : MonoBehaviour
         if (selectedNode.nodeType == NodeType.Start)
         {
             Debug.Log(
-                "[MapManager] Đây là Start Node."
+                "[MapManager] This is the Start Node."
             );
 
             UnlockNextNodes(selectedNode);
@@ -344,6 +442,9 @@ public class MapManager : MonoBehaviour
 
         if (selectedNode.nodeType == NodeType.MiniBoss)
         {
+            PlayerPrefs.SetString(BattleNodeKey, selectedNode.gameObject.name);
+            PlayerPrefs.Save();
+
             RunSession.RunActive = true;
             RunSession.IsBossBattle = true;
             RunSession.BossSequence = new List<EnemyData> { GetMiniBoss() };
@@ -354,6 +455,9 @@ public class MapManager : MonoBehaviour
 
         if (selectedNode.nodeType == NodeType.Boss)
         {
+            PlayerPrefs.SetString(BattleNodeKey, selectedNode.gameObject.name);
+            PlayerPrefs.Save();
+
             RunSession.RunActive = true;
             RunSession.IsBossBattle = true;
             RunSession.BossSequence = new List<EnemyData> { GetBoss() };
@@ -363,15 +467,50 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
+        // REST
+        // -----------------------------------------
+
+        if (selectedNode.nodeType == NodeType.Rest)
+        {
+            currentNode = selectedNode;
+            OpenRestPopup();
+            return;
+        }
+
+        // -----------------------------------------
+        // CHEST
+        // -----------------------------------------
+
+        if (selectedNode.nodeType == NodeType.Chest)
+        {
+            currentNode = selectedNode;
+            OpenChestPopup();
+            return;
+        }
+
+        // -----------------------------------------
+        // SHOP
+        // -----------------------------------------
+
+        if (selectedNode.nodeType == NodeType.Shop)
+        {
+            PlayerPrefs.SetString(BattleNodeKey, selectedNode.gameObject.name);
+            PlayerPrefs.Save();
+
+            RunSession.RunActive = true;
+            RunSession.MapSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene("Shop");
+            return;
+        }
+
+        // -----------------------------------------
         // Các node khác
         // -----------------------------------------
 
-        selectedNode.CompleteNode();
-
         currentNode = selectedNode;
 
-        UnlockNextNodes(selectedNode);
-        UnlockLines(selectedNode);
+        selectedNode.CompleteNode();
+        SaveCompletedNode(selectedNode.gameObject.name);
 
         if (!string.IsNullOrEmpty(
             selectedNode.sceneName))
@@ -397,7 +536,7 @@ public class MapManager : MonoBehaviour
             battleNode.sceneName))
         {
             Debug.LogError(
-                "[MapManager] Battle Node không có Scene Name!"
+                "[MapManager] Battle Node has no Scene Name!"
             );
 
             return;
@@ -543,7 +682,7 @@ public class MapManager : MonoBehaviour
             node.sceneName))
         {
             Debug.LogWarning(
-                "[MapManager] Node không có Scene!"
+                "[MapManager] Node has no Scene!"
             );
 
             return;
@@ -585,15 +724,7 @@ public class MapManager : MonoBehaviour
         // Xóa Battle progress
         // -----------------------------------------
 
-        PlayerPrefs.DeleteKey(
-            BattleNodeKey
-        );
-
-        PlayerPrefs.DeleteKey(
-            CompletedNodeKey
-        );
-
-        PlayerPrefs.Save();
+        ClearProgress();
 
         // -----------------------------------------
         // Reset GameProgress
@@ -615,23 +746,7 @@ public class MapManager : MonoBehaviour
 
     public void UpdateNodes()
     {
-        foreach (MapNode node in nodes)
-        {
-            node.SetLock(true);
-        }
-
-        if (currentNode == null)
-            return;
-
-        currentNode.SetLock(false);
-
-        foreach (MapNode next in currentNode.nextNodes)
-        {
-            if (next != null)
-            {
-                next.SetLock(false);
-            }
-        }
+        UpdateMapFromProgress();
     }
 
     public void CompleteNode()
@@ -640,6 +755,8 @@ public class MapManager : MonoBehaviour
             return;
 
         currentNode.isCompleted = true;
+
+        SaveCompletedNode(currentNode.gameObject.name);
 
         UpdateNodes();
     }
@@ -651,19 +768,31 @@ public class MapManager : MonoBehaviour
 
         Canvas canvas = RuntimeUi.CreateCanvas("RestPopup");
         popupRoot = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
-        RuntimeUi.CreateText(popupRoot.transform, "Khu nghỉ ngơi", 28, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(popupRoot.transform, "Rest Area", 28, TextAnchor.MiddleCenter,
             new Vector2(0, 0.85f), new Vector2(1, 1));
-        RuntimeUi.CreateButton(popupRoot.transform, "Nghỉ ngơi (+30 HP)", new Vector2(0, 100), new Vector2(340, 60), RestHeal);
-        RuntimeUi.CreateButton(popupRoot.transform, "Nâng cấp 1 lá bài", new Vector2(0, 20), new Vector2(340, 60), RestUpgrade);
-        RuntimeUi.CreateButton(popupRoot.transform, "Rời đi", new Vector2(0, -60), new Vector2(340, 60), ClosePopup);
+
+        if (RelicManager.Owns("Coffee Dripper"))
+        {
+            RuntimeUi.CreateText(popupRoot.transform, "Coffee Dripper: cannot rest here!",
+                18, TextAnchor.MiddleCenter, new Vector2(0, 0.52f), new Vector2(1, 0.62f));
+        }
+        else
+        {
+            RuntimeUi.CreateButton(popupRoot.transform, "Rest (+30 HP)", new Vector2(0, 100), new Vector2(340, 60), RestHeal);
+        }
+
+        RuntimeUi.CreateButton(popupRoot.transform, "Upgrade 1 card", new Vector2(0, 20), new Vector2(340, 60), RestUpgrade);
+        RuntimeUi.CreateButton(popupRoot.transform, "Leave", new Vector2(0, -60), new Vector2(340, 60), ClosePopup);
     }
 
     private void RestHeal()
     {
+        RelicManager.EmitRestSite();
+
         RunSession.PlayerCurrentHealth = Mathf.Min(RunSession.PlayerMaxHealth, RunSession.PlayerCurrentHealth + 30);
         CompleteNode();
         ClosePopup();
-        Debug.Log("Rest: hồi 30 HP");
+        Debug.Log("Rest: +30 HP");
     }
 
     private void RestUpgrade()
@@ -673,20 +802,20 @@ public class MapManager : MonoBehaviour
 
         if (RunSession.Deck == null || RunSession.Deck.Count == 0)
         {
-            RuntimeUi.CreateText(popupRoot.transform, "Bộ bài trống!", 22, TextAnchor.MiddleCenter,
+            RuntimeUi.CreateText(popupRoot.transform, "Deck is empty!", 22, TextAnchor.MiddleCenter,
                 new Vector2(0, 0.55f), new Vector2(1, 0.7f));
-            RuntimeUi.CreateButton(popupRoot.transform, "Đóng", new Vector2(0, -180), new Vector2(200, 55), ClosePopup);
+            RuntimeUi.CreateButton(popupRoot.transform, "Close", new Vector2(0, -180), new Vector2(200, 55), ClosePopup);
             return;
         }
 
-        RuntimeUi.CreateText(popupRoot.transform, "Chọn lá bài để nâng cấp", 24, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(popupRoot.transform, "Choose a card to upgrade", 24, TextAnchor.MiddleCenter,
             new Vector2(0, 0.8f), new Vector2(1, 0.95f));
 
         int shown = Mathf.Min(RunSession.Deck.Count, 12);
         for (int i = 0; i < shown; i++)
         {
             CardData card = RunSession.Deck[i];
-            string label = card.cardName + (card.isUpgraded ? " (Đã nâng cấp)" : "");
+            string label = card.cardName + (card.isUpgraded ? " (Upgraded)" : "");
             RuntimeUi.CreateButton(popupRoot.transform, label,
                 new Vector2(0, 240 - i * 48),
                 new Vector2(400, 44),
@@ -696,10 +825,12 @@ public class MapManager : MonoBehaviour
 
     private void UpgradeChosen(CardData card)
     {
+        RelicManager.EmitRestSite();
+
         card.Upgrade();
         CompleteNode();
         ClosePopup();
-        Debug.Log("Đã nâng cấp: " + card.cardName);
+        Debug.Log("Upgraded: " + card.cardName);
     }
 
     private void OpenChestPopup()
@@ -712,22 +843,23 @@ public class MapManager : MonoBehaviour
 
         Canvas canvas = RuntimeUi.CreateCanvas("ChestPopup");
         popupRoot = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
-        RuntimeUi.CreateText(popupRoot.transform, "Rương báu vật!", 30, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(popupRoot.transform, "Treasure Chest!", 30, TextAnchor.MiddleCenter,
             new Vector2(0, 0.78f), new Vector2(1, 0.95f));
 
         if (reward != null)
         {
             RunSession.Deck.Add(reward);
-            RuntimeUi.CreateText(popupRoot.transform, $"Nhận được: {reward.cardName}\n{reward.description}", 20, TextAnchor.MiddleCenter,
+            RelicManager.EmitObtainCard(reward);
+            RuntimeUi.CreateText(popupRoot.transform, $"Received: {reward.cardName}\n{reward.description}", 20, TextAnchor.MiddleCenter,
                 new Vector2(0, 0.45f), new Vector2(1, 0.7f));
         }
         else
         {
-            RuntimeUi.CreateText(popupRoot.transform, "Rương trống rỗng...", 20, TextAnchor.MiddleCenter,
+            RuntimeUi.CreateText(popupRoot.transform, "The chest is empty...", 20, TextAnchor.MiddleCenter,
                 new Vector2(0, 0.5f), new Vector2(1, 0.65f));
         }
 
-        RuntimeUi.CreateButton(popupRoot.transform, "Nhận", new Vector2(0, -220), new Vector2(220, 60), () =>
+        RuntimeUi.CreateButton(popupRoot.transform, "Take", new Vector2(0, -220), new Vector2(220, 60), () =>
         {
             CompleteNode();
             ClosePopup();

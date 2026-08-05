@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +32,7 @@ public class BattleManager : MonoBehaviour
         playerHealth.OnDamageTaken += OnPlayerDamageTaken;
         playerHealth.OnPlayerDeath += OnPlayerDeath;
         battleSequence = GetBattleSequence();
+        RelicManager.EmitBattleStart();
         SpawnNextEnemy();
     }
 
@@ -41,7 +42,7 @@ public class BattleManager : MonoBehaviour
             return RunSession.BossSequence;
         if (enemySequence != null && enemySequence.Count > 0)
             return enemySequence;
-        Debug.LogWarning("enemySequence trống - dùng dãy quái mặc định");
+        Debug.LogWarning("enemySequence empty - using default enemy sequence");
         return RuntimeEnemyLibrary.GetDefaultSequence();
     }
 
@@ -110,7 +111,7 @@ public class BattleManager : MonoBehaviour
 
     private void OnEnemyDeath(EnemyHealth enemy)
     {
-        Debug.Log($"=== {battleSequence.Count - enemyIndex - 1} quái còn lại ===");
+        Debug.Log($"=== {battleSequence.Count - enemyIndex - 1} enemies left ===");
         StartCoroutine(SpawnNextEnemyNextFrame());
     }
 
@@ -140,6 +141,7 @@ public class BattleManager : MonoBehaviour
         battleEnded = true;
         Debug.Log("=== Battle Won! ===");
         GameEvents.OnBattleEnd?.Invoke();
+        RelicManager.EmitBattleEnd();
         BuildRewardPanel(RollRewardChoices(3));
     }
 
@@ -167,7 +169,7 @@ public class BattleManager : MonoBehaviour
     {
         Canvas canvas = RuntimeUi.CreateCanvas("RewardCanvas");
         rewardPanel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
-        RuntimeUi.CreateText(rewardPanel.transform, "Chiến thắng! Chọn 1 lá bài thưởng", 28, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(rewardPanel.transform, "Victory! Choose 1 card reward", 28, TextAnchor.MiddleCenter,
             new Vector2(0, 0.85f), new Vector2(1, 1));
 
         for (int i = 0; i < choices.Count; i++)
@@ -179,18 +181,18 @@ public class BattleManager : MonoBehaviour
                 () => ChooseReward(card));
         }
 
-        RuntimeUi.CreateButton(rewardPanel.transform, "Bỏ qua", new Vector2(0, -320), new Vector2(180, 50), FinishBattle);
+        RuntimeUi.CreateButton(rewardPanel.transform, "Skip", new Vector2(0, -320), new Vector2(180, 50), FinishBattle);
     }
 
     private string CardRewardLabel(CardData c)
     {
         string s = $"{c.cardName} - {c.description}";
         List<string> stats = new();
-        if (c.energyCost > 0) stats.Add($"NL {c.energyCost}");
-        if (c.damage > 0) stats.Add($"ST {c.damage}");
-        if (c.block > 0) stats.Add($"Chặn {c.block}");
-        if (c.heal > 0) stats.Add($"Hồi {c.heal}");
-        if (c.strength > 0) stats.Add($"Lực {c.strength}");
+        if (c.energyCost > 0) stats.Add($"Energy {c.energyCost}");
+        if (c.damage > 0) stats.Add($"ATK {c.damage}");
+        if (c.block > 0) stats.Add($"Block {c.block}");
+        if (c.heal > 0) stats.Add($"Heal {c.heal}");
+        if (c.strength > 0) stats.Add($"Str {c.strength}");
         if (stats.Count > 0) s += "\n" + string.Join(" | ", stats);
         return s;
     }
@@ -204,9 +206,9 @@ public class BattleManager : MonoBehaviour
         foreach (Transform child in rewardPanel.transform)
             Destroy(child.gameObject);
 
-        RuntimeUi.CreateText(rewardPanel.transform, $"Đã thêm vào bộ bài: {card.cardName}", 24, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(rewardPanel.transform, $"Added to deck: {card.cardName}", 24, TextAnchor.MiddleCenter,
             new Vector2(0, 0.55f), new Vector2(1, 0.7f));
-        RuntimeUi.CreateButton(rewardPanel.transform, "Tiếp tục", new Vector2(0, -200), new Vector2(240, 60), FinishBattle);
+        RuntimeUi.CreateButton(rewardPanel.transform, "Continue", new Vector2(0, -200), new Vector2(240, 60), FinishBattle);
     }
 
     private void FinishBattle()
@@ -224,9 +226,9 @@ public class BattleManager : MonoBehaviour
 
         Canvas canvas = RuntimeUi.CreateCanvas("GameOverCanvas");
         GameObject panel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.9f));
-        RuntimeUi.CreateText(panel.transform, "Bạn đã chết...", 34, TextAnchor.MiddleCenter,
+        RuntimeUi.CreateText(panel.transform, "You died...", 34, TextAnchor.MiddleCenter,
             new Vector2(0, 0.6f), new Vector2(1, 0.8f));
-        RuntimeUi.CreateButton(panel.transform, "Bắt đầu run mới", new Vector2(0, 0), new Vector2(260, 60), () =>
+        RuntimeUi.CreateButton(panel.transform, "Start new run", new Vector2(0, 0), new Vector2(260, 60), () =>
         {
             RunSession.StartNewRun();
             RunSession.ReturnToMap();

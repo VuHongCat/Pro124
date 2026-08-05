@@ -15,7 +15,7 @@ public class CardDatabase : MonoBehaviour
             if (!cardLookup.ContainsKey(card.cardName))
                 cardLookup.Add(card.cardName, card);
             else
-                Debug.LogWarning($"Trùng tên Card: {card.cardName}");
+                Debug.LogWarning($"Duplicate card name: {card.cardName}");
         }
     }
 
@@ -29,9 +29,38 @@ public class CardDatabase : MonoBehaviour
     public List<CardData> GetStarterDeck()
     {
         List<CardData> deck = new();
-        foreach (CardData card in allCards)
+        string[] starterNames =
+        {
+            "Strike", "Strike", "Strike", "Strike", "Strike",
+            "Defend", "Defend", "Defend", "Defend",
+            "Bash"
+        };
+
+        foreach (string cardName in starterNames)
+        {
+            CardData card = FindCard(cardName);
+            if (card == null)
+            {
+                Debug.LogWarning($"[CardDatabase] Starter card not found: {cardName}");
+                continue;
+            }
             deck.Add(Instantiate(card));
+        }
+
         return deck;
+    }
+
+    private CardData FindCard(string cardName)
+    {
+        if (cardLookup != null &&
+            cardLookup.TryGetValue(cardName, out CardData cached))
+            return cached;
+
+        foreach (CardData card in allCards)
+            if (card != null && card.cardName == cardName)
+                return card;
+
+        return null;
     }
 
     public List<CardData> GetComplexCards()

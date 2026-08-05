@@ -17,10 +17,36 @@ public class CardTooltipTrigger : MonoBehaviour,
 
         if (artwork != null && card != null)
         {
-            artwork.sprite = card.artwork;
+            if (card.artwork != null)
+            {
+                artwork.sprite = card.artwork;
+                artwork.color = Color.white;
+            }
+            else
+            {
+                Debug.LogWarning("[CardTooltipTrigger] Card '" + card.cardName + "' has no artwork assigned.", this);
+                artwork.sprite = GetPlaceholderSprite();
+                artwork.color = new Color(0.1f, 0.1f, 0.12f, 1f);
+            }
         }
 
-        Debug.Log("Đã gán card: " + card.cardName);
+        Debug.Log("Assigned card: " + card.cardName);
+    }
+
+    private static Sprite placeholderSprite;
+
+    private static Sprite GetPlaceholderSprite()
+    {
+        if (placeholderSprite == null)
+        {
+            var tex = new Texture2D(2, 2);
+            tex.SetPixels(new[] { Color.white, Color.white, Color.white, Color.white });
+            tex.Apply();
+            placeholderSprite = Sprite.Create(tex, new Rect(0, 0, 2, 2), new Vector2(0.5f, 0.5f));
+            placeholderSprite.name = "CardArtworkPlaceholder";
+        }
+
+        return placeholderSprite;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
