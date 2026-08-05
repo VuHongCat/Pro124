@@ -19,7 +19,7 @@ MonoBehaviour:
   energyCost: 3
   cardType: 0
   target: 0
-  rarity: 0
+  rarity: 1
   damage: 20
   block: 0
   strength: 0

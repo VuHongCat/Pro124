@@ -41,9 +41,7 @@ public class EnemyData : ScriptableObject
     public int vulnerableDamage;
 
     public int counterStacks;
-
-
-    [Header("Type")]
+    public int goldReward;
     public bool isBoss;
     public bool flipX;
 }
