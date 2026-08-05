@@ -19,6 +19,9 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private BattleManager battleManager;
     public TurnState CurrenTurn => currentTurn;
 
+    public static event System.Action<int> PlayerTurnStarted;
+    public int TurnCount { get; private set; }
+
     private bool firstRoundDone = false;
 
     private bool turnStarted = false;
@@ -30,8 +33,10 @@ public class TurnManager : MonoBehaviour
 
     public void StartPlayerTurn()
     {
+        TurnCount++;
         ChangeTurn(TurnState.PlayerTurn);
         battleManager.StartPlayerTurn();
+        PlayerTurnStarted?.Invoke(TurnCount);
 
         // Ice Cream: giữ năng lượng chưa dùng giữa các lượt
         if (turnStarted && RelicManager.Owns("Ice Cream"))

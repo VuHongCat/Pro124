@@ -26,4 +26,5 @@ MonoBehaviour:
   weakDamage: 0
   vulnerableDamage: 0
   counterStacks: 3
+  goldReward: 30
   isBoss: 0

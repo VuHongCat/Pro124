@@ -19,4 +19,5 @@ MonoBehaviour:
   attackDamage: 6
   block: 4
   poisonDamage: 3
+  goldReward: 20
   isBoss: 0

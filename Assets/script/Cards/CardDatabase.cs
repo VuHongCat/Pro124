@@ -32,8 +32,8 @@ public class CardDatabase : MonoBehaviour
         string[] starterNames =
         {
             "Strike", "Strike", "Strike", "Strike", "Strike",
-            "Defend", "Defend", "Defend", "Defend",
-            "Bash"
+            "Defend", "Defend", "Defend",
+            "Bash", "Second Wind"
         };
 
         foreach (string cardName in starterNames)

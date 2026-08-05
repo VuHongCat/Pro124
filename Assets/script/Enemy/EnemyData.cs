@@ -29,5 +29,6 @@ public class EnemyData : ScriptableObject
     public int weakDamage;
     public int vulnerableDamage;
     public int counterStacks;
+    public int goldReward;
     public bool isBoss;
 }

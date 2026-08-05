@@ -6,27 +6,51 @@ public static class RunSession
 {
     public static bool RunActive = false;
     public static string MapSceneName = "MapLevel1";
+    public static int MapLevel = 1;
     public static List<CardData> Deck = new List<CardData>();
     public static int PlayerMaxHealth = 80;
     public static int PlayerCurrentHealth = 80;
     public static int Gold = 100;
 
     public static bool IsBossBattle = false;
+    public static bool IsFinalBoss = false;
     public static List<EnemyData> BossSequence = null;
 
     public static void StartNewRun()
     {
         RunActive = true;
         MapSceneName = "MapLevel1";
+        MapLevel = 1;
         Deck = new List<CardData>();
         PlayerMaxHealth = 80;
         PlayerCurrentHealth = 80;
         Gold = 100;
         IsBossBattle = false;
+        IsFinalBoss = false;
         BossSequence = null;
 
         MapManager.ClearProgress();
         RelicManager.Instance.ClearRelics();
+    }
+
+    public static void AdvanceToNextMap()
+    {
+        IsBossBattle = false;
+        IsFinalBoss = false;
+        BossSequence = null;
+
+        if (MapLevel < 4)
+        {
+            MapLevel++;
+            MapSceneName = "MapLevel" + MapLevel;
+            MapManager.ClearProgress();
+            SceneManager.LoadScene(MapSceneName);
+            return;
+        }
+
+        // Map 4 done -> victory, start a new run
+        StartNewRun();
+        SceneManager.LoadScene("MainMenu");
     }
 
     public static void ClearDeck()
