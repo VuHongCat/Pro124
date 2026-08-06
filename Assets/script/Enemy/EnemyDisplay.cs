@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,13 @@ public class EnemyDisplay : MonoBehaviour
 
 
     private int currentBlock;
+
+
+    [Header("Punch Effect")]
+    [SerializeField] private float punchScale = 1.15f;
+    [SerializeField] private float punchDuration = 0.18f;
+
+    private Coroutine punchRoutine;
 
 
     public EnemyData EnemyData { get; private set; }
@@ -212,6 +220,34 @@ public class EnemyDisplay : MonoBehaviour
         }
     }
 
+
+
+
+
+    public void Punch()
+    {
+        if (artworkImage == null) return;
+        if (punchRoutine != null) StopCoroutine(punchRoutine);
+        punchRoutine = StartCoroutine(PunchRoutine());
+    }
+
+    private IEnumerator PunchRoutine()
+    {
+        RectTransform rt = artworkImage.rectTransform;
+        Vector3 baseScale = rt.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < punchDuration)
+        {
+            float t = elapsed / punchDuration;
+            float factor = 1f + (punchScale - 1f) * Mathf.Sin(t * Mathf.PI);
+            rt.localScale = new Vector3(baseScale.x * factor, baseScale.y * factor, baseScale.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rt.localScale = baseScale;
+    }
 
 
 

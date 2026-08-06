@@ -81,6 +81,6 @@ public class WorldIslandUI : MonoBehaviour
         }
 
 
-        SceneManager.LoadScene(sceneName);
+        SceneLoader.TransitionTo(sceneName);
     }
 }
