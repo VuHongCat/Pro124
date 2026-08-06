@@ -42,6 +42,8 @@ public class EnemyHealth : MonoBehaviour
             damage = enemyBlock.AbsorbDamage(damage);
         if (damage <= 0)
             return;
+        GetComponent<EnemyHitVFX>()?.Play();
+        GetComponent<EnemyDisplay>()?.Punch();
         if (counterable)
             OnDamaged?.Invoke(damage);
         currentHealth -= damage;

@@ -87,13 +87,19 @@ public class BattleManager : MonoBehaviour
         GameObject enemy = enemyFactory.CreateEnemy(data, enemyArea);
 
         RectTransform rt = enemy.GetComponent<RectTransform>();
+
         if (rt != null)
         {
             rt.anchorMin = new Vector2(0.5f, 0.5f);
             rt.anchorMax = new Vector2(0.5f, 0.5f);
             rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = new Vector2((index - (total - 1) * 0.5f) * 300f, 0);
+
+            rt.anchoredPosition = new Vector2(
+                (index - (total - 1) * 0.5f) * 300f,
+                0
+            );
         }
+
 
         EnemyHealth health = enemy.GetComponent<EnemyHealth>();
         EnemyStatus status = enemy.GetComponent<EnemyStatus>();

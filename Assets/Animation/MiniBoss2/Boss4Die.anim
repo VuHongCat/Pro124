@@ -17,15 +17,49 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: -8039243644727294743, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - time: 0.18333334
+      value: {fileID: -3824934168998194399, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - time: 0.36666667
+      value: {fileID: -6048757120937469914, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - time: 0.6166667
+      value: {fileID: -1985660446580128079, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - time: 0.8
+      value: {fileID: -1823883168347524349, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - time: 0.98333335
+      value: {fileID: -885343839, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+    flags: 2
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 2015549526
+      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: -8039243644727294743, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - {fileID: -3824934168998194399, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - {fileID: -6048757120937469914, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - {fileID: -1985660446580128079, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - {fileID: -1823883168347524349, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
+    - {fileID: -885343839, guid: 348198a94cce93046bfb64065e42ab19, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -50,4 +84,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.98333335
+    functionName: OnDieAnimationFinished
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
