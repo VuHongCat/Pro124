@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Bat
-  artwork: {fileID: 0}
+  artwork: {fileID: 8647823593821616703, guid: 6b1fa14a93a83654899705358a6f5563, type: 3}
   archetype: 2
+  animatorController: {fileID: 9100000, guid: 2a6bc13d9acd9bd4ba1c05d018143625, type: 2}
   maxHealth: 22
   attackDamage: 5
   block: 3
@@ -28,3 +29,4 @@ MonoBehaviour:
   counterStacks: 0
   goldReward: 15
   isBoss: 0
+  flipX: 0
