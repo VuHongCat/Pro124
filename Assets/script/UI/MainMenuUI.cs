@@ -4,7 +4,7 @@ public class MainMenuUI : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneLoader.Instance.LoadScene("MapLevel1");
+        SceneLoader.TransitionTo("MapLevel1");
     }
 
     public void QuitGame()

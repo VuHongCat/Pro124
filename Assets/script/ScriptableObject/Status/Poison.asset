@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuffData
   BuffID: Poison
   BuffName: Poison
-  BuffIcon: {fileID: 0}
+  BuffIcon: {fileID: 3245969127437145834, guid: d42456520fa46ee498700e52ad0e1776, type: 3}
   Type: 1
   Description: Takes damage equal to stacks at the start of its turn.

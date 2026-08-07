@@ -24,7 +24,7 @@ public class StatusItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         else if (iconImage != null)
         {
             iconImage.enabled = false;
-            Debug.LogWarning($"StatusItem '{name}': BuffIcon trống, hiện tên thay thế.");
+            Debug.LogWarning($"StatusItem '{name}': BuffIcon is empty, showing name instead.");
         }
 
         if (stackText != null)

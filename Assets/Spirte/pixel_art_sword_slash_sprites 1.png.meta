@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: ef4ff7100d41de241849e40121f5b0ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1827232344781913590
+    second: pixel_art_sword_slash_sprites 1_0
+  - first:
+      213: -4577428146440920999
+    second: pixel_art_sword_slash_sprites 1_1
+  - first:
+      213: 3064567325567630527
+    second: pixel_art_sword_slash_sprites 1_2
+  - first:
+      213: 687616402833840524
+    second: pixel_art_sword_slash_sprites 1_3
+  - first:
+      213: 147563231824600548
+    second: pixel_art_sword_slash_sprites 1_4
+  - first:
+      213: -5016102727152203665
+    second: pixel_art_sword_slash_sprites 1_5
+  - first:
+      213: -5082550608294675890
+    second: pixel_art_sword_slash_sprites 1_6
+  - first:
+      213: -3702271767014271734
+    second: pixel_art_sword_slash_sprites 1_7
+  - first:
+      213: -5268505635026559533
+    second: pixel_art_sword_slash_sprites 1_8
+  - first:
+      213: -7176676285194758073
+    second: pixel_art_sword_slash_sprites 1_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 128
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a028b2f0ddd54a6e0800000000000000
+      internalID: -1827232344781913590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 128
+        width: 43
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950a3826a55b970c0800000000000000
+      internalID: -4577428146440920999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 112
+        width: 59
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbc3abeeeb7878a20800000000000000
+      internalID: 3064567325567630527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 55
+        width: 59
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8994a8a977ea8900800000000000000
+      internalID: 687616402833840524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_4
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 55
+        width: 58
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed50de3aff3c0200800000000000000
+      internalID: 147563231824600548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_5
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 55
+        width: 58
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6889376529336ab0800000000000000
+      internalID: -5016102727152203665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 8
+        width: 58
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a76a776272779b0800000000000000
+      internalID: -5082550608294675890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_7
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 8
+        width: 57
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0518218173ee9cc0800000000000000
+      internalID: -3702271767014271734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_8
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 31
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dd1917e90282e6b0800000000000000
+      internalID: -5268505635026559533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_art_sword_slash_sprites 1_9
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 8
+        width: 38
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7481ff831f2576c90800000000000000
+      internalID: -7176676285194758073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4c5e466f2ddea2849a8c50c5afc462cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      pixel_art_sword_slash_sprites 1_0: -1827232344781913590
+      pixel_art_sword_slash_sprites 1_1: -4577428146440920999
+      pixel_art_sword_slash_sprites 1_2: 3064567325567630527
+      pixel_art_sword_slash_sprites 1_3: 687616402833840524
+      pixel_art_sword_slash_sprites 1_4: 147563231824600548
+      pixel_art_sword_slash_sprites 1_5: -5016102727152203665
+      pixel_art_sword_slash_sprites 1_6: -5082550608294675890
+      pixel_art_sword_slash_sprites 1_7: -3702271767014271734
+      pixel_art_sword_slash_sprites 1_8: -5268505635026559533
+      pixel_art_sword_slash_sprites 1_9: -7176676285194758073
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

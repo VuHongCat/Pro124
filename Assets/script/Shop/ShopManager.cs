@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -22,10 +23,116 @@ public class ShopManager : MonoBehaviour
 
     private RelicData[] currentRelics;
 
+    private bool[] relicSold;
+
+    private bool[] cardSold;
+
     private void Start()
     {
         GenerateCards();
         GenerateRelics();
+        WireLeaveButton();
+        WireCardBuyButtons();
+        WireRelicBuyButtons();
+        UpdateGoldText();
+    }
+
+    //==========================
+    // LEAVE
+    //==========================
+
+    public void Leave()
+    {
+        string shopNode = PlayerPrefs.GetString(
+            MapManager.BattleNodeKey,
+            ""
+        );
+
+        if (!string.IsNullOrEmpty(shopNode))
+            MapManager.SaveCompletedNode(shopNode);
+
+        RunSession.ReturnToMap();
+    }
+
+    private void WireLeaveButton()
+    {
+        Button leaveBtn = GameObject.Find("LeaveBotton")?.GetComponent<Button>();
+
+        if (leaveBtn == null)
+        {
+            Debug.LogWarning("[ShopManager] LeaveBotton button not found!");
+            return;
+        }
+
+        leaveBtn.onClick.RemoveAllListeners();
+        leaveBtn.onClick.AddListener(Leave);
+    }
+
+    private void UpdateGoldText()
+    {
+        TMP_Text goldText = GameObject.Find("GoldText")?.GetComponent<TMP_Text>();
+
+        if (goldText != null)
+            goldText.text = RunSession.Gold.ToString();
+    }
+
+    //==========================
+    // BUY RELIC
+    //==========================
+
+    private void WireRelicBuyButtons()
+    {
+        relicSold = new bool[relicSlots.Length];
+
+        for (int i = 0; i < relicSlots.Length; i++)
+        {
+            if (relicSlots[i] == null)
+                continue;
+
+            Button btn = relicSlots[i].GetComponent<Button>();
+
+            if (btn == null)
+                continue;
+
+            int index = i;
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => BuyRelic(index));
+        }
+    }
+
+    public void BuyRelic(int index)
+    {
+        if (index < 0 || index >= relicSlots.Length)
+            return;
+
+        if (relicSold[index])
+            return;
+
+        RelicData relic = currentRelics[index];
+
+        if (relic == null)
+            return;
+
+        if (RunSession.Gold < relic.shopPrice)
+        {
+            Debug.Log("[ShopManager] Not enough gold to buy relic: " + relic.relicName);
+            return;
+        }
+
+        RunSession.Gold -= relic.shopPrice;
+
+        RelicManager.Instance.AddRelic(relic);
+
+        relicSold[index] = true;
+
+        Button btn = relicSlots[index].GetComponent<Button>();
+        if (btn != null)
+            btn.interactable = false;
+
+        if (relicPriceTexts[index] != null)
+            relicPriceTexts[index].text = "SOLD";
+
+        UpdateGoldText();
     }
 
     //==========================
@@ -65,6 +172,57 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    private void WireCardBuyButtons()
+    {
+        cardSold = new bool[cardSlots.Length];
+
+        for (int i = 0; i < cardSlots.Length; i++)
+        {
+            if (cardSlots[i] == null)
+                continue;
+
+            Button btn = cardSlots[i].GetComponent<Button>();
+            if (btn == null)
+                btn = cardSlots[i].gameObject.AddComponent<Button>();
+
+            int index = i;
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => BuyCard(index));
+        }
+    }
+
+    public void BuyCard(int index)
+    {
+        if (index < 0 || index >= cardSlots.Length)
+            return;
+
+        if (cardSold[index])
+            return;
+
+        CardData card = currentCards[index];
+        if (card == null)
+            return;
+
+        if (RunSession.Gold < card.shopPrice)
+        {
+            Debug.Log("[ShopManager] Not enough gold to buy card: " + card.cardName);
+            return;
+        }
+
+        RunSession.Gold -= card.shopPrice;
+        RunSession.Deck.Add(card);
+        cardSold[index] = true;
+
+        Button btn = cardSlots[index].GetComponent<Button>();
+        if (btn != null)
+            btn.interactable = false;
+
+        if (cardPriceTexts[index] != null)
+            cardPriceTexts[index].text = "SOLD";
+
+        UpdateGoldText();
+    }
+
     //==========================
     // RELIC
     //==========================
@@ -78,6 +236,9 @@ public class ShopManager : MonoBehaviour
         {
             if (relic.rarity != RelicRarity.Boss)
             {
+                if (!relic.stackable && RelicManager.Instance.HasRelic(relic.relicName))
+                    continue;
+
                 availableRelics.Add(relic);
             }
         }

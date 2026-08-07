@@ -26,16 +26,16 @@ public partial class login : MonoBehaviour
         string pass = password.text.Trim();
         if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
         {
-            message("vui lòng nhập đủ thông tin", Color.red);
+            message("Please fill in all fields", Color.red);
             return;
         }
 
         if (!File.Exists(filepath))
         {
-            message("Tài khoản không tồn tại", Color.red);
+            message("Account does not exist", Color.red);
             return;
         }
-        message("đăng nhập thành công", Color.green);
+        message("Login successful", Color.green);
 
 
         string[] lines = File.ReadAllLines(filepath);
@@ -62,15 +62,15 @@ public partial class login : MonoBehaviour
         }
         if (!userfound)
         {
-            message("tài khoản hoặc mật khẩu không đúng", Color.red);
+            message("Incorrect username or password", Color.red);
             return;
         }
         if (!iscorrectpass)
         {
-            message("tài khoản hoặc mật khẩu không đúng", Color.red);
+            message("Incorrect username or password", Color.red);
             return;
         }
-        SceneLoader.Instance.LoadScene("MainMenu");
+        SceneLoader.TransitionTo("MainMenu");
     }
     public void message(string msg, Color color)
     {

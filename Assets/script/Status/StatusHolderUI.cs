@@ -12,12 +12,12 @@ public class StatusHolderUI : MonoBehaviour
     {
         if (statusItemPrefab == null)
         {
-            Debug.LogError($"StatusHolderUI trên {name}: chưa gán StatusItemPrefab!", this);
+            Debug.LogError($"StatusHolderUI on {name}: StatusItemPrefab not assigned!", this);
             return;
         }
         if (container == null)
         {
-            Debug.LogError($"StatusHolderUI trên {name}: chưa gán Container!", this);
+            Debug.LogError($"StatusHolderUI on {name}: Container not assigned!", this);
             return;
         }
 
@@ -27,7 +27,7 @@ public class StatusHolderUI : MonoBehaviour
             item = go.GetComponent<StatusItemUI>();
             if (item == null)
             {
-                Debug.LogError($"Prefab '{statusItemPrefab.name}' không có script StatusItemUI!", this);
+                Debug.LogError($"Prefab '{statusItemPrefab.name}' has no StatusItemUI script!", this);
                 Destroy(go);
                 return;
             }

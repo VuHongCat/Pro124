@@ -6,15 +6,9 @@ public class BattleZone : MonoBehaviour, IDropHandler
     [SerializeField] private BattleManager battleManager;
     [SerializeField] private TurnManager turnManager;
 
+    // Drop được xử lý trong CardDrag.OnEndDrag (đã raycast quái mục tiêu).
+    // BattleZone giữ IDropHandler để không chặn drop nhưng không tự chơi bài.
     public void OnDrop(PointerEventData eventData)
     {
-        if (turnManager.CurrenTurn != TurnManager.TurnState.PlayerTurn)
-            return;
-        CardDisplay card = eventData.pointerDrag.GetComponent<CardDisplay>();
-
-        if (card == null)
-            return;
-        Debug.Log(card.CardData.cardName);
-        battleManager.PlayCard(card);
     }
 }

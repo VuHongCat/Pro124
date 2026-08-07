@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
+  m_Name: Bosslv1
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyName: 
+  artwork: {fileID: -4744724232239111109, guid: 0a11c4369a6ab5d44b3030f053d52d90, type: 3}
+  archetype: 0
+  animatorController: {fileID: 9100000, guid: cb2444a938af57445ba40018a56d1783, type: 2}
+  maxHealth: 0
+  attackDamage: 0
+  block: 0
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 0
+  isBoss: 0
+  flipX: 0
