@@ -18,6 +18,10 @@ public class EnemyDisplay : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text intentText;
     [SerializeField] private TMP_Text statusText;
+    [SerializeField] private Image intentIcon;
+    [SerializeField] private Sprite attackIntentSprite;
+    [SerializeField] private Sprite shieldIntentSprite;
+    [SerializeField] private Sprite poisonIntentSprite;
 
 
 
@@ -171,52 +175,48 @@ public class EnemyDisplay : MonoBehaviour
         if (intentText == null)
             return;
 
+        Sprite icon = null;
+        string label = value.ToString();
 
         switch (type)
         {
             case EnemyIntentType.Attack:
-                intentText.text = $"ATK {value}";
+            case EnemyIntentType.LifestealAttack:
+                icon = attackIntentSprite;
                 break;
-
 
             case EnemyIntentType.Block:
-                intentText.text = $"BLK {value}";
+                icon = shieldIntentSprite;
                 break;
-
-
-            case EnemyIntentType.Buff:
-                intentText.text = "BUF";
-                break;
-
-
-            case EnemyIntentType.Debuff:
-                intentText.text = "DEB";
-                break;
-
-
-            case EnemyIntentType.Stun:
-                intentText.text = "STUN";
-                break;
-
 
             case EnemyIntentType.Poison:
-                intentText.text = $"PSN {value}";
+                icon = poisonIntentSprite;
                 break;
-
 
             case EnemyIntentType.Heal:
-                intentText.text = $"HEAL {value}";
+                label = $"HEAL {value}";
                 break;
 
-
-            case EnemyIntentType.LifestealAttack:
-                intentText.text = $"ATK {value}";
+            case EnemyIntentType.Buff:
+                label = "BUF";
                 break;
 
-
-            default:
-                intentText.text = "";
+            case EnemyIntentType.Debuff:
+                label = "DEB";
                 break;
+
+            case EnemyIntentType.Stun:
+                label = "STUN";
+                break;
+        }
+
+        intentText.text = label;
+
+        if (intentIcon != null)
+        {
+            intentIcon.gameObject.SetActive(icon != null);
+            if (icon != null)
+                intentIcon.sprite = icon;
         }
     }
 
