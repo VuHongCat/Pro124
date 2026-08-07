@@ -148,7 +148,7 @@ public class MapNode : MonoBehaviour
         if (isLocked)
         {
             Debug.LogWarning(
-                "[MapNode] NODE ĐANG BỊ KHÓA!"
+                "[MapNode] NODE IS LOCKED!"
             );
 
             return;
@@ -158,14 +158,14 @@ public class MapNode : MonoBehaviour
         if (MapManager.instance == null)
         {
             Debug.LogError(
-                "[MapNode] KHÔNG TÌM THẤY MAP MANAGER!"
+                "[MapNode] MAP MANAGER NOT FOUND!"
             );
 
             return;
         }
 
         Debug.Log(
-            "[MapNode] Gọi MapManager.SelectNode()"
+            "[MapNode] Calling MapManager.SelectNode()"
         );
 
         MapManager.instance.SelectNode(this);

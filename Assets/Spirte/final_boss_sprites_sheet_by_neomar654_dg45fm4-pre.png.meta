@@ -1,0 +1,2350 @@
+fileFormatVersion: 2
+guid: 348198a94cce93046bfb64065e42ab19
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6503915998448364158
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_0
+  - first:
+      213: 7381284471794848781
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_1
+  - first:
+      213: 4478832846674456841
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_2
+  - first:
+      213: 274659063629386100
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_3
+  - first:
+      213: 3143070256739134398
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_4
+  - first:
+      213: 2640581596234891435
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_5
+  - first:
+      213: 8163213004820990666
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_6
+  - first:
+      213: -5796469388227581350
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_7
+  - first:
+      213: -8981979127803060625
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_8
+  - first:
+      213: -3413330160492752679
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_9
+  - first:
+      213: -7523628360002524626
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_10
+  - first:
+      213: -55752621461926331
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_11
+  - first:
+      213: 3119121718343639183
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_12
+  - first:
+      213: -6078650494291155190
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_13
+  - first:
+      213: -7570585769405525430
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_14
+  - first:
+      213: -5158980977098307026
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_15
+  - first:
+      213: -15051550289089873
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_16
+  - first:
+      213: -8934348308803798330
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_17
+  - first:
+      213: -1839303819472403439
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_18
+  - first:
+      213: 7112820312544677129
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_19
+  - first:
+      213: 8926349119635252423
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_20
+  - first:
+      213: 1422001407522921295
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_21
+  - first:
+      213: 5601550080365492588
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_22
+  - first:
+      213: 1324624754500120425
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_23
+  - first:
+      213: 5101704297193461271
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_24
+  - first:
+      213: -4615334986512513083
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_25
+  - first:
+      213: -5871472655259279030
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_26
+  - first:
+      213: 38562731845707693
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_27
+  - first:
+      213: -9121781937050034605
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_28
+  - first:
+      213: 3801600547701067008
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_29
+  - first:
+      213: -8839743899841868204
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_30
+  - first:
+      213: -5500431397990855306
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_31
+  - first:
+      213: 4515316320847606476
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_32
+  - first:
+      213: -1991824913934000675
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_33
+  - first:
+      213: 2577350585164213122
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_34
+  - first:
+      213: 5468619645154879214
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_35
+  - first:
+      213: 6967288517403125847
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_36
+  - first:
+      213: -3388899076680078232
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_37
+  - first:
+      213: -681090717259287091
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_38
+  - first:
+      213: 3773146265374524061
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_39
+  - first:
+      213: 1613303921781773519
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_40
+  - first:
+      213: 1675751318453528209
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_41
+  - first:
+      213: 4632720520895497001
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_42
+  - first:
+      213: 1361771127098267827
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_43
+  - first:
+      213: -2151387529461324480
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_44
+  - first:
+      213: -7753628223353471273
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_45
+  - first:
+      213: -8039243644727294743
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_46
+  - first:
+      213: 8665300776308785287
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_47
+  - first:
+      213: 14448643746974082
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_48
+  - first:
+      213: 7279554252331126344
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_49
+  - first:
+      213: 8395762640575685952
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_50
+  - first:
+      213: -3824934168998194399
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_51
+  - first:
+      213: -7609172995482314317
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_52
+  - first:
+      213: -6048757120937469914
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_53
+  - first:
+      213: -2171696211784352894
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_54
+  - first:
+      213: -24113913104961538
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_55
+  - first:
+      213: 2438409270821282365
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_56
+  - first:
+      213: 8832613566334964534
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_57
+  - first:
+      213: 2884881416152840656
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_58
+  - first:
+      213: -3990925027052207534
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_59
+  - first:
+      213: 3728088727081507111
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_60
+  - first:
+      213: -1447878427587432512
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_61
+  - first:
+      213: -1985660446580128079
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_62
+  - first:
+      213: -8203490921662466380
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_63
+  - first:
+      213: -1823883168347524349
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_64
+  - first:
+      213: 5506176535255873983
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_65
+  - first:
+      213: -2748037086594582003
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_66
+  - first:
+      213: 7101110051954322749
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_67
+  - first:
+      213: -1688229944849304606
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_68
+  - first:
+      213: -5305166699706322727
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_69
+  - first:
+      213: -1824671346109994965
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_70
+  - first:
+      213: 7711610460456063910
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_71
+  - first:
+      213: -7213813030299113398
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_72
+  - first:
+      213: 4504462308899777045
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_73
+  - first:
+      213: -8703299163166417522
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_74
+  - first:
+      213: 7049027144390967098
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_75
+  - first:
+      213: 3071591874105584388
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_76
+  - first:
+      213: -7459624346026064070
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_77
+  - first:
+      213: 6258969191912039394
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_78
+  - first:
+      213: -5441482755534348468
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_79
+  - first:
+      213: -8629992231156616528
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_80
+  - first:
+      213: -2442368397344987381
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_81
+  - first:
+      213: -8851242288084631506
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_82
+  - first:
+      213: -2976550975974191545
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_83
+  - first:
+      213: 3072016771005050289
+    second: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_84
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 786
+        width: 62
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 285518fcbd27db5a0800000000000000
+      internalID: -6503915998448364158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 786
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04507f8e179f6660800000000000000
+      internalID: 7381284471794848781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 786
+        width: 59
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901f1628eb2082e30800000000000000
+      internalID: 4478832846674456841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 786
+        width: 65
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47198f196f8cfc300800000000000000
+      internalID: 274659063629386100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_4
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 786
+        width: 60
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebb280deebd6e9b20800000000000000
+      internalID: 3143070256739134398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_5
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 786
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0c30ca8fa35a420800000000000000
+      internalID: 2640581596234891435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_6
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 786
+        width: 59
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aca44323afe894170800000000000000
+      internalID: 8163213004820990666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_7
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 786
+        width: 65
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ae44b6dcdce8fa0800000000000000
+      internalID: -5796469388227581350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_8
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 786
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e53536299995380800000000000000
+      internalID: -8981979127803060625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_9
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 786
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0d3babd4a61a0d0800000000000000
+      internalID: -3413330160492752679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_10
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 786
+        width: 71
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2aaef35ed3b69790800000000000000
+      internalID: -7523628360002524626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_11
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 786
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e0772494de93ff0800000000000000
+      internalID: -55752621461926331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_12
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 682
+        width: 73
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8024115da8594b20800000000000000
+      internalID: 3119121718343639183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_13
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 683
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a07e50ed49b44aba0800000000000000
+      internalID: -6078650494291155190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_14
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 682
+        width: 66
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a42d4f87a50efe690800000000000000
+      internalID: -7570585769405525430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_15
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 687
+        width: 67
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ace01822e9768b0800000000000000
+      internalID: -5158980977098307026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_16
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 682
+        width: 59
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa23bbd1b68acff0800000000000000
+      internalID: -15051550289089873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_17
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 682
+        width: 58
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca3322ac81d20480800000000000000
+      internalID: -8934348308803798330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_18
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 682
+        width: 65
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1140456dbea7976e0800000000000000
+      internalID: -1839303819472403439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_19
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 750
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90d88609360d5b260800000000000000
+      internalID: 7112820312544677129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 562
+        width: 74
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4eaf00b33c0eb70800000000000000
+      internalID: 8926349119635252423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_21
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 562
+        width: 87
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b528dfeb6fbb310800000000000000
+      internalID: 1422001407522921295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_22
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 571
+        width: 132
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69febbae14bcbd40800000000000000
+      internalID: 5601550080365492588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_23
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 570
+        width: 131
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96f2ba03233026210800000000000000
+      internalID: 1324624754500120425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_24
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 562
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716dc4f3705ecc640800000000000000
+      internalID: 5101704297193461271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_25
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 562
+        width: 98
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c74d79684903ffb0800000000000000
+      internalID: -4615334986512513083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_26
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 562
+        width: 82
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a41e9da7ab6548ea0800000000000000
+      internalID: -5871472655259279030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_27
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 426
+        width: 74
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da76b3da990098000800000000000000
+      internalID: 38562731845707693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_28
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 428
+        width: 79
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ede8358abe86180800000000000000
+      internalID: -9121781937050034605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_29
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 426
+        width: 82
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d07af6e8ff1c430800000000000000
+      internalID: 3801600547701067008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_30
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 428
+        width: 80
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ecf7012cbe25580800000000000000
+      internalID: -8839743899841868204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_31
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 434
+        width: 84
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d895b39ca8aa3b0800000000000000
+      internalID: -5500431397990855306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_32
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 428
+        width: 89
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc235a84540a9ae30800000000000000
+      internalID: 4515316320847606476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_33
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 426
+        width: 90
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dddd03e3bcd9b54e0800000000000000
+      internalID: -1991824913934000675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_34
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 426
+        width: 85
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28bab5aa3b694c320800000000000000
+      internalID: 2577350585164213122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_35
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 428
+        width: 90
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee6ed21e79074eb40800000000000000
+      internalID: 5468619645154879214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_36
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 322
+        width: 74
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 758a8770ef7c0b060800000000000000
+      internalID: 6967288517403125847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_37
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 322
+        width: 93
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ca5d2be3638f0d0800000000000000
+      internalID: -3388899076680078232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_38
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 327
+        width: 96
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc5b1f9e9974c86f0800000000000000
+      internalID: -681090717259287091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_39
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 322
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d928d319988ec5430800000000000000
+      internalID: 3773146265374524061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_40
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 322
+        width: 57
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc41c848e5b936610800000000000000
+      internalID: 1613303921781773519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_41
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 322
+        width: 66
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 196a05412f6714710800000000000000
+      internalID: 1675751318453528209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_42
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 322
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92383afb4caba4040800000000000000
+      internalID: 4632720520895497001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_43
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 322
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8531800abf5e210800000000000000
+      internalID: 1361771127098267827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_44
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 322
+        width: 65
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045a044c07cb422e0800000000000000
+      internalID: -2151387529461324480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_45
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 322
+        width: 73
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7deb29a1634956490800000000000000
+      internalID: -7753628223353471273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_46
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 138
+        width: 58
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e48635bf7ede6090800000000000000
+      internalID: -8039243644727294743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_47
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 226
+        width: 65
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7804dc33525514870800000000000000
+      internalID: 8665300776308785287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_48
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 226
+        width: 57
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 289460607f4533000800000000000000
+      internalID: 14448643746974082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_49
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 226
+        width: 58
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e8165160c260560800000000000000
+      internalID: 7279554252331126344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_50
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 226
+        width: 59
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 045620293adb38470800000000000000
+      internalID: 8395762640575685952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_51
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 138
+        width: 59
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 123db9f73aa1beac0800000000000000
+      internalID: -3824934168998194399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_52
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 255
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b918c9c979c66690800000000000000
+      internalID: -7609172995482314317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_53
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 138
+        width: 65
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62858e9327f7e0ca0800000000000000
+      internalID: -6048757120937469914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_54
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 219
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28b38803dc59cd1e0800000000000000
+      internalID: -2171696211784352894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_55
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 251
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: effeb3716845aaff0800000000000000
+      internalID: -24113913104961538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_56
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 200
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3262540058f6d120800000000000000
+      internalID: 2438409270821282365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_57
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 174
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63311bbcd3fb39a70800000000000000
+      internalID: 8832613566334964534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_58
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 177
+        width: 21
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d97aecfc58290820800000000000000
+      internalID: 2884881416152840656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_59
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 226
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252465d25d26d98c0800000000000000
+      internalID: -3990925027052207534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_60
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 218
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729d4dce1f4dcb330800000000000000
+      internalID: 3728088727081507111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_61
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 176
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf23b5cd3a18ebe0800000000000000
+      internalID: -1447878427587432512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_62
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 138
+        width: 49
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b64c0528548174e0800000000000000
+      internalID: -1985660446580128079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_63
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 192
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b6ba208878572e80800000000000000
+      internalID: -8203490921662466380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_64
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 138
+        width: 62
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303f4d6fbe340b6e0800000000000000
+      internalID: -1823883168347524349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_65
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 178
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb97486c26ed96c40800000000000000
+      internalID: 5506176535255873983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_66
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 174
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0a3ee754d20dd9d0800000000000000
+      internalID: -2748037086594582003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_67
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 155
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d61bd08f53c8260800000000000000
+      internalID: 7101110051954322749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_68
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 204
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3741e4fc33298e0800000000000000
+      internalID: -1688229944849304606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_69
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 185
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d0f5cd9ef24066b0800000000000000
+      internalID: -5305166699706322727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_70
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 232
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b28a74704177da6e0800000000000000
+      internalID: -1824671346109994965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_71
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 210
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a39bad1bd4250b60800000000000000
+      internalID: 7711610460456063910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_72
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 205
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48efe4f44363eb90800000000000000
+      internalID: -7213813030299113398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_73
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 206
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a6b12ba90138e30800000000000000
+      internalID: 4504462308899777045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_74
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 184
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8dd28de58ba73780800000000000000
+      internalID: -8703299163166417522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_75
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 186
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f728927dc23d160800000000000000
+      internalID: 7049027144390967098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_76
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 18
+        width: 203
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40b2a07198c70aa20800000000000000
+      internalID: 3071591874105584388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_77
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 40
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37c2491e271a7890800000000000000
+      internalID: -7459624346026064070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_78
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 34
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3e70091535cd650800000000000000
+      internalID: 6258969191912039394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_79
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 26
+        width: 53
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4f16f89348fb74b0800000000000000
+      internalID: -5441482755534348468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_80
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 18
+        width: 57
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b277871acb1c3880800000000000000
+      internalID: -8629992231156616528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_81
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 18
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b07ac9102e6fa1ed0800000000000000
+      internalID: -2442368397344987381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_82
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 18
+        width: 87
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20cccde8021a2580800000000000000
+      internalID: -8851242288084631506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_83
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 18
+        width: 89
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e473568aa21b6d0800000000000000
+      internalID: -2976550975974191545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_84
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 18
+        width: 82
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bd6ccb1afef1aa20800000000000000
+      internalID: 3072016771005050289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_85
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 132
+        width: 61
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1535e41d698d70449b2a7a35f94cfca6
+      internalID: -885343839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bbf3a13e3901f634692ed35bdeccd40c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_0: -6503915998448364158
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_1: 7381284471794848781
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_10: -7523628360002524626
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_11: -55752621461926331
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_12: 3119121718343639183
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_13: -6078650494291155190
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_14: -7570585769405525430
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_15: -5158980977098307026
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_16: -15051550289089873
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_17: -8934348308803798330
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_18: -1839303819472403439
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_19: 7112820312544677129
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_2: 4478832846674456841
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_20: 8926349119635252423
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_21: 1422001407522921295
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_22: 5601550080365492588
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_23: 1324624754500120425
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_24: 5101704297193461271
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_25: -4615334986512513083
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_26: -5871472655259279030
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_27: 38562731845707693
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_28: -9121781937050034605
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_29: 3801600547701067008
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_3: 274659063629386100
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_30: -8839743899841868204
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_31: -5500431397990855306
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_32: 4515316320847606476
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_33: -1991824913934000675
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_34: 2577350585164213122
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_35: 5468619645154879214
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_36: 6967288517403125847
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_37: -3388899076680078232
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_38: -681090717259287091
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_39: 3773146265374524061
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_4: 3143070256739134398
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_40: 1613303921781773519
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_41: 1675751318453528209
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_42: 4632720520895497001
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_43: 1361771127098267827
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_44: -2151387529461324480
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_45: -7753628223353471273
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_46: -8039243644727294743
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_47: 8665300776308785287
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_48: 14448643746974082
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_49: 7279554252331126344
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_5: 2640581596234891435
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_50: 8395762640575685952
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_51: -3824934168998194399
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_52: -7609172995482314317
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_53: -6048757120937469914
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_54: -2171696211784352894
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_55: -24113913104961538
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_56: 2438409270821282365
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_57: 8832613566334964534
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_58: 2884881416152840656
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_59: -3990925027052207534
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_6: 8163213004820990666
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_60: 3728088727081507111
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_61: -1447878427587432512
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_62: -1985660446580128079
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_63: -8203490921662466380
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_64: -1823883168347524349
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_65: 5506176535255873983
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_66: -2748037086594582003
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_67: 7101110051954322749
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_68: -1688229944849304606
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_69: -5305166699706322727
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_7: -5796469388227581350
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_70: -1824671346109994965
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_71: 7711610460456063910
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_72: -7213813030299113398
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_73: 4504462308899777045
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_74: -8703299163166417522
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_75: 7049027144390967098
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_76: 3071591874105584388
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_77: -7459624346026064070
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_78: 6258969191912039394
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_79: -5441482755534348468
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_8: -8981979127803060625
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_80: -8629992231156616528
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_81: -2442368397344987381
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_82: -8851242288084631506
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_83: -2976550975974191545
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_84: 3072016771005050289
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_85: -885343839
+      final_boss_sprites_sheet_by_neomar654_dg45fm4-pre_9: -3413330160492752679
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

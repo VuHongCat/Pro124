@@ -10,30 +10,30 @@ public class usermanager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            message = "vui lòng nhập đủ thông tin";
+            message = "Please fill in all fields";
             return false;
         }
-        message = "đăng nhập thành công";
+        message = "Login successful";
         return true;
     }
     public bool Register(string username, string email, string password, out string message)
     {
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            message = "vui lòng nhập đủ thông tin";
+            message = "Please fill in all fields";
             return false;
         }
         if (!email.Contains("@"))
         {
-            message = "email không hợp lệ";
+            message = "Invalid email";
             return false;
         }
         if (password.Length < 6)
         {
-            message = "mật khẩu phải có ít nhất 6 ký tự";
+            message = "Password must be at least 6 characters";
             return false;
         }
-        message = "đăng ký thành công";
+        message = "Registration successful";
         return true;
     }
 }

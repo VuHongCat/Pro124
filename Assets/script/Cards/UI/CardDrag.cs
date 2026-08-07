@@ -56,5 +56,26 @@ public class CardDrag : MonoBehaviour,
 
         rect.anchoredPosition = originalPosition;
 
+        TryPlayCard(eventData);
+    }
+
+    private void TryPlayCard(PointerEventData eventData)
+    {
+        if (battleManager == null)
+            battleManager = FindAnyObjectByType<BattleManager>();
+
+        if (battleManager == null)
+            return;
+
+        CardDisplay card = GetComponentInChildren<CardDisplay>();
+        if (card == null || card.CardData == null)
+            return;
+
+        EnemyHealth target = null;
+
+        if (eventData.pointerCurrentRaycast.gameObject != null)
+            target = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<EnemyHealth>();
+
+        battleManager.PlayCard(card, target);
     }
 }

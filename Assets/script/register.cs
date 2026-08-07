@@ -28,25 +28,25 @@ public class register : MonoBehaviour
         string mail = email.text.Trim();
         if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(mail))
         {
-            message("vui lòng nhập đủ thông tin", Color.red);
+            message("Please fill in all fields", Color.red);
             return;
         }
         //kiem tra dieu kien username
         if (!Regex.IsMatch(user, @"^[a-zA-Z0-9]+$"))
         {
-            message("Tên tài khoản chỉ được chứa chữ cái và số", Color.red);
+            message("Username may only contain letters and numbers", Color.red);
             return;
         }
         //kiem tra dieu kien password
         if (pass.Length < 6)
         {
-            message("Mật khẩu phải có ít nhất 6 ký tự", Color.red);
+            message("Password must be at least 6 characters", Color.red);
             return;
         }
         //kiem tra dieu kien email
         if (!mail.Contains("@") || !mail.Contains("."))
         {
-            message("email không hợp lệ", Color.red);
+            message("Invalid email", Color.red);
             return;
         }
         //kiem tra tai khoan da ton tai chua
@@ -62,7 +62,7 @@ public class register : MonoBehaviour
                     string savedUser = parts[0].Trim();
                     if (savedUser.Equals(user, System.StringComparison.OrdinalIgnoreCase))
                     {
-                        message("Tên tài khoản này đã tồn tại", Color.red);
+                        message("This username already exists", Color.red);
                         return;
                     }
                 }
@@ -70,14 +70,14 @@ public class register : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("User_" + username + "_Pass"))
         {
-            message("Tên tài khoản này đã tồn tại", Color.red);
+            message("This username already exists", Color.red);
             return;
         }
         PlayerPrefs.SetString("User" + user + "Pass", pass);
         PlayerPrefs.SetString("User" + user + "Email", mail);
         PlayerPrefs.Save(); // Lưu ngay lập tức vào máy
 
-        message("đăng ký thành công", Color.green);
+        message("Registration successful", Color.green);
         if (panelswtich != null)
         {
             panelswtich.loginpanel.SetActive(true);
@@ -100,7 +100,7 @@ public class register : MonoBehaviour
                     string savedEmail = parts[2].Trim();
                     if (savedUser == user && savedPass == pass && savedEmail == mail)
                     {
-                        message("Tài khoản đã tồn tại trong file", Color.red);
+                        message("Account already exists in file", Color.red);
                         return;
                     }
                 }
@@ -110,7 +110,7 @@ public class register : MonoBehaviour
         //ghi vao file
         string newline = user + "," + pass + "," + mail + System.Environment.NewLine;
         File.AppendAllText(filepath, newline);
-        message("Đăng ký thành công", Color.green);
+        message("Registration successful", Color.green);
         username.text = "";
         email.text = "";
         password.text = "";

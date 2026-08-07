@@ -130,8 +130,8 @@ public class EnemyCombat : MonoBehaviour
         if (ratio < 0.3f && !defensiveUsed)
         {
             defensiveUsed = true;
-            enemyStatus?.AddStatus(StatusType.Regen, enemyData.regenValue);
-            enemyStatus?.AddStatus(StatusType.Immortal, 1);
+            enemyStatus?.AddStatus(StatusType.Regen, enemyData.regenValue, 3);
+            enemyStatus?.AddStatus(StatusType.Immortal, 1, 1);
             SetIntent(EnemyIntentType.Heal, enemyData.selfHeal);
             return;
         }
@@ -150,7 +150,7 @@ public class EnemyCombat : MonoBehaviour
         if (ratio < 0.3f && !defensiveUsed)
         {
             defensiveUsed = true;
-            enemyStatus?.AddStatus(StatusType.Immortal, 1);
+            enemyStatus?.AddStatus(StatusType.Immortal, 1, 1);
             SetIntent(EnemyIntentType.Block, enemyData.block * 2);
             return;
         }
@@ -198,7 +198,7 @@ public class EnemyCombat : MonoBehaviour
     {
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Stun) > 0)
         {
-            Debug.Log($"{enemyData.enemyName} bị choáng, bỏ lượt.");
+            Debug.Log($"{enemyData.enemyName} is stunned, skipping turn.");
             if (enemyIntent != null)
                 enemyIntent.SetIntent(EnemyIntentType.Stun, 0);
             DecideNextIntent();
@@ -222,19 +222,19 @@ public class EnemyCombat : MonoBehaviour
 
             case EnemyIntentType.Poison:
                 PlayerStatus ps = player.GetComponent<PlayerStatus>();
-                if (ps != null) ps.AddStatus(StatusType.Poison, enemyIntent.IntentValue);
+                if (ps != null) ps.AddStatus(StatusType.Poison, enemyIntent.IntentValue, 2);
                 break;
 
             case EnemyIntentType.Buff:
-                enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue);
+                enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue, 99);
                 break;
 
             case EnemyIntentType.Debuff:
                 PlayerStatus dps = player.GetComponent<PlayerStatus>();
                 if (dps != null)
                 {
-                    if (enemyData.weakDamage > 0) dps.AddStatus(StatusType.Weak, enemyData.weakDamage);
-                    if (enemyData.vulnerableDamage > 0) dps.AddStatus(StatusType.Vulnerable, enemyData.vulnerableDamage);
+                    if (enemyData.weakDamage > 0) dps.AddStatus(StatusType.Weak, enemyData.weakDamage, 2);
+                    if (enemyData.vulnerableDamage > 0) dps.AddStatus(StatusType.Vulnerable, enemyData.vulnerableDamage, 2);
                 }
                 break;
 

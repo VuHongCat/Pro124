@@ -12,6 +12,8 @@ public class DeckManager : MonoBehaviour
     public int DiscardPileCount => discardPile.Count;
     public int ExhaustPileCount => exhaustPile.Count;
 
+    public static event System.Action PilesChanged;
+
     private void Awake()
     {
         InitializeDeck();
@@ -61,6 +63,7 @@ public class DeckManager : MonoBehaviour
         }
         CardData card = drawPile[0];
         drawPile.RemoveAt(0);
+        PilesChanged?.Invoke();
         return card;
     }
 
@@ -76,13 +79,25 @@ public class DeckManager : MonoBehaviour
         return cards;
     }
 
-    public void AddToDiscard(CardData card) => discardPile.Add(card);
-    public void AddToExhaust(CardData card) => exhaustPile.Add(card);
+    public void AddToDiscard(CardData card)
+    {
+        discardPile.Add(card);
+        PilesChanged?.Invoke();
+    }
+
+    public void AddToExhaust(CardData card)
+    {
+        exhaustPile.Add(card);
+        PilesChanged?.Invoke();
+    }
 
     public void AddCardToDeck(CardData card)
     {
         startingDeck.Add(card);
         drawPile.Insert(Random.Range(0, drawPile.Count + 1), card);
+
+        RelicManager.EmitObtainCard(card);
+        PilesChanged?.Invoke();
     }
 
     public void ShuffleDrawPile()
@@ -96,5 +111,6 @@ public class DeckManager : MonoBehaviour
         drawPile.AddRange(discardPile);
         discardPile.Clear();
         Shuffle(drawPile);
+        PilesChanged?.Invoke();
     }
 }
