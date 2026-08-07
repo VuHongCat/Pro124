@@ -925,6 +925,7 @@ MonoBehaviour:
   enemyData: {fileID: 0}
   enemyBlock: {fileID: 1851514153006990970}
   enemyStatus: {fileID: 0}
+  damageNumberPrefab: {fileID: 100000, guid: bd4c6da2e5574064840b46c60de2185d, type: 3}
   currentHealth: 0
   maxHealth: 0
 --- !u!114 &8269766851750894880
