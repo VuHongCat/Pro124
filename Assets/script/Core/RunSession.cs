@@ -70,13 +70,13 @@ using UnityEngine.SceneManagement;
             MapLevel++;
             MapSceneName = "MapLevel" + MapLevel;
             MapManager.ClearProgress();
-            SceneManager.LoadScene(MapSceneName);
+            SceneLoader.TransitionTo(MapSceneName);
             return;
         }
 
         // Map 4 done -> victory, start a new run
         StartNewRun();
-        SceneManager.LoadScene("MainMenu");
+        SceneLoader.TransitionTo("MainMenu");
     }
 
     public static void ClearDeck()
@@ -90,6 +90,6 @@ using UnityEngine.SceneManagement;
         BattleDeck = null;
         if (string.IsNullOrEmpty(MapSceneName))
             MapSceneName = "MainMenu";
-        SceneManager.LoadScene(MapSceneName);
+        SceneLoader.TransitionTo(MapSceneName);
     }
 }

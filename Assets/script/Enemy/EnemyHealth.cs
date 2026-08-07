@@ -6,6 +6,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private EnemyBlock enemyBlock;
     [SerializeField] private EnemyStatus enemyStatus;
+    [SerializeField] private GameObject damageNumberPrefab;
+    [SerializeField] private GameObject healPopupPrefab;
 
     public int currentHealth;
     public int maxHealth;
@@ -42,6 +44,10 @@ public class EnemyHealth : MonoBehaviour
             damage = enemyBlock.AbsorbDamage(damage);
         if (damage <= 0)
             return;
+        ScreenShake.Instance?.Shake();
+        ShowDamageNumber(damage);
+        GetComponent<EnemyHitVFX>()?.Play();
+        GetComponent<EnemyDisplay>()?.Punch();
         if (counterable)
             OnDamaged?.Invoke(damage);
         currentHealth -= damage;
@@ -61,6 +67,29 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth > enemyData.maxHealth) currentHealth = enemyData.maxHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        ShowHealPopup(amount);
+    }
+
+    private void ShowHealPopup(int amount)
+    {
+        if (healPopupPrefab == null)
+            return;
+
+        GameObject popup = Instantiate(healPopupPrefab, transform);
+        popup.transform.localPosition = Vector3.zero;
+        popup.GetComponent<BlockPopup>()?.Play(amount);
+    }
+
+    private void ShowDamageNumber(int amount)
+    {
+        if (damageNumberPrefab == null)
+            return;
+
+        GameObject number = Instantiate(damageNumberPrefab, transform);
+        RectTransform enemyRect = GetComponent<RectTransform>();
+        float yOffset = enemyRect != null ? enemyRect.rect.height * 0.5f + 10f : 120f;
+        number.transform.localPosition = new Vector3(0f, yOffset, 0f);
+        number.GetComponent<DamageNumber>().Play(amount);
     }
 
     public void Die()

@@ -70,7 +70,7 @@ public partial class login : MonoBehaviour
             message("Incorrect username or password", Color.red);
             return;
         }
-        SceneLoader.Instance.LoadScene("MainMenu");
+        SceneLoader.TransitionTo("MainMenu");
     }
     public void message(string msg, Color color)
     {

@@ -469,7 +469,7 @@ public class MapManager : MonoBehaviour
             RunSession.IsFinalBoss = false;
             RunSession.BossSequence = new List<EnemyData> { GetMiniBoss() };
             RunSession.MapSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("BattleLevel1");
+            SceneLoader.TransitionTo("BattleLevel1");
             return;
         }
 
@@ -483,7 +483,7 @@ public class MapManager : MonoBehaviour
             RunSession.IsFinalBoss = true;
             RunSession.BossSequence = new List<EnemyData> { GetBoss() };
             RunSession.MapSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("BattleLevel1");
+            SceneLoader.TransitionTo("BattleLevel1");
             return;
         }
 
@@ -520,7 +520,7 @@ public class MapManager : MonoBehaviour
 
             RunSession.RunActive = true;
             RunSession.MapSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene("Shop");
+            SceneLoader.TransitionTo("Shop");
             return;
         }
 
@@ -589,7 +589,7 @@ public class MapManager : MonoBehaviour
             battleNode.sceneName
         );
 
-        SceneManager.LoadScene(
+        SceneLoader.TransitionTo(
             battleNode.sceneName
         );
     }
@@ -715,7 +715,7 @@ public class MapManager : MonoBehaviour
             node.sceneName
         );
 
-        SceneManager.LoadScene(
+        SceneLoader.TransitionTo(
             node.sceneName
         );
     }
@@ -762,7 +762,7 @@ public class MapManager : MonoBehaviour
         // -----------------------------------------
 
         RunSession.StartNewRun();
-        SceneManager.LoadScene("MapLevel1");
+        SceneLoader.TransitionTo("MapLevel1");
     }
 
     public void UpdateNodes()

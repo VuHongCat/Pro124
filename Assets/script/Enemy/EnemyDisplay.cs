@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,10 @@ public class EnemyDisplay : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text intentText;
     [SerializeField] private TMP_Text statusText;
+    [SerializeField] private Image intentIcon;
+    [SerializeField] private Sprite attackIntentSprite;
+    [SerializeField] private Sprite shieldIntentSprite;
+    [SerializeField] private Sprite poisonIntentSprite;
 
 
 
@@ -27,6 +32,13 @@ public class EnemyDisplay : MonoBehaviour
 
 
     private int currentBlock;
+
+
+    [Header("Punch Effect")]
+    [SerializeField] private float punchScale = 1.15f;
+    [SerializeField] private float punchDuration = 0.18f;
+
+    private Coroutine punchRoutine;
 
 
     public EnemyData EnemyData { get; private set; }
@@ -163,55 +175,79 @@ public class EnemyDisplay : MonoBehaviour
         if (intentText == null)
             return;
 
+        Sprite icon = null;
+        string label = value.ToString();
 
         switch (type)
         {
             case EnemyIntentType.Attack:
-                intentText.text = $"ATK {value}";
+            case EnemyIntentType.LifestealAttack:
+                icon = attackIntentSprite;
                 break;
-
 
             case EnemyIntentType.Block:
-                intentText.text = $"BLK {value}";
+                icon = shieldIntentSprite;
                 break;
-
-
-            case EnemyIntentType.Buff:
-                intentText.text = "BUF";
-                break;
-
-
-            case EnemyIntentType.Debuff:
-                intentText.text = "DEB";
-                break;
-
-
-            case EnemyIntentType.Stun:
-                intentText.text = "STUN";
-                break;
-
 
             case EnemyIntentType.Poison:
-                intentText.text = $"PSN {value}";
+                icon = poisonIntentSprite;
                 break;
-
 
             case EnemyIntentType.Heal:
-                intentText.text = $"HEAL {value}";
+                label = $"HEAL {value}";
                 break;
 
-
-            case EnemyIntentType.LifestealAttack:
-                intentText.text = $"ATK {value}";
+            case EnemyIntentType.Buff:
+                label = "BUF";
                 break;
 
-
-            default:
-                intentText.text = "";
+            case EnemyIntentType.Debuff:
+                label = "DEB";
                 break;
+
+            case EnemyIntentType.Stun:
+                label = "STUN";
+                break;
+        }
+
+        intentText.text = label;
+
+        if (intentIcon != null)
+        {
+            intentIcon.gameObject.SetActive(icon != null);
+            if (icon != null)
+                intentIcon.sprite = icon;
         }
     }
 
+
+
+
+
+    public void Punch()
+    {
+        if (artworkImage == null) return;
+        if (punchRoutine != null) StopCoroutine(punchRoutine);
+        punchRoutine = StartCoroutine(PunchRoutine());
+    }
+
+    private IEnumerator PunchRoutine()
+    {
+        RectTransform rt = artworkImage.rectTransform;
+        Vector3 baseScale = rt.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < punchDuration)
+        {
+            float t = elapsed / punchDuration;
+            float factor = 1f + (punchScale - 1f) * Mathf.Sin(t * Mathf.PI);
+            rt.localScale = new Vector3(baseScale.x * factor, baseScale.y * factor, baseScale.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rt.localScale = baseScale;
+    }
 
 
 
