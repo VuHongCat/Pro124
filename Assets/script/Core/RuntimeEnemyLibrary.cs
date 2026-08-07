@@ -3,6 +3,8 @@ using UnityEngine;
 
 public static class RuntimeEnemyLibrary
 {
+    private static Dictionary<string, EnemyData> _templates;
+
     public static List<EnemyData> GetDefaultSequence()
     {
         return new List<EnemyData>
@@ -11,6 +13,36 @@ public static class RuntimeEnemyLibrary
             Build("Goblin", EnemyArchetype.Poison, 30, 6, 4, poison: 3, gold: 20),
             Build("Bat", EnemyArchetype.Lifesteal, 22, 5, 3, lifesteal: 2, gold: 15)
         };
+    }
+
+    private static void EnsureTemplates()
+    {
+        if (_templates != null)
+            return;
+
+        _templates = new Dictionary<string, EnemyData>();
+        foreach (EnemyData t in Resources.LoadAll<EnemyData>("Enemies"))
+        {
+            if (t == null || string.IsNullOrEmpty(t.enemyName))
+                continue;
+            if (!_templates.ContainsKey(t.enemyName))
+                _templates[t.enemyName] = t;
+        }
+    }
+
+    private static void ApplyVisuals(EnemyData d)
+    {
+        if (d == null)
+            return;
+
+        EnsureTemplates();
+        if (_templates.TryGetValue(d.enemyName, out EnemyData t))
+        {
+            if (d.artwork == null)
+                d.artwork = t.artwork;
+            if (d.animatorController == null)
+                d.animatorController = t.animatorController;
+        }
     }
 
     public static EnemyData Build(string name, EnemyArchetype archetype, int maxHealth, int attack, int block,
@@ -33,6 +65,7 @@ public static class RuntimeEnemyLibrary
         d.weakDamage = weakDamage;
         d.vulnerableDamage = vulnerableDamage;
         d.counterStacks = counterStacks;
+        ApplyVisuals(d);
         return d;
     }
 
@@ -133,6 +166,7 @@ public static class RuntimeEnemyLibrary
         d.counterStacks = template.counterStacks;
         d.goldReward = template.goldReward + (mapLevel - 1) * 10;
         d.isBoss = isBoss || template.isBoss;
+        ApplyVisuals(d);
 
         return d;
     }

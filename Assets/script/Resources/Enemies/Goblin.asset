@@ -10,21 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
-  m_Name: Priest
+  m_Name: Goblin
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Priest
+  enemyName: Goblin
   artwork: {fileID: 0}
-  archetype: 6
-  maxHealth: 45
-  attackDamage: 5
-  block: 6
-  poisonDamage: 0
-  lifesteal: 0
-  selfHeal: 15
-  regenValue: 4
-  buffStrength: 2
-  weakDamage: 3
-  vulnerableDamage: 0
-  counterStacks: 0
-  goldReward: 25
+  archetype: 1
+  animatorController: {fileID: 9100000, guid: cb2444a938af57445ba40018a56d1783, type: 2}
+  maxHealth: 30
+  attackDamage: 6
+  block: 4
+  poisonDamage: 3
+  goldReward: 20
   isBoss: 0
