@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Bash
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 557983250621504684, guid: 37228553fb76c90408198f9ed52704eb, type: 3}
   cardName: Bash
   description: Deal 8 damage all enemies
   artwork: {fileID: 3528618654146299645, guid: c1f85e6f64dd59e478aadccb64daacd2, type: 3}
@@ -27,4 +28,5 @@ MonoBehaviour:
   statusAmount: 0
   statusDuration: 1
   pool: 0
+  isUpgraded: 0
   shopPrice: 60

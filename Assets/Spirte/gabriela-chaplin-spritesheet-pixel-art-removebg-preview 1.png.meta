@@ -1,0 +1,897 @@
+fileFormatVersion: 2
+guid: 2ef791b30fa84a247b990fb65021308c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5963068658219936237
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_0
+  - first:
+      213: -7981938950852585488
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_1
+  - first:
+      213: 4877252943584191953
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_2
+  - first:
+      213: 885562577814338164
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_3
+  - first:
+      213: 4447621038708217979
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_4
+  - first:
+      213: -4997820843862795668
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_5
+  - first:
+      213: -4815053191282204063
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_6
+  - first:
+      213: 6290831863573586535
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_7
+  - first:
+      213: 1025044326735812263
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_8
+  - first:
+      213: 3949577685898596028
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_9
+  - first:
+      213: -7543994853301125733
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_10
+  - first:
+      213: 8559821551112443833
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_11
+  - first:
+      213: -4952095099487643457
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_12
+  - first:
+      213: 2339764521809792258
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_13
+  - first:
+      213: -6296990150599782974
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_14
+  - first:
+      213: 6565502567461586429
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_15
+  - first:
+      213: -3337298816543591247
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_16
+  - first:
+      213: 8522619436931728219
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_17
+  - first:
+      213: 8363670223534268126
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_18
+  - first:
+      213: -5167484655378810445
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_19
+  - first:
+      213: 5472194727088250927
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_20
+  - first:
+      213: -125605907752011172
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_21
+  - first:
+      213: -6087936006573916134
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_22
+  - first:
+      213: -3275146650288564181
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_23
+  - first:
+      213: -7000931593789012494
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_24
+  - first:
+      213: -1432718635984774553
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_25
+  - first:
+      213: -3703207435191953327
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_26
+  - first:
+      213: -6672049609367857781
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_27
+  - first:
+      213: -5045756830954875601
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_28
+  - first:
+      213: -1688217049520425137
+    second: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 262
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 316198726acee3da0800000000000000
+      internalID: -5963068658219936237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 263
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f7d39770d47a3190800000000000000
+      internalID: -7981938950852585488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_2
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 262
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d5601e16bb7fa340800000000000000
+      internalID: 4877252943584191953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_3
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 264
+        width: 48
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ab00df8762a4c00800000000000000
+      internalID: 885562577814338164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_4
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 260
+        width: 38
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b78d1cb25cf19bd30800000000000000
+      internalID: 4447621038708217979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_5
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 261
+        width: 37
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ad38e0c6c24aab0800000000000000
+      internalID: -4997820843862795668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_6
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 263
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162630f32ae7d2db0800000000000000
+      internalID: -4815053191282204063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_7
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 261
+        width: 38
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 762230aef368d4750800000000000000
+      internalID: 6290831863573586535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_8
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 218
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a61e1e5260b93e00800000000000000
+      internalID: 1025044326735812263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_9
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 196
+        width: 17
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe8bc4caf7bfc630800000000000000
+      internalID: 3949577685898596028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 185
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d7c9596a85e4790800000000000000
+      internalID: -7543994853301125733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_11
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 149
+        width: 57
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b75ace49589ac670800000000000000
+      internalID: 8559821551112443833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_12
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 149
+        width: 50
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb8161d8ebf964bb0800000000000000
+      internalID: -4952095099487643457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_13
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 151
+        width: 47
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20dc88c9f63887020800000000000000
+      internalID: 2339764521809792258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 147
+        width: 58
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cdcd5722d89c98a0800000000000000
+      internalID: -6296990150599782974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_15
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 147
+        width: 58
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df58671bcc95d1b50800000000000000
+      internalID: 6565502567461586429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_16
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 153
+        width: 43
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b4769a78688fa1d0800000000000000
+      internalID: -3337298816543591247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_17
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 150
+        width: 41
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53c72e193d664670800000000000000
+      internalID: 8522619436931728219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_18
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 150
+        width: 40
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede954471c9b11470800000000000000
+      internalID: 8363670223534268126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_19
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 147
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b93ddd95186948b0800000000000000
+      internalID: -5167484655378810445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_20
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 148
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f206cd18c1421fb40800000000000000
+      internalID: 5472194727088250927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_21
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 38
+        width: 99
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5a30c6a712c14ef0800000000000000
+      internalID: -125605907752011172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_22
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 38
+        width: 103
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a100ad0157e438ba0800000000000000
+      internalID: -6087936006573916134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_23
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 38
+        width: 25
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b285d3a59775c82d0800000000000000
+      internalID: -3275146650288564181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_24
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 36
+        width: 24
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f58567dec1b7de90800000000000000
+      internalID: -7000931593789012494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_25
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 38
+        width: 82
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a9b0fcdf5fd1ce0800000000000000
+      internalID: -1432718635984774553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_26
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 38
+        width: 93
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1585cc745709b9cc0800000000000000
+      internalID: -3703207435191953327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_27
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 38
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8558d5fa3e1863a0800000000000000
+      internalID: -6672049609367857781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_28
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 38
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f251fe355eed9f9b0800000000000000
+      internalID: -5045756830954875601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_29
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 8
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47b39bb98f3298e0800000000000000
+      internalID: -1688217049520425137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_0: -5963068658219936237
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_1: -7981938950852585488
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_10: -7543994853301125733
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_11: 8559821551112443833
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_12: -4952095099487643457
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_13: 2339764521809792258
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_14: -6296990150599782974
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_15: 6565502567461586429
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_16: -3337298816543591247
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_17: 8522619436931728219
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_18: 8363670223534268126
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_19: -5167484655378810445
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_2: 4877252943584191953
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_20: 5472194727088250927
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_21: -125605907752011172
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_22: -6087936006573916134
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_23: -3275146650288564181
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_24: -7000931593789012494
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_25: -1432718635984774553
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_26: -3703207435191953327
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_27: -6672049609367857781
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_28: -5045756830954875601
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_29: -1688217049520425137
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_3: 885562577814338164
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_4: 4447621038708217979
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_5: -4997820843862795668
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_6: -4815053191282204063
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_7: 6290831863573586535
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_8: 1025044326735812263
+      gabriela-chaplin-spritesheet-pixel-art-removebg-preview 1_9: 3949577685898596028
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
