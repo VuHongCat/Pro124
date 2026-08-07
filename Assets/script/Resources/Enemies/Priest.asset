@@ -10,11 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
-  m_Name: BossLv4
+  m_Name: Priest
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: 
-  artwork: {fileID: -2792402802363126846, guid: 018ba24cf0855074b819fd5f22916be9, type: 3}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  enemyName: Priest
+  artwork: {fileID: 0}
+  archetype: 6
+  animatorController: {fileID: 9100000, guid: 0720b4f1da2139e4f9ff62cd9a1619dc, type: 2}
+  maxHealth: 45
+  attackDamage: 5
+  block: 6
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 15
+  regenValue: 4
+  buffStrength: 2
+  weakDamage: 3
+  vulnerableDamage: 0
+  counterStacks: 0
+  goldReward: 25
   isBoss: 0

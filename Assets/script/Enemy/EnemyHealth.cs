@@ -94,6 +94,10 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+            animator.SetTrigger("Die");
+
         OnEnemyDeath?.Invoke(this);
     }
 }

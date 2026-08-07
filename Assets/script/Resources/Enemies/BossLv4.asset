@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
-  m_Name: Bosslv2
+  m_Name: BossLv4
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: 
-  artwork: {fileID: 8647823593821616703, guid: 6b1fa14a93a83654899705358a6f5563, type: 3}
+  artwork: {fileID: -2792402802363126846, guid: 018ba24cf0855074b819fd5f22916be9, type: 3}
+  animatorController: {fileID: 9100000, guid: b7064c8f69063b74b855ee2a5a19950f, type: 2}
   maxHealth: 0
   attackDamage: 0
   block: 0

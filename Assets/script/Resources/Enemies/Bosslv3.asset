@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
-  m_Name: Mimic
+  m_Name: Bosslv3
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Mimic
-  artwork: {fileID: -9208322672329096177, guid: e46dc8376e1c8c2418d479c25a6a8de3, type: 3}
+  enemyName: 
+  artwork: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: b81c758e62c42ce4cadf811a402c94cf, type: 2}
   maxHealth: 0
   attackDamage: 0
   block: 0
