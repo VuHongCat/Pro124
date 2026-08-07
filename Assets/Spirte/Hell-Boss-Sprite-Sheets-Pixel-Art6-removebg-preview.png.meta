@@ -1,0 +1,1781 @@
+fileFormatVersion: 2
+guid: df83e1cad7b6def4b9cb5937c5fd6456
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9105206021061533734
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_0
+  - first:
+      213: -1750870243656375571
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_1
+  - first:
+      213: 7725225795516523632
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_2
+  - first:
+      213: -7277866314368039011
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_3
+  - first:
+      213: 3663516333605928142
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_4
+  - first:
+      213: -3829504303782406004
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_5
+  - first:
+      213: 7143756332748662047
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_6
+  - first:
+      213: -7086946563852092409
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_7
+  - first:
+      213: 2521185385733515584
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_8
+  - first:
+      213: -9185904084513905954
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_9
+  - first:
+      213: 6374527069177474539
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_10
+  - first:
+      213: 200495326635715186
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_11
+  - first:
+      213: -1859178880851619610
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_12
+  - first:
+      213: 5459432276031994109
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_13
+  - first:
+      213: 888772062645891539
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_14
+  - first:
+      213: 3422519109079334706
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_15
+  - first:
+      213: -9143969251256100527
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_16
+  - first:
+      213: 302363790699719213
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_17
+  - first:
+      213: 5751776717787149515
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_18
+  - first:
+      213: 7944699788215370751
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_19
+  - first:
+      213: 5560787225380001596
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_20
+  - first:
+      213: -8102483043827029615
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_21
+  - first:
+      213: -7464096561009178442
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_22
+  - first:
+      213: 3090976167242506576
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_23
+  - first:
+      213: 8947491629391597456
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_24
+  - first:
+      213: 5110904034228050800
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_25
+  - first:
+      213: -8761596478312987459
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_26
+  - first:
+      213: 2405916416500930806
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_27
+  - first:
+      213: -6214252711920882147
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_28
+  - first:
+      213: -6696809580986041600
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_29
+  - first:
+      213: -6691877713134537933
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_30
+  - first:
+      213: 2642271788086477269
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_31
+  - first:
+      213: 7172142482859012398
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_32
+  - first:
+      213: -1246818696973568643
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_33
+  - first:
+      213: 8116846049257870386
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_34
+  - first:
+      213: 4330270659109937629
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_35
+  - first:
+      213: -7220188445906278963
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_36
+  - first:
+      213: -7849249362408934516
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_37
+  - first:
+      213: 2770295913255856368
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_38
+  - first:
+      213: 801158687175018015
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_39
+  - first:
+      213: -1587127175032398476
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_40
+  - first:
+      213: -3236009596680541601
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_41
+  - first:
+      213: 4434658425587220037
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_42
+  - first:
+      213: -746544663844833254
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_43
+  - first:
+      213: 3464379733602037480
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_44
+  - first:
+      213: -3081817023416191445
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_45
+  - first:
+      213: 7324253578292604281
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_46
+  - first:
+      213: 4717977095400576336
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_47
+  - first:
+      213: 7471839912083427139
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_48
+  - first:
+      213: 1092604950584833368
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_49
+  - first:
+      213: 5043209286684701174
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_50
+  - first:
+      213: -2476853717898420944
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_51
+  - first:
+      213: -5218899910503634949
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_52
+  - first:
+      213: -4725753067115212695
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_53
+  - first:
+      213: -725862106540582596
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_54
+  - first:
+      213: -4120455291112217875
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_55
+  - first:
+      213: 7372687900046486880
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_56
+  - first:
+      213: -6220356933343805151
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_57
+  - first:
+      213: -4330042242063160770
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_58
+  - first:
+      213: -5768113180936041456
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_59
+  - first:
+      213: 8165484692100793307
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_60
+  - first:
+      213: -1811874961810375119
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_61
+  - first:
+      213: -5621481374760309137
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_62
+  - first:
+      213: 59576977557197369
+    second: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 334
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf11e38d5fc3a180800000000000000
+      internalID: -9105206021061533734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 304
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de26f073ac8a3b7e0800000000000000
+      internalID: -1750870243656375571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 333
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07462775ee3853b60800000000000000
+      internalID: 7725225795516523632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 221
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d97cf499523dffa90800000000000000
+      internalID: -7277866314368039011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 337
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc3c6df1bc67d230800000000000000
+      internalID: 3663516333605928142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 342
+        width: 26
+        height: 29
+      alignment: 9
+      pivot: {x: 0.61089325, y: 0.42607117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c885833102edadac0800000000000000
+      internalID: -3829504303782406004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 335
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f156e6f0988b32360800000000000000
+      internalID: 7143756332748662047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 350
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70cbb6ff5ab16ad90800000000000000
+      internalID: -7086946563852092409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 350
+        width: 10
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0496d8120cc0df220800000000000000
+      internalID: 2521185385733515584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 350
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed22db577ec158080800000000000000
+      internalID: -9185904084513905954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 350
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed6f61889ed67850800000000000000
+      internalID: 6374527069177474539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 335
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a6f33ff6d48c200800000000000000
+      internalID: 200495326635715186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 275
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e05ee088aed236e0800000000000000
+      internalID: -1859178880851619610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 270
+        width: 19
+        height: 15
+      alignment: 9
+      pivot: {x: 0.33657917, y: 0.61828613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df87030dabcc3cb40800000000000000
+      internalID: 5459432276031994109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 231
+        width: 15
+        height: 16
+      alignment: 9
+      pivot: {x: 0.41128337, y: 0.6940632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d1bc486b7d855c00800000000000000
+      internalID: 888772062645891539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 253
+        width: 47
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23ff8a51ffa3f7f20800000000000000
+      internalID: 3422519109079334706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 297
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15919cda9681a1180800000000000000
+      internalID: -9143969251256100527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 255
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ae8910446323400800000000000000
+      internalID: 302363790699719213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 298
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc4b01b537a62df40800000000000000
+      internalID: 5751776717787149515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 256
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff3c2b35d5e314e60800000000000000
+      internalID: 7944699788215370751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 299
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c371e48e482eb2d40800000000000000
+      internalID: 5560787225380001596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 254
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1996016b9923e8f80800000000000000
+      internalID: -8102483043827029615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 298
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b845d769b33a6890800000000000000
+      internalID: -7464096561009178442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 271
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05120b9827a55ea20800000000000000
+      internalID: 3090976167242506576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 271
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09fcaa82b30eb2c70800000000000000
+      internalID: 8947491629391597456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 271
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07b1641f3249de640800000000000000
+      internalID: 5110904034228050800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_26
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 252
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db447d48c6e886680800000000000000
+      internalID: -8761596478312987459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_27
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 177
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f891d4db38836120800000000000000
+      internalID: 2405916416500930806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_28
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 222
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ea271451a82c9a0800000000000000
+      internalID: -6214252711920882147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_29
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 182
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00bf4e4da272013a0800000000000000
+      internalID: -6696809580986041600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_30
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 223
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333334cccaca123a0800000000000000
+      internalID: -6691877713134537933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_31
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 181
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d14ee0213c3ba420800000000000000
+      internalID: 2642271788086477269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_32
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 225
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21bc49a691988360800000000000000
+      internalID: 7172142482859012398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_33
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 179
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d753393400962bee0800000000000000
+      internalID: -1246818696973568643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_34
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 223
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2345c861a74d4a070800000000000000
+      internalID: 8116846049257870386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_35
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 193
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd16b81c836381c30800000000000000
+      internalID: 4330270659109937629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_36
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 193
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc56066dcdcbccb90800000000000000
+      internalID: -7220188445906278963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_37
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c837720ca4dd11390800000000000000
+      internalID: -7849249362408934516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_38
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 193
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f8e4589471127620800000000000000
+      internalID: 2770295913255856368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_39
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 193
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1609cdc4994e1b00800000000000000
+      internalID: 801158687175018015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_40
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 175
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47d13d64e3469f9e0800000000000000
+      internalID: -1587127175032398476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_41
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 175
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ae91cba626713d0800000000000000
+      internalID: -3236009596680541601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_42
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 175
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54eb15d97521b8d30800000000000000
+      internalID: 4434658425587220037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_43
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 175
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a18b096659db3a5f0800000000000000
+      internalID: -746544663844833254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_44
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 176
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee696c3303f31030800000000000000
+      internalID: 3464379733602037480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_45
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 93
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26b680debf2b35d0800000000000000
+      internalID: -3081817023416191445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_46
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 139
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97da30be2d9f4a560800000000000000
+      internalID: 7324253578292604281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_47
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 93
+        width: 40
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 055d7cddb2f997140800000000000000
+      internalID: 4717977095400576336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_48
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 97
+        width: 63
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34f815200de41b760800000000000000
+      internalID: 7471839912083427139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_49
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 95
+        width: 66
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8553177e966b92f00800000000000000
+      internalID: 1092604950584833368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_50
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 114
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1facc40241df540800000000000000
+      internalID: 5043209286684701174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_51
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 114
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d1f00aaa270add0800000000000000
+      internalID: -2476853717898420944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_52
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 114
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7ec1cae2eb297b0800000000000000
+      internalID: -5218899910503634949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_53
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 114
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9609262af90ca6eb0800000000000000
+      internalID: -4725753067115212695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_54
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 114
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c395bb782483de5f0800000000000000
+      internalID: -725862106540582596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_55
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 97
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de2a06c6eb331d6c0800000000000000
+      internalID: -4120455291112217875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_56
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 18
+        width: 105
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06d671a359c015660800000000000000
+      internalID: 7372687900046486880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_57
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 20
+        width: 105
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12187e3735adca9a0800000000000000
+      internalID: -6220356933343805151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_58
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 66
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3aa36bb58998e3c0800000000000000
+      internalID: -4330042242063160770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_59
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 37
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c0f0a6f9b83ffa0800000000000000
+      internalID: -5768113180936041456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_60
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 37
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd3ce8b9011a15170800000000000000
+      internalID: 8165484692100793307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_61
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 37
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13e3edb625dead6e0800000000000000
+      internalID: -1811874961810375119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_62
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 37
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6eefe9397c7cf1b0800000000000000
+      internalID: -5621481374760309137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_63
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 37
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 932961802f8a3d000800000000000000
+      internalID: 59576977557197369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e21e05479dcc06244baf7debdfc9e21a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_0: -9105206021061533734
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_1: -1750870243656375571
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_10: 6374527069177474539
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_11: 200495326635715186
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_12: -1859178880851619610
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_13: 5459432276031994109
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_14: 888772062645891539
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_15: 3422519109079334706
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_16: -9143969251256100527
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_17: 302363790699719213
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_18: 5751776717787149515
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_19: 7944699788215370751
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_2: 7725225795516523632
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_20: 5560787225380001596
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_21: -8102483043827029615
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_22: -7464096561009178442
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_23: 3090976167242506576
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_24: 8947491629391597456
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_25: 5110904034228050800
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_26: -8761596478312987459
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_27: 2405916416500930806
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_28: -6214252711920882147
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_29: -6696809580986041600
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_3: -7277866314368039011
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_30: -6691877713134537933
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_31: 2642271788086477269
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_32: 7172142482859012398
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_33: -1246818696973568643
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_34: 8116846049257870386
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_35: 4330270659109937629
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_36: -7220188445906278963
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_37: -7849249362408934516
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_38: 2770295913255856368
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_39: 801158687175018015
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_4: 3663516333605928142
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_40: -1587127175032398476
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_41: -3236009596680541601
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_42: 4434658425587220037
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_43: -746544663844833254
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_44: 3464379733602037480
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_45: -3081817023416191445
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_46: 7324253578292604281
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_47: 4717977095400576336
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_48: 7471839912083427139
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_49: 1092604950584833368
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_5: -3829504303782406004
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_50: 5043209286684701174
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_51: -2476853717898420944
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_52: -5218899910503634949
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_53: -4725753067115212695
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_54: -725862106540582596
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_55: -4120455291112217875
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_56: 7372687900046486880
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_57: -6220356933343805151
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_58: -4330042242063160770
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_59: -5768113180936041456
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_6: 7143756332748662047
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_60: 8165484692100793307
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_61: -1811874961810375119
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_62: -5621481374760309137
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_63: 59576977557197369
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_7: -7086946563852092409
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_8: 2521185385733515584
+      Hell-Boss-Sprite-Sheets-Pixel-Art6-removebg-preview_9: -9185904084513905954
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

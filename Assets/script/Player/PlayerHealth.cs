@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerBlock playerBlock;
     [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private GameObject healPopupPrefab;
 
     private int currentHealth;
     private int maxHealth;
@@ -75,6 +76,15 @@ public class PlayerHealth : MonoBehaviour
         RunSession.PlayerCurrentHealth = currentHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        ShowHealPopup(amount);
+    }
+
+    private void ShowHealPopup(int amount)
+    {
+        if (healPopupPrefab == null) return;
+        GameObject popup = Instantiate(healPopupPrefab, transform);
+        popup.transform.localPosition = Vector3.zero;
+        popup.GetComponent<BlockPopup>()?.Play(amount);
     }
 
     private void Die()

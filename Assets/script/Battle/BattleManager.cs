@@ -87,13 +87,19 @@ public class BattleManager : MonoBehaviour
         GameObject enemy = enemyFactory.CreateEnemy(data, enemyArea);
 
         RectTransform rt = enemy.GetComponent<RectTransform>();
+
         if (rt != null)
         {
             rt.anchorMin = new Vector2(0.5f, 0.5f);
             rt.anchorMax = new Vector2(0.5f, 0.5f);
             rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = new Vector2((index - (total - 1) * 0.5f) * 300f, 0);
+
+            rt.anchoredPosition = new Vector2(
+                (index - (total - 1) * 0.5f) * 300f,
+                0
+            );
         }
+
 
         EnemyHealth health = enemy.GetComponent<EnemyHealth>();
         EnemyStatus status = enemy.GetComponent<EnemyStatus>();
@@ -158,7 +164,21 @@ public class BattleManager : MonoBehaviour
             return;
 
         energyManager.SpendEnergy(card.CardData.energyCost);
+
+        // Spawn VFX
+        if (card.CardData.attackVFX != null && target != null)
+        {
+            GameObject vfx = Instantiate(card.CardData.attackVFX, target.transform);
+
+            RectTransform enemyRect = target.GetComponent<RectTransform>();
+            float offsetX = enemyRect != null
+                ? -(enemyRect.rect.width * 0.5f + 70f)
+                : -190f;
+            vfx.transform.localPosition = new Vector3(offsetX, 0f, 0f);
+        }
+
         effectResolver.Resolve(card.CardData, target);
+
         deckManager.AddToDiscard(card.CardData);
         handManager.RemoveCard(card);
     }

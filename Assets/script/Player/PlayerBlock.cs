@@ -7,10 +7,21 @@ public class PlayerBlock : MonoBehaviour
     public int CurrentBlock => currentBlock;
     public event Action<int> OnBlockChanged;
 
+    [SerializeField] private GameObject blockPopupPrefab;
+
     public void AddBlock(int amount)
     {
         currentBlock += amount;
         OnBlockChanged?.Invoke(currentBlock);
+        ShowBlockPopup(amount);
+    }
+
+    private void ShowBlockPopup(int amount)
+    {
+        if (blockPopupPrefab == null) return;
+        GameObject popup = Instantiate(blockPopupPrefab, transform);
+        popup.transform.localPosition = Vector3.zero;
+        popup.GetComponent<BlockPopup>()?.Play(amount);
     }
 
     public void ResetBlock()
