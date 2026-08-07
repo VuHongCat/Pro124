@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardData", menuName = "Scriptable Objects/CardData")]
 public class CardData : ScriptableObject
 {
+    public GameObject attackVFX;
     [Header("Basic")]
     public string cardName;
     [TextArea]
@@ -47,6 +48,7 @@ public class CardData : ScriptableObject
     [Header("Shop")]
     public int shopPrice = 50;
 }
+
 
 public enum CardPool
 {

@@ -164,7 +164,21 @@ public class BattleManager : MonoBehaviour
             return;
 
         energyManager.SpendEnergy(card.CardData.energyCost);
+
+        // Spawn VFX
+        if (card.CardData.attackVFX != null && target != null)
+        {
+            GameObject vfx = Instantiate(card.CardData.attackVFX, target.transform);
+
+            RectTransform enemyRect = target.GetComponent<RectTransform>();
+            float offsetX = enemyRect != null
+                ? -(enemyRect.rect.width * 0.5f + 70f)
+                : -190f;
+            vfx.transform.localPosition = new Vector3(offsetX, 0f, 0f);
+        }
+
         effectResolver.Resolve(card.CardData, target);
+
         deckManager.AddToDiscard(card.CardData);
         handManager.RemoveCard(card);
     }
