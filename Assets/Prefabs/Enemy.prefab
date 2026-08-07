@@ -926,6 +926,7 @@ MonoBehaviour:
   enemyBlock: {fileID: 1851514153006990970}
   enemyStatus: {fileID: 0}
   damageNumberPrefab: {fileID: 100000, guid: bd4c6da2e5574064840b46c60de2185d, type: 3}
+  healPopupPrefab: {fileID: 100000, guid: 3a06a05d84e548219107ead26d5e456e, type: 3}
   currentHealth: 0
   maxHealth: 0
 --- !u!114 &8269766851750894880
@@ -966,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2e5987b0db3dd4196fee068ae7a2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBlock
+  blockPopupPrefab: {fileID: 100000, guid: 8d0477aca23e4e2e866089ebae3b8f4a, type: 3}
 --- !u!114 &5037709508882960599
 MonoBehaviour:
   m_ObjectHideFlags: 0
