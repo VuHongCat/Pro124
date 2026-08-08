@@ -16,7 +16,8 @@ public class CardDisplay : MonoBehaviour
     {
         CardData = data;
 
-        cardNameText.text = data.cardName;
+        cardNameText.text = data.isUpgraded ? data.cardName + "+" : data.cardName;
+        cardNameText.color = data.isUpgraded ? Color.cyan : Color.white;
         costText.text = data.energyCost.ToString();
         descriptionText.text = data.description;
 

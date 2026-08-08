@@ -24,7 +24,7 @@ MonoBehaviour:
   strength: 0
   heal: 0
   applyStatus: 0
-  statusAmount: 0
-  statusDuration: 1
+  statusAmount: 3
+  statusDuration: 99
   pool: 0
   shopPrice: 40

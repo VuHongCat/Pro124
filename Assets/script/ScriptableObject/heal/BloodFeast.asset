@@ -23,3 +23,5 @@ MonoBehaviour:
   block: 0
   heal: 8
   strength: 0
+  statusAmount: 1
+  statusDuration: 1
