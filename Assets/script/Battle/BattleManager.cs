@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
     private PlayerStatus playerStatus;
     private List<EnemyData> battleSequence;
     private readonly List<EnemyHealth> activeEnemies = new();
+    private readonly List<EnemyData> pendingSummons = new();
     private EnemyHealth lastAttacker;
     private bool battleEnded;
     private bool wasFinalBoss;
@@ -109,6 +110,8 @@ public class BattleManager : MonoBehaviour
         RelicManager.Instance?.ApplyBagOfMables(status);
         health.OnEnemyDeath += OnEnemyDeath;
         health.OnDamaged += damage => OnEnemyDamaged(health, damage);
+        combat.SetPlayerHealth(playerHealth);
+        combat.OnSummonRequested += OnBossSummonRequested;
         combat.DecideNextIntent();
     }
 
@@ -209,6 +212,8 @@ public class BattleManager : MonoBehaviour
             if (EnemyTargetManager.Instance != null &&
                 EnemyTargetManager.Instance.CurrentTarget == enemy)
                 EnemyTargetManager.Instance.ClearTarget();
+
+            SpawnSplits(enemy);
         }
 
         if (activeEnemies.Count == 0)
@@ -218,6 +223,28 @@ public class BattleManager : MonoBehaviour
         }
 
         Debug.Log($"{activeEnemies.Count} enemies left");
+    }
+
+    private void SpawnSplits(EnemyHealth enemy)
+    {
+        if (enemy == null || enemy.Data == null || !enemy.Data.canSplit)
+            return;
+
+        int count = Mathf.Max(1, enemy.Data.splitCount);
+        List<EnemyData> splits = new();
+        for (int i = 0; i < count; i++)
+        {
+            EnemyData split = RuntimeEnemyLibrary.BuildSplit(enemy.Data);
+            if (split != null)
+                splits.Add(split);
+        }
+
+        int total = activeEnemies.Count + splits.Count;
+        for (int i = 0; i < splits.Count; i++)
+            SpawnEnemy(splits[i], activeEnemies.Count + i, total);
+
+        if (splits.Count > 0)
+            Debug.Log($"[Split] {enemy.Data.enemyName} split into {splits.Count} smaller enemies.");
     }
 
     public void EnemyAttack()
@@ -237,7 +264,33 @@ public class BattleManager : MonoBehaviour
             status?.OnTurnEnd();
         }
 
+        ProcessPendingSummons();
+
         lastAttacker = null;
+    }
+
+    private void OnBossSummonRequested(EnemyData boss)
+    {
+        if (boss == null || string.IsNullOrEmpty(boss.summonId)) return;
+
+        EnemyData minion = RuntimeEnemyLibrary.BuildMinion(boss.summonId, RunSession.MapLevel);
+        if (minion == null) return;
+
+        int count = Mathf.Max(1, boss.summonCount);
+        for (int i = 0; i < count; i++)
+            pendingSummons.Add(minion);
+    }
+
+    private void ProcessPendingSummons()
+    {
+        if (pendingSummons.Count == 0) return;
+
+        int total = pendingSummons.Count;
+        for (int i = 0; i < total; i++)
+            SpawnEnemy(pendingSummons[i], activeEnemies.Count + i, activeEnemies.Count + total);
+
+        pendingSummons.Clear();
+        Debug.Log($"[Boss] Summoned {total} minion(s).");
     }
     public void OnEnemyAnimationFinished(GameObject enemy)
     {

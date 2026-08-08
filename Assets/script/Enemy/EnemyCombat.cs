@@ -6,11 +6,18 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private EnemyBlock enemyBlock;
     public event Action OnAttackFinished;
+    public event Action<EnemyData> OnSummonRequested;
     private EnemyIntent enemyIntent;
     private EnemyStatus enemyStatus;
     private EnemyHealth enemyHealth;
+    private PlayerHealth playerHealth;
     private int turnCount;
     private bool defensiveUsed;
+    private bool phaseTriggered;
+    private bool enragePending;
+    private bool rageAttack;
+    private bool summonPending;
+    private bool summonTriggered;
 
     public void Initialize(EnemyData data)
     {
@@ -21,11 +28,67 @@ public class EnemyCombat : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         if (enemyStatus != null && enemyData.counterStacks > 0)
             enemyStatus.AddStatus(StatusType.Counter, enemyData.counterStacks);
+
+        if (enemyData != null && enemyData.isBoss && enemyHealth != null)
+            enemyHealth.OnHealthChanged += OnBossHealthChanged;
+    }
+
+    public void SetPlayerHealth(PlayerHealth player)
+    {
+        playerHealth = player;
+    }
+
+    private void OnDestroy()
+    {
+        if (enemyHealth != null)
+            enemyHealth.OnHealthChanged -= OnBossHealthChanged;
+    }
+
+    // =========================================================
+    // BOSS PHASE 2: khi máu chạm ngưỡng -> buff + enrage
+    // =========================================================
+
+    private void OnBossHealthChanged(int current, int max)
+    {
+        if (enemyData == null || !enemyData.isBoss || max <= 0) return;
+        if (current <= 0) return;
+
+        float ratio = (float)current / max;
+
+        if (!phaseTriggered && enemyData.phaseThreshold > 0f && ratio <= enemyData.phaseThreshold)
+        {
+            phaseTriggered = true;
+            Debug.Log($"[Boss] {enemyData.enemyName} enters PHASE 2!");
+
+            if (enemyData.phaseStrength > 0)
+                enemyStatus?.AddStatus(StatusType.Strength, enemyData.phaseStrength, 99);
+            if (enemyData.phaseRegen > 0)
+                enemyStatus?.AddStatus(StatusType.Regen, enemyData.phaseRegen, 99);
+            if (enemyData.phaseImmortal > 0)
+                enemyStatus?.AddStatus(StatusType.Immortal, 1, enemyData.phaseImmortal);
+            if (enemyData.phaseHeal > 0)
+                enemyHealth?.Heal(enemyData.phaseHeal);
+
+            enragePending = true;
+        }
+
+        if (!summonPending && !summonTriggered &&
+            enemyData.canSummon && enemyData.summonThreshold > 0f &&
+            ratio <= enemyData.summonThreshold)
+        {
+            summonPending = true;
+            summonTriggered = true;
+        }
     }
 
     public void Attack(PlayerHealth player)
     {
-        int damage = enemyData.attackDamage;
+        Attack(player, enemyData.attackDamage);
+    }
+
+    public void Attack(PlayerHealth player, int baseDamage)
+    {
+        int damage = baseDamage;
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Strength) > 0)
             damage += enemyStatus.GetStatus(StatusType.Strength);
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Weak) > 0)
@@ -37,6 +100,16 @@ public class EnemyCombat : MonoBehaviour
     public void DecideNextIntent()
     {
         turnCount++;
+
+        if (enragePending)
+        {
+            enragePending = false;
+            rageAttack = true;
+            int mult = Mathf.Max(1, enemyData.enrageMultiplier);
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage * mult);
+            return;
+        }
+
         switch (enemyData.archetype)
         {
             case EnemyArchetype.Poison:     DecidePoison(); break;
@@ -208,11 +281,11 @@ public class EnemyCombat : MonoBehaviour
         switch (enemyIntent.IntentType)
         {
             case EnemyIntentType.Attack:
-                Attack(player);
+                Attack(player, enemyIntent.IntentValue);
                 break;
 
             case EnemyIntentType.LifestealAttack:
-                Attack(player);
+                Attack(player, enemyIntent.IntentValue);
                 enemyHealth?.Heal(enemyData.lifesteal);
                 break;
 
@@ -242,6 +315,30 @@ public class EnemyCombat : MonoBehaviour
                 enemyHealth?.Heal(enemyIntent.IntentValue);
                 break;
         }
+
+        // Boss triệu hồi quái (xảy ra trong lượt enemy, an toàn để spawn)
+        if (summonPending)
+        {
+            summonPending = false;
+            OnSummonRequested?.Invoke(enemyData);
+        }
+
+        // Boss phase 2: ra đòn cường hóa + debuff mạnh lên người chơi
+        if (rageAttack)
+        {
+            rageAttack = false;
+
+            if (player != null && enemyData.phasePlayerDebuff > 0)
+            {
+                PlayerStatus ps = player.GetComponent<PlayerStatus>();
+                if (ps != null)
+                {
+                    ps.AddStatus(StatusType.Weak, enemyData.phasePlayerDebuff, 2);
+                    ps.AddStatus(StatusType.Vulnerable, enemyData.phasePlayerDebuff, 2);
+                }
+            }
+        }
+
         DecideNextIntent();
     }
 }
