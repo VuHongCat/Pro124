@@ -17,6 +17,6 @@ MonoBehaviour:
   icon: {fileID: -4771285455422575784, guid: a316f527571033f45ade1b8775c6d2d2, type: 3}
   rarity: 2
   relicType: 3
-  value: 5
+  value: 7
   secondValue: 0
   stackable: 0

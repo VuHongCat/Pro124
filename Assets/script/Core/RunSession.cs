@@ -85,6 +85,19 @@ using UnityEngine.SceneManagement;
         else Deck.Clear();
     }
 
+    public static void UpgradeCards(string cardName)
+    {
+        if (Deck == null) return;
+
+        foreach (CardData card in Deck)
+        {
+            if (card == null) continue;
+            if (card.cardName != cardName) continue;
+            if (card.isUpgraded) continue;
+            card.Upgrade();
+        }
+    }
+
     public static void ReturnToMap()
     {
         BattleDeck = null;
