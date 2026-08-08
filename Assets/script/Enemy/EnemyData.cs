@@ -19,6 +19,9 @@ public class EnemyData : ScriptableObject
     public Sprite artwork;
     public EnemyArchetype archetype;
 
+    [Tooltip("Describes the monster's role / function in battle, shown in the Monster Index")]
+    public string role;
+
 
     [Header("Animation")]
     public RuntimeAnimatorController animatorController;
@@ -44,4 +47,24 @@ public class EnemyData : ScriptableObject
     public int goldReward;
     public bool isBoss;
     public bool flipX;
+
+
+    [Header("Boss Mechanics")]
+    public float phaseThreshold;
+    public int phaseStrength;
+    public int phaseRegen;
+    public int phaseImmortal;
+    public int phaseHeal;
+    public int phasePlayerDebuff;
+    public int enrageMultiplier = 1;
+    public bool canSummon;
+    public int summonCount = 1;
+    public float summonThreshold;
+    public string summonId;
+
+    [Header("Split Mechanic")]
+    public bool canSplit;
+    public int splitCount = 2;
+    public float splitHpScale = 0.5f;
+    public int splitDmgScale = 1;
 }

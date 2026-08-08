@@ -127,6 +127,12 @@ public class MapManager : MonoBehaviour
             GameObject codexGo = new GameObject("CardCodexUI");
             codexGo.AddComponent<CardCodexUI>();
         }
+
+        if (MonsterIndexUI.Instance == null)
+        {
+            GameObject indexGo = new GameObject("MonsterIndexUI");
+            indexGo.AddComponent<MonsterIndexUI>();
+        }
     }
 
     private int GetMapLevelFromSceneName()
@@ -945,31 +951,12 @@ public class MapManager : MonoBehaviour
     private EnemyData GetMiniBoss()
     {
         if (miniBossEnemy != null) return miniBossEnemy;
-        EnemyData d = ScriptableObject.CreateInstance<EnemyData>();
-        d.enemyName = "Mini Boss Knight";
-        d.archetype = EnemyArchetype.Knight;
-        d.maxHealth = 90;
-        d.attackDamage = 12;
-        d.block = 10;
-        d.selfHeal = 10;
-        d.goldReward = 60;
-        d.isBoss = true;
-        return RuntimeEnemyLibrary.BuildScaled(d, RunSession.MapLevel);
+        return RuntimeEnemyLibrary.BuildMiniBoss(RunSession.MapLevel);
     }
 
     private EnemyData GetBoss()
     {
         if (bossEnemy != null) return bossEnemy;
-        EnemyData d = ScriptableObject.CreateInstance<EnemyData>();
-        d.enemyName = "Boss Golem";
-        d.archetype = EnemyArchetype.Golem;
-        d.maxHealth = 150;
-        d.attackDamage = 14;
-        d.block = 8;
-        d.selfHeal = 20;
-        d.regenValue = 6;
-        d.goldReward = 100;
-        d.isBoss = true;
-        return RuntimeEnemyLibrary.BuildScaled(d, RunSession.MapLevel);
+        return RuntimeEnemyLibrary.BuildBoss(RunSession.MapLevel);
     }
 }
