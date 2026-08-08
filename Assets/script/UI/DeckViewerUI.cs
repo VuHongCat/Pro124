@@ -152,12 +152,13 @@ public class DeckViewerUI : MonoBehaviour
                 art.color = new Color(0.25f, 0.25f, 0.3f, 1f);
             }
 
-            Text name = RuntimeUi.CreateText(rt, card.cardName, 13, TextAnchor.MiddleCenter,
+            Text name = RuntimeUi.CreateText(rt, card.isUpgraded ? card.cardName + "+" : card.cardName, 13, TextAnchor.MiddleCenter,
                 new Vector2(0, 0), new Vector2(1, 1));
             name.rectTransform.anchorMin = new Vector2(0, 0);
             name.rectTransform.anchorMax = new Vector2(1, 0.2f);
             name.rectTransform.offsetMin = new Vector2(2, 0);
             name.rectTransform.offsetMax = new Vector2(-2, 0);
+            if (card.isUpgraded) name.color = Color.cyan;
 
             deckCells.Add(cell);
             shown++;

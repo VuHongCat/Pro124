@@ -64,10 +64,13 @@ public class RelicBarUI : MonoBehaviour
         barRoot.anchoredPosition = new Vector2(0, -6);
         barRoot.sizeDelta = new Vector2(0, 44);
 
-        GameObject tt = new GameObject("RelicTooltip", typeof(RectTransform), typeof(Image));
+        GameObject tt = new GameObject("RelicTooltip", typeof(RectTransform), typeof(Image), typeof(CanvasGroup));
         tooltipPanel = tt;
         tooltipRt = tt.GetComponent<RectTransform>();
         tt.GetComponent<Image>().color = new Color(0.08f, 0.08f, 0.12f, 0.96f);
+        CanvasGroup ttGroup = tt.GetComponent<CanvasGroup>();
+        ttGroup.blocksRaycasts = false;
+        ttGroup.interactable = false;
         tooltipRt.SetParent(canvasGo.transform, false);
         tooltipRt.anchorMin = new Vector2(0.5f, 1f);
         tooltipRt.anchorMax = new Vector2(0.5f, 1f);
@@ -141,6 +144,20 @@ public class RelicBarUI : MonoBehaviour
 
         tooltipName.text = relic.relicName;
         tooltipDesc.text = relic.description;
+
+        float nameH = 36f;
+        float descH = Mathf.Ceil(tooltipDesc.preferredHeight);
+        if (descH < 20f) descH = 20f;
+        float panelH = descH + nameH + 16f;
+
+        tooltipRt.sizeDelta = new Vector2(340f, panelH);
+
+        tooltipName.rectTransform.offsetMin = new Vector2(12, panelH - nameH);
+        tooltipName.rectTransform.offsetMax = new Vector2(-12, -8);
+
+        tooltipDesc.rectTransform.offsetMin = new Vector2(12, 8);
+        tooltipDesc.rectTransform.offsetMax = new Vector2(-12, -(nameH + 8));
+
         tooltipPanel.SetActive(true);
         tooltipRt.position = icon.position + new Vector3(0, -24, 0);
     }

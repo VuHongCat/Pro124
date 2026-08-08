@@ -56,7 +56,7 @@ public static class RuntimeUi
         return t;
     }
 
-    public static Button CreateButton(Transform parent, string label, Vector2 pos, Vector2 size, Action onClick)
+    public static Button CreateButton(Transform parent, string label, Vector2 pos, Vector2 size, Action onClick, bool interactable = true)
     {
         GameObject go = new GameObject("Button", typeof(RectTransform), typeof(Image));
         RectTransform rt = go.GetComponent<RectTransform>();
@@ -71,7 +71,15 @@ public static class RuntimeUi
         img.color = new Color(0.15f, 0.15f, 0.2f, 0.95f);
         Button btn = go.AddComponent<Button>();
         btn.targetGraphic = img;
-        btn.onClick.AddListener(() => onClick());
+        btn.interactable = interactable;
+        if (!interactable)
+        {
+            ColorBlock cb = btn.colors;
+            cb.disabledColor = new Color(0.45f, 0.45f, 0.5f, 0.7f);
+            btn.colors = cb;
+        }
+        if (interactable)
+            btn.onClick.AddListener(() => onClick());
         CreateText(go.transform, label, 18, TextAnchor.MiddleCenter, Vector2.zero, Vector2.one);
         return btn;
     }

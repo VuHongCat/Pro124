@@ -121,6 +121,12 @@ public class MapManager : MonoBehaviour
             GameObject uiGo = new GameObject("DeckViewerUI");
             uiGo.AddComponent<DeckViewerUI>();
         }
+
+        if (CardCodexUI.Instance == null)
+        {
+            GameObject codexGo = new GameObject("CardCodexUI");
+            codexGo.AddComponent<CardCodexUI>();
+        }
     }
 
     private int GetMapLevelFromSceneName()
@@ -816,12 +822,23 @@ public class MapManager : MonoBehaviour
         Debug.Log("Rest: +30 HP");
     }
 
+    private int upgradePage;
+    private const int UpgradePageSize = 8;
+
     private void RestUpgrade()
+    {
+        upgradePage = 0;
+        ShowUpgradePage();
+    }
+
+    private void ShowUpgradePage()
     {
         foreach (Transform child in popupRoot.transform)
             Destroy(child.gameObject);
 
-        if (RunSession.Deck == null || RunSession.Deck.Count == 0)
+        List<CardData> unique = CardGridUi.UniqueCards(RunSession.Deck);
+
+        if (unique.Count == 0)
         {
             RuntimeUi.CreateText(popupRoot.transform, "Deck is empty!", 22, TextAnchor.MiddleCenter,
                 new Vector2(0, 0.55f), new Vector2(1, 0.7f));
@@ -829,18 +846,47 @@ public class MapManager : MonoBehaviour
             return;
         }
 
-        RuntimeUi.CreateText(popupRoot.transform, "Choose a card to upgrade", 24, TextAnchor.MiddleCenter,
-            new Vector2(0, 0.8f), new Vector2(1, 0.95f));
+        int totalPages = Mathf.Max(1, Mathf.CeilToInt(unique.Count / (float)UpgradePageSize));
+        upgradePage = Mathf.Clamp(upgradePage, 0, totalPages - 1);
 
-        int shown = Mathf.Min(RunSession.Deck.Count, 12);
-        for (int i = 0; i < shown; i++)
+        RuntimeUi.CreateText(popupRoot.transform, $"Choose a card to upgrade (page {upgradePage + 1} / {totalPages})", 24, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.88f), new Vector2(1, 0.98f));
+
+        int start = upgradePage * UpgradePageSize;
+        int end = Mathf.Min(start + UpgradePageSize, unique.Count);
+
+        BuildUpgradeCells(unique, start, end);
+
+        RuntimeUi.CreateButton(popupRoot.transform, "Previous", new Vector2(-170, -400), new Vector2(140, 46),
+            () => { upgradePage--; ShowUpgradePage(); }, upgradePage > 0);
+
+        RuntimeUi.CreateButton(popupRoot.transform, "Next", new Vector2(170, -400), new Vector2(140, 46),
+            () => { upgradePage++; ShowUpgradePage(); }, end < unique.Count);
+
+        RuntimeUi.CreateButton(popupRoot.transform, "Close", new Vector2(0, -470), new Vector2(200, 50), ClosePopup);
+    }
+
+    private void BuildUpgradeCells(List<CardData> unique, int start, int end)
+    {
+        const int cols = 4;
+        const float cellW = 200f;
+        const float cellH = 240f;
+
+        for (int i = start; i < end; i++)
         {
-            CardData card = RunSession.Deck[i];
-            string label = card.cardName + (card.isUpgraded ? " (Upgraded)" : "");
-            RuntimeUi.CreateButton(popupRoot.transform, label,
-                new Vector2(0, 240 - i * 48),
-                new Vector2(400, 44),
-                () => UpgradeChosen(card));
+            CardData card = unique[i];
+            if (card == null) continue;
+
+            int index = i - start;
+            int row = index / cols;
+            int col = index % cols;
+            float x = (col - (cols - 1) * 0.5f) * cellW;
+            float y = -80f - row * cellH;
+
+            bool dim = CardGridUi.AllUpgraded(RunSession.Deck, card.cardName);
+            CardData captured = card;
+            CardGridUi.CreateCell(popupRoot.transform, card, new Vector2(x, y), dim,
+                c => UpgradeChosen(captured));
         }
     }
 
@@ -848,7 +894,7 @@ public class MapManager : MonoBehaviour
     {
         RelicManager.EmitRestSite();
 
-        card.Upgrade();
+        RunSession.UpgradeCards(card.cardName);
         CompleteNode();
         ClosePopup();
         Debug.Log("Upgraded: " + card.cardName);
@@ -859,8 +905,7 @@ public class MapManager : MonoBehaviour
         if (popupOpen) return;
         popupOpen = true;
 
-        CardDatabase db = FindAnyObjectByType<CardDatabase>();
-        CardData reward = db != null ? db.GetRandomCard() : RuntimeCardLibrary.GetRandomCard();
+        RelicData reward = RelicManager.Instance.GetRandomChestRelic();
 
         Canvas canvas = RuntimeUi.CreateCanvas("ChestPopup");
         popupRoot = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
@@ -869,9 +914,8 @@ public class MapManager : MonoBehaviour
 
         if (reward != null)
         {
-            RunSession.Deck.Add(reward);
-            RelicManager.EmitObtainCard(reward);
-            RuntimeUi.CreateText(popupRoot.transform, $"Received: {reward.cardName}\n{reward.description}", 20, TextAnchor.MiddleCenter,
+            RelicManager.Instance.AddRelic(reward);
+            RuntimeUi.CreateText(popupRoot.transform, $"Received Relic:\n{reward.relicName}\n\n{reward.description}", 20, TextAnchor.MiddleCenter,
                 new Vector2(0, 0.45f), new Vector2(1, 0.7f));
         }
         else
