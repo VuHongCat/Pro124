@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cb4d5b954331e4bbb3727c831bff9f, type: 3}
+  m_Name: Blood Vial
+  m_EditorClassIdentifier: Assembly-CSharp::RelicData
+  relicName: Blood Vial
+  description: Heal 5 HP at the start of each battle
+  icon: {fileID: -1743174590881542474, guid: 2655b6069e232794d827c9c1932a2a50, type: 3}
+  rarity: 0
+  relicType: 3
+  value: 5
+  secondValue: 0
+  stackable: 0
+  shopPrice: 160

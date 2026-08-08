@@ -260,10 +260,8 @@ public class BattleManager : MonoBehaviour
         GameEvents.OnBattleEnd?.Invoke();
         RelicManager.EmitBattleEnd();
         int gold = GrantBattleGold();
-        CardData card = RollReward();
-        if (card != null)
-            deckManager.AddCardToDeck(card);
-        ShowRewardAndContinue(gold, card);
+        List<CardData> rewards = RollRewards();
+        ShowRewardAndContinue(gold, rewards);
     }
 
     private int GrantBattleGold()
@@ -285,12 +283,12 @@ public class BattleManager : MonoBehaviour
         return RelicManager.Instance.OnGainGold(total);
     }
 
-    private CardData RollReward()
+    private List<CardData> RollRewards(int count = 3)
     {
         List<CardData> pool = new();
         CardDatabase db = FindAnyObjectByType<CardDatabase>();
         if (db != null)
-            pool.AddRange(db.GetComplexCards());
+            pool.AddRange(db.GetRewardCards());
         else
             pool.AddRange(RuntimeCardLibrary.GetCards());
 
@@ -301,24 +299,45 @@ public class BattleManager : MonoBehaviour
         }
 
         if (pool.Count == 0)
-            return null;
+            return new List<CardData>();
 
         bool isBoss = RunSession.IsBossBattle;
 
+        List<CardData> result = new();
+        HashSet<string> chosen = new();
+        int guard = 0;
+        while (result.Count < count && result.Count < pool.Count && guard++ < 200)
+        {
+            CardData pick = WeightedPick(pool, isBoss, chosen);
+            if (pick == null) break;
+            chosen.Add(pick.cardName);
+            result.Add(pick);
+        }
+
+        return result;
+    }
+
+    private CardData WeightedPick(List<CardData> pool, bool isBoss, HashSet<string> exclude)
+    {
         int totalWeight = 0;
         foreach (CardData card in pool)
+        {
+            if (exclude.Contains(card.cardName)) continue;
             totalWeight += GetRarityWeight(card.rarity, isBoss);
+        }
+
+        if (totalWeight <= 0) return null;
 
         int roll = Random.Range(0, totalWeight);
         int acc = 0;
         foreach (CardData card in pool)
         {
+            if (exclude.Contains(card.cardName)) continue;
             acc += GetRarityWeight(card.rarity, isBoss);
-            if (roll < acc)
-                return card;
+            if (roll < acc) return card;
         }
 
-        return pool[pool.Count - 1];
+        return null;
     }
 
     private static int GetRarityWeight(CardRarity rarity, bool isBoss)
@@ -332,26 +351,106 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void ShowRewardAndContinue(int gold, CardData card)
+    private void ShowRewardAndContinue(int gold, List<CardData> rewards)
     {
         Canvas canvas = RuntimeUi.CreateCanvas("RewardCanvas");
-        rewardPanel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
-        RuntimeUi.CreateText(rewardPanel.transform, "Victory!", 28, TextAnchor.MiddleCenter,
-            new Vector2(0, 0.65f), new Vector2(1, 0.75f));
+        rewardPanel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.88f));
+        RuntimeUi.CreateText(rewardPanel.transform, "Victory!", 30, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.78f), new Vector2(1, 0.88f));
 
         if (gold > 0)
         {
             RuntimeUi.CreateText(rewardPanel.transform, $"Gold +{gold}", 20, TextAnchor.MiddleCenter,
-                new Vector2(0, 0.52f), new Vector2(1, 0.62f));
+                new Vector2(0, 0.68f), new Vector2(1, 0.76f));
         }
 
-        if (card != null)
+        RuntimeUi.CreateText(rewardPanel.transform, "Choose a card", 18, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.58f), new Vector2(1, 0.66f));
+
+        int shown = Mathf.Min(rewards.Count, 3);
+        for (int i = 0; i < shown; i++)
+            CreateCardOption(rewardPanel.transform, rewards[i], i, shown);
+
+        RuntimeUi.CreateText(rewardPanel.transform, "Choose a card to continue", 16, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.045f), new Vector2(1, 0.12f));
+    }
+
+    private void CreateCardOption(Transform parent, CardData card, int index, int count)
+    {
+        float cx = count == 3 ? new float[] { 0.22f, 0.5f, 0.78f }[index] : 0.5f;
+
+        GameObject slot = new GameObject("CardOption", typeof(RectTransform), typeof(Image), typeof(Button));
+        RectTransform rt = slot.GetComponent<RectTransform>();
+        rt.SetParent(parent, false);
+        rt.anchorMin = new Vector2(cx - 0.14f, 0.1f);
+        rt.anchorMax = new Vector2(cx + 0.14f, 0.56f);
+        rt.offsetMin = Vector2.zero;
+        rt.offsetMax = Vector2.zero;
+
+        Image slotImg = slot.GetComponent<Image>();
+        slotImg.color = new Color(0.12f, 0.12f, 0.16f, 0.95f);
+        Button btn = slot.GetComponent<Button>();
+        btn.targetGraphic = slotImg;
+        CardData captured = card;
+        btn.onClick.AddListener(() => ChooseReward(captured));
+
+        GameObject artGo = new GameObject("Art", typeof(RectTransform), typeof(Image));
+        RectTransform artRt = artGo.GetComponent<RectTransform>();
+        artRt.SetParent(rt, false);
+        artRt.anchorMin = new Vector2(0.08f, 0.3f);
+        artRt.anchorMax = new Vector2(0.92f, 0.94f);
+        artRt.offsetMin = Vector2.zero;
+        artRt.offsetMax = Vector2.zero;
+        Image art = artGo.GetComponent<Image>();
+        art.preserveAspect = true;
+        if (card.artwork != null)
         {
-            RuntimeUi.CreateText(rewardPanel.transform, $"Card gained: {card.cardName}", 22, TextAnchor.MiddleCenter,
-                new Vector2(0, 0.4f), new Vector2(1, 0.5f));
+            art.sprite = card.artwork;
+            art.color = Color.white;
+        }
+        else
+        {
+            art.sprite = GetRewardPlaceholder();
+            art.color = new Color(0.1f, 0.1f, 0.12f, 1f);
         }
 
-        Invoke(nameof(FinishBattle), 1.5f);
+        Text name = RuntimeUi.CreateText(slot.transform, card.cardName, 18, TextAnchor.MiddleCenter,
+            new Vector2(0.04f, 0.2f), new Vector2(0.96f, 0.3f));
+        name.fontStyle = FontStyle.Bold;
+        name.color = new Color(0.95f, 0.9f, 0.4f);
+
+        Text cost = RuntimeUi.CreateText(slot.transform, card.energyCost.ToString(), 16, TextAnchor.MiddleCenter,
+            new Vector2(0.04f, 0.9f), new Vector2(0.2f, 1f));
+        cost.color = new Color(1f, 0.85f, 0.3f);
+
+        Text desc = RuntimeUi.CreateText(slot.transform, card.description, 12, TextAnchor.UpperLeft,
+            new Vector2(0.05f, 0.02f), new Vector2(0.95f, 0.19f));
+        desc.color = new Color(0.85f, 0.85f, 0.85f);
+    }
+
+    private static Sprite rewardPlaceholder;
+
+    private static Sprite GetRewardPlaceholder()
+    {
+        if (rewardPlaceholder == null)
+        {
+            var tex = new Texture2D(2, 2);
+            tex.SetPixels(new[] { Color.white, Color.white, Color.white, Color.white });
+            tex.Apply();
+            rewardPlaceholder = Sprite.Create(tex, new Rect(0, 0, 2, 2), new Vector2(0.5f, 0.5f));
+            rewardPlaceholder.name = "CardRewardPlaceholder";
+        }
+
+        return rewardPlaceholder;
+    }
+
+    private void ChooseReward(CardData card)
+    {
+        if (rewardChosen || card == null) return;
+        rewardChosen = true;
+        deckManager.AddCardToDeck(Instantiate(card));
+        Destroy(rewardPanel);
+        FinishBattle();
     }
 
     private void FinishBattle()

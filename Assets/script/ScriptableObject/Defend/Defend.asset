@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Defend
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: Defend
-  description: Block 5 damage
+  description: Gain 8 Block
   artwork: {fileID: 6068523354536302315, guid: 214a5e8ebf6052c408b32fd981d2e6c6, type: 3}
   energyCost: 1
   cardType: 1

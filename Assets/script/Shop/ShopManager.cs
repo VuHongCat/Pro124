@@ -27,6 +27,12 @@ public class ShopManager : MonoBehaviour
 
     private bool[] cardSold;
 
+    private const int UpgradeCost = 75;
+    private const int UpgradePageSize = 8;
+    private int upgradePage;
+    private GameObject upgradePanel;
+    private Text upgradeMessage;
+
     private void Start()
     {
         GenerateCards();
@@ -35,6 +41,7 @@ public class ShopManager : MonoBehaviour
         WireCardBuyButtons();
         WireRelicBuyButtons();
         UpdateGoldText();
+        CreateUpgradeButton();
     }
 
     //==========================
@@ -293,5 +300,140 @@ public class ShopManager : MonoBehaviour
     {
         GenerateCards();
         GenerateRelics();
+    }
+
+    //==========================
+    // UPGRADE CARD
+    //==========================
+
+    private void CreateUpgradeButton()
+    {
+        Button leaveBtn = GameObject.Find("LeaveBotton")?.GetComponent<Button>();
+        Transform parent = leaveBtn != null ? leaveBtn.transform.parent : null;
+
+        if (parent != null)
+        {
+            GameObject go = new GameObject("UpgradeButton", typeof(RectTransform), typeof(Image));
+            RectTransform rt = go.GetComponent<RectTransform>();
+            rt.SetParent(parent, false);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = new Vector2(560, -451.5f);
+            rt.sizeDelta = new Vector2(210, 51);
+
+            Image img = go.GetComponent<Image>();
+            img.color = new Color(0.15f, 0.15f, 0.2f, 0.95f);
+            Button btn = go.AddComponent<Button>();
+            btn.targetGraphic = img;
+            btn.onClick.AddListener(OpenUpgradePanel);
+            RuntimeUi.CreateText(go.transform, $"Upgrade Card ({UpgradeCost} Gold)", 18, TextAnchor.MiddleCenter, Vector2.zero, Vector2.one);
+            return;
+        }
+
+        Canvas canvas = RuntimeUi.CreateCanvas("UpgradeCanvas");
+        RuntimeUi.CreateButton(canvas.transform, $"Upgrade Card ({UpgradeCost} Gold)",
+            new Vector2(230, 300), new Vector2(250, 48), OpenUpgradePanel);
+    }
+
+    private void OpenUpgradePanel()
+    {
+        if (upgradePanel != null) return;
+        upgradePage = 0;
+
+        Canvas canvas = RuntimeUi.CreateCanvas("ShopUpgradeCanvas");
+        upgradePanel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.85f));
+        ShowUpgradePage();
+    }
+
+    private void ShowUpgradePage()
+    {
+        if (upgradePanel == null) return;
+
+        for (int i = upgradePanel.transform.childCount - 1; i >= 0; i--)
+            Destroy(upgradePanel.transform.GetChild(i).gameObject);
+
+        List<CardData> deck = CardGridUi.UniqueCards(RunSession.Deck);
+        if (deck.Count == 0)
+        {
+            RuntimeUi.CreateText(upgradePanel.transform, "Deck is empty!", 22, TextAnchor.MiddleCenter,
+                new Vector2(0, 0.55f), new Vector2(1, 0.7f));
+            RuntimeUi.CreateButton(upgradePanel.transform, "Close", new Vector2(0, -180), new Vector2(200, 55), CloseUpgradePanel);
+            return;
+        }
+
+        int totalPages = Mathf.Max(1, Mathf.CeilToInt(deck.Count / (float)UpgradePageSize));
+        upgradePage = Mathf.Clamp(upgradePage, 0, totalPages - 1);
+
+        RuntimeUi.CreateText(upgradePanel.transform,
+            $"Upgrade Card - {UpgradeCost} Gold (page {upgradePage + 1} / {totalPages})", 24, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.82f), new Vector2(1, 0.96f));
+
+        int start = upgradePage * UpgradePageSize;
+        int end = Mathf.Min(start + UpgradePageSize, deck.Count);
+
+        const int cols = 4;
+        const float cellW = 200f;
+        const float cellH = 240f;
+
+        for (int i = start; i < end; i++)
+        {
+            CardData card = deck[i];
+            if (card == null) continue;
+
+            int index = i - start;
+            int row = index / cols;
+            int col = index % cols;
+            float x = (col - (cols - 1) * 0.5f) * cellW;
+            float y = -80f - row * cellH;
+
+            bool dim = CardGridUi.AllUpgraded(RunSession.Deck, card.cardName);
+            CardData captured = card;
+            CardGridUi.CreateCell(upgradePanel.transform, card, new Vector2(x, y), dim,
+                c => TryUpgrade(captured));
+        }
+
+        RuntimeUi.CreateButton(upgradePanel.transform, "Previous", new Vector2(-170, -480), new Vector2(140, 46),
+            () => { upgradePage--; ShowUpgradePage(); }, upgradePage > 0);
+
+        RuntimeUi.CreateButton(upgradePanel.transform, "Next", new Vector2(170, -480), new Vector2(140, 46),
+            () => { upgradePage++; ShowUpgradePage(); }, end < deck.Count);
+
+        upgradeMessage = RuntimeUi.CreateText(upgradePanel.transform, "", 20, TextAnchor.MiddleCenter,
+            new Vector2(0.2f, -0.36f), new Vector2(0.8f, -0.3f));
+        upgradeMessage.color = new Color(1f, 0.35f, 0.35f);
+
+        RuntimeUi.CreateButton(upgradePanel.transform, "Close", new Vector2(0, -540), new Vector2(200, 48), CloseUpgradePanel);
+    }
+
+    private void TryUpgrade(CardData card)
+    {
+        if (card == null || card.isUpgraded) return;
+
+        if (RunSession.Gold < UpgradeCost)
+        {
+            Debug.Log("[ShopManager] Not enough gold to upgrade: " + card.cardName);
+            if (upgradeMessage != null)
+                upgradeMessage.text = "Not enough gold! Need " + UpgradeCost + " Gold";
+            return;
+        }
+
+        RunSession.Gold -= UpgradeCost;
+        RunSession.UpgradeCards(card.cardName);
+        RelicManager.EmitRestSite();
+        UpdateGoldText();
+        ShowUpgradePage();
+        if (upgradeMessage != null)
+            upgradeMessage.text = "Upgraded: " + card.cardName + "!";
+        Debug.Log("[ShopManager] Upgraded: " + card.cardName);
+    }
+
+    private void CloseUpgradePanel()
+    {
+        if (upgradePanel != null)
+        {
+            Destroy(upgradePanel);
+            upgradePanel = null;
+        }
     }
 }
