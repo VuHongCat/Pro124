@@ -72,6 +72,33 @@ public class CardDatabase : MonoBehaviour
         return complex;
     }
 
+    private static readonly string[] RewardExcludedNames =
+    {
+        "Strike", "Defend", "Bash", "Second Wind"
+    };
+
+    public List<CardData> GetRewardCards()
+    {
+        List<CardData> rewards = new();
+        foreach (CardData card in allCards)
+        {
+            if (card == null)
+                continue;
+
+            bool excluded = false;
+            foreach (string n in RewardExcludedNames)
+            {
+                if (card.cardName == n) { excluded = true; break; }
+            }
+            if (excluded)
+                continue;
+
+            rewards.Add(card);
+        }
+
+        return rewards;
+    }
+
     public CardData GetRandomCard()
     {
         if (allCards.Count == 0) return null;

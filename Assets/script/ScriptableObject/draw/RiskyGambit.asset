@@ -19,12 +19,12 @@ MonoBehaviour:
   cardType: 0
   target: 0
   rarity: 0
-  damage: 0
+  damage: 5
   block: 0
   strength: 0
   heal: 0
   applyStatus: 0
-  statusAmount: 0
+  statusAmount: 2
   statusDuration: 1
   pool: 0
   shopPrice: 30
