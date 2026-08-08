@@ -30,8 +30,24 @@ public class EnemyCombat : MonoBehaviour
             damage += enemyStatus.GetStatus(StatusType.Strength);
         if (enemyStatus != null && enemyStatus.GetStatus(StatusType.Weak) > 0)
             damage = Mathf.RoundToInt(damage * 0.75f);
-        player.TakeDamage(damage);
-        OnAttackFinished?.Invoke();
+
+        EnemyDisplay display = GetComponent<EnemyDisplay>();
+        if (display != null)
+        {
+            EnemyHealth self = GetComponent<EnemyHealth>();
+            display.Lunge(() =>
+            {
+                if (self != null)
+                    FindAnyObjectByType<BattleManager>()?.OnEnemyAttackHit(self);
+                player.TakeDamage(damage);
+                OnAttackFinished?.Invoke();
+            });
+        }
+        else
+        {
+            player.TakeDamage(damage);
+            OnAttackFinished?.Invoke();
+        }
     }
 
     public void DecideNextIntent()
