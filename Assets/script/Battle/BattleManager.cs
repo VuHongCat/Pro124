@@ -222,7 +222,7 @@ public class BattleManager : MonoBehaviour
 
     public void EnemyAttack()
     {
-        foreach (EnemyHealth enemy in activeEnemies)
+        foreach (EnemyHealth enemy in new List<EnemyHealth>(activeEnemies))
         {
             if (enemy == null || enemy.CurrentHealth <= 0)
                 continue;

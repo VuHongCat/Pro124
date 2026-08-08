@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHitVFX : MonoBehaviour
@@ -9,12 +10,17 @@ public class EnemyHitVFX : MonoBehaviour
     {
         if (hitEffect == null) return;
 
+        CancelInvoke(nameof(Hide));
         hitEffect.SetActive(true);
-
-        if (animator != null)
-            animator.Play("Hit");
-
+        StartCoroutine(PlayDelayed());
         Invoke(nameof(Hide), 0.3f);
+    }
+
+    private IEnumerator PlayDelayed()
+    {
+        yield return null;
+        if (animator != null)
+            animator.Play("Hit", 0, 0f);
     }
 
     private void Hide()

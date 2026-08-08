@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Flurry
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 557983250621504684, guid: 37228553fb76c90408198f9ed52704eb, type: 3}
   cardName: Flurry
   description: Deal 3 damage 3 times. Each hit gains Strength.
   artwork: {fileID: 0}

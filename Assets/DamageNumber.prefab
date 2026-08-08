@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1fb56cc90342099524c14492e2b6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageNumber
-  floatDistance: 45
+  floatDistance: 90
   duration: 0.75
   startDelay: 0.05
   popDuration: 0.3

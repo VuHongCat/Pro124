@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Bloodthirst
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 557983250621504684, guid: 37228553fb76c90408198f9ed52704eb, type: 3}
   cardName: Bloodthirst
   description: deal 8 damage, recover your heath equal 50% your damage hit the enemy
   artwork: {fileID: -8405789750969526343, guid: 5fa4926362720f6438866b8744d20bb5, type: 3}
