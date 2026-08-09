@@ -38,6 +38,33 @@ public static class RuntimeCardLibrary
         return Object.Instantiate(pool[Random.Range(0, pool.Count)]);
     }
 
+    public static CardData GetCardByName(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+            return null;
+
+        CardData[] assets = Resources.LoadAll<CardData>("Cards");
+        foreach (CardData c in assets)
+        {
+            if (c != null && c.cardName == name)
+                return c;
+        }
+
+        foreach (CardData c in GetCards())
+        {
+            if (c != null && c.cardName == name)
+                return c;
+        }
+
+        foreach (CardData c in GetStarterDeck())
+        {
+            if (c != null && c.cardName == name)
+                return c;
+        }
+
+        return null;
+    }
+
     public static List<CardData> GetCards()
     {
         if (_pool == null) BuildPool();

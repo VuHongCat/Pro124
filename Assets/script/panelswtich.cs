@@ -4,10 +4,9 @@ public class panelswtich : MonoBehaviour
 {
     public GameObject loginpanel;
     public GameObject registerpanel;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        openregisterpanel();
+        openloginpanel();
     }
     public void openloginpanel()
     {

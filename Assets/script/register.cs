@@ -68,46 +68,11 @@ public class register : MonoBehaviour
                 }
             }
         }
-        if (PlayerPrefs.HasKey("User_" + username + "_Pass"))
-        {
-            message("This username already exists", Color.red);
-            return;
-        }
-        PlayerPrefs.SetString("User" + user + "Pass", pass);
-        PlayerPrefs.SetString("User" + user + "Email", mail);
-        PlayerPrefs.Save(); // Lưu ngay lập tức vào máy
-
-        message("Registration successful", Color.green);
         if (panelswtich != null)
         {
-            panelswtich.loginpanel.SetActive(true);
-            panelswtich.registerpanel.SetActive(false);
+            panelswtich.openloginpanel();
         }
-        username.text = "";
-        email.text = "";
-        password.text = "";
-        if (File.Exists(filepath))
-        {
-            string[] lines = File.ReadAllLines(filepath);
-            foreach (string line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-                string[] parts = line.Split(',');
-                if (parts.Length >= 3)
-                {
-                    string savedUser = parts[0].Trim();
-                    string savedPass = parts[1].Trim();
-                    string savedEmail = parts[2].Trim();
-                    if (savedUser == user && savedPass == pass && savedEmail == mail)
-                    {
-                        message("Account already exists in file", Color.red);
-                        return;
-                    }
-                }
-            }
-           
-        }
-        //ghi vao file
+
         string newline = user + "," + pass + "," + mail + System.Environment.NewLine;
         File.AppendAllText(filepath, newline);
         message("Registration successful", Color.green);
