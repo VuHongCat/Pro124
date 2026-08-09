@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
   m_Name: Bosslv2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: 
+  enemyName: Boss Knight
   artwork: {fileID: 8647823593821616703, guid: 6b1fa14a93a83654899705358a6f5563, type: 3}
   animatorController: {fileID: 9100000, guid: 45e6867268a3aef419067c4a5a312117, type: 2}
   maxHealth: 0

@@ -11,16 +11,31 @@ public class ScreenShake : MonoBehaviour
     [SerializeField] private float frequency = 22f;
     [SerializeField] private Transform[] targets;
 
+    private Vector3[] basePositions;
+    private Coroutine shakeRoutine;
+
     private void Awake()
     {
         Instance = this;
         Debug.Log($"[ScreenShake] Awake on {gameObject.name}, Instance set");
+        CaptureBase();
     }
 
     private void OnDestroy()
     {
         if (Instance == this)
             Instance = null;
+    }
+
+    private void CaptureBase()
+    {
+        if (targets == null || targets.Length == 0)
+            targets = new[] { transform };
+
+        basePositions = new Vector3[targets.Length];
+        for (int i = 0; i < targets.Length; i++)
+            if (targets[i] != null)
+                basePositions[i] = targets[i].localPosition;
     }
 
     public void Shake()
@@ -31,18 +46,17 @@ public class ScreenShake : MonoBehaviour
             Debug.LogWarning("[ScreenShake] GameObject inactive, shake skipped");
             return;
         }
-        StartCoroutine(ShakeRoutine());
+
+        if (shakeRoutine != null)
+            StopCoroutine(shakeRoutine);
+
+        shakeRoutine = StartCoroutine(ShakeRoutine());
     }
 
     private IEnumerator ShakeRoutine()
     {
-        if (targets == null || targets.Length == 0)
-            targets = new[] { transform };
-
-        Vector3[] origins = new Vector3[targets.Length];
-        for (int i = 0; i < targets.Length; i++)
-            if (targets[i] != null)
-                origins[i] = targets[i].localPosition;
+        if (basePositions == null)
+            CaptureBase();
 
         float elapsed = 0f;
         while (elapsed < duration)
@@ -58,7 +72,7 @@ public class ScreenShake : MonoBehaviour
             for (int i = 0; i < targets.Length; i++)
             {
                 if (targets[i] != null)
-                    targets[i].localPosition = origins[i] + offset;
+                    targets[i].localPosition = basePositions[i] + offset;
             }
 
             yield return null;
@@ -67,7 +81,9 @@ public class ScreenShake : MonoBehaviour
         for (int i = 0; i < targets.Length; i++)
         {
             if (targets[i] != null)
-                targets[i].localPosition = origins[i];
+                targets[i].localPosition = basePositions[i];
         }
+
+        shakeRoutine = null;
     }
 }

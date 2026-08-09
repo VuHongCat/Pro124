@@ -15,7 +15,9 @@ MonoBehaviour:
   enemyName: Boss Golem
   artwork: {fileID: -4744724232239111109, guid: 0a11c4369a6ab5d44b3030f053d52d90, type: 3}
   archetype: 3
-  animatorController: {fileID: 9100000, guid: cb2444a938af57445ba40018a56d1783, type: 2}
+  role: 
+  animatorController: {fileID: 9100000, guid: c2c178a7a4113ac49a9133aa9ae54914, type: 2}
+  attackStateName: MiniBossAtk
   maxHealth: 150
   attackDamage: 14
   block: 8
@@ -27,5 +29,21 @@ MonoBehaviour:
   weakDamage: 0
   vulnerableDamage: 0
   counterStacks: 0
+  goldReward: 0
   isBoss: 1
   flipX: 0
+  phaseThreshold: 0
+  phaseStrength: 0
+  phaseRegen: 0
+  phaseImmortal: 0
+  phaseHeal: 0
+  phasePlayerDebuff: 0
+  enrageMultiplier: 1
+  canSummon: 0
+  summonCount: 1
+  summonThreshold: 0
+  summonId: 
+  canSplit: 0
+  splitCount: 2
+  splitHpScale: 0.5
+  splitDmgScale: 1

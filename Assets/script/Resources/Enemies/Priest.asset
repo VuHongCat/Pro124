@@ -15,7 +15,9 @@ MonoBehaviour:
   enemyName: Priest
   artwork: {fileID: 0}
   archetype: 6
+  role: 
   animatorController: {fileID: 9100000, guid: 0720b4f1da2139e4f9ff62cd9a1619dc, type: 2}
+  attackStateName: PriestAtk
   maxHealth: 45
   attackDamage: 5
   block: 6
@@ -29,3 +31,19 @@ MonoBehaviour:
   counterStacks: 0
   goldReward: 25
   isBoss: 0
+  flipX: 0
+  phaseThreshold: 0
+  phaseStrength: 0
+  phaseRegen: 0
+  phaseImmortal: 0
+  phaseHeal: 0
+  phasePlayerDebuff: 0
+  enrageMultiplier: 1
+  canSummon: 0
+  summonCount: 1
+  summonThreshold: 0
+  summonId: 
+  canSplit: 0
+  splitCount: 2
+  splitHpScale: 0.5
+  splitDmgScale: 1

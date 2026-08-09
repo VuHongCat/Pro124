@@ -112,6 +112,8 @@ public class MapManager : MonoBehaviour
 
         RunSession.MapLevel = GetMapLevelFromSceneName();
 
+        AudioManager.PlayMapMusic(RunSession.MapLevel);
+
         GetAllNodes();
 
         UpdateMapFromProgress();

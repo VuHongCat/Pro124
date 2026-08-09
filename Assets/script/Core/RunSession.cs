@@ -57,6 +57,7 @@ using UnityEngine.SceneManagement;
 
         MapManager.ClearProgress();
         RelicManager.Instance.ClearRelics();
+        AudioManager.ResetBossTracks();
     }
 
     public static void AdvanceToNextMap()

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,7 @@ public class TurnManager : MonoBehaviour
     {
         TurnCount++;
         ChangeTurn(TurnState.PlayerTurn);
+        TurnBanner.Show("Your Turn", new Color(1f, 0.9f, 0.3f));
         battleManager.StartPlayerTurn();
         PlayerTurnStarted?.Invoke(TurnCount);
 
@@ -70,6 +72,7 @@ public class TurnManager : MonoBehaviour
     public void StartEnemyTurn()
     {
         ChangeTurn(TurnState.EnemyTurn);
+        TurnBanner.Show("Enemy Turn", new Color(0.85f, 0.35f, 0.35f));
 
         Invoke(nameof(FinishEnemyTurn), 1f);
     }
@@ -118,7 +121,12 @@ public class TurnManager : MonoBehaviour
 
     private void FinishEnemyTurn()
     {
-        battleManager.EnemyAttack();
+        StartCoroutine(FinishEnemyTurnRoutine());
+    }
+
+    private IEnumerator FinishEnemyTurnRoutine()
+    {
+        yield return StartCoroutine(battleManager.EnemyAttack());
         Invoke(nameof(StartNextPlayerTurn), 0.5f);
     }
     private void StartNextPlayerTurn()
