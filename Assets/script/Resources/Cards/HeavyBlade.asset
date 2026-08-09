@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: HeavyBlade
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 557983250621504684, guid: 37228553fb76c90408198f9ed52704eb, type: 3}
   cardName: HeavyBlade
   description: Deal 10 damage
   artwork: {fileID: -8840126637933752978, guid: a259adc51215c6e46b1349155a50bb93, type: 3}

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Stoneskin
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Stoneskin
   description: Gain 10 Block, +2 Block per Strength
-  artwork: {fileID: 0}
+  artwork: {fileID: -2930013087075886885, guid: d3537f35ebf883449ac1eb93f15a5474, type: 3}
   energyCost: 2
   cardType: 1
   target: 0

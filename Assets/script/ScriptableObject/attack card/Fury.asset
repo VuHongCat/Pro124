@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Fury
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Fury
   description: Deal 8 damage, gain 3 Strength
-  artwork: {fileID: 0}
+  artwork: {fileID: -3778219718934652562, guid: b88653792d519884c83918cf2942185a, type: 3}
   energyCost: 2
   cardType: 0
   target: 0

@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerBlock playerBlock;
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private GameObject healPopupPrefab;
+    [SerializeField] private GameObject damageNumberPrefab;
 
     private int currentHealth;
     private int maxHealth;
@@ -59,6 +60,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
         RunSession.PlayerCurrentHealth = currentHealth;
+        ScreenShake.Instance?.Shake();
+        GetComponent<EnemyHitVFX>()?.Play();
+        GetComponent<PlayerDisplay>()?.Punch();
+        ShowDamageNumber(damage);
 
         if (reflectable)
             OnDamageTaken?.Invoke(damage);
@@ -85,6 +90,16 @@ public class PlayerHealth : MonoBehaviour
         GameObject popup = Instantiate(healPopupPrefab, transform);
         popup.transform.localPosition = Vector3.zero;
         popup.GetComponent<BlockPopup>()?.Play(amount);
+    }
+
+    private void ShowDamageNumber(int amount)
+    {
+        if (damageNumberPrefab == null) return;
+        GameObject number = Instantiate(damageNumberPrefab, transform);
+        RectTransform rect = GetComponent<RectTransform>();
+        float yOffset = rect != null ? rect.rect.height * 0.5f + 10f : 120f;
+        number.transform.localPosition = new Vector3(0f, yOffset, 0f);
+        number.GetComponent<DamageNumber>().Play(amount);
     }
 
     private void Die()

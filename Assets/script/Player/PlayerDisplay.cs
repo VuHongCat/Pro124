@@ -1,11 +1,17 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text statusText;
     private int currentBlock;
+
+    [SerializeField] private float punchScale = 1.15f;
+    [SerializeField] private float punchDuration = 0.18f;
+
+    private Coroutine punchRoutine;
 
     private PlayerHealth playerHealth;
     private PlayerBlock playerBlock;
@@ -63,5 +69,29 @@ public class PlayerDisplay : MonoBehaviour
         if (w > 0) sb.Append($"Weak({w}) ");
         if (v > 0) sb.Append($"Vuln({v}) ");
         statusText.text = sb.ToString();
+    }
+
+    public void Punch()
+    {
+        if (punchRoutine != null) StopCoroutine(punchRoutine);
+        punchRoutine = StartCoroutine(PunchRoutine());
+    }
+
+    private IEnumerator PunchRoutine()
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        Vector3 baseScale = rt.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < punchDuration)
+        {
+            float t = elapsed / punchDuration;
+            float factor = 1f + (punchScale - 1f) * Mathf.Sin(t * Mathf.PI);
+            rt.localScale = new Vector3(baseScale.x * factor, baseScale.y * factor, baseScale.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rt.localScale = baseScale;
     }
 }

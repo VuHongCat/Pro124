@@ -47,6 +47,8 @@ public static class RuntimeEnemyLibrary
                 d.artwork = t.artwork;
             if (d.animatorController == null)
                 d.animatorController = t.animatorController;
+            if (string.IsNullOrEmpty(d.attackStateName))
+                d.attackStateName = t.attackStateName;
         }
     }
 
@@ -179,6 +181,8 @@ public static class RuntimeEnemyLibrary
         d.enemyName = template.enemyName;
         d.artwork = template.artwork;
         d.archetype = template.archetype;
+        d.animatorController = template.animatorController;
+        d.attackStateName = template.attackStateName;
         d.maxHealth = Mathf.Max(1, Mathf.RoundToInt(template.maxHealth * hpScale));
         d.attackDamage = Mathf.RoundToInt(template.attackDamage * dmgScale);
         d.block = Mathf.RoundToInt(template.block * dmgScale);

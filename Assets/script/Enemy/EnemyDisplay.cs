@@ -40,6 +40,13 @@ public class EnemyDisplay : MonoBehaviour
 
     private Coroutine punchRoutine;
 
+    [Header("Lunge Effect")]
+    [SerializeField] private float lungeDistance = 130f;
+    [SerializeField] private float lungeDuration = 0.3f;
+
+    private Coroutine lungeRoutine;
+    private Vector2 baseAnchoredPosition;
+
 
     public EnemyData EnemyData { get; private set; }
 
@@ -247,6 +254,56 @@ public class EnemyDisplay : MonoBehaviour
         }
 
         rt.localScale = baseScale;
+    }
+
+    public void Lunge(System.Action onReachEnd = null)
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        if (rt == null) return;
+        if (lungeRoutine != null) StopCoroutine(lungeRoutine);
+        lungeRoutine = StartCoroutine(LungeRoutine(rt, onReachEnd));
+    }
+
+    private IEnumerator LungeRoutine(RectTransform rt, System.Action onReachEnd)
+    {
+        baseAnchoredPosition = rt.anchoredPosition;
+
+        int prevStateHash = 0;
+        if (animator != null)
+            prevStateHash = animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+
+        string attackState = EnemyData != null ? EnemyData.attackStateName : null;
+        if (animator != null && !string.IsNullOrEmpty(attackState))
+            animator.Play(attackState, 0, 0f);
+
+        float elapsed = 0f;
+        bool endFired = false;
+
+        while (elapsed < lungeDuration)
+        {
+            float t = elapsed / lungeDuration;
+            float factor = Mathf.Sin(t * Mathf.PI);
+            rt.anchoredPosition = baseAnchoredPosition + new Vector2(-lungeDistance * factor, 0f);
+
+            if (!endFired && t >= 0.5f)
+            {
+                endFired = true;
+                onReachEnd?.Invoke();
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rt.anchoredPosition = baseAnchoredPosition;
+
+        if (animator != null)
+        {
+            if (enemyHealth != null && enemyHealth.currentHealth > 0)
+                animator.Play(prevStateHash, 0, 0f);
+        }
+
+        lungeRoutine = null;
     }
 
 

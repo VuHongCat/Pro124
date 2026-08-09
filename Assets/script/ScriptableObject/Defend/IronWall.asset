@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: IronWall
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Iron Wall
   description: Gain 8 Block
-  artwork: {fileID: 0}
+  artwork: {fileID: -3129067857093922631, guid: 010d909dcf5a97b4886b32f0f6468726, type: 3}
   energyCost: 1
   cardType: 1
   target: 0

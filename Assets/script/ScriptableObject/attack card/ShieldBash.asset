@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: ShieldBash
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Shield Bash
   description: Gain 6 Block, deal 4 damage
-  artwork: {fileID: 0}
+  artwork: {fileID: -7365733536741457721, guid: 01b707d1dc017cb418b989192a55a80b, type: 3}
   energyCost: 2
   cardType: 0
   target: 0

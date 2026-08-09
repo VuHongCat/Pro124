@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: DoubleEdge
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Double Edge
   description: Deal 4 damage twice
-  artwork: {fileID: 0}
+  artwork: {fileID: -1500254300978466636, guid: 5a5b55fa431e32d43bc1d9c5b1bb0fa5, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

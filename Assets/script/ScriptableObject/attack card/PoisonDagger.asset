@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: PoisonDagger
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Poison Dagger
   description: Deal 2 damage, apply 4 Poison
-  artwork: {fileID: 0}
+  artwork: {fileID: -162691878590599452, guid: 6b95a47ca1196394ca19684d9c20f411, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

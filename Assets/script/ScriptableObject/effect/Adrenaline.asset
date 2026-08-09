@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Adrenaline
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Adrenaline
   description: Draw 3 cards, lose 2 HP
-  artwork: {fileID: 0}
+  artwork: {fileID: 8536123850098070825, guid: aad96761e12736d488bf50faf45a5655, type: 3}
   energyCost: 0
   cardType: 0
   target: 0

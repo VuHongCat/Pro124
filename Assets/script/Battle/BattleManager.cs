@@ -127,6 +127,11 @@ public class BattleManager : MonoBehaviour
         playerStatus.AddStatus(StatusType.Counter, -1);
     }
 
+    public void OnEnemyAttackHit(EnemyHealth attacker)
+    {
+        lastAttacker = attacker;
+    }
+
     private void OnEnemyDamaged(EnemyHealth enemy, int damage)
     {
         if (playerHealth == null || enemy == null) return;
@@ -249,7 +254,7 @@ public class BattleManager : MonoBehaviour
 
     public void EnemyAttack()
     {
-        foreach (EnemyHealth enemy in activeEnemies)
+        foreach (EnemyHealth enemy in new List<EnemyHealth>(activeEnemies))
         {
             if (enemy == null || enemy.CurrentHealth <= 0)
                 continue;

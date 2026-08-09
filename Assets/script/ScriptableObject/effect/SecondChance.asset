@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: SecondChance
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Second Chance
   description: Gain 2 Immortal
-  artwork: {fileID: 0}
+  artwork: {fileID: -5387974660706980950, guid: 129d53212f4c2b542ab94bf366ed801d, type: 3}
   energyCost: 2
   cardType: 0
   target: 0

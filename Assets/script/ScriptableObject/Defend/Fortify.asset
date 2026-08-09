@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Fortify
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Fortify
   description: Gain 6 Block, gain 12 instead if HP below 50%
-  artwork: {fileID: 0}
+  artwork: {fileID: 429446648364557897, guid: 48d4ec8ebfd5d5e4ebd77e3abff5aaf9, type: 3}
   energyCost: 1
   cardType: 1
   target: 0

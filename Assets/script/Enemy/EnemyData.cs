@@ -25,6 +25,7 @@ public class EnemyData : ScriptableObject
 
     [Header("Animation")]
     public RuntimeAnimatorController animatorController;
+    public string attackStateName;
 
 
     [Header("Stats")]

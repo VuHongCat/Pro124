@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Assassinate
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Assassinate
   description: Deal 4 damage, deal 12 instead if enemy has Bleed
-  artwork: {fileID: 0}
+  artwork: {fileID: 8059537438836781117, guid: b933e6e978518b54aaa63a9eed1cf2f1, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

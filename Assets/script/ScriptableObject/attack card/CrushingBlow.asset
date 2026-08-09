@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: CrushingBlow
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Crushing Blow
   description: Deal 10 damage, double if enemy is Vulnerable
-  artwork: {fileID: 0}
+  artwork: {fileID: 5223611208522163572, guid: 26c83f28546362a4ab9a1a343874dd31, type: 3}
   energyCost: 2
   cardType: 0
   target: 0
