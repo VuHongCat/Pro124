@@ -60,6 +60,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
         RunSession.PlayerCurrentHealth = currentHealth;
+        ScreenShake.Instance?.Shake();
         GetComponent<EnemyHitVFX>()?.Play();
         GetComponent<PlayerDisplay>()?.Punch();
         ShowDamageNumber(damage);
