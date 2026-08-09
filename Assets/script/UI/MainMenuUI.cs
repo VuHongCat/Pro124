@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    private void Start()
+    public void PlayGame()
     {
-        if (MonsterIndexUI.Instance == null)
+        SceneLoader.TransitionTo("WorldMap");
+    }
+
+    public void ContinueGame()
+    {
+        if (RunSession.RunActive &&
+            !string.IsNullOrEmpty(RunSession.MapSceneName))
         {
-            GameObject indexGo = new GameObject("MonsterIndexUI");
-            indexGo.AddComponent<MonsterIndexUI>();
+            SceneLoader.TransitionTo(RunSession.MapSceneName);
+        }
+        else
+        {
+            SceneLoader.TransitionTo("WorldMap");
         }
     }
 
-    public void PlayGame()
+    public void NewRun()
     {
-        SceneLoader.TransitionTo("MapLevel1");
+        RunSession.StartNewRun();
+        SceneLoader.TransitionTo("WorldMap");
     }
 
     public void QuitGame()

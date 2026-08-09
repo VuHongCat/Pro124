@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-    public static class RunSession
+public static class RunSession
 {
     public const int MaxDeckSize = 30;
 
@@ -57,6 +57,8 @@ using UnityEngine.SceneManagement;
 
         MapManager.ClearProgress();
         RelicManager.Instance.ClearRelics();
+
+        CloudSave.Delete();
         AudioManager.ResetBossTracks();
     }
 
@@ -71,6 +73,7 @@ using UnityEngine.SceneManagement;
             MapLevel++;
             MapSceneName = "MapLevel" + MapLevel;
             MapManager.ClearProgress();
+            CloudSave.Save();
             SceneLoader.TransitionTo(MapSceneName);
             return;
         }
@@ -104,6 +107,9 @@ using UnityEngine.SceneManagement;
         BattleDeck = null;
         if (string.IsNullOrEmpty(MapSceneName))
             MapSceneName = "MainMenu";
+
+        CloudSave.Save();
+
         SceneLoader.TransitionTo(MapSceneName);
     }
 }

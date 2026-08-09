@@ -65,6 +65,9 @@ public class RelicManager : MonoBehaviour
     [Header("Owned Relics")]
     [SerializeField] private List<RelicData> ownedRelics = new();
 
+    // Danh sách relic chờ nạp từ CloudSave (lưu theo tên)
+    internal static List<string> PendingRelicNames = null;
+
     // Trạng thái nội bộ của relic
     private int giryaUses;
     private bool teaSetPending;
@@ -90,6 +93,8 @@ public class RelicManager : MonoBehaviour
 
         if (GetComponent<RelicBarUI>() == null)
             gameObject.AddComponent<RelicBarUI>();
+
+        LoadRelics();
     }
 
     #region Relic
@@ -144,6 +149,30 @@ public class RelicManager : MonoBehaviour
     public List<RelicData> GetOwnedRelics()
     {
         return ownedRelics;
+    }
+
+    public RelicData GetRelicByName(string relicName)
+    {
+        if (string.IsNullOrEmpty(relicName))
+            return null;
+
+        if (allRelics != null)
+        {
+            foreach (RelicData relic in allRelics)
+            {
+                if (relic != null && relic.relicName == relicName)
+                    return relic;
+            }
+        }
+
+        RelicData[] res = Resources.LoadAll<RelicData>("Relics");
+        foreach (RelicData relic in res)
+        {
+            if (relic != null && relic.relicName == relicName)
+                return relic;
+        }
+
+        return null;
     }
 
     // ==========================
@@ -466,12 +495,37 @@ public class RelicManager : MonoBehaviour
 
     public void SaveRelics()
     {
-        // TODO
+        CloudSave.Save();
     }
 
     public void LoadRelics()
     {
-        // TODO
+        if (PendingRelicNames == null)
+            return;
+
+        ownedRelics.Clear();
+
+        foreach (string name in PendingRelicNames)
+        {
+            if (string.IsNullOrEmpty(name))
+                continue;
+
+            RelicData relic = GetRelicByName(name);
+
+            if (relic == null)
+            {
+                Debug.LogWarning($"[RelicManager] Load: relic not found: {name}");
+                continue;
+            }
+
+            if (!ownedRelics.Contains(relic))
+                ownedRelics.Add(relic);
+        }
+
+        PendingRelicNames = null;
+
+        if (RelicBarUI.Instance != null)
+            RelicBarUI.Instance.Refresh();
     }
 
     #endregion

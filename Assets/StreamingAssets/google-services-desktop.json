@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "233340383273",
+    "project_id": "cardforge-7f909",
+    "firebase_url": "https://cardforge-7f909-default-rtdb.firebaseio.com",
+    "storage_bucket": "cardforge-7f909.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233340383273:android:e9874fdd28be7583e5ac38",
+        "android_client_info": {
+          "package_name": "com.cardforge.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB412iqUkIA9aZHPArbUVnVuk-9owi2iws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
