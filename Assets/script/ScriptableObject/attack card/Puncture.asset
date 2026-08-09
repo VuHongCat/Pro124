@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Puncture
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Puncture
   description: Deal 3 damage, apply 2 Bleed
-  artwork: {fileID: 0}
+  artwork: {fileID: -4145229437542523907, guid: 41cd192119b08114d8fb93cbc6f8f91c, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

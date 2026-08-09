@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Aegis
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Aegis
   description: Gain 20 Block, gain 5 Regen
-  artwork: {fileID: 0}
+  artwork: {fileID: 4223547127739352303, guid: 1f9d09cf98fb22c4d840117d3ff1a45f, type: 3}
   energyCost: 3
   cardType: 1
   target: 0

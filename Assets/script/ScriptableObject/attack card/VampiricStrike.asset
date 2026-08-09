@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: VampiricStrike
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Vampiric Strike
   description: Deal 5 damage, heal 100% of damage dealt
-  artwork: {fileID: 0}
+  artwork: {fileID: 7044480083211260884, guid: fd2c9e2fb674ec240aedd7691a9b5165, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

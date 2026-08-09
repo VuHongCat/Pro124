@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Brace
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Brace
   description: Gain 5 Block, draw 1 card
-  artwork: {fileID: 0}
+  artwork: {fileID: 315706003441323584, guid: e1e715e21ac7ba9499a56956d67abaf3, type: 3}
   energyCost: 1
   cardType: 1
   target: 0

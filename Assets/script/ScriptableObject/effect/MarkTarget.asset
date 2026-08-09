@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: MarkTarget
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Mark Target
   description: Apply 4 Vulnerable to enemy
-  artwork: {fileID: 0}
+  artwork: {fileID: -8916760862566885275, guid: ea1bf4fd7cd1fd34e975c95536a29f2e, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

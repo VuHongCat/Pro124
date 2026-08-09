@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: MirrorShield
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Mirror Shield
   description: Gain 8 Block, gain 2 Counter
-  artwork: {fileID: 0}
+  artwork: {fileID: -8605777228040404116, guid: a8a808d7f3bbe354fa9dafb6fd147269, type: 3}
   energyCost: 2
   cardType: 1
   target: 0

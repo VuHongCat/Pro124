@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: BleedOut
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Bleed Out
   description: Apply 5 Bleed to enemy
-  artwork: {fileID: 0}
+  artwork: {fileID: 7064799097447306027, guid: a478200424c83324b93550584e555365, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Debilitate
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Debilitate
   description: Apply 3 Weak and 3 Vulnerable to enemy
-  artwork: {fileID: 0}
+  artwork: {fileID: -4557423926088761041, guid: 5d76935deb7a200439ccd48d77723410, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

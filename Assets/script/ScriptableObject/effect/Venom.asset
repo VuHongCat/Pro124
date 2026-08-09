@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Venom
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Venom
   description: Apply 5 Poison to enemy
-  artwork: {fileID: 0}
+  artwork: {fileID: 2633023356103213052, guid: 63816f6ae369a374e8d16945fa36735d, type: 3}
   energyCost: 1
   cardType: 0
   target: 0

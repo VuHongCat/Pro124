@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Reposition
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Reposition
   description: Gain 4 Block
-  artwork: {fileID: 0}
+  artwork: {fileID: 3496904051750046777, guid: ffcad19648ac3af41a41cb483253527a, type: 3}
   energyCost: 0
   cardType: 1
   target: 0

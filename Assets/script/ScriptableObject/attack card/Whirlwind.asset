@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Whirlwind
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Whirlwind
   description: Deal 9 damage to all enemies
-  artwork: {fileID: 0}
+  artwork: {fileID: 1258265875301989750, guid: ef198e8266f4d7f46889e756a0c253bf, type: 3}
   energyCost: 2
   cardType: 0
   target: 0
