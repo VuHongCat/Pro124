@@ -28,7 +28,7 @@ public class MapManager : MonoBehaviour
     // =========================================================
 
     public const string BattleNodeKey = "BattleNode";
-    private const string CompletedNodeKey = "CompletedMapNode";
+    public const string CompletedNodeKey = "CompletedMapNode";
     private const char NodeSeparator = ';';
 
     // =========================================================
@@ -51,7 +51,7 @@ public class MapManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private static List<string> GetCompletedNodeNames()
+    public static List<string> GetCompletedNodeNames()
     {
         List<string> result = new();
 
@@ -792,6 +792,8 @@ public class MapManager : MonoBehaviour
         SaveCompletedNode(currentNode.gameObject.name);
 
         UpdateNodes();
+
+        CloudSave.Save();
     }
 
     private void OpenRestPopup()

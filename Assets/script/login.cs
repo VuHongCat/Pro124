@@ -35,11 +35,8 @@ public partial class login : MonoBehaviour
             message("Account does not exist", Color.red);
             return;
         }
-        message("Login successful", Color.green);
-
 
         string[] lines = File.ReadAllLines(filepath);
-        bool userfound = false;
         bool iscorrectpass = false;
         foreach (string line in lines)
         {
@@ -49,27 +46,19 @@ public partial class login : MonoBehaviour
             {
                 string savedUsername = parts[0].Trim();
                 string savedPassword = parts[1].Trim();
-               if (savedUsername.Equals(user, System.StringComparison.OrdinalIgnoreCase))
+                if (savedUsername.Equals(user, System.StringComparison.OrdinalIgnoreCase))
                 {
-                    userfound = true;
-                    if (savedPassword == pass)
-                    {
-                        iscorrectpass = true;
-                    }
+                    iscorrectpass = savedPassword == pass;
                     break;
                 }
             }
-        }
-        if (!userfound)
-        {
-            message("Incorrect username or password", Color.red);
-            return;
         }
         if (!iscorrectpass)
         {
             message("Incorrect username or password", Color.red);
             return;
         }
+        message("Login successful", Color.green);
         SceneLoader.TransitionTo("MainMenu");
     }
     public void message(string msg, Color color)

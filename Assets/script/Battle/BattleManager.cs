@@ -430,6 +430,46 @@ public class BattleManager : MonoBehaviour
 
     private void CreateCardOption(Transform parent, CardData card, int index, int count)
     {
+        CardFactory factory = FindAnyObjectByType<CardFactory>();
+
+        if (factory == null)
+        {
+            CreateCardOptionFallback(parent, card, index, count);
+            return;
+        }
+
+        GameObject cardObject = factory.CreateCard(card, parent);
+
+        // Card battle dùng CardDrag để chơi thẻ -> tắt ở reward,
+        // chọn thẻ bằng click qua Button.
+        CardDrag drag = cardObject.GetComponent<CardDrag>();
+        if (drag != null)
+            drag.enabled = false;
+
+        RectTransform rt = cardObject.GetComponent<RectTransform>();
+        Vector2 target = new Vector2(
+            (index - (count - 1) * 0.5f) * 250f,
+            -60f
+        );
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = target;
+
+        CardVisual visual = cardObject.GetComponent<CardVisual>();
+        if (visual != null)
+            visual.SetTarget(target, Quaternion.identity);
+
+        Image img = cardObject.GetComponent<Image>();
+        Button btn = cardObject.GetComponent<Button>();
+        if (btn == null)
+            btn = cardObject.AddComponent<Button>();
+        btn.targetGraphic = img;
+        btn.onClick.AddListener(() => ChooseReward(card));
+    }
+
+    private void CreateCardOptionFallback(Transform parent, CardData card, int index, int count)
+    {
         float cx = count == 3 ? new float[] { 0.22f, 0.5f, 0.78f }[index] : 0.5f;
 
         GameObject slot = new GameObject("CardOption", typeof(RectTransform), typeof(Image), typeof(Button));
