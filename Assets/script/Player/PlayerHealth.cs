@@ -52,6 +52,8 @@ public class PlayerHealth : MonoBehaviour
         if (playerStatus != null && playerStatus.GetStatus(StatusType.Vulnerable) > 0)
             damage = Mathf.RoundToInt(damage * 1.5f);
 
+        ScreenShake.Instance?.Shake();
+
         if (playerBlock != null)
         {
             damage = playerBlock.AbsorbDamage(damage);
@@ -60,7 +62,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         if(currentHealth < 0) currentHealth = 0;
         RunSession.PlayerCurrentHealth = currentHealth;
-        ScreenShake.Instance?.Shake();
         GetComponent<EnemyHitVFX>()?.Play();
         GetComponent<PlayerDisplay>()?.Punch();
         ShowDamageNumber(damage);

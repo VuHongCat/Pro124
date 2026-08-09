@@ -103,8 +103,7 @@ public class EnemyCombat : MonoBehaviour
                 if (self != null)
                     FindAnyObjectByType<BattleManager>()?.OnEnemyAttackHit(self);
                 player.TakeDamage(damage);
-                OnAttackFinished?.Invoke();
-            });
+            }, () => OnAttackFinished?.Invoke());
         }
         else
         {

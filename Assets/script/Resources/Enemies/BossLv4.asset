@@ -12,10 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478e46a4eafc9a74d999d84b68950e59, type: 3}
   m_Name: BossLv4
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: 
-  artwork: {fileID: -2792402802363126846, guid: 018ba24cf0855074b819fd5f22916be9, type: 3}
+  enemyName: Boss Golem Overlord
+  artwork: {fileID: 0}
+  archetype: 0
+  role: 
   animatorController: {fileID: 9100000, guid: b7064c8f69063b74b855ee2a5a19950f, type: 2}
+  attackStateName: 
   maxHealth: 0
   attackDamage: 0
   block: 0
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 0
+  goldReward: 0
   isBoss: 0
+  flipX: 0
+  phaseThreshold: 0
+  phaseStrength: 0
+  phaseRegen: 0
+  phaseImmortal: 0
+  phaseHeal: 0
+  phasePlayerDebuff: 0
+  enrageMultiplier: 1
+  canSummon: 0
+  summonCount: 1
+  summonThreshold: 0
+  summonId: 
+  canSplit: 0
+  splitCount: 2
+  splitHpScale: 0.5
+  splitDmgScale: 1

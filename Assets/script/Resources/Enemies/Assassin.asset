@@ -15,6 +15,9 @@ MonoBehaviour:
   enemyName: Assassin
   artwork: {fileID: 0}
   archetype: 5
+  role: 
+  animatorController: {fileID: 9100000, guid: 491ed6f4013b7a84383be4d5ad80c035, type: 2}
+  attackStateName: SamuraiBirdAtk
   maxHealth: 35
   attackDamage: 14
   block: 0
@@ -28,3 +31,19 @@ MonoBehaviour:
   counterStacks: 0
   goldReward: 25
   isBoss: 0
+  flipX: 0
+  phaseThreshold: 0
+  phaseStrength: 0
+  phaseRegen: 0
+  phaseImmortal: 0
+  phaseHeal: 0
+  phasePlayerDebuff: 0
+  enrageMultiplier: 1
+  canSummon: 0
+  summonCount: 1
+  summonThreshold: 0
+  summonId: 
+  canSplit: 0
+  splitCount: 2
+  splitHpScale: 0.5
+  splitDmgScale: 1

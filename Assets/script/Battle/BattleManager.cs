@@ -23,6 +23,8 @@ public class BattleManager : MonoBehaviour
     private bool battleEnded;
     private bool wasFinalBoss;
     private bool rewardChosen;
+    private bool victoryPending;
+    private int pendingDeathAnimations;
     private GameObject rewardPanel;
 
     private void Start()
@@ -32,6 +34,8 @@ public class BattleManager : MonoBehaviour
         playerHealth.OnPlayerDeath += OnPlayerDeath;
         battleSequence = GetBattleSequence();
         wasFinalBoss = RunSession.IsBossBattle && RunSession.IsFinalBoss;
+        if (RunSession.IsBossBattle)
+            AudioManager.PlayBossMusic();
         RelicManager.EmitBattleStart();
         SpawnEnemies();
 
@@ -213,6 +217,7 @@ public class BattleManager : MonoBehaviour
         {
             enemy.OnEnemyDeath -= OnEnemyDeath;
             activeEnemies.Remove(enemy);
+            pendingDeathAnimations++;
 
             if (EnemyTargetManager.Instance != null &&
                 EnemyTargetManager.Instance.CurrentTarget == enemy)
@@ -223,11 +228,28 @@ public class BattleManager : MonoBehaviour
 
         if (activeEnemies.Count == 0)
         {
-            WinBattle();
+            victoryPending = true;
+            StartCoroutine(WaitForDeathAnimations());
             return;
         }
 
         Debug.Log($"{activeEnemies.Count} enemies left");
+    }
+
+    private IEnumerator WaitForDeathAnimations()
+    {
+        float timeout = 3f;
+        while (pendingDeathAnimations > 0 && timeout > 0f)
+        {
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (victoryPending)
+        {
+            victoryPending = false;
+            WinBattle();
+        }
     }
 
     private void SpawnSplits(EnemyHealth enemy)
@@ -252,7 +274,7 @@ public class BattleManager : MonoBehaviour
             Debug.Log($"[Split] {enemy.Data.enemyName} split into {splits.Count} smaller enemies.");
     }
 
-    public void EnemyAttack()
+    public IEnumerator EnemyAttack()
     {
         foreach (EnemyHealth enemy in new List<EnemyHealth>(activeEnemies))
         {
@@ -264,7 +286,34 @@ public class BattleManager : MonoBehaviour
             EnemyStatus status = enemy.GetComponent<EnemyStatus>();
 
             if (combat != null)
-                combat.ExecuteIntent(playerHealth);
+            {
+                EnemyIntent intent = enemy.GetComponent<EnemyIntent>();
+                bool stunned = status != null && status.GetStatus(StatusType.Stun) > 0;
+                bool isAttackIntent = !stunned && intent != null &&
+                    (intent.IntentType == EnemyIntentType.Attack ||
+                     intent.IntentType == EnemyIntentType.LifestealAttack);
+
+                if (isAttackIntent)
+                {
+                    bool finished = false;
+                    System.Action handler = () => finished = true;
+                    combat.OnAttackFinished += handler;
+                    combat.ExecuteIntent(playerHealth);
+
+                    float timeout = 0f;
+                    while (!finished && timeout < 2f && enemy != null && enemy.CurrentHealth > 0)
+                    {
+                        timeout += Time.deltaTime;
+                        yield return null;
+                    }
+
+                    combat.OnAttackFinished -= handler;
+                }
+                else
+                {
+                    combat.ExecuteIntent(playerHealth);
+                }
+            }
 
             status?.OnTurnEnd();
         }
@@ -299,7 +348,14 @@ public class BattleManager : MonoBehaviour
     }
     public void OnEnemyAnimationFinished(GameObject enemy)
     {
+        pendingDeathAnimations = Mathf.Max(0, pendingDeathAnimations - 1);
         Destroy(enemy);
+
+        if (victoryPending && pendingDeathAnimations == 0)
+        {
+            victoryPending = false;
+            WinBattle();
+        }
     }
 
     public void StartPlayerTurn()

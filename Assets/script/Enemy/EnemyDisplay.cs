@@ -41,7 +41,7 @@ public class EnemyDisplay : MonoBehaviour
     private Coroutine punchRoutine;
 
     [Header("Lunge Effect")]
-    [SerializeField] private float lungeDistance = 130f;
+    [SerializeField] private float lungeDistance = 220f;
     [SerializeField] private float lungeDuration = 0.3f;
 
     private Coroutine lungeRoutine;
@@ -256,15 +256,15 @@ public class EnemyDisplay : MonoBehaviour
         rt.localScale = baseScale;
     }
 
-    public void Lunge(System.Action onReachEnd = null)
+    public void Lunge(System.Action onReachEnd = null, System.Action onComplete = null)
     {
         RectTransform rt = GetComponent<RectTransform>();
         if (rt == null) return;
         if (lungeRoutine != null) StopCoroutine(lungeRoutine);
-        lungeRoutine = StartCoroutine(LungeRoutine(rt, onReachEnd));
+        lungeRoutine = StartCoroutine(LungeRoutine(rt, onReachEnd, onComplete));
     }
 
-    private IEnumerator LungeRoutine(RectTransform rt, System.Action onReachEnd)
+    private IEnumerator LungeRoutine(RectTransform rt, System.Action onReachEnd, System.Action onComplete)
     {
         baseAnchoredPosition = rt.anchoredPosition;
 
@@ -296,6 +296,8 @@ public class EnemyDisplay : MonoBehaviour
         }
 
         rt.anchoredPosition = baseAnchoredPosition;
+
+        onComplete?.Invoke();
 
         if (animator != null)
         {
