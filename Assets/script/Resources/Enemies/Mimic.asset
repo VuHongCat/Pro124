@@ -14,8 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Mimic
   artwork: {fileID: -9208322672329096177, guid: e46dc8376e1c8c2418d479c25a6a8de3, type: 3}
+  archetype: 4
   animatorController: {fileID: 9100000, guid: c4119680e5e80c1428b24e66a23a27cb, type: 2}
-  maxHealth: 0
-  attackDamage: 0
-  block: 0
+  maxHealth: 60
+  attackDamage: 10
+  block: 6
+  poisonDamage: 0
+  lifesteal: 0
+  selfHeal: 0
+  regenValue: 0
+  buffStrength: 0
+  weakDamage: 0
+  vulnerableDamage: 0
+  counterStacks: 3
+  goldReward: 40
   isBoss: 0
+  flipX: 0
