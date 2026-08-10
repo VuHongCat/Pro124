@@ -448,6 +448,25 @@ public static class RuntimeEnemyLibrary
     }
 
     // =========================================================
+    // MIMIC (chest ambush)
+    // =========================================================
+
+    public static EnemyData BuildMimic(int mapLevel)
+    {
+        EnemyData d = ScriptableObject.CreateInstance<EnemyData>();
+        d.enemyName = "Mimic";
+        d.archetype = EnemyArchetype.Knight;
+        d.maxHealth = 60;
+        d.attackDamage = 10;
+        d.block = 6;
+        d.counterStacks = 3;
+        d.goldReward = 40;
+        d.role = "A mimic disguised as a treasure chest: high HP, block and Counter. "
+            + "Every hit you land comes back at you - break its shield or kill it fast.";
+        return BuildScaled(d, mapLevel);
+    }
+
+    // =========================================================
     // MONSTER CATALOG (dữ liệu cho Monster Index)
     // =========================================================
 
@@ -479,6 +498,9 @@ public static class RuntimeEnemyLibrary
 
         for (int m = 1; m <= 4; m++)
             AddOrMerge(BuildMiniBossCore(m), MonsterCategory.MiniBoss, m);
+
+        for (int m = 1; m <= 4; m++)
+            AddOrMerge(BuildMimic(m), MonsterCategory.MiniBoss, m);
 
         for (int m = 1; m <= 4; m++)
             AddOrMerge(BuildBossCore(m), MonsterCategory.Boss, m);
