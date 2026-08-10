@@ -22,6 +22,8 @@ public class EnemyDisplay : MonoBehaviour
     [SerializeField] private Sprite attackIntentSprite;
     [SerializeField] private Sprite shieldIntentSprite;
     [SerializeField] private Sprite poisonIntentSprite;
+    [SerializeField] private Sprite healIntentSprite;
+    [SerializeField] private Sprite buffIntentSprite;
 
 
 
@@ -201,10 +203,12 @@ public class EnemyDisplay : MonoBehaviour
                 break;
 
             case EnemyIntentType.Heal:
+                icon = healIntentSprite;
                 label = $"HEAL {value}";
                 break;
 
             case EnemyIntentType.Buff:
+                icon = buffIntentSprite;
                 label = "BUF";
                 break;
 

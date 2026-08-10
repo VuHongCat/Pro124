@@ -988,6 +988,8 @@ MonoBehaviour:
   attackIntentSprite: {fileID: -381812567537117494, guid: 8163d654121b1d84fb55bfb94d560565, type: 3}
   shieldIntentSprite: {fileID: -6253549516363600717, guid: 93906375535a4f64d974cd4978887d2b, type: 3}
   poisonIntentSprite: {fileID: 5905390313595243769, guid: 011448bcbc595af4bae6eec89a109c47, type: 3}
+  healIntentSprite: {fileID: -6499441146060046272, guid: 9e7a772f3e1a0fa47b440004872a0ef3, type: 3}
+  buffIntentSprite: {fileID: 5187897579776282413, guid: c10dcfa73d98bed4292818c788aff045, type: 3}
   punchScale: 1.15
   punchDuration: 0.18
   lungeDistance: 400

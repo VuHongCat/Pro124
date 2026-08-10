@@ -42,6 +42,11 @@ public class AudioManager : Singleton<AudioManager>
         currentBasicLevel = -1;
     }
 
+    public static void PlayMainMenuMusic()
+    {
+        PlayTrack("Music/MainMenu");
+    }
+
     public static void PlayMapMusic(int mapLevel)
     {
         PlayTrack(PickBasicTrack(mapLevel));

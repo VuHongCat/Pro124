@@ -14,6 +14,8 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.PlayMainMenuMusic();
+
         if (playButton == null) playButton = FindButton("Play");
         if (quitButton == null) quitButton = FindButton("Quit");
 
