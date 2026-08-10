@@ -103,6 +103,9 @@ public class BattleManager : MonoBehaviour
                 (index - (total - 1) * 0.5f) * 300f,
                 0
             );
+
+            if (RunSession.IsBossBattle)
+                rt.localScale *= 1.25f;
         }
 
 
@@ -187,6 +190,8 @@ public class BattleManager : MonoBehaviour
                 ? -(enemyRect.rect.width * 0.5f + 70f)
                 : -190f;
             vfx.transform.localPosition = new Vector3(offsetX, 0f, 0f);
+
+            vfx.GetComponent<SlashEffect>()?.Play();
         }
 
         effectResolver.Resolve(card.CardData, target);
