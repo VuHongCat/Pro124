@@ -14,14 +14,20 @@ public class PlayerBlock : MonoBehaviour
         currentBlock += amount;
         OnBlockChanged?.Invoke(currentBlock);
         ShowBlockPopup(amount);
+        AudioManager.PlayShieldGain();
     }
 
     private void ShowBlockPopup(int amount)
     {
+        ShowBlockPopup(amount, false);
+    }
+
+    private void ShowBlockPopup(int amount, bool stayCenter)
+    {
         if (blockPopupPrefab == null) return;
         GameObject popup = Instantiate(blockPopupPrefab, transform);
         popup.transform.localPosition = Vector3.zero;
-        popup.GetComponent<BlockPopup>()?.Play(amount);
+        popup.GetComponent<BlockPopup>()?.Play(amount, stayCenter);
     }
 
     public void ResetBlock()
@@ -32,16 +38,17 @@ public class PlayerBlock : MonoBehaviour
 
     public int AbsorbDamage(int damage)
     {
-        if(currentBlock >= damage)
+        int absorbed = Mathf.Min(currentBlock, damage);
+        if (absorbed > 0)
         {
-            currentBlock -= damage;
+            currentBlock -= absorbed;
             OnBlockChanged?.Invoke(currentBlock);
-            return 0;
+            AudioManager.PlayShieldTakeDamage();
+
+            if (absorbed == damage)
+                ShowBlockPopup(currentBlock, true);
         }
 
-        damage -= currentBlock;
-        currentBlock = 0;
-        OnBlockChanged?.Invoke(currentBlock);
-        return damage;
+        return damage - absorbed;
     }
 }

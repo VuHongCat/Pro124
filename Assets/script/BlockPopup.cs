@@ -21,17 +21,22 @@ public class BlockPopup : MonoBehaviour
 
     public void Play(int amount)
     {
-        if (label != null)
-            label.text = amount.ToString();
-        StartCoroutine(Animate());
+        Play(amount, false);
     }
 
-    private IEnumerator Animate()
+    public void Play(int amount, bool stayCenter)
+    {
+        if (label != null)
+            label.text = amount.ToString();
+        StartCoroutine(Animate(stayCenter));
+    }
+
+    private IEnumerator Animate(bool stayCenter)
     {
         yield return new WaitForSeconds(startDelay);
 
         Vector3 origin = transform.localPosition;
-        Vector3 end = origin + new Vector3(0f, floatDistance, 0f);
+        Vector3 end = stayCenter ? origin : origin + new Vector3(0f, floatDistance, 0f);
         Color iconColor = icon != null ? icon.color : Color.white;
         Color textColor = label != null ? label.color : Color.white;
 

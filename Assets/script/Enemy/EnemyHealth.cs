@@ -49,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
         ShowDamageNumber(damage);
         GetComponent<EnemyHitVFX>()?.Play();
         GetComponent<EnemyDisplay>()?.Punch();
+        AudioManager.PlayHit();
         if (counterable)
             OnDamaged?.Invoke(damage);
         currentHealth -= damage;

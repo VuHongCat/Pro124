@@ -8,6 +8,7 @@ public class SlashEffect : MonoBehaviour
     {
         gameObject.SetActive(true);
         animator.Play("Slash_Attack");
+        AudioManager.PlaySlash();
     }
 
     public void Disable()

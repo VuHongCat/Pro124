@@ -42,6 +42,11 @@ public class AudioManager : Singleton<AudioManager>
         currentBasicLevel = -1;
     }
 
+    public static void PlayMainMenuMusic()
+    {
+        PlayTrack("Music/MainMenu");
+    }
+
     public static void PlayMapMusic(int mapLevel)
     {
         PlayTrack(PickBasicTrack(mapLevel));
@@ -62,6 +67,38 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         EnsureInstance().PlayMusic(clip);
+    }
+
+    public static void PlaySlash()
+    {
+        PlayOneShot("Sounds/Slash");
+    }
+
+    public static void PlayHit()
+    {
+        PlayOneShot("Sounds/Hit");
+    }
+
+    public static void PlayShieldGain()
+    {
+        PlayOneShot("Sounds/ShieldGain");
+    }
+
+    public static void PlayShieldTakeDamage()
+    {
+        PlayOneShot("Sounds/ShieldTakeDamage");
+    }
+
+    private static void PlayOneShot(string path)
+    {
+        AudioClip clip = Resources.Load<AudioClip>(path);
+        if (clip == null)
+        {
+            Debug.LogWarning("[AudioManager] Khong tim thay sfx: " + path);
+            return;
+        }
+
+        EnsureInstance().PlaySFX(clip);
     }
 
     private static string PickBasicTrack(int mapLevel)

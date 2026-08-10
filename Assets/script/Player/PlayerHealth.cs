@@ -65,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<EnemyHitVFX>()?.Play();
         GetComponent<PlayerDisplay>()?.Punch();
         ShowDamageNumber(damage);
+        AudioManager.PlayHit();
 
         if (reflectable)
             OnDamageTaken?.Invoke(damage);

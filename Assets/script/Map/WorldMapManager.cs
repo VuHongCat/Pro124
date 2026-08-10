@@ -56,6 +56,11 @@ public class WorldMapManager : MonoBehaviour
     // Gọi khi thắng boss
     public void UnlockIsland(int id)
     {
+        UnlockIslandStatic(id);
+    }
+
+    public static void UnlockIslandStatic(int id)
+    {
         int current =
             PlayerPrefs.GetInt("UnlockedIsland", 1);
 
