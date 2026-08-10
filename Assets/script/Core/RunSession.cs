@@ -73,8 +73,9 @@ public static class RunSession
             MapLevel++;
             MapSceneName = "MapLevel" + MapLevel;
             MapManager.ClearProgress();
-            CloudSave.Save();
-            SceneLoader.TransitionTo(MapSceneName);
+
+            WorldMapManager.UnlockIslandStatic(MapLevel);
+            SceneLoader.TransitionTo("WorldMap");
             return;
         }
 
