@@ -8,6 +8,7 @@ public static class CardGridUi
     public static readonly Color AttackFrame = new Color(0.6f, 0.22f, 0.22f, 1f);
     public static readonly Color BlockFrame = new Color(0.2f, 0.38f, 0.68f, 1f);
     public static readonly Color HealFrame = new Color(0.2f, 0.52f, 0.32f, 1f);
+    public static readonly Color CurseFrame = new Color(0.4f, 0.14f, 0.5f, 1f);
     public static readonly Color DarkFrame = new Color(0.12f, 0.12f, 0.16f, 1f);
 
     private static Sprite placeholder;
@@ -129,6 +130,7 @@ public static class CardGridUi
             case CardType.Attack: return AttackFrame;
             case CardType.Block: return BlockFrame;
             case CardType.Heal: return HealFrame;
+            case CardType.Curse: return CurseFrame;
             default: return DarkFrame;
         }
     }

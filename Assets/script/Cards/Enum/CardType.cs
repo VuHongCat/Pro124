@@ -2,5 +2,6 @@ public enum CardType
 {
     Attack,
     Block,
-    Heal
+    Heal,
+    Curse
 }

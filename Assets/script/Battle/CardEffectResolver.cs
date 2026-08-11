@@ -79,6 +79,16 @@ public class CardEffectResolver : MonoBehaviour
             case "Debilitate":      Debilitate(target, card); break;
             case "Adrenaline":      Adrenaline(card); break;
             case "Second Chance":   SecondChance(card); break;
+            case "Curse of Weakness":   CurseSelf(StatusType.Weak, card); break;
+            case "Curse of Frailty":    CurseSelf(StatusType.Vulnerable, card); break;
+            case "Curse of Decay":      CurseSelf(StatusType.Bleed, card); break;
+            case "Curse of Plague":     CurseSelf(StatusType.Poison, card); break;
+            case "Curse of Agony":      CurseSelfDamage(card); break;
+            case "Curse of Greed":      CurseGreed(card); break;
+            case "Curse of Fatigue":    CurseFatigue(card); break;
+            case "Curse of Misfortune": CurseMisfortune(card); break;
+            case "Curse of Torment":    CurseTorment(card); break;
+            case "Curse of Despair":    CurseDespair(card); break;
         }
     }
 
@@ -516,5 +526,48 @@ public class CardEffectResolver : MonoBehaviour
     private void SecondChance(CardData card)
     {
         GetStatus()?.AddStatus(StatusType.Immortal, card.statusAmount, card.statusDuration);
+    }
+
+    private void CurseSelf(StatusType type, CardData card)
+    {
+        GetStatus()?.AddStatus(type, card.statusAmount, card.statusDuration);
+    }
+
+    private void CurseSelfDamage(CardData card)
+    {
+        GetHealth()?.TakeDamage(Mathf.Max(1, card.damage), false);
+    }
+
+    private void CurseGreed(CardData card)
+    {
+        if (RunSession.Gold > 0)
+            RunSession.Gold = Mathf.Max(0, RunSession.Gold - Mathf.Max(1, card.statusAmount));
+    }
+
+    private void CurseFatigue(CardData card)
+    {
+        EnergyManager e = GetEnergy();
+        if (e != null)
+            e.SpendEnergy(Mathf.Max(1, card.statusAmount));
+    }
+
+    private void CurseMisfortune(CardData card)
+    {
+        int amount = Mathf.Max(1, card.statusAmount);
+        int duration = Mathf.Max(1, card.statusDuration);
+        GetStatus()?.AddStatus(StatusType.Weak, amount, duration);
+        GetStatus()?.AddStatus(StatusType.Vulnerable, amount, duration);
+    }
+
+    private void CurseTorment(CardData card)
+    {
+        GetHealth()?.TakeDamage(Mathf.Max(1, card.damage), false);
+        GetStatus()?.AddStatus(StatusType.Bleed, card.statusAmount, card.statusDuration);
+    }
+
+    private void CurseDespair(CardData card)
+    {
+        GetHealth()?.TakeDamage(Mathf.Max(1, card.damage), false);
+        GetStatus()?.AddStatus(StatusType.Vulnerable, card.statusAmount, card.statusDuration);
     }
 }

@@ -222,6 +222,20 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
+        // Đánh dấu toàn bộ node đã hoàn thành (màu xanh)
+        // -----------------------------------------
+
+        foreach (string name in completedNames)
+        {
+            MapNode completed = FindNodeByName(name);
+
+            if (completed != null)
+            {
+                completed.CompleteNode();
+            }
+        }
+
+        // -----------------------------------------
         // Chưa có progress: chỉ Start sáng
         // -----------------------------------------
 

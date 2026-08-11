@@ -85,6 +85,8 @@ public class BattleManager : MonoBehaviour
             else
                 EnemyTargetManager.Instance.ClearTarget();
         }
+
+        LayoutEnemies();
     }
 
     private void SpawnEnemy(EnemyData data, int index, int total)
@@ -330,13 +332,24 @@ public class BattleManager : MonoBehaviour
 
     private void OnBossSummonRequested(EnemyData boss)
     {
-        if (boss == null || string.IsNullOrEmpty(boss.summonId)) return;
+        if (boss == null) return;
+
+        // Mini Boss Priest: gọi quái ngẫu nhiên từ map 1-2, chỉ được tấn công
+        if (boss.isBoss && boss.archetype == EnemyArchetype.Priest)
+        {
+            int count = Mathf.Max(1, boss.summonCount);
+            for (int i = 0; i < count; i++)
+                pendingSummons.Add(RuntimeEnemyLibrary.BuildPriestMinion());
+            return;
+        }
+
+        if (string.IsNullOrEmpty(boss.summonId)) return;
 
         EnemyData minion = RuntimeEnemyLibrary.BuildMinion(boss.summonId, RunSession.MapLevel);
         if (minion == null) return;
 
-        int count = Mathf.Max(1, boss.summonCount);
-        for (int i = 0; i < count; i++)
+        int count2 = Mathf.Max(1, boss.summonCount);
+        for (int i = 0; i < count2; i++)
             pendingSummons.Add(minion);
     }
 
@@ -349,7 +362,41 @@ public class BattleManager : MonoBehaviour
             SpawnEnemy(pendingSummons[i], activeEnemies.Count + i, activeEnemies.Count + total);
 
         pendingSummons.Clear();
+        LayoutEnemies();
         Debug.Log($"[Boss] Summoned {total} minion(s).");
+    }
+
+    // Xếp quái thành một hàng ngang thẳng; priest boss đứng cuối hàng,
+    // các quái khác (minion) đứng trước nó
+    private void LayoutEnemies()
+    {
+        int count = activeEnemies.Count;
+        if (count == 0) return;
+
+        EnemyHealth priestBoss = null;
+        List<EnemyHealth> ordered = new();
+        foreach (EnemyHealth e in activeEnemies)
+        {
+            if (e == null) continue;
+            if (priestBoss == null && e.Data != null &&
+                e.Data.isBoss && e.Data.archetype == EnemyArchetype.Priest)
+                priestBoss = e;
+            else
+                ordered.Add(e);
+        }
+        if (priestBoss != null)
+            ordered.Add(priestBoss);
+
+        for (int i = 0; i < ordered.Count; i++)
+            SetEnemyPosition(ordered[i], (i - (ordered.Count - 1) * 0.5f) * 300f, 0f);
+    }
+
+    private void SetEnemyPosition(EnemyHealth enemy, float x, float y)
+    {
+        if (enemy == null) return;
+        RectTransform rt = enemy.GetComponent<RectTransform>();
+        if (rt != null)
+            rt.anchoredPosition = new Vector2(x, y);
     }
     public void OnEnemyAnimationFinished(GameObject enemy)
     {
@@ -492,6 +539,15 @@ public class BattleManager : MonoBehaviour
 
         RuntimeUi.CreateText(rewardPanel.transform, "Choose a card to continue", 16, TextAnchor.MiddleCenter,
             new Vector2(0, 0.045f), new Vector2(1, 0.12f));
+
+        RuntimeUi.CreateButton(rewardPanel.transform, "Skip reward", new Vector2(0, -300), new Vector2(200, 48),
+            () =>
+            {
+                if (rewardChosen) return;
+                rewardChosen = true;
+                Destroy(rewardPanel);
+                FinishBattle();
+            });
     }
 
     private void CreateCardOption(Transform parent, CardData card, int index, int count)

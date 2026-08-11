@@ -19,6 +19,7 @@ public class CardCodexUI : MonoBehaviour
     private static readonly Color AttackFrame = new Color(0.6f, 0.22f, 0.22f, 1f);
     private static readonly Color BlockFrame = new Color(0.2f, 0.38f, 0.68f, 1f);
     private static readonly Color HealFrame = new Color(0.2f, 0.52f, 0.32f, 1f);
+    private static readonly Color CurseFrame = new Color(0.4f, 0.14f, 0.5f, 1f);
     private static readonly Color DarkFrame = new Color(0.12f, 0.12f, 0.16f, 1f);
 
     private void Awake()
@@ -83,13 +84,21 @@ public class CardCodexUI : MonoBehaviour
         List<CardData> result = new();
 
         CardDatabase db = FindAnyObjectByType<CardDatabase>();
-        if (db == null) return result;
-
-        foreach (CardData card in db.AllCards)
+        if (db != null)
         {
-            if (card == null) continue;
-            if (currentFilter != null && card.cardType != currentFilter) continue;
-            result.Add(card);
+            foreach (CardData card in db.AllCards)
+            {
+                if (card == null) continue;
+                if (currentFilter != null && card.cardType != currentFilter) continue;
+                result.Add(card);
+            }
+        }
+
+        foreach (CardData curse in CurseLibrary.GetCurses())
+        {
+            if (curse == null) continue;
+            if (currentFilter != null && curse.cardType != currentFilter) continue;
+            result.Add(curse);
         }
 
         result.Sort((a, b) =>
@@ -147,8 +156,8 @@ public class CardCodexUI : MonoBehaviour
 
     private void CreateFilterButtons()
     {
-        string[] labels = { "All", "Attack", "Block", "Heal" };
-        CardType?[] filters = { null, CardType.Attack, CardType.Block, CardType.Heal };
+        string[] labels = { "All", "Attack", "Block", "Heal", "Curse" };
+        CardType?[] filters = { null, CardType.Attack, CardType.Block, CardType.Heal, CardType.Curse };
 
         for (int i = 0; i < labels.Length; i++)
         {
@@ -160,9 +169,8 @@ public class CardCodexUI : MonoBehaviour
             rt.anchorMin = new Vector2(0.5f, 1f);
             rt.anchorMax = new Vector2(0.5f, 1f);
             rt.pivot = new Vector2(0.5f, 1f);
-            rt.anchoredPosition = new Vector2(-186 + i * 124, -66);
+            rt.anchoredPosition = new Vector2(-248 + i * 124, -66);
             rt.sizeDelta = new Vector2(116, 40);
-
             Image img = go.GetComponent<Image>();
             img.color = active ? new Color(0.5f, 0.5f, 0.55f, 1f) : new Color(0.15f, 0.15f, 0.2f, 1f);
             Button btn = go.GetComponent<Button>();
@@ -346,6 +354,7 @@ public class CardCodexUI : MonoBehaviour
             case CardType.Attack: return AttackFrame;
             case CardType.Block: return BlockFrame;
             case CardType.Heal: return HealFrame;
+            case CardType.Curse: return CurseFrame;
             default: return DarkFrame;
         }
     }
