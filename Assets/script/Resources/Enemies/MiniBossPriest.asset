@@ -15,9 +15,9 @@ MonoBehaviour:
   enemyName: Mini Boss Priest
   artwork: {fileID: 0}
   archetype: 6
-  role: A support boss: summons minions from earlier maps and buffs them with random stats (Strength/Regen/Counter/Block) while debuffing you on buff turns. Its minions can only attack and rely on its buffs - clear them fast, it resummons 2 more after 2 turns. Below 40% HP Phase 2: +4 Regen, heals 15, Weak + Vulnerable x2, enrage x2.
-  animatorController: {fileID: 9100000, guid: 0720b4f1da2139e4f9ff62cd9a1619dc, type: 2}
-  attackStateName: PriestAtk
+  role: 
+  animatorController: {fileID: 9100000, guid: e1093736cd0e3d04ab09f3536f4d3c79, type: 2}
+  attackStateName: MiniBoss2Atk
   maxHealth: 100
   attackDamage: 6
   block: 8

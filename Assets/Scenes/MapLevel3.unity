@@ -448,7 +448,7 @@ PrefabInstance:
       addedObject: {fileID: 202988208}
     - targetCorrespondingSourceObject: {fileID: 8523612595216407008, guid: f7b7ccc0f604df84f960cdc001cf81cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 202988210}
+      addedObject: {fileID: 202988209}
   m_SourcePrefab: {fileID: 100100000, guid: f7b7ccc0f604df84f960cdc001cf81cb, type: 3}
 --- !u!4 &202988206 stripped
 Transform:
@@ -480,7 +480,7 @@ MonoBehaviour:
   lockedColor: {r: 0.32, g: 0.32, b: 0.35, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
   completedColor: {r: 0.18, g: 0.78, b: 0.28, a: 1}
---- !u!61 &202988210
+--- !u!61 &202988209
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

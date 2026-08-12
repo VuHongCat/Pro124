@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: VampiricAura
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Vampiric Aura
   description: Gain 5 Lifesteal
-  artwork: {fileID: 0}
+  artwork: {fileID: 6147023105975145461, guid: 9e533f2ba6b7bc9488201260635517a3, type: 3}
   energyCost: 2
   cardType: 2
   target: 0

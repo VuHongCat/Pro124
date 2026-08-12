@@ -17,7 +17,7 @@ MonoBehaviour:
   archetype: 0
   role: 
   animatorController: {fileID: 9100000, guid: b7064c8f69063b74b855ee2a5a19950f, type: 2}
-  attackStateName: 
+  attackStateName: Boss4Atk
   maxHealth: 0
   attackDamage: 0
   block: 0
@@ -32,6 +32,9 @@ MonoBehaviour:
   goldReward: 0
   isBoss: 0
   flipX: 0
+  attackOnly: 0
+  isSummoned: 0
+  resummonDelayTurns: 2
   phaseThreshold: 0
   phaseStrength: 0
   phaseRegen: 0

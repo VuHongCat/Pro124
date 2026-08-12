@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Bandage
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Bandage
   description: Heal 5 HP, gain 3 Block
-  artwork: {fileID: 0}
+  artwork: {fileID: 918586152992567236, guid: 15a4c95b6332f0c4abba2ede8eda96e4, type: 3}
   energyCost: 1
   cardType: 2
   target: 0

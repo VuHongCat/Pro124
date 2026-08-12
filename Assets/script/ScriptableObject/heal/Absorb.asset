@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Absorb
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Absorb
   description: Heal 8 HP, gain 8 Block
-  artwork: {fileID: 0}
+  artwork: {fileID: 4323645608613560331, guid: e9186e58de202574da47ad6844481662, type: 3}
   energyCost: 2
   cardType: 2
   target: 0
