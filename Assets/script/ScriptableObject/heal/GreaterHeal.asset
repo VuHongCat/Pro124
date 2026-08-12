@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: GreaterHeal
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Greater Heal
   description: Heal 15 HP
-  artwork: {fileID: 0}
+  artwork: {fileID: 8702680859075003453, guid: e15678ff307955840af07858b077cdab, type: 3}
   energyCost: 2
   cardType: 2
   target: 0

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Bastion
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Bastion
   description: Gain 1 block for each card in your discard pile.
-  artwork: {fileID: 0}
+  artwork: {fileID: 2050298370774715904, guid: da03f95beb1cac647a7312578365f1e5, type: 3}
   energyCost: 1
   cardType: 1
   target: 0
@@ -27,4 +28,5 @@ MonoBehaviour:
   statusAmount: 0
   statusDuration: 1
   pool: 1
+  isUpgraded: 0
   shopPrice: 30

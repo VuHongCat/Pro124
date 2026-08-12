@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2edc1e59585b24caa97954b7070e8e, type: 3}
   m_Name: Leech
   m_EditorClassIdentifier: Assembly-CSharp::CardData
+  attackVFX: {fileID: 0}
   cardName: Leech
   description: Deal 5 damage, heal 100% of damage dealt
-  artwork: {fileID: 0}
+  artwork: {fileID: -3302693940037512259, guid: 9e52abfd5220cdd42876d3ef8a351d6f, type: 3}
   energyCost: 1
   cardType: 2
   target: 0
