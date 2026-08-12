@@ -142,7 +142,8 @@ public static class RuntimeEnemyLibrary
                     role: "No block but very high damage, and applies Vulnerable to you. Top priority target - kill it early."));
                 pool.Add(Build("Priest", EnemyArchetype.Priest, 45, 5, 6, selfHeal: 15, regenValue: 4,
                     buffStrength: 2, weakDamage: 3, gold: 25,
-                    role: "Heals itself every turn, regenerates, buffs Strength and applies Weak to you. Long fights favor it - focus it down."));
+                    role: "Buffs its allies with random stats (Strength/Regen/Counter/Block) 70% of the time and attacks the rest. "
+                        + "Kill it early before its team snowballs."));
                 break;
 
             case 3:
@@ -161,7 +162,8 @@ public static class RuntimeEnemyLibrary
                     role: "High HP and block, strong self-heal, Regen and Strength buffs. The longer the fight, the more dangerous it gets."));
                 pool.Add(Build("Priest", EnemyArchetype.Priest, 45, 5, 6, selfHeal: 15, regenValue: 4,
                     buffStrength: 2, weakDamage: 3, gold: 25,
-                    role: "Heals itself every turn, regenerates, buffs Strength and applies Weak to you. Long fights favor it - focus it down."));
+                    role: "Buffs its allies with random stats (Strength/Regen/Counter/Block) 70% of the time and attacks the rest. "
+                        + "Kill it early before its team snowballs."));
                 pool.Add(Build("Knight", EnemyArchetype.Knight, 55, 8, 12, counterStacks: 3, gold: 30,
                     role: "High block plus Counter: hitting it lets it strike back. Break its shield or use ignore-block damage."));
                 break;
@@ -212,6 +214,9 @@ public static class RuntimeEnemyLibrary
         d.splitCount = template.splitCount;
         d.splitHpScale = template.splitHpScale;
         d.splitDmgScale = template.splitDmgScale;
+        d.attackOnly = template.attackOnly;
+        d.isSummoned = template.isSummoned;
+        d.resummonDelayTurns = template.resummonDelayTurns;
         ApplyVisuals(d);
 
         return d;
@@ -316,14 +321,19 @@ public static class RuntimeEnemyLibrary
                 d.regenValue = 4;
                 d.buffStrength = 2;
                 d.weakDamage = 3;
+                d.canSummon = true;
+                d.summonCount = 2;
+                d.summonThreshold = 0f;
+                d.resummonDelayTurns = 2;
                 d.phaseThreshold = 0.4f;
                 d.phaseRegen = 4;
                 d.phaseHeal = 15;
                 d.phasePlayerDebuff = 2;
                 d.enrageMultiplier = 2;
-                d.role = "A sustain boss: heals 20 per turn, Regen 4, buffs Strength and Weakens you. "
-                    + "Below 40% HP Phase 2: +4 Regen, heals 15, Weak + Vulnerable x2, enrage x2. "
-                    + "A DPS check - drag the fight and it outheals your damage.";
+                d.role = "A support boss: summons minions from earlier maps and buffs them with random stats "
+                    + "(Strength/Regen/Counter/Block) while debuffing you on buff turns. "
+                    + "Its minions can only attack and rely on its buffs - clear them fast, it resummons 2 more after 2 turns. "
+                    + "Below 40% HP Phase 2: +4 Regen, heals 15, Weak + Vulnerable x2, enrage x2.";
                 break;
 
             default:
@@ -448,6 +458,55 @@ public static class RuntimeEnemyLibrary
     }
 
     // =========================================================
+    // PRIEST MINIONS (Mini Boss Priest triệu hồi, ngẫu nhiên map 1-2)
+    // =========================================================
+
+    public static EnemyData BuildPriestMinion()
+    {
+        List<EnemyData> pool = new();
+        foreach (EnemyData e in GetMapPool(1))
+            if (e != null && e.archetype != EnemyArchetype.Priest) pool.Add(e);
+        foreach (EnemyData e in GetMapPool(2))
+            if (e != null && e.archetype != EnemyArchetype.Priest) pool.Add(e);
+
+        if (pool.Count == 0)
+            pool.AddRange(GetMapPool(1));
+
+        EnemyData template = pool[Random.Range(0, pool.Count)];
+
+        EnemyData minion = ScriptableObject.CreateInstance<EnemyData>();
+        minion.enemyName = template.enemyName;
+        minion.artwork = template.artwork;
+        minion.animatorController = template.animatorController;
+        minion.archetype = EnemyArchetype.Basic;
+        minion.maxHealth = template.maxHealth;
+        minion.attackDamage = template.attackDamage;
+        minion.goldReward = 0;
+        minion.attackOnly = true;
+        minion.isSummoned = true;
+        return minion;
+    }
+
+    // =========================================================
+    // MIMIC (chest ambush)
+    // =========================================================
+
+    public static EnemyData BuildMimic(int mapLevel)
+    {
+        EnemyData d = ScriptableObject.CreateInstance<EnemyData>();
+        d.enemyName = "Mimic";
+        d.archetype = EnemyArchetype.Knight;
+        d.maxHealth = 60;
+        d.attackDamage = 10;
+        d.block = 6;
+        d.counterStacks = 3;
+        d.goldReward = 40;
+        d.role = "A mimic disguised as a treasure chest: high HP, block and Counter. "
+            + "Every hit you land comes back at you - break its shield or kill it fast.";
+        return BuildScaled(d, mapLevel);
+    }
+
+    // =========================================================
     // MONSTER CATALOG (dữ liệu cho Monster Index)
     // =========================================================
 
@@ -479,6 +538,9 @@ public static class RuntimeEnemyLibrary
 
         for (int m = 1; m <= 4; m++)
             AddOrMerge(BuildMiniBossCore(m), MonsterCategory.MiniBoss, m);
+
+        for (int m = 1; m <= 4; m++)
+            AddOrMerge(BuildMimic(m), MonsterCategory.MiniBoss, m);
 
         for (int m = 1; m <= 4; m++)
             AddOrMerge(BuildBossCore(m), MonsterCategory.Boss, m);

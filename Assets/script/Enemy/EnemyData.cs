@@ -49,6 +49,11 @@ public class EnemyData : ScriptableObject
     public bool isBoss;
     public bool flipX;
 
+    [Header("Minion Behaviour")]
+    public bool attackOnly;
+    public bool isSummoned;
+    public int resummonDelayTurns = 2;
+
 
     [Header("Boss Mechanics")]
     public float phaseThreshold;

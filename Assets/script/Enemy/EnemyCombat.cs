@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -18,6 +19,11 @@ public class EnemyCombat : MonoBehaviour
     private bool rageAttack;
     private bool summonPending;
     private bool summonTriggered;
+    private bool isPriestBoss;
+    private int resummonTurns = -1;
+    private int buffKind;
+    private int buffAmount;
+    private EnemyStatus buffTarget;
 
     public void Initialize(EnemyData data)
     {
@@ -31,6 +37,10 @@ public class EnemyCombat : MonoBehaviour
 
         if (enemyData != null && enemyData.isBoss && enemyHealth != null)
             enemyHealth.OnHealthChanged += OnBossHealthChanged;
+
+        isPriestBoss = enemyData != null && enemyData.isBoss && enemyData.archetype == EnemyArchetype.Priest;
+        if (isPriestBoss)
+            resummonTurns = 0;
     }
 
     public void SetPlayerHealth(PlayerHealth player)
@@ -122,6 +132,13 @@ public class EnemyCombat : MonoBehaviour
             rageAttack = true;
             int mult = Mathf.Max(1, enemyData.enrageMultiplier);
             SetIntent(EnemyIntentType.Attack, enemyData.attackDamage * mult);
+            return;
+        }
+
+        // Quái chỉ được tấn công (minion của Mini Boss Priest)
+        if (enemyData.attackOnly)
+        {
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
             return;
         }
 
@@ -271,15 +288,102 @@ public class EnemyCombat : MonoBehaviour
 
     private void DecidePriest()
     {
-        float ratio = HpRatio();
-        int healW = 2, buffW = 1, debuffW = 1, blkW = 1;
-        if (ratio < 0.3f) { healW = 3; buffW = 1; debuffW = 1; blkW = 2; }
+        // 30% tấn công / 70% buff (buff ngẫu nhiên chỉ số cho đồng đội)
+        if (Roll(3, 7))
+        {
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
+            return;
+        }
 
-        int idx = RollIndex(healW, buffW, debuffW, blkW);
-        if (idx == 0) SetIntent(EnemyIntentType.Heal, enemyData.selfHeal);
-        else if (idx == 1) SetIntent(EnemyIntentType.Buff, enemyData.buffStrength);
-        else if (idx == 2) SetIntent(EnemyIntentType.Debuff, enemyData.weakDamage);
-        else SetIntent(EnemyIntentType.Block, enemyData.block);
+        buffKind = UnityEngine.Random.Range(0, 4);
+        buffAmount = RandomBuffAmount();
+        buffTarget = GetBuffTarget();
+        SetIntent(EnemyIntentType.Buff, buffAmount);
+    }
+
+    private int RandomBuffAmount()
+    {
+        switch (buffKind)
+        {
+            case 0: return UnityEngine.Random.Range(2, 4); // Strength 2-3
+            case 1: return UnityEngine.Random.Range(2, 4); // Regen 2-3
+            case 2: return UnityEngine.Random.Range(2, 4); // Counter 2-3
+            default: return enemyData.block > 0 ? enemyData.block : UnityEngine.Random.Range(6, 11);
+        }
+    }
+
+    private EnemyStatus GetBuffTarget()
+    {
+        EnemyHealth[] all = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
+        List<EnemyHealth> allies = new();
+        foreach (EnemyHealth h in all)
+        {
+            if (h == null || h == enemyHealth) continue;
+            if (h.CurrentHealth > 0)
+                allies.Add(h);
+        }
+        if (allies.Count > 0)
+            return allies[UnityEngine.Random.Range(0, allies.Count)].GetComponent<EnemyStatus>();
+        return enemyStatus;
+    }
+
+    private void ApplyBuff(EnemyStatus target)
+    {
+        if (target == null) return;
+
+        switch (buffKind)
+        {
+            case 1: target.AddStatus(StatusType.Regen, buffAmount, 3); break;
+            case 2: target.AddStatus(StatusType.Counter, buffAmount, 99); break;
+            case 3:
+                EnemyBlock blk = target.GetComponent<EnemyBlock>();
+                if (blk != null) blk.AddBlock(buffAmount);
+                break;
+            default: target.AddStatus(StatusType.Strength, buffAmount, 99); break;
+        }
+    }
+
+    // Mini Boss Priest: khi cả 2 minion chết, đợi resummonDelayTurns lượt rồi gọi 2 con mới
+    private void UpdatePriestSummon()
+    {
+        int aliveMinions = CountAliveMinions();
+
+        if (resummonTurns == 0)
+        {
+            if (aliveMinions == 0)
+            {
+                summonPending = true;
+                resummonTurns = -1;
+            }
+            return;
+        }
+
+        if (resummonTurns > 0)
+        {
+            resummonTurns--;
+            if (resummonTurns == 0)
+            {
+                summonPending = true;
+                resummonTurns = -1;
+            }
+            return;
+        }
+
+        if (aliveMinions == 0)
+            resummonTurns = enemyData != null ? enemyData.resummonDelayTurns : 2;
+    }
+
+    private int CountAliveMinions()
+    {
+        EnemyHealth[] all = FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None);
+        int count = 0;
+        foreach (EnemyHealth h in all)
+        {
+            if (h == null || h.Data == null) continue;
+            if (h.Data.isSummoned && h.CurrentHealth > 0)
+                count++;
+        }
+        return count;
     }
 
     public void ExecuteIntent(PlayerHealth player)
@@ -292,6 +396,9 @@ public class EnemyCombat : MonoBehaviour
             DecideNextIntent();
             return;
         }
+
+        if (isPriestBoss)
+            UpdatePriestSummon();
 
         switch (enemyIntent.IntentType)
         {
@@ -314,7 +421,32 @@ public class EnemyCombat : MonoBehaviour
                 break;
 
             case EnemyIntentType.Buff:
-                enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue, 99);
+                if (buffTarget != null)
+                {
+                    EnemyHealth targetHp = buffTarget.GetComponent<EnemyHealth>();
+                    if (targetHp == null || targetHp.CurrentHealth <= 0)
+                        buffTarget = null;
+                }
+                if (buffTarget != null)
+                {
+                    ApplyBuff(buffTarget);
+                    buffTarget = null;
+
+                    // Mini Boss Priest: lượt buff đồng thời debuff người chơi
+                    if (isPriestBoss && player != null)
+                    {
+                        PlayerStatus buffDps = player.GetComponent<PlayerStatus>();
+                        if (buffDps != null)
+                        {
+                            if (enemyData.weakDamage > 0) buffDps.AddStatus(StatusType.Weak, enemyData.weakDamage, 2);
+                            if (enemyData.vulnerableDamage > 0) buffDps.AddStatus(StatusType.Vulnerable, enemyData.vulnerableDamage, 2);
+                        }
+                    }
+                }
+                else
+                {
+                    enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue, 99);
+                }
                 break;
 
             case EnemyIntentType.Debuff:

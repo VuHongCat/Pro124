@@ -222,6 +222,20 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
+        // Đánh dấu toàn bộ node đã hoàn thành (màu xanh)
+        // -----------------------------------------
+
+        foreach (string name in completedNames)
+        {
+            MapNode completed = FindNodeByName(name);
+
+            if (completed != null)
+            {
+                completed.CompleteNode();
+            }
+        }
+
+        // -----------------------------------------
         // Chưa có progress: chỉ Start sáng
         // -----------------------------------------
 
@@ -910,10 +924,34 @@ public class MapManager : MonoBehaviour
         Debug.Log("Upgraded: " + card.cardName);
     }
 
+    private const float MimicChance = 0.45f;
+
+    private void StartMimicBattle()
+    {
+        Debug.Log("[MapManager] A MIMIC was hiding in the chest!");
+
+        PlayerPrefs.SetString(BattleNodeKey, currentNode.gameObject.name);
+        PlayerPrefs.Save();
+
+        RunSession.RunActive = true;
+        RunSession.IsBossBattle = true;
+        RunSession.IsFinalBoss = false;
+        RunSession.BossSequence = new List<EnemyData> { RuntimeEnemyLibrary.BuildMimic(RunSession.MapLevel) };
+        RunSession.MapSceneName = SceneManager.GetActiveScene().name;
+
+        SceneLoader.TransitionTo("BattleLevel1");
+    }
+
     private void OpenChestPopup()
     {
         if (popupOpen) return;
         popupOpen = true;
+
+        if (Random.value <= MimicChance)
+        {
+            StartMimicBattle();
+            return;
+        }
 
         RelicData reward = RelicManager.Instance.GetRandomChestRelic();
 
