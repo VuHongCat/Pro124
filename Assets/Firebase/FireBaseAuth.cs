@@ -12,11 +12,11 @@ public class FireBaseAuth : MonoBehaviour
             if (dependencyStatus == DependencyStatus.Available)
             {
                 FirebaseApp app = FirebaseApp.DefaultInstance;
-                Debug.Log("Firebase đã sẵn sàng!");
+                Debug.Log("Firebase is ready!");
             }
             else
             {
-                Debug.LogError($"Không thể tải Firebase: {dependencyStatus}");
+                Debug.LogError($"Failed to load Firebase: {dependencyStatus}");
             }
         });
     }

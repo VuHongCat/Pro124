@@ -17,7 +17,7 @@ public class LoginController : MonoBehaviour
     {
         if (emailInput == null || passwordInput == null)
         {
-            ShowMessage("Lỗi hệ thống: Thiếu tham chiếu UI InputField.");
+            ShowMessage("System error: Missing UI InputField reference.");
             return;
         }
 
@@ -30,9 +30,15 @@ public class LoginController : MonoBehaviour
             return;
         }
 
-        if (!FirebaseManager.Instance.IsFirebaseReady)
+        if (!LocalAuthManager.IsValidEmail(email))
         {
-            ShowMessage("Firebase is not ready. Please try again.");
+            ShowMessage("Invalid email format.");
+            return;
+        }
+
+        if (password.Length < 6)
+        {
+            ShowMessage("Password must be at least 6 characters.");
             return;
         }
 
@@ -41,29 +47,39 @@ public class LoginController : MonoBehaviour
 
     private void Login(string email, string password)
     {
-        ShowMessage("Logging in...");
+        if (!LocalAuthManager.CheckLogin(email, password))
+        {
+            ShowMessage("Invalid email or password.");
+            return;
+        }
 
-        FirebaseAuth auth = FirebaseManager.Instance.Auth;
-        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+        Debug.Log($"[Login] Login successful: {email}");
+        ShowMessage("Login successful!");
+
+        SignInFirebaseAndLoad(email, password);
+    }
+
+    private void SignInFirebaseAndLoad(string email, string password)
+    {
+        if (FirebaseManager.Instance == null || !FirebaseManager.Instance.IsFirebaseReady)
+        {
+            SceneLoader.TransitionTo(gameSceneName);
+            return;
+        }
+
+        FirebaseManager.Instance.Auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
             if (task.IsCanceled || task.IsFaulted)
             {
-                string errorMessage = FirebaseErrorHelper.GetErrorMessage(task.Exception);
-                ShowMessage(errorMessage);
+                Debug.LogWarning($"[Login] Firebase sign-in skipped: {task.Exception}");
+                SceneLoader.TransitionTo(gameSceneName);
                 return;
             }
-
-            AuthResult result = task.Result;
-            FirebaseUser user = result.User;
-            Debug.Log($"[Login] Login successful: {user.Email}");
-
-            ShowMessage("Login successful!");
 
             CloudSave.Load(hasSave =>
             {
                 if (hasSave)
                     ShowMessage("Loaded saved progress!");
-
                 SceneLoader.TransitionTo(gameSceneName);
             });
         });

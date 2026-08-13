@@ -40,13 +40,13 @@ public class TurnManager : MonoBehaviour
         battleManager.StartPlayerTurn();
         PlayerTurnStarted?.Invoke(TurnCount);
 
-        // Ice Cream: giữ năng lượng chưa dùng giữa các lượt
+        // Ice Cream: keeps unused energy between turns
         if (turnStarted && RelicManager.Owns("Ice Cream"))
             energyManager.GainEnergy(energyManager.MaxEnergy);
         else
             energyManager.ResetEnergy();
 
-        // Energy đầu trận (Coffee Dripper, Ectoplasm, Tea Set)
+        // Battle-start energy (Coffee Dripper, Ectoplasm, Tea Set)
         if (!turnStarted)
         {
             int bonus = RelicManager.GetBattleStartEnergyBonus();

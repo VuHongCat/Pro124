@@ -343,7 +343,7 @@ public class CardCodexUI : MonoBehaviour
         infoText.text = $"{card.cardName} ({card.energyCost} Energy) | {card.cardType} | {rarityName}" +
             $"\nBase: {baseDesc}" +
             $"\nUpgrade: {upDesc}" +
-            (upDesc == baseDesc ? "\n(Chỉ số được cải thiện, mô tả không đổi)" : "");
+            (upDesc == baseDesc ? "\n(Stats improved, description unchanged)" : "");
         infoText.color = Color.white;
     }
 

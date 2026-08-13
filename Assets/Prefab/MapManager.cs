@@ -103,8 +103,8 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        // Chưa có run đang chạy -> xóa progress cũ
-        // để map luôn bắt đầu từ Start
+        // No active run -> clear old progress
+        // so the map always starts at Start
         if (!RunSession.RunActive)
         {
             ClearProgress();
@@ -184,7 +184,7 @@ public class MapManager : MonoBehaviour
         List<string> completedNames = GetCompletedNodeNames();
 
         // -----------------------------------------
-        // Reset toàn bộ node (chỉ Start được mở)
+        // Reset all nodes (only Start is unlocked)
         // -----------------------------------------
 
         foreach (MapNode node in nodes)
@@ -196,14 +196,14 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Khóa toàn bộ line trước
+        // Lock all lines first
         // -----------------------------------------
 
         LockAllLines();
 
         // -----------------------------------------
-        // Thắng trận quay lại map: BattleNodeKey vẫn giữ
-        // tên node vừa đánh -> đánh dấu node đó hoàn thành
+        // Returning to map after a win: BattleNodeKey keeps the
+        // name of the node just fought -> mark that node as completed
         // -----------------------------------------
 
         string pendingBattle = PlayerPrefs.GetString(BattleNodeKey, "");
@@ -222,7 +222,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Đánh dấu toàn bộ node đã hoàn thành (màu xanh)
+        // Mark all completed nodes (blue)
         // -----------------------------------------
 
         foreach (string name in completedNames)
@@ -236,7 +236,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Chưa có progress: chỉ Start sáng
+        // No progress yet: only Start is lit
         // -----------------------------------------
 
         if (completedNames.Count == 0)
@@ -252,7 +252,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Node cuối cùng đã hoàn thành = vị trí hiện tại
+        // Last completed node = current position
         // -----------------------------------------
 
         MapNode lastCompleted = FindNodeByName(
@@ -278,9 +278,9 @@ public class MapManager : MonoBehaviour
         );
 
         // -----------------------------------------
-        // Start chỉ sáng khi nó là node hiện tại
-        // (ResetNode luôn mở Start, nên khóa lại
-        // nếu người chơi đang ở node khác)
+        // Start only lights when it is the current node
+        // (ResetNode always unlocks Start, so re-lock it
+        // if the player is at another node)
         // -----------------------------------------
 
         MapNode startNode = FindStartNode();
@@ -291,14 +291,14 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Sáng node hiện tại (vị trí người chơi)
+        // Light up the current node (player position)
         // -----------------------------------------
 
         currentNode.SetLock(false);
 
         // -----------------------------------------
-        // Tự mở khóa nhánh kế tiếp để người chơi
-        // chọn ngay sau khi hoàn thành node hiện tại
+        // Auto-unlock the next branches so the player can
+        // pick right after completing the current node
         // -----------------------------------------
 
         UnlockNextNodes(currentNode);
@@ -324,7 +324,7 @@ public class MapManager : MonoBehaviour
         );
 
         // -----------------------------------------
-        // Reset toàn bộ node
+        // Reset all nodes
         // -----------------------------------------
 
         foreach (MapNode node in nodes)
@@ -336,7 +336,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Tìm Start
+        // Find Start
         // -----------------------------------------
 
         currentNode = FindStartNode();
@@ -351,7 +351,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Mở Start
+        // Unlock Start
         // -----------------------------------------
 
         currentNode.SetLock(false);
@@ -361,7 +361,7 @@ public class MapManager : MonoBehaviour
         );
 
         // -----------------------------------------
-        // Khóa toàn bộ line
+        // Lock all lines
         // -----------------------------------------
 
         LockAllLines();
@@ -442,8 +442,8 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Bấm vào node hiện tại (vị trí người chơi)
-        // -> mở khóa các nhánh kế tiếp
+        // Click the current node (player position)
+        // -> unlock the next branches
         // -----------------------------------------
 
         if (selectedNode == currentNode)
@@ -553,7 +553,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Các node khác
+        // Other nodes
         // -----------------------------------------
 
         currentNode = selectedNode;
@@ -593,7 +593,7 @@ public class MapManager : MonoBehaviour
         }
 
         // -----------------------------------------
-        // Lưu Battle Node
+        // Save Battle Node
         // -----------------------------------------
 
         PlayerPrefs.SetString(
@@ -771,7 +771,7 @@ public class MapManager : MonoBehaviour
         );
 
         // -----------------------------------------
-        // Xóa Battle progress
+        // Clear Battle progress
         // -----------------------------------------
 
         ClearProgress();

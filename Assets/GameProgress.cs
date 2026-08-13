@@ -99,7 +99,7 @@ public class GameProgress : MonoBehaviour
         currentLevel = 1;
         currentNodeName = "";
 
-        // Chết thì hồi đầy máu cho run mới
+        // On death, refill health for the new run
         playerMaxHealth = 100;
         playerCurrentHealth = 100;
 

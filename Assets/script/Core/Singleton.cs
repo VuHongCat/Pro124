@@ -13,6 +13,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else
         {
+            bool existingAlive = Instance != null;
+            int existingId = existingAlive ? (Instance as MonoBehaviour).GetInstanceID() : 0;
+            Debug.LogWarning(
+                $"[Singleton<{typeof(T).Name}>] Duplicate Awake on '{gameObject.name}' (id={GetInstanceID()}). " +
+                $"Existing alive={existingAlive}, id={existingId}. Destroying this duplicate."
+            );
             Destroy(gameObject);
         }
     }

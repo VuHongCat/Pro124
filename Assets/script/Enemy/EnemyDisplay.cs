@@ -91,7 +91,7 @@ public class EnemyDisplay : MonoBehaviour
             artworkImage.sprite = data.artwork;
 
 
-            // Flip hướng enemy
+            // Flip enemy direction
             if (data.flipX)
             {
                 artworkImage.rectTransform.localScale =

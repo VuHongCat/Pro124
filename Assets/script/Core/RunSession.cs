@@ -79,9 +79,31 @@ public static class RunSession
             return;
         }
 
-        // Map 4 done -> victory, start a new run
-        StartNewRun();
-        SceneLoader.TransitionTo("MainMenu");
+        // Map 4 done -> victory, start a new run but keep collected cards
+        PrepareRunAfterVictory();
+        SceneLoader.TransitionTo("WorldMap");
+    }
+
+    public static void PrepareRunAfterVictory()
+    {
+        RunActive = true;
+        MapSceneName = "MapLevel1";
+        MapLevel = 1;
+        BattleDeck = null;
+        LastBuiltDeckCount = Deck != null ? Deck.Count : 0;
+        PlayerMaxHealth = 80;
+        PlayerCurrentHealth = 80;
+        Gold = 100;
+        IsBossBattle = false;
+        IsFinalBoss = false;
+        BossSequence = null;
+
+        MapManager.ClearProgress();
+        RelicManager.Instance.ClearRelics();
+        PlayerPrefs.SetInt("UnlockedIsland", 1);
+        AudioManager.ResetBossTracks();
+
+        CloudSave.Save();
     }
 
     public static void ClearDeck()

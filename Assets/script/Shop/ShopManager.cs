@@ -167,14 +167,14 @@ public class ShopManager : MonoBehaviour
 
             currentCards[i] = card;
 
-            // Gán card vào slot
+            // Assign the card to the slot
             cardSlots[i].SetCard(card);
 
-            // Hiện giá
+            // Show the price
             cardPriceTexts[i].text =
                 card.shopPrice + " Gold";
 
-            // Tránh trùng
+            // Avoid duplicates
             availableCards.RemoveAt(randomIndex);
         }
     }
@@ -266,14 +266,14 @@ public class ShopManager : MonoBehaviour
 
             currentRelics[i] = relic;
 
-            // Gán relic
+            // Assign the relic
             relicSlots[i].SetRelic(relic);
 
-            // Giá
+            // Price
             relicPriceTexts[i].text =
                 relic.shopPrice + " Gold";
 
-            // Tránh trùng
+            // Avoid duplicates
             availableRelics.RemoveAt(randomIndex);
         }
     }

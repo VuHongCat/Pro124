@@ -21,7 +21,7 @@ public class RegisterController : MonoBehaviour
     {
         if (emailInput == null || passwordInput == null)
         {
-            ShowMessage("Lỗi hệ thống: Thiếu tham chiếu UI InputField.");
+            ShowMessage("System error: Missing UI InputField reference.");
             return;
         }
 
@@ -29,10 +29,17 @@ public class RegisterController : MonoBehaviour
         string password = passwordInput.text;
         string confirmPassword = confirmPasswordInput != null ? confirmPasswordInput.text : password;
 
-        // Kiểm tra dữ liệu đầu vào cơ bản
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        string emailError = LocalAuthManager.ValidateEmail(email);
+        if (emailError != null)
         {
-            ShowMessage("Vui lòng nhập đầy đủ Email và Mật khẩu.");
+            ShowMessage(emailError);
+            return;
+        }
+
+        string passError = LocalAuthManager.ValidatePassword(password);
+        if (passError != null)
+        {
+            ShowMessage(passError);
             return;
         }
 
@@ -40,27 +47,15 @@ public class RegisterController : MonoBehaviour
         {
             if (string.IsNullOrEmpty(confirmPassword))
             {
-                ShowMessage("Vui lòng nhập lại mật khẩu để xác nhận.");
+                ShowMessage("Please re-enter your password to confirm.");
                 return;
             }
 
             if (password != confirmPassword)
             {
-                ShowMessage("Mật khẩu xác nhận không khớp.");
+                ShowMessage("Passwords do not match.");
                 return;
             }
-        }
-
-        if (password.Length < 6)
-        {
-            ShowMessage("Mật khẩu phải có ít nhất 6 ký tự.");
-            return;
-        }
-
-        if (FirebaseManager.Instance == null || !FirebaseManager.Instance.IsFirebaseReady)
-        {
-            ShowMessage("Firebase chưa sẵn sàng, vui lòng thử lại.");
-            return;
         }
 
         Register(email, password);
@@ -69,34 +64,37 @@ public class RegisterController : MonoBehaviour
     private void Register(string email, string password)
     {
         SetInteractable(false);
-        ShowMessage("Đang tạo tài khoản...");
+        ShowMessage("Creating account...");
 
-        FirebaseAuth auth = FirebaseManager.Instance.Auth;
-        auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+        string result = LocalAuthManager.RegisterUser(email, password, out bool success);
+        SetInteractable(true);
+
+        if (!success)
         {
-            SetInteractable(true);
+            ShowMessage(result);
+            return;
+        }
 
-            if (task.IsCanceled || task.IsFaulted)
-            {
-                string errorMessage = FirebaseErrorHelper.GetErrorMessage(task.Exception);
-                ShowMessage(errorMessage);
-                return;
-            }
+        Debug.Log($"[Register] Account created successfully: {email}");
+        ShowMessage("Registration successful! Redirecting to login...");
 
-            AuthResult result = task.Result;
-            FirebaseUser newUser = result.User;
-            Debug.Log($"[Register] Tạo tài khoản thành công: {newUser.Email}");
+        SyncFirebaseAccount(email, password);
 
-            if (usernameInput != null && !string.IsNullOrWhiteSpace(usernameInput.text))
-            {
-                UserProfile profile = new UserProfile { DisplayName = usernameInput.text.Trim() };
-                newUser.UpdateUserProfileAsync(profile);
-            }
+        if (panelSwitcher != null)
+            panelSwitcher.openloginpanel();
+    }
 
-            ShowMessage("Đăng ký thành công! Đang chuyển sang màn hình đăng nhập...");
+    private void SyncFirebaseAccount(string email, string password)
+    {
+        if (FirebaseManager.Instance == null || !FirebaseManager.Instance.IsFirebaseReady)
+            return;
 
-            if (panelSwitcher != null)
-                panelSwitcher.openloginpanel();
+        FirebaseManager.Instance.Auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+                Debug.Log($"[Register] Firebase sync skipped (account may already exist): {task.Exception.Message}");
+            else
+                Debug.Log("[Register] Firebase account synced.");
         });
     }
 
@@ -110,7 +108,7 @@ public class RegisterController : MonoBehaviour
 
     private void GoToLogin()
     {
-        // Thêm logic chuyển Panel hoặc chuyển Scene tại đây
+        // Add panel switching or scene switching logic here
     }
 
     private void ShowMessage(string msg)

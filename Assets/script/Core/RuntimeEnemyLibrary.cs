@@ -87,7 +87,7 @@ public static class RuntimeEnemyLibrary
     // PER-MAP ENCOUNTERS
     // =========================================================
 
-    // Số quái xuất hiện đồng thời trên sân theo map
+    // Number of enemies that appear simultaneously on the field per map
     public static int GetEnemiesPerField(int mapLevel)
     {
         switch (mapLevel)
@@ -117,7 +117,7 @@ public static class RuntimeEnemyLibrary
         return encounter;
     }
 
-    // Template quái cho từng map (base = map 1, sau đó scale)
+    // Enemy template per map (base = map 1, then scaled)
     private static List<EnemyData> GetMapPool(int mapLevel)
     {
         List<EnemyData> pool = new();
@@ -172,7 +172,7 @@ public static class RuntimeEnemyLibrary
         return pool;
     }
 
-    // Clone + scale quái theo độ khó map
+    // Clone + scale enemy by map difficulty
     public static EnemyData BuildScaled(EnemyData template, int mapLevel, bool isBoss = false)
     {
         EnemyData d = ScriptableObject.CreateInstance<EnemyData>();
@@ -223,7 +223,7 @@ public static class RuntimeEnemyLibrary
     }
 
     // =========================================================
-    // BOSS MINIONS (quái boss triệu hồi)
+    // BOSS MINIONS (enemies summoned by the boss)
     // =========================================================
 
     public static EnemyData BuildMinion(string id, int mapLevel)
@@ -252,7 +252,7 @@ public static class RuntimeEnemyLibrary
         return minion;
     }
 
-    // Slime con tách ra khi Slime chết (không split tiếp, không cho vàng)
+    // Baby slime splits out when the Slime dies (no further split, no gold)
     public static EnemyData BuildSplit(EnemyData parent)
     {
         if (parent == null)
@@ -460,7 +460,7 @@ public static class RuntimeEnemyLibrary
     }
 
     // =========================================================
-    // PRIEST MINIONS (Mini Boss Priest triệu hồi, ngẫu nhiên map 1-2)
+    // PRIEST MINIONS (summoned by Mini Boss Priest, random map 1-2)
     // =========================================================
 
     public static EnemyData BuildPriestMinion()
@@ -509,7 +509,7 @@ public static class RuntimeEnemyLibrary
     }
 
     // =========================================================
-    // MONSTER CATALOG (dữ liệu cho Monster Index)
+    // MONSTER CATALOG (data for the Monster Index)
     // =========================================================
 
     public static List<MonsterCatalogEntry> GetMonsterCatalog()

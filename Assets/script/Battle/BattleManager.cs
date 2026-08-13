@@ -175,13 +175,13 @@ public class BattleManager : MonoBehaviour
         if (card == null || card.CardData == null)
             return;
 
-        // Bài cần mục tiêu: chỉ được dùng khi thả trực tiếp lên một con quái còn sống.
-        // Nếu thả ra ngoài (bãi chiến) → bài quay về tay, không tiêu năng lượng.
+        // Cards that need a target can only be used by dropping directly on a living enemy.
+        // If dropped outside (battlefield) the card returns to hand without spending energy.
         if (NeedsTarget(card.CardData))
         {
             if (droppedOn == null || droppedOn.CurrentHealth <= 0)
             {
-                Debug.Log("[PlayCard] " + card.CardData.cardName + " cần thả lên quái để dùng.");
+                Debug.Log("[PlayCard] " + card.CardData.cardName + " must be dropped on an enemy to be used.");
                 return;
             }
         }
@@ -329,7 +329,7 @@ public class BattleManager : MonoBehaviour
     {
         if (boss == null) return;
 
-        // Mini Boss Priest: gọi quái ngẫu nhiên từ map 1-2, chỉ được tấn công
+        // Mini Boss Priest: summons random enemies from map 1-2, only attackable
         if (boss.isBoss && boss.archetype == EnemyArchetype.Priest)
         {
             int count = Mathf.Max(1, boss.summonCount);
@@ -361,8 +361,8 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"[Boss] Summoned {total} minion(s).");
     }
 
-    // Xếp quái thành một hàng ngang thẳng; priest boss đứng cuối hàng,
-    // các quái khác (minion) đứng trước nó
+    // Arrange enemies in a single straight row; the priest boss stands at the back,
+    // other enemies (minions) stand in front of it
     private void LayoutEnemies()
     {
         int count = activeEnemies.Count;
@@ -557,8 +557,8 @@ public class BattleManager : MonoBehaviour
 
         GameObject cardObject = factory.CreateCard(card, parent);
 
-        // Card battle dùng CardDrag để chơi thẻ -> tắt ở reward,
-        // chọn thẻ bằng click qua Button.
+        // Battle cards use CardDrag to play cards -> disable it at rewards,
+        // cards are picked by clicking via Button.
         CardDrag drag = cardObject.GetComponent<CardDrag>();
         if (drag != null)
             drag.enabled = false;
@@ -669,11 +669,32 @@ public class BattleManager : MonoBehaviour
 
         if (wasFinalBoss)
         {
+            if (RunSession.MapLevel >= 4)
+            {
+                ShowYouWin();
+                return;
+            }
+
             RunSession.AdvanceToNextMap();
             return;
         }
 
         RunSession.ReturnToMap();
+    }
+
+    private void ShowYouWin()
+    {
+        Canvas canvas = RuntimeUi.CreateCanvas("YouWinCanvas");
+        GameObject panel = RuntimeUi.CreatePanel(canvas.transform, new Color(0, 0, 0, 0.92f));
+        RuntimeUi.CreateText(panel.transform, "You Win!", 40, TextAnchor.MiddleCenter,
+            new Vector2(0, 0.62f), new Vector2(1, 0.8f));
+        RuntimeUi.CreateText(panel.transform, "You defeated the final boss!\nYour collected cards are kept for the next run.",
+            18, TextAnchor.MiddleCenter, new Vector2(0, 0.4f), new Vector2(1, 0.55f));
+        RuntimeUi.CreateButton(panel.transform, "Continue", new Vector2(0, 0), new Vector2(260, 60), () =>
+        {
+            RunSession.PrepareRunAfterVictory();
+            SceneLoader.TransitionTo("WorldMap");
+        });
     }
 
     private void LoseBattle()

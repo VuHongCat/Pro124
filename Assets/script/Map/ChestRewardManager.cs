@@ -26,14 +26,14 @@ public class ChestRewardManager : MonoBehaviour
         chestRewardPanel.SetActive(false);
     }
 
-    // Gọi khi người chơi bấm Chest Node
+    // Called when the player clicks a Chest Node
     public void OpenChest()
     {
         currentRelic = RelicManager.Instance.GetRandomChestRelic();
 
         if (currentRelic == null)
         {
-            Debug.Log("Không còn Relic để nhận.");
+            Debug.Log("No more relics to receive.");
             return;
         }
 
@@ -42,7 +42,7 @@ public class ChestRewardManager : MonoBehaviour
         chestRewardPanel.SetActive(true);
     }
 
-    // Gắn vào OnClick của RelicIcon
+    // Attach to RelicIcon's OnClick
     public void TakeRelic()
     {
         if (currentRelic == null)
