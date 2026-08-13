@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Golem
-  artwork: {fileID: 0}
+  artwork: {fileID: 7763504672370218953, guid: 63067b8e9e30c9d4387a5f5dcfe6686f, type: 3}
   archetype: 3
   role: 
   animatorController: {fileID: 9100000, guid: cd05e330bff77c444bd3991bd1406ad4, type: 2}

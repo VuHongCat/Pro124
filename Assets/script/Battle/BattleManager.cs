@@ -159,7 +159,10 @@ public class BattleManager : MonoBehaviour
     {
         "Strike", "Bash", "HeavyBlade", "Combo", "Chain Hit", "Last Stand", "Sacrifice",
         "Bloodthirst", "Executioner", "Blade Storm", "Steel Skin", "Shockwave",
-        "Shatter Armor", "Intimidate", "Hemorrhage"
+        "Shatter Armor", "Intimidate", "Hemorrhage", "Double Edge", "Whirlwind",
+        "Puncture", "Shield Bash", "Vampiric Strike", "Crushing Blow", "Assassinate",
+        "Poison Dagger", "Blood Boil", "Fury", "Leech", "Weaken", "Mark Target",
+        "Bleed Out", "Venom", "Debilitate"
     };
 
     public static bool NeedsTarget(CardData card)
@@ -172,13 +175,21 @@ public class BattleManager : MonoBehaviour
         if (card == null || card.CardData == null)
             return;
 
-        EnemyHealth target = ResolveTarget(card.CardData, droppedOn);
-
-        if (NeedsTarget(card.CardData) && target == null)
-            return;
+        // Bài cần mục tiêu: chỉ được dùng khi thả trực tiếp lên một con quái còn sống.
+        // Nếu thả ra ngoài (bãi chiến) → bài quay về tay, không tiêu năng lượng.
+        if (NeedsTarget(card.CardData))
+        {
+            if (droppedOn == null || droppedOn.CurrentHealth <= 0)
+            {
+                Debug.Log("[PlayCard] " + card.CardData.cardName + " cần thả lên quái để dùng.");
+                return;
+            }
+        }
 
         if (!energyManager.HasEnoughEnergy(card.CardData.energyCost))
             return;
+
+        EnemyHealth target = droppedOn;
 
         energyManager.SpendEnergy(card.CardData.energyCost);
 
@@ -200,22 +211,6 @@ public class BattleManager : MonoBehaviour
 
         deckManager.AddToDiscard(card.CardData);
         handManager.RemoveCard(card);
-    }
-
-    private EnemyHealth ResolveTarget(CardData card, EnemyHealth droppedOn)
-    {
-        if (droppedOn != null && droppedOn.CurrentHealth > 0)
-            return droppedOn;
-
-        if (EnemyTargetManager.Instance != null &&
-            EnemyTargetManager.Instance.CurrentTarget != null &&
-            EnemyTargetManager.Instance.CurrentTarget.CurrentHealth > 0)
-            return EnemyTargetManager.Instance.CurrentTarget;
-
-        if (activeEnemies.Count == 1 && activeEnemies[0] != null && activeEnemies[0].CurrentHealth > 0)
-            return activeEnemies[0];
-
-        return null;
     }
 
     private void OnEnemyDeath(EnemyHealth enemy)

@@ -67,6 +67,21 @@ public class TurnManager : MonoBehaviour
             Debug.Log($"Drew: {card.cardName}");
             handManager.AddCard(card);
         }
+
+        if (TurnCount > 0 && TurnCount % 3 == 0)
+            InjectRandomCurses();
+    }
+
+    private void InjectRandomCurses()
+    {
+        int curseCount = Random.Range(1, 3);
+        for (int i = 0; i < curseCount; i++)
+        {
+            CardData curse = CurseLibrary.GetRandomCurse();
+            if (curse == null) continue;
+            deckManager.AddCardToDeck(curse);
+            Debug.Log($"Curse added to deck: {curse.cardName}");
+        }
     }
 
     public void StartEnemyTurn()

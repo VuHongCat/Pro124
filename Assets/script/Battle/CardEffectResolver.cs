@@ -548,7 +548,7 @@ public class CardEffectResolver : MonoBehaviour
     {
         EnergyManager e = GetEnergy();
         if (e != null)
-            e.SpendEnergy(Mathf.Max(1, card.statusAmount));
+            e.LoseEnergy(Mathf.Max(1, card.statusAmount));
     }
 
     private void CurseMisfortune(CardData card)

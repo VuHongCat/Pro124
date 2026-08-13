@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bosslv3
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Boss Assassin
-  artwork: {fileID: 0}
+  artwork: {fileID: 9207059348340135036, guid: fcdfb6b5b2a010349915a95ad17e8be8, type: 3}
   animatorController: {fileID: 9100000, guid: b81c758e62c42ce4cadf811a402c94cf, type: 2}
   attackStateName: Boss3Atk
   maxHealth: 0

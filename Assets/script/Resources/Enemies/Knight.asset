@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Knight
-  artwork: {fileID: 0}
+  artwork: {fileID: -8650765351860947655, guid: 5666f73bfd381a74282c41fee8faab23, type: 3}
   archetype: 4
   role: 
   animatorController: {fileID: 9100000, guid: e87581e9d40d0b6428559e9ce38cbbb2, type: 2}

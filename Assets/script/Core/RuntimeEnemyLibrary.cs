@@ -353,6 +353,7 @@ public static class RuntimeEnemyLibrary
                 break;
         }
 
+        ApplyVisuals(d);
         return d;
     }
 
@@ -449,6 +450,7 @@ public static class RuntimeEnemyLibrary
                 break;
         }
 
+        ApplyVisuals(d);
         return d;
     }
 

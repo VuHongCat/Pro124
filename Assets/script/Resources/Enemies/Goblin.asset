@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Goblin
-  artwork: {fileID: 0}
+  artwork: {fileID: 5569873470066788542, guid: 837aa47e3fe5e204c91a2d345beae539, type: 3}
   archetype: 1
   animatorController: {fileID: 9100000, guid: cb2444a938af57445ba40018a56d1783, type: 2}
   attackStateName: GobblinAtk

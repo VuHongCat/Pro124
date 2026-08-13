@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Slime
-  artwork: {fileID: 0}
+  artwork: {fileID: 9075381334120939931, guid: 040d86b58a4b83245b3b87b5e830fe2f, type: 3}
   archetype: 0
   role: 
   animatorController: {fileID: 9100000, guid: 3302beb51d2d8394894881696e1fab88, type: 2}

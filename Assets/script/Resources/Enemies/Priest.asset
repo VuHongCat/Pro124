@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Priest
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Priest
-  artwork: {fileID: 0}
+  artwork: {fileID: 4447621038708217979, guid: 2ef791b30fa84a247b990fb65021308c, type: 3}
   archetype: 6
   role: 
   animatorController: {fileID: 9100000, guid: 0720b4f1da2139e4f9ff62cd9a1619dc, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MiniBossKnight
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Mini Boss Knight
-  artwork: {fileID: 0}
+  artwork: {fileID: -8650765351860947655, guid: 5666f73bfd381a74282c41fee8faab23, type: 3}
   archetype: 4
   role: A shield-wall boss: high block, Counter and self-heal. Below 40% HP enters Phase 2 (+2 Strength, heals 10, applies Weak + Vulnerable to you) and the next attack is enraged x2. Burst through its shield, don't let it carry block into a new turn.
   animatorController: {fileID: 9100000, guid: e87581e9d40d0b6428559e9ce38cbbb2, type: 2}

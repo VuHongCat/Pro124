@@ -11,6 +11,13 @@ public static class CurseLibrary
         return new List<CardData>(_curses);
     }
 
+    public static CardData GetRandomCurse()
+    {
+        List<CardData> curses = GetCurses();
+        if (curses.Count == 0) return null;
+        return Object.Instantiate(curses[Random.Range(0, curses.Count)]);
+    }
+
     private static void Build()
     {
         _curses = new List<CardData>();

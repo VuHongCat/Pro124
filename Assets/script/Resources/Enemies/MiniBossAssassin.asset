@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MiniBossAssassin
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Mini Boss Assassin
-  artwork: {fileID: 0}
+  artwork: {fileID: 6551237117492788861, guid: b7166495269cc27488963627551ca1d3, type: 3}
   archetype: 5
   role: A burst boss: very high damage and applies Vulnerable. Below 40% HP Phase 2: +3 Strength, Weak + Vulnerable x2, enrage x2. Its enraged hit can one-shot - always keep block ready for the big hits.
   animatorController: {fileID: 9100000, guid: 491ed6f4013b7a84383be4d5ad80c035, type: 2}

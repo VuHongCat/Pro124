@@ -30,6 +30,12 @@ public class EnergyManager : MonoBehaviour
         return true;
     }
 
+    public void LoseEnergy(int amount)
+    {
+        currentEnergy = Mathf.Max(0, currentEnergy - Mathf.Max(0, amount));
+        Debug.Log($"{currentEnergy}/{maxEnergy}");
+    }
+
     public void GainEnergy(int amount)
     {
         currentEnergy += amount;
