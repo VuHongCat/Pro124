@@ -27,6 +27,31 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
 
+    private const string MusicVolumeKey = "MusicVolume";
+    private const string SfxVolumeKey = "SfxVolume";
+
+    public static float MusicVolume
+    {
+        get => PlayerPrefs.GetFloat(MusicVolumeKey, 1f);
+        set
+        {
+            PlayerPrefs.SetFloat(MusicVolumeKey, Mathf.Clamp01(value));
+            PlayerPrefs.Save();
+            if (Instance != null) Instance.musicSource.volume = MusicVolume;
+        }
+    }
+
+    public static float SfxVolume
+    {
+        get => PlayerPrefs.GetFloat(SfxVolumeKey, 1f);
+        set
+        {
+            PlayerPrefs.SetFloat(SfxVolumeKey, Mathf.Clamp01(value));
+            PlayerPrefs.Save();
+            if (Instance != null) Instance.sfxSource.volume = SfxVolume;
+        }
+    }
+
     public static AudioManager EnsureInstance()
     {
         if (Instance != null) return Instance;
@@ -158,6 +183,9 @@ public class AudioManager : Singleton<AudioManager>
         musicSource.loop = true;
         musicSource.playOnAwake = false;
         sfxSource.playOnAwake = false;
+
+        musicSource.volume = MusicVolume;
+        sfxSource.volume = SfxVolume;
     }
 
     public void PlayMusic(AudioClip clip)
