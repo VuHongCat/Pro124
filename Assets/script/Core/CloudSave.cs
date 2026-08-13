@@ -167,7 +167,7 @@ public static class CloudSave
 
     private static void Apply(CloudSaveData data)
     {
-        // ---- PlayerPrefs (MapManager / WorldMap đọc ở Start) ----
+        // ---- PlayerPrefs (MapManager / WorldMap read at Start) ----
 
         if (data.completedNodes == null || data.completedNodes.Count == 0)
             PlayerPrefs.DeleteKey(MapManager.CompletedNodeKey);

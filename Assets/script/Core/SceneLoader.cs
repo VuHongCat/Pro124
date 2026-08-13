@@ -13,7 +13,15 @@ public class SceneLoader : Singleton<SceneLoader>
 
     protected override void Awake()
     {
+        Debug.Log(
+            $"[SceneLoader] Awake on '{gameObject.name}' (id={GetInstanceID()}). " +
+            $"Instance alive before base: {SceneLoader.Instance != null}."
+        );
         base.Awake();
+        Debug.Log(
+            $"[SceneLoader] After base.Awake on '{gameObject.name}': " +
+            $"Instance points here={Instance == this}, this destroyed={this == null}."
+        );
         if (Instance != this) return;
         EnsureFadeOverlay();
     }

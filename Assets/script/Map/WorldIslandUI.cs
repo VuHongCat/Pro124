@@ -43,12 +43,12 @@ public class WorldIslandUI : MonoBehaviour
         unlocked = true;
 
 
-        // đảo sáng
+        // brighten island
         if (islandImage != null)
             islandImage.color = unlockColor;
 
 
-        // cho bấm
+        // allow clicking
         if (button != null)
             button.interactable = true;
     }
@@ -60,12 +60,12 @@ public class WorldIslandUI : MonoBehaviour
         unlocked = false;
 
 
-        // đảo mờ
+        // dim island
         if (islandImage != null)
             islandImage.color = lockColor;
 
 
-        // không bấm được
+        // disable clicking
         if (button != null)
             button.interactable = false;
     }
@@ -76,7 +76,7 @@ public class WorldIslandUI : MonoBehaviour
     {
         if (!unlocked)
         {
-            Debug.Log("Đảo chưa mở khóa!");
+            Debug.Log("Island is not unlocked!");
             return;
         }
 

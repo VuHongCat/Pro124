@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterStatus : MonoBehaviour
 {
     [Header("UI Reference")]
-    [SerializeField] private StatusHolderUI statusHolderUI; // Tham chiếu đến StatusArea UI
+    [SerializeField] private StatusHolderUI statusHolderUI; // Reference to the StatusArea UI
 
     private void Awake()
     {
@@ -14,14 +14,14 @@ public class CharacterStatus : MonoBehaviour
             statusHolderUI = FindAnyObjectByType<StatusHolderUI>();
     }
 
-    // Dictionary lưu số stack hiện tại của từng loại Buff/Debuff <buffID, số_stack>
+    // Dictionary storing the current stack count of each Buff/Debuff <buffID, stack_count>
     private Dictionary<string, int> activeStatusStacks = new Dictionary<string, int>();
 
-    // Dictionary lưu thông tin BuffData tương ứng với buffID
+    // Dictionary storing the BuffData corresponding to each buffID
     private Dictionary<string, BuffData> buffDataMap = new Dictionary<string, BuffData>();
 
     /// <summary>
-    /// Hàm thêm hoặc thay đổi số lượng stack của Buff/Debuff
+    /// Adds or changes the stack count of a Buff/Debuff
     /// </summary>
     public void ApplyStatus(BuffData buffData, int amount)
     {
@@ -29,31 +29,31 @@ public class CharacterStatus : MonoBehaviour
 
         string id = buffData.BuffID;
 
-        // Lưu dữ liệu BuffData nếu chưa có
+        // Store BuffData if it doesn't exist yet
         if (!buffDataMap.ContainsKey(id))
         {
             buffDataMap.Add(id, buffData);
         }
 
-        // Tính tổng số stack mới
+        // Calculate the new total stack count
         int currentStack = activeStatusStacks.ContainsKey(id) ? activeStatusStacks[id] : 0;
         int newStack = currentStack + amount;
 
         if (newStack > 0)
         {
             activeStatusStacks[id] = newStack;
-            // Cập nhật lên UI
+            // Update UI
             if (statusHolderUI != null) statusHolderUI.SetStatus(id, buffData.BuffName, buffData.BuffIcon, newStack);
         }
         else
         {
-            // Nếu stack <= 0 thì xóa khỏi danh sách và xóa UI
+            // If stack <= 0, remove it from the list and from the UI
             RemoveStatus(id);
         }
     }
 
     /// <summary>
-    /// Set số stack chính xác (dùng khi đồng bộ từ nguồn khác, không cộng dồn)
+    /// Sets the exact stack count (used when syncing from another source, no accumulation)
     /// </summary>
     public void SetStatus(BuffData buffData, int stack)
     {
@@ -78,7 +78,7 @@ public class CharacterStatus : MonoBehaviour
     }
 
     /// <summary>
-    /// Xóa hẳn 1 Buff/Debuff
+    /// Removes a Buff/Debuff entirely
     /// </summary>
     public void RemoveStatus(string buffID)
     {
@@ -90,7 +90,7 @@ public class CharacterStatus : MonoBehaviour
     }
 
     /// <summary>
-    /// Trả về số stack hiện tại của 1 Buff/Debuff
+    /// Returns the current stack count of a Buff/Debuff
     /// </summary>
     public int GetStatusStack(string buffID)
     {
@@ -98,27 +98,27 @@ public class CharacterStatus : MonoBehaviour
     }
 
     /// <summary>
-    /// Hàm gọi khi kết thúc lượt (Trigger hiệu ứng như mất máu do Độc/Cháy)
+    /// Called when the turn ends (triggers effects like damage from Poison/Burn)
     /// </summary>
     public void OnTurnEnd()
     {
-        // Ví dụ: Xử lý Độc (Gây sát thương = số stack Độc, sau đó giảm 1 stack)
+        // Example: Handle Poison (deals damage = Poison stack, then reduces 1 stack)
         if (activeStatusStacks.ContainsKey("Poison"))
         {
             int poisonDamage = activeStatusStacks["Poison"];
             Debug.Log($"{gameObject.name} is poisoned and takes {poisonDamage} damage!");
 
-            // Giảm 1 stack độc sau mỗi lượt
+            // Reduce poison stack by 1 each turn
             ApplyStatus(buffDataMap["Poison"], -1);
         }
 
-        // Ví dụ: Xử lý Cháy
+        // Example: Handle Burn
         if (activeStatusStacks.ContainsKey("Burn"))
         {
             int burnDamage = activeStatusStacks["Burn"];
             Debug.Log($"{gameObject.name} is burning and takes {burnDamage} damage!");
 
-            // Giảm 1 stack cháy
+            // Reduce burn stack by 1
             ApplyStatus(buffDataMap["Burn"], -1);
         }
     }

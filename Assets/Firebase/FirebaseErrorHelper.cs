@@ -40,6 +40,10 @@ public static class FirebaseErrorHelper
                     return "Network connection error. Please check your internet connection.";
                 case AuthError.TooManyRequests:
                     return "Too many requests. Please try again later.";
+                case AuthError.OperationNotAllowed:
+                    return "Email/password sign-in is not enabled.";
+                case AuthError.Failure:
+                    return "Invalid email or password.";
                 default:
                     return $"Error code: {errorCode}";
             }

@@ -125,7 +125,7 @@ public class MapNode : MonoBehaviour
     }
 
     // ==========================================
-    // HOVER (thông báo node bị khóa)
+    // HOVER (notify locked node)
     // ==========================================
 
     private void OnMouseEnter()
@@ -139,8 +139,8 @@ public class MapNode : MonoBehaviour
         HideLockedTooltip();
     }
 
-    // True khi con trỏ đang trỏ vào UI (panel Monster Index, popup...)
-    // -> chặn không cho tương tác với node map bên dưới
+    // True when the cursor is over UI (Monster Index panel, popup...)
+    // -> block interaction with the map node underneath
     private static bool IsPointerOverUi()
     {
         return EventSystem.current != null &&
@@ -175,7 +175,7 @@ public class MapNode : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Đang trỏ vào UI (panel Monster Index, popup...) -> không tương tác node map
+        // Hovering over UI (Monster Index panel, popup...) -> do not interact with the map node
         if (IsPointerOverUi())
             return;
 
@@ -207,7 +207,7 @@ public class MapNode : MonoBehaviour
             "================================"
         );
 
-        // Node đang khóa
+        // Node is locked
         if (isLocked)
         {
             Debug.LogWarning(
@@ -217,7 +217,7 @@ public class MapNode : MonoBehaviour
             return;
         }
 
-        // Kiểm tra MapManager
+        // Check MapManager
         if (MapManager.instance == null)
         {
             Debug.LogError(

@@ -24,6 +24,8 @@ public class EnemyCombat : MonoBehaviour
     private int buffKind;
     private int buffAmount;
     private EnemyStatus buffTarget;
+    private EnemyIntentType lastIntentType;
+    private int sameTypeCount;
 
     public void Initialize(EnemyData data)
     {
@@ -55,7 +57,7 @@ public class EnemyCombat : MonoBehaviour
     }
 
     // =========================================================
-    // BOSS PHASE 2: khi máu chạm ngưỡng -> buff + enrage
+    // BOSS PHASE 2: when health hits the threshold -> buff + enrage
     // =========================================================
 
     private void OnBossHealthChanged(int current, int max)
@@ -135,7 +137,7 @@ public class EnemyCombat : MonoBehaviour
             return;
         }
 
-        // Quái chỉ được tấn công (minion của Mini Boss Priest)
+        // Enemy can only attack (minion of Mini Boss Priest)
         if (enemyData.attackOnly)
         {
             SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
@@ -162,6 +164,13 @@ public class EnemyCombat : MonoBehaviour
 
     private void SetIntent(EnemyIntentType type, int value)
     {
+        if (type == lastIntentType)
+            sameTypeCount++;
+        else
+        {
+            lastIntentType = type;
+            sameTypeCount = 1;
+        }
         enemyIntent.SetIntent(type, value);
     }
 
@@ -184,6 +193,16 @@ public class EnemyCombat : MonoBehaviour
         return 0;
     }
 
+    private bool IsBlocked(EnemyIntentType type)
+    {
+        return type == lastIntentType && sameTypeCount >= 2;
+    }
+
+    private int WeightIfAvailable(int weight, EnemyIntentType type)
+    {
+        return weight > 0 && !IsBlocked(type) ? weight : 0;
+    }
+
     private void DecideBasic()
     {
         float ratio = HpRatio();
@@ -193,7 +212,8 @@ public class EnemyCombat : MonoBehaviour
         else if (ratio >= 0.3f) attackWeight = 2;
         else blockWeight = 3;
 
-        if (Roll(attackWeight, blockWeight))
+        if (Roll(WeightIfAvailable(attackWeight, EnemyIntentType.Attack),
+                 WeightIfAvailable(blockWeight, EnemyIntentType.Block)))
             SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
         else
             SetIntent(EnemyIntentType.Block, enemyData.block);
@@ -209,7 +229,9 @@ public class EnemyCombat : MonoBehaviour
         else if (ratio >= 0.3f) attackWeight = 2;
         else blockWeight = 3;
 
-        int idx = RollIndex(attackWeight, blockWeight, poisonWeight);
+        int idx = RollIndex(WeightIfAvailable(attackWeight, EnemyIntentType.Attack),
+                            WeightIfAvailable(blockWeight, EnemyIntentType.Block),
+                            WeightIfAvailable(poisonWeight, EnemyIntentType.Poison));
         if (idx == 0) SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
         else if (idx == 1) SetIntent(EnemyIntentType.Block, enemyData.block);
         else SetIntent(EnemyIntentType.Poison, enemyData.poisonDamage);
@@ -220,9 +242,12 @@ public class EnemyCombat : MonoBehaviour
         float ratio = HpRatio();
         int idx;
         if (ratio >= 0.3f)
-            idx = RollIndex(3, 1);
+            idx = RollIndex(WeightIfAvailable(3, EnemyIntentType.LifestealAttack),
+                            WeightIfAvailable(1, EnemyIntentType.Attack));
         else
-            idx = RollIndex(1, 1, 2);
+            idx = RollIndex(WeightIfAvailable(1, EnemyIntentType.LifestealAttack),
+                            WeightIfAvailable(1, EnemyIntentType.Attack),
+                            WeightIfAvailable(2, EnemyIntentType.Block));
 
         if (idx == 0) SetIntent(EnemyIntentType.LifestealAttack, enemyData.attackDamage);
         else if (idx == 1) SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
@@ -243,7 +268,9 @@ public class EnemyCombat : MonoBehaviour
 
         int a = 2, buff = 2, b = 1;
         if (ratio < 0.3f) { a = 1; buff = 1; b = 2; }
-        int idx = RollIndex(a, buff, b);
+        int idx = RollIndex(WeightIfAvailable(a, EnemyIntentType.Attack),
+                            WeightIfAvailable(buff, EnemyIntentType.Buff),
+                            WeightIfAvailable(b, EnemyIntentType.Block));
         if (idx == 0) SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
         else if (idx == 1) SetIntent(EnemyIntentType.Buff, enemyData.buffStrength);
         else SetIntent(EnemyIntentType.Block, enemyData.block);
@@ -262,7 +289,8 @@ public class EnemyCombat : MonoBehaviour
 
         int a = 2, b = 1;
         if (ratio < 0.3f) { a = 1; b = 2; }
-        if (Roll(a, b))
+        if (Roll(WeightIfAvailable(a, EnemyIntentType.Attack),
+                 WeightIfAvailable(b, EnemyIntentType.Block)))
             SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
         else
             SetIntent(EnemyIntentType.Block, enemyData.block);
@@ -273,10 +301,28 @@ public class EnemyCombat : MonoBehaviour
         float ratio = HpRatio();
         if (ratio < 0.3f)
         {
-            if (Roll(4, 1))
+            int a = WeightIfAvailable(4, EnemyIntentType.Attack);
+            int d = WeightIfAvailable(1, EnemyIntentType.Debuff);
+            if (a + d == 0)
+            {
+                SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
+                return;
+            }
+            if (Roll(a, d))
                 SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
             else
                 SetIntent(EnemyIntentType.Debuff, enemyData.vulnerableDamage);
+            return;
+        }
+
+        if (IsBlocked(EnemyIntentType.Attack))
+        {
+            SetIntent(EnemyIntentType.Debuff, enemyData.vulnerableDamage);
+            return;
+        }
+        if (IsBlocked(EnemyIntentType.Debuff))
+        {
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
             return;
         }
 
@@ -288,13 +334,37 @@ public class EnemyCombat : MonoBehaviour
 
     private void DecidePriest()
     {
-        // 30% tấn công / 70% buff (buff ngẫu nhiên chỉ số cho đồng đội)
+        bool attackBlocked = IsBlocked(EnemyIntentType.Attack);
+        bool buffBlocked = IsBlocked(EnemyIntentType.Buff);
+
+        if (attackBlocked && buffBlocked)
+        {
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
+            return;
+        }
+        if (attackBlocked)
+        {
+            SetBuffIntent();
+            return;
+        }
+        if (buffBlocked)
+        {
+            SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
+            return;
+        }
+
+        // 30% attack / 70% buff (buff random stats for allies)
         if (Roll(3, 7))
         {
             SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
             return;
         }
 
+        SetBuffIntent();
+    }
+
+    private void SetBuffIntent()
+    {
         buffKind = UnityEngine.Random.Range(0, 4);
         buffAmount = RandomBuffAmount();
         buffTarget = GetBuffTarget();
@@ -343,7 +413,7 @@ public class EnemyCombat : MonoBehaviour
         }
     }
 
-    // Mini Boss Priest: khi cả 2 minion chết, đợi resummonDelayTurns lượt rồi gọi 2 con mới
+    // Mini Boss Priest: when both minions die, wait resummonDelayTurns turns then summon 2 new ones
     private void UpdatePriestSummon()
     {
         int aliveMinions = CountAliveMinions();
@@ -432,7 +502,7 @@ public class EnemyCombat : MonoBehaviour
                     ApplyBuff(buffTarget);
                     buffTarget = null;
 
-                    // Mini Boss Priest: lượt buff đồng thời debuff người chơi
+                    // Mini Boss Priest: buff turn also debuffs the player
                     if (isPriestBoss && player != null)
                     {
                         PlayerStatus buffDps = player.GetComponent<PlayerStatus>();
@@ -463,14 +533,14 @@ public class EnemyCombat : MonoBehaviour
                 break;
         }
 
-        // Boss triệu hồi quái (xảy ra trong lượt enemy, an toàn để spawn)
+        // Boss summons enemies (happens during the enemy turn, safe to spawn)
         if (summonPending)
         {
             summonPending = false;
             OnSummonRequested?.Invoke(enemyData);
         }
 
-        // Boss phase 2: ra đòn cường hóa + debuff mạnh lên người chơi
+        // Boss phase 2: unleash an enhanced attack + strong debuff on the player
         if (rageAttack)
         {
             rageAttack = false;

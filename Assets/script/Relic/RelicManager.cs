@@ -65,10 +65,10 @@ public class RelicManager : MonoBehaviour
     [Header("Owned Relics")]
     [SerializeField] private List<RelicData> ownedRelics = new();
 
-    // Danh sách relic chờ nạp từ CloudSave (lưu theo tên)
+    // List of relics waiting to be loaded from CloudSave (saved by name)
     internal static List<string> PendingRelicNames = null;
 
-    // Trạng thái nội bộ của relic
+    // Internal state of the relic
     private int giryaUses;
     private bool teaSetPending;
     private int happyFlowerCounter;
@@ -220,8 +220,8 @@ public class RelicManager : MonoBehaviour
 
     #region Instant Effect
 
-    // Hiệu ứng tức thời khi nhận relic:
-    // - MaxHealth (Mango, Strawberry, Ancient Core): +Max HP ngay lập tức
+    // Instant effect when receiving a relic:
+    // - MaxHealth (Mango, Strawberry, Ancient Core): +Max HP immediately
     private void ApplyInstantEffect(RelicData relic)
     {
         switch (relic.relicType)
@@ -250,7 +250,7 @@ public class RelicManager : MonoBehaviour
         PlayerHealth hp = FindAnyObjectByType<PlayerHealth>();
         PlayerBlock block = FindAnyObjectByType<PlayerBlock>();
 
-        // Dragon Soul, Vajra, Ancient Core, Girya: Strength vĩnh viễn mỗi trận
+        // Dragon Soul, Vajra, Ancient Core, Girya: permanent Strength each battle
         int strength = GetPermanentStrength();
         if (strength > 0 && status != null)
         {
@@ -258,7 +258,7 @@ public class RelicManager : MonoBehaviour
             Debug.Log($"[Relic] Battle start: +{strength} Strength");
         }
 
-        // Anchor: +Block đầu trận
+        // Anchor: +Block at battle start
         RelicData anchor = GetRelic("Anchor");
         if (anchor != null && block != null)
         {
@@ -266,7 +266,7 @@ public class RelicManager : MonoBehaviour
             Debug.Log($"[Relic] Anchor: +{anchor.value} Block");
         }
 
-        // Blood Vial: hồi máu đầu trận
+        // Blood Vial: heal at battle start
         RelicData bloodVial = GetRelic("Blood Vial");
         if (bloodVial != null && hp != null)
         {
@@ -274,9 +274,9 @@ public class RelicManager : MonoBehaviour
             Debug.Log($"[Relic] Blood Vial: Heal +{bloodVial.value}");
         }
 
-        // Bag of Mables: áp dụng Vulnerable cho từng enemy khi spawn (BattleManager gọi ApplyBagOfMables)
+        // Bag of Marbles: applies Vulnerable to each enemy when spawning (BattleManager calls ApplyBagOfMarbles)
 
-        // Red Skull: kiểm tra HP < 50%
+        // Red Skull: check HP < 50%
         UpdateRedSkull(status, hp);
     }
 
@@ -292,8 +292,8 @@ public class RelicManager : MonoBehaviour
         enemyStatus.AddStatus(StatusType.Vulnerable, mables.value, 99);
     }
 
-    // Energy đầu trận (Coffee Dripper, Ectoplasm, Tea Set).
-    // Gọi sau khi ResetEnergy để bonus không bị xóa.
+    // Battle-start energy (Coffee Dripper, Ectoplasm, Tea Set).
+    // Called after ResetEnergy so the bonus is not removed.
     public static int GetBattleStartEnergyBonus()
     {
         if (_instance == null)
@@ -331,7 +331,7 @@ public class RelicManager : MonoBehaviour
 
     public void OnBattleEnd()
     {
-        // Burning Blood: hồi máu sau mỗi trận thắng
+        // Burning Blood: heal after every won battle
         RelicData burning = GetRelic("Burning Blood");
         if (burning != null)
         {
@@ -398,7 +398,7 @@ public class RelicManager : MonoBehaviour
         PlayerStatus status = FindAnyObjectByType<PlayerStatus>();
         PlayerHealth hp = FindAnyObjectByType<PlayerHealth>();
 
-        // Happy Flower: cứ mỗi secondValue lượt người chơi +value năng lượng
+        // Happy Flower: every secondValue player turns +value energy
         RelicData flower = GetRelic("Happy Flower");
         if (flower != null)
         {
@@ -415,13 +415,13 @@ public class RelicManager : MonoBehaviour
             }
         }
 
-        // Red Skull: HP dưới 50% thì +3 Strength
+        // Red Skull: if HP is below 50%, +3 Strength
         UpdateRedSkull(status, hp);
     }
 
     public void OnPlayerTurnEnd()
     {
-        // Orichalcum: kết thúc lượt không có Block thì +value Block
+        // Orichalcum: if the turn ends with no Block, gain +value Block
         RelicData orichalcum = GetRelic("Orichalcum");
         if (orichalcum != null)
         {
@@ -462,7 +462,7 @@ public class RelicManager : MonoBehaviour
 
     public void OnObtainCard(CardData card)
     {
-        // Ceramic Fish: nhận thẻ là +value vàng
+        // Ceramic Fish: gaining a card gives +value gold
         RelicData fish = GetRelic("Ceramic Fish");
         if (fish != null)
         {
@@ -473,7 +473,7 @@ public class RelicManager : MonoBehaviour
 
     public void OnRestSite()
     {
-        // Girya: mỗi lần nghỉ +1 Strength, tối đa secondValue lần
+        // Girya: every rest +1 Strength, up to secondValue times
         RelicData girya = GetRelic("Girya");
         if (girya != null && giryaUses < girya.secondValue)
         {
@@ -481,7 +481,7 @@ public class RelicManager : MonoBehaviour
             Debug.Log($"[Relic] Girya: rest {giryaUses}/{girya.secondValue} (+{girya.value} Strength per rest)");
         }
 
-        // Tea Set: +1 năng lượng ở battle kế tiếp
+        // Tea Set: +1 energy in the next battle
         if (GetRelic("Tea Set") != null)
         {
             teaSetPending = true;

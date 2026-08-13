@@ -131,6 +131,6 @@ public class MainMenuUI : MonoBehaviour
 
     public void QuitGame()
     {
-        SceneLoader.Instance.QuitGame();
+        SceneLoader.TransitionTo("Login");
     }
 }

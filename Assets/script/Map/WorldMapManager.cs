@@ -26,7 +26,7 @@ public class WorldMapManager : MonoBehaviour
         }
 
 
-        // Mặc định mở đảo 1
+        // Unlock island 1 by default
         if (!PlayerPrefs.HasKey("UnlockedIsland"))
         {
             PlayerPrefs.SetInt("UnlockedIsland", 1);
@@ -53,7 +53,7 @@ public class WorldMapManager : MonoBehaviour
 
 
 
-    // Gọi khi thắng boss
+    // Called when the boss is defeated
     public void UnlockIsland(int id)
     {
         UnlockIslandStatic(id);
