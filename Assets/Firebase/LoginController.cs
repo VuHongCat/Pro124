@@ -12,6 +12,10 @@ public class LoginController : MonoBehaviour
 
     [Header("Scene Settings")]
     public string gameSceneName = "MainMenu";
+    private void Start()
+    {
+        if (messageText != null) messageText.gameObject.SetActive(false);
+    }
 
     public void OnLoginButtonClicked()
     {
@@ -87,7 +91,11 @@ public class LoginController : MonoBehaviour
 
     private void ShowMessage(string msg)
     {
-        if (messageText != null) messageText.text = msg;
+        if (messageText != null)
+        {
+            messageText.gameObject.SetActive(true);
+            messageText.text = msg;
+        }
         Debug.Log($"[Login] {msg}");
     }
 }
