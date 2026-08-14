@@ -14,6 +14,7 @@ public class PlayerStatus : MonoBehaviour
 
     [Header("UI Sync")]
     [SerializeField] private StatusHolderUI statusUI;
+    [SerializeField] private GameObject statusPopupPrefab;
     [SerializeField] private BuffData strengthData;
     [SerializeField] private BuffData weakData;
     [SerializeField] private BuffData vulnerableData;
@@ -34,6 +35,8 @@ public class PlayerStatus : MonoBehaviour
             statusUI = GetComponentInChildren<StatusHolderUI>();
         if (statusUI == null)
             statusUI = FindAnyObjectByType<StatusHolderUI>();
+        if (statusPopupPrefab == null)
+            statusPopupPrefab = Resources.Load<GameObject>("StatusPopup");
         OnStatusChanged += SyncUI;
     }
 
@@ -116,7 +119,41 @@ public class PlayerStatus : MonoBehaviour
             entry.Turns = Mathf.Max(entry.Turns, duration);
         }
 
+        if (amount > 0)
+            SpawnStatusPopup(type, amount);
+
         OnStatusChanged?.Invoke();
+    }
+
+    private BuffData GetBuffData(StatusType type)
+    {
+        switch (type)
+        {
+            case StatusType.Strength:     return strengthData;
+            case StatusType.Weak:         return weakData;
+            case StatusType.Vulnerable:   return vulnerableData;
+            case StatusType.Stun:         return stunData;
+            case StatusType.Counter:      return counterData;
+            case StatusType.Immortal:     return immortalData;
+            case StatusType.Bleed:        return bleedData;
+            case StatusType.Regen:        return regenData;
+            case StatusType.Lifesteal:    return lifestealData;
+            case StatusType.Poison:       return poisonData;
+            default:                      return null;
+        }
+    }
+
+    private void SpawnStatusPopup(StatusType type, int amount)
+    {
+        if (statusPopupPrefab == null) return;
+        BuffData data = GetBuffData(type);
+        if (data == null || data.BuffIcon == null) return;
+
+        GameObject go = Instantiate(statusPopupPrefab, transform);
+        go.transform.localPosition = Vector3.zero;
+        StatusPopup popup = go.GetComponent<StatusPopup>();
+        if (popup != null)
+            popup.Play(data.Type, amount);
     }
 
     public int GetStatus(StatusType type)

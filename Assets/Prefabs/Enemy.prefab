@@ -1074,6 +1074,7 @@ MonoBehaviour:
   bleedData: {fileID: 11400000, guid: f02605e6eb0748f47921ada773e7649a, type: 2}
   regenData: {fileID: 11400000, guid: 48d039ee6e560a84d93bd2c8dd6df201, type: 2}
   lifestealData: {fileID: 11400000, guid: bdea964a43601a54da5f562ca2d386c7, type: 2}
+  poisonData: {fileID: 11400000, guid: d055eeeb84fd4f4ab3d444c1a9649aa6, type: 2}
 --- !u!114 &1663079761676021057
 MonoBehaviour:
   m_ObjectHideFlags: 0

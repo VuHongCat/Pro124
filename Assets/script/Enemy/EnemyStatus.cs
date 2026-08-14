@@ -14,6 +14,7 @@ public class EnemyStatus : MonoBehaviour
 
     [Header("UI Sync")]
     [SerializeField] private StatusHolderUI statusUI;
+    [SerializeField] private GameObject statusPopupPrefab;
     [SerializeField] private BuffData strengthData;
     [SerializeField] private BuffData weakData;
     [SerializeField] private BuffData vulnerableData;
@@ -23,6 +24,7 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private BuffData bleedData;
     [SerializeField] private BuffData regenData;
     [SerializeField] private BuffData lifestealData;
+    [SerializeField] private BuffData poisonData;
 
     private bool warnedMissingUI;
     private readonly List<StatusType> missingDataTypes = new();
@@ -33,6 +35,8 @@ public class EnemyStatus : MonoBehaviour
             statusUI = GetComponentInChildren<StatusHolderUI>();
         if (statusUI == null)
             statusUI = FindAnyObjectByType<StatusHolderUI>();
+        if (statusPopupPrefab == null)
+            statusPopupPrefab = Resources.Load<GameObject>("StatusPopup");
         OnStatusChanged += SyncUI;
     }
 
@@ -66,6 +70,7 @@ public class EnemyStatus : MonoBehaviour
         SyncOne(StatusType.Bleed, bleedData);
         SyncOne(StatusType.Regen, regenData);
         SyncOne(StatusType.Lifesteal, lifestealData);
+        SyncOne(StatusType.Poison, poisonData);
     }
 
     private void SyncOne(StatusType type, BuffData data)
@@ -114,7 +119,41 @@ public class EnemyStatus : MonoBehaviour
             entry.Turns = Mathf.Max(entry.Turns, duration);
         }
 
+        if (amount > 0)
+            SpawnStatusPopup(type, amount);
+
         OnStatusChanged?.Invoke();
+    }
+
+    private BuffData GetBuffData(StatusType type)
+    {
+        switch (type)
+        {
+            case StatusType.Strength:     return strengthData;
+            case StatusType.Weak:         return weakData;
+            case StatusType.Vulnerable:   return vulnerableData;
+            case StatusType.Stun:         return stunData;
+            case StatusType.Counter:      return counterData;
+            case StatusType.Immortal:     return immortalData;
+            case StatusType.Bleed:        return bleedData;
+            case StatusType.Regen:        return regenData;
+            case StatusType.Lifesteal:    return lifestealData;
+            case StatusType.Poison:       return poisonData;
+            default:                      return null;
+        }
+    }
+
+    private void SpawnStatusPopup(StatusType type, int amount)
+    {
+        if (statusPopupPrefab == null) return;
+        BuffData data = GetBuffData(type);
+        if (data == null || data.BuffIcon == null) return;
+
+        GameObject go = Instantiate(statusPopupPrefab, transform);
+        go.transform.localPosition = Vector3.zero;
+        StatusPopup popup = go.GetComponent<StatusPopup>();
+        if (popup != null)
+            popup.Play(data.Type, amount);
     }
 
     public int GetStatus(StatusType type)

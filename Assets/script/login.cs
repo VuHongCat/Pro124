@@ -13,6 +13,7 @@ public partial class login : MonoBehaviour
     public panelswtich panelswtich;
     private void Start()
     {
+        if (notification != null) notification.gameObject.SetActive(false);
         filepath = Path.Combine(Application.persistentDataPath, "user.txt");
         if (panelswtich == null)
         {
@@ -65,6 +66,7 @@ public partial class login : MonoBehaviour
     {
         if (notification != null)
         {
+            notification.gameObject.SetActive(true);
             notification.text = msg;
             notification.color = color;
         }

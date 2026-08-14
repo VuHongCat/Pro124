@@ -16,6 +16,10 @@ public class RegisterController : MonoBehaviour
 
     [Header("Panel Switching")]
     public panelswtich panelSwitcher;
+    private void Start()
+    {
+        if (messageText != null) messageText.gameObject.SetActive(false);
+    }
 
     public void OnRegisterButtonClicked()
     {
@@ -115,7 +119,11 @@ public class RegisterController : MonoBehaviour
 
     private void ShowMessage(string msg)
     {
-        if (messageText != null) messageText.text = msg;
+        if (messageText != null)
+        {
+            messageText.gameObject.SetActive(true);
+            messageText.text = msg;
+        }
         Debug.Log($"[Register] {msg}");
     }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   BuffID: Vulnerable
   BuffName: Vulnerable
   BuffIcon: {fileID: -8541229986115683491, guid: 164ab3e165359024387f3504d40c2d6c, type: 3}
-  Type: 0
+  Type: 1
   Description: Take 1.5x damage; damage taken decreases by 1 each turn.
