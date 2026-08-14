@@ -15,7 +15,7 @@ MonoBehaviour:
   attackVFX: {fileID: 0}
   cardName: Curse of Decay
   description: Apply 6 Bleed to yourself.
-  artwork: {fileID: 4880452415320247003, guid: f87b0994d5d6ea74d8bc185fa0f63b2a, type: 3}
+  artwork: {fileID: -1104399648342979028, guid: c6e964dd0484816468f894ed865aba12, type: 3}
   energyCost: 0
   cardType: 3
   target: 0

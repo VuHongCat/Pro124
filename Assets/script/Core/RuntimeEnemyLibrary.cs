@@ -376,6 +376,7 @@ public static class RuntimeEnemyLibrary
                 d.maxHealth = 150;
                 d.attackDamage = 14;
                 d.block = 8;
+                d.weakDamage = 2;
                 d.selfHeal = 20;
                 d.regenValue = 6;
                 d.phaseThreshold = 0.5f;

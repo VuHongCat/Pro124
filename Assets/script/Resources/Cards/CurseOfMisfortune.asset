@@ -15,7 +15,7 @@ MonoBehaviour:
   attackVFX: {fileID: 0}
   cardName: Curse of Misfortune
   description: Apply 2 Weak and 2 Vulnerable to yourself.
-  artwork: {fileID: 5118148530024866516, guid: ada3110177ca6e8458e30903ef3a9441, type: 3}
+  artwork: {fileID: -8144578562745711410, guid: 0ce6d6816b74985439dbe52a8b0cdedf, type: 3}
   energyCost: 0
   cardType: 3
   target: 0
