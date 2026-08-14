@@ -515,7 +515,19 @@ public class EnemyCombat : MonoBehaviour
                 }
                 else
                 {
-                    enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue, 99);
+                    if (enemyData != null && enemyData.archetype == EnemyArchetype.Golem)
+                    {
+                        // Golem: buff thường = +giáp (Block) và Weak lên người chơi
+                        if (enemyBlock != null && enemyData.block > 0)
+                            enemyBlock.AddBlock(enemyData.block);
+                        PlayerStatus golemPs = player != null ? player.GetComponent<PlayerStatus>() : null;
+                        if (golemPs != null && enemyData.weakDamage > 0)
+                            golemPs.AddStatus(StatusType.Weak, enemyData.weakDamage, 2);
+                    }
+                    else
+                    {
+                        enemyStatus?.AddStatus(StatusType.Strength, enemyIntent.IntentValue, 99);
+                    }
                 }
                 break;
 
