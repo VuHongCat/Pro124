@@ -44,6 +44,8 @@ public class EnemyData : ScriptableObject
     public int weakDamage;
     public int vulnerableDamage;
 
+    public int bleedDamage;
+
     public int counterStacks;
     public int goldReward;
     public bool isBoss;

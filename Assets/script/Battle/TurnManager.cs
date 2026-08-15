@@ -68,7 +68,7 @@ public class TurnManager : MonoBehaviour
             handManager.AddCard(card);
         }
 
-        if (TurnCount > 0 && TurnCount % 3 == 0)
+        if (TurnCount > 0 && TurnCount % 2 == 0)
             InjectRandomCurses();
     }
 
