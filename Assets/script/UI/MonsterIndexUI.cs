@@ -488,6 +488,7 @@ public class MonsterIndexUI : MonoBehaviour
         if (d.buffStrength > 0) specials.Add($"Buff STR {d.buffStrength}");
         if (d.weakDamage > 0) specials.Add($"Weak {d.weakDamage}");
         if (d.vulnerableDamage > 0) specials.Add($"Vulnerable {d.vulnerableDamage}");
+        if (d.bleedDamage > 0) specials.Add($"Normal attack: 50% Bleed {d.bleedDamage}");
         if (d.counterStacks > 0) specials.Add($"Counter {d.counterStacks}");
         if (d.goldReward > 0) specials.Add($"Gold {d.goldReward}");
         return specials;

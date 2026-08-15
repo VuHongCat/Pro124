@@ -124,6 +124,20 @@ public class EnemyCombat : MonoBehaviour
         }
     }
 
+    private void TryInflictBleed(PlayerHealth player)
+    {
+        if (enemyData == null || enemyData.archetype != EnemyArchetype.Lifesteal) return;
+        if (enemyData.bleedDamage <= 0) return;
+        if (player == null || UnityEngine.Random.Range(0, 100) >= 50) return;
+
+        PlayerStatus ps = player.GetComponent<PlayerStatus>();
+        if (ps != null)
+        {
+            ps.AddStatus(StatusType.Bleed, enemyData.bleedDamage, 3);
+            Debug.Log($"{enemyData.enemyName} inflicted {enemyData.bleedDamage} Bleed on the player (50% chance).");
+        }
+    }
+
     public void DecideNextIntent()
     {
         turnCount++;
@@ -239,19 +253,7 @@ public class EnemyCombat : MonoBehaviour
 
     private void DecideLifesteal()
     {
-        float ratio = HpRatio();
-        int idx;
-        if (ratio >= 0.3f)
-            idx = RollIndex(WeightIfAvailable(3, EnemyIntentType.LifestealAttack),
-                            WeightIfAvailable(1, EnemyIntentType.Attack));
-        else
-            idx = RollIndex(WeightIfAvailable(1, EnemyIntentType.LifestealAttack),
-                            WeightIfAvailable(1, EnemyIntentType.Attack),
-                            WeightIfAvailable(2, EnemyIntentType.Block));
-
-        if (idx == 0) SetIntent(EnemyIntentType.LifestealAttack, enemyData.attackDamage);
-        else if (idx == 1) SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
-        else SetIntent(EnemyIntentType.Block, enemyData.block);
+        SetIntent(EnemyIntentType.Attack, enemyData.attackDamage);
     }
 
     private void DecideGolem()
@@ -474,6 +476,7 @@ public class EnemyCombat : MonoBehaviour
         {
             case EnemyIntentType.Attack:
                 Attack(player, enemyIntent.IntentValue);
+                TryInflictBleed(player);
                 break;
 
             case EnemyIntentType.LifestealAttack:

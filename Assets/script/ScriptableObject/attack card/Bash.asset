@@ -20,7 +20,7 @@ MonoBehaviour:
   cardType: 0
   target: 0
   rarity: 0
-  damage: 6
+  damage: 600000
   block: 0
   strength: 0
   heal: 0

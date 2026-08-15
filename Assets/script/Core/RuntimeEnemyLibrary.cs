@@ -15,8 +15,8 @@ public static class RuntimeEnemyLibrary
                 canSplit: true),
             Build("Goblin", EnemyArchetype.Poison, 30, 6, 4, poison: 3, gold: 20,
                 role: "Applies Poison on every hit, which ignores your block. Kill it fast before the poison stacks up."),
-            Build("Bat", EnemyArchetype.Lifesteal, 22, 5, 3, lifesteal: 2, gold: 15,
-                role: "Heals itself for the damage it deals (Lifesteal). Block its attacks to limit its healing.")
+            Build("Bat", EnemyArchetype.Lifesteal, 22, 5, 3, bleed: 3, gold: 15,
+                role: "Attacks every turn. Its normal attacks have a 50% chance to inflict Bleed on you.")
         };
     }
 
@@ -55,7 +55,7 @@ public static class RuntimeEnemyLibrary
     public static EnemyData Build(string name, EnemyArchetype archetype, int maxHealth, int attack, int block,
         int poison = 0, int lifesteal = 0, int gold = 0,
         int selfHeal = 0, int regenValue = 0, int buffStrength = 0,
-        int weakDamage = 0, int vulnerableDamage = 0, int counterStacks = 0,
+        int weakDamage = 0, int vulnerableDamage = 0, int bleed = 0, int counterStacks = 0,
         string role = "",
         bool canSplit = false, int splitCount = 2, float splitHpScale = 0.5f, int splitDmgScale = 1)
     {
@@ -73,6 +73,7 @@ public static class RuntimeEnemyLibrary
         d.buffStrength = buffStrength;
         d.weakDamage = weakDamage;
         d.vulnerableDamage = vulnerableDamage;
+        d.bleedDamage = bleed;
         d.counterStacks = counterStacks;
         d.role = role;
         d.canSplit = canSplit;
@@ -131,8 +132,8 @@ public static class RuntimeEnemyLibrary
                     canSplit: true));
                 pool.Add(Build("Goblin", EnemyArchetype.Poison, 30, 6, 4, poison: 3, gold: 20,
                     role: "Applies Poison on every hit, which ignores your block. Kill it fast before the poison stacks up."));
-                pool.Add(Build("Bat", EnemyArchetype.Lifesteal, 22, 5, 3, lifesteal: 2, gold: 15,
-                    role: "Heals itself for the damage it deals (Lifesteal). Block its attacks to limit its healing."));
+                pool.Add(Build("Bat", EnemyArchetype.Lifesteal, 22, 5, 3, bleed: 3, gold: 15,
+                    role: "Attacks every turn. Its normal attacks have a 50% chance to inflict Bleed on you."));
                 break;
 
             case 2:
@@ -195,6 +196,7 @@ public static class RuntimeEnemyLibrary
         d.buffStrength = template.buffStrength;
         d.weakDamage = template.weakDamage;
         d.vulnerableDamage = template.vulnerableDamage;
+        d.bleedDamage = template.bleedDamage;
         d.counterStacks = template.counterStacks;
         d.goldReward = template.goldReward + (mapLevel - 1) * 10;
         d.isBoss = isBoss || template.isBoss;
